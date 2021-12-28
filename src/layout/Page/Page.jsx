@@ -6,23 +6,22 @@ import PageHead from '../PageHead'
 import './component.scss'
 
 function Component({ 
-  siteUrl, 
   isHeadShown = true, 
   className, 
   children,
+  location,
   Ele = 'main',
 }) {
 
   useEffect(() => {
     window.scrollTo(0, 0)
-  }, [siteUrl])
+  }, [location.pathname])
 
   return (
     <Ele className="page">
       {isHeadShown && (
         <PageHead className="page__head" />
       )}
-      <div>{siteUrl}</div>
       <div className={cn('page__content', 'page__container', className)}>
         {children}
       </div>

@@ -35,6 +35,7 @@ function Component({className, user}) {
         <Link to="/app/" className="page-head__logo">
           {/* <img src={logoTitleDark} alt="BG Shelf logo" className="page-head__logo-title-light" />
           <img src={logoTitle} alt="BG Shelf logo" className="page-head__logo-title-dark" /> */}
+          BG Top 10
         </Link>
         <div className="page-head__menu-container page-head-menu">
           <div className={cn('page-head-menu__background', {['page-head-menu__background--open']: isMenuOpen})} onClick={handleMenuBackgroundClick}> </div>

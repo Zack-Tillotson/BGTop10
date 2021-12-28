@@ -15,7 +15,7 @@ const NotFoundPage = ({location, data}) => {
 
 
 export const query = graphql`
-  query IndexPageQuery {
+  query ErrorPageQuery {
     site {
       siteMetadata {
         siteUrl
