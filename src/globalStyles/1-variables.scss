@@ -1,0 +1,121 @@
+/********************************************
+ * App Variables ****************************
+ ********************************************/
+:root {
+
+  /* brand colors (each 1-4, 2 is standard) */
+  --brand-primary-1: #C7ECFF;
+  --brand-primary-2: #0086CD;
+  --brand-primary-3: #025886;
+  --brand-primary-4: #012d46;
+  --brand-secondary-1: #9af1ad;
+  --brand-secondary-2: #2DB34A;
+  --brand-secondary-3: #13852b;
+  --brand-secondary-4: #035214;
+  --brand-white: #ffffff;
+  --brand-grey-1: #f5f5f5;
+  --brand-grey-2: #7c7c7c;
+  --brand-grey-3: #494949;
+  --brand-grey-4: #242424;
+  --brand-black: #0e0e0e;
+  --brand-red-1: #ec9090;
+  --brand-red-2: #ff0000;
+  --brand-red-3: #8b0000;
+  --brand-red-4: #530000;
+  --brand-blue-1: #76a6ff;
+  --brand-blue-2: #0000ff;
+  --brand-blue-3: #0404cc;
+  --brand-blue-4: #07075a;
+  --brand-green-1: #79db91;
+  --brand-green-2: #189e39;
+  --brand-green-3: #1d632f;
+  --brand-green-4: #16301c;
+
+  /* semantics standard */
+  --color-bg-base: var(--brand-grey-1);
+  --color-bg-base-transparent: #f5f5f593; /* manually keep to up to date with above */
+  --color-bg-focus: var(--brand-white);
+  --color-bg-primary: var(--brand-primary-1);
+  --color-bg-secondary: var(--brand-secondary-1);
+
+  --color-font-base: var(--brand-black);
+  --color-font-focus: var(--brand-grey-3);
+  --color-font-primary: var(--brand-primary-3);
+  --color-font-secondary: var(--brand-secondary-4);
+
+  --color-red: var(--brand-red-2);
+  --color-blue: var(--brand-blue-2);
+  --color-green: var(--brand-green-2);
+
+  /* semantics contrast */
+
+  --color-contrast-bg-base: var(--brand-grey-3);
+  --color-contrast-bg-base-transparent: rgba(73, 73, 73, .8); /* manually keep to up to date with above */
+  --color-contrast-bg-focus: var(--brand-grey-4);
+  --color-contrast-bg-primary: var(--brand-primary-3);
+  --color-contrast-bg-secondary: var(--brand-secondary-3);
+
+  --color-contrast-font-base: var(--brand-grey-1);
+  --color-contrast-font-focus: var(--brand-grey-2);
+  --color-contrast-font-primary: var(--brand-primary-1);
+  --color-contrast-font-secondary: var(--brand-secondary-1);
+
+  @media (prefers-color-scheme: dark) {
+    --color-bg-base: var(--brand-grey-4);
+    --color-bg-base-transparent: #24242493; /* manually keep to up to date with above */
+    --color-bg-focus: var(--brand-black);
+    --color-bg-primary: var(--brand-primary-4);
+    --color-bg-secondary: var(--brand-secondary-4);
+  
+    --color-font-base: var(--brand-white);
+    --color-font-focus: var(--brand-grey-2);
+    --color-font-primary: var(--brand-primary-2);
+    --color-font-secondary: var(--brand-secondary-1);
+  
+    --color-red: var(--brand-red-3);
+    --color-blue: var(--brand-blue-3);
+    --color-green: var(--brand-green-3);
+  
+    /* semantics contrast */
+  
+    --color-contrast-bg-base: var(--brand-grey-2);
+    --color-contrast-bg-base-transparent: #7c7c7c80; /* manually keep to up to date with above */
+    --color-contrast-bg-focus: var(--brand-grey-1);
+    --color-contrast-bg-primary: var(--brand-primary-2);
+    --color-contrast-bg-secondary: var(--brand-secondary-2);
+  
+    --color-contrast-font-base: var(--brand-grey-1);
+    --color-contrast-font-focus: var(--brand-grey-3);
+    --color-contrast-font-primary: var(--brand-primary-4);
+    --color-contrast-font-secondary: var(--brand-secondary-4);
+  }
+  
+  /* Layout */
+  --pad: 8px;
+  --pad-quart: calc(var(--pad) / 4);
+  --pad-half: calc(var(--pad) / 2);
+  --pad2: calc(var(--pad) * 2);
+  --pad3: calc(var(--pad) * 3);
+  --pad4: calc(var(--pad) * 4);
+  --pad5: calc(var(--pad) * 5);
+
+  /* Fonts */
+  --font-title: 'Montserrat', 'Open Sans', -apple-system, BlinkMacSystemFont, 'Helvetica Neue', sans-serif;
+  --font-content: 'Open Sans', -apple-system, BlinkMacSystemFont, 'Helvetica Neue', sans-serif;
+
+  /* Typography */
+  --font-size-alpha: 1.6rem;
+  --font-size-beta: 1.35rem;
+  --font-size-charlie: 1rem; // Default
+  --font-size-delta: .75rem;
+
+  /* Borders */
+  --border-1: solid 1px var(--color-contrast-bg-base);
+  --border-2: solid 2px var(--color-contrast-bg-base);
+  --border-4: solid 4px var(--color-contrast-bg-base);
+
+  --border-radius: 2px;
+
+  /* Shadows */
+  --box-shadow: 0 0 var(--pad-half) var(--color-contrast-bg-focus);
+}

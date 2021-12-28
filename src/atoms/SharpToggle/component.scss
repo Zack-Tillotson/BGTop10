@@ -1,0 +1,66 @@
+.atom-sharp-toggle {
+  position: relative;
+
+  display: inline-block;
+
+  padding: var(--pad-quart) var(--pad2);
+  margin-left: var(--pad-half);
+  margin-right: var(--pad-half);
+
+  font-size: .8rem;
+  text-transform: uppercase;
+
+  color: var(--color-contrast-font-base);
+
+  &:before {
+    content: ' ';
+    position: absolute;
+    left: 0;
+    right: 0;
+    top: 0;
+    bottom: 0;
+    transform: skew(30deg);
+    background: var(--color-contrast-bg);
+    border: var(--border-1);
+    border-color: rgba(0,0,0,0);
+
+    --color-red: #ff0000;
+    --color-blue: #0000ff;
+    --color-green: #189e39;
+    --color-grey: rgb(63, 63, 63);
+  }
+
+  &--enabled {
+    cursor: pointer;
+  }
+
+  &--red {
+    &:before {
+      background: var(--color-red);
+    }
+  }
+  &--blue {
+    &:before {
+      background: var(--color-blue);
+    }
+  }
+  &--green {
+    &:before {
+      background: var(--color-green);
+    }
+  }
+
+  &--inactive {
+    color: var(--color-font-base);
+
+    &:before {
+      background: none;
+      border-color: var(--color-grey);
+    }
+  }
+}
+
+.atom-sharp-toggle__inner {
+  position: relative;
+  font-weight: bold;
+}

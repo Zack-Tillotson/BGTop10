@@ -1,0 +1,68 @@
+:root {
+  --to-and-fro-top: 50% 20%;
+  --to-and-fro-left: 0% 100%;
+  --to-and-fro-bottom: 25% 75%;
+  --to-and-fro-right: 75% 0%;
+  --to-and-fro-animation-duration: 2s;
+  --to-and-fro-animation-delay: 0s;
+}
+
+@keyframes to-and-fro {
+  
+  0% {
+    left: -100vw;
+  }
+
+  50% {
+    left: 0vw;
+  }
+
+  100% {
+    left: -100vw;
+  }
+}
+
+.atom-image {
+  position: relative;
+  display: inline-block;
+  
+  padding: 0 var(--pad-half);
+  overflow: hidden;
+
+  &--bordered {
+    border: var(--border-1);
+  }
+}
+
+.atom-image:before {
+  content: ' ';
+  position: absolute;
+
+  left: -100vw; 
+  width: 200vw;
+  top: 0;
+  bottom: 0;
+  
+  overflow: hidden;
+  background: var(--color-bg-offset-light);
+  background: 
+      radial-gradient(ellipse at var(--to-and-fro-top), var(--color-bg-focus), transparent), 
+      radial-gradient(ellipse at var(--to-and-fro-left), var(--color-bg-focus), transparent), 
+      radial-gradient(ellipse at var(--to-and-fro-bottom), var(--color-bg-primary), transparent),
+      radial-gradient(ellipse at var(--to-and-fro-right), var(--color-bg-secondary), transparent);
+
+  animation: to-and-fro var(--to-and-fro-animation-duration) infinite var(--animation-delay, var(--to-and-fro-animation-delay));
+}
+
+.atom-image__inner {
+  position: absolute;
+  left: var(--pad-half);
+  top: 0;
+  right: var(--pad-half);
+  bottom: 0;
+
+  background-position: center center;
+  background-size: contain;
+  background-repeat-x: no-repeat;
+  background-repeat-y: no-repeat;
+}

@@ -1,0 +1,89 @@
+.atom-button {
+  display: inline-block;
+  
+  text-align: center;
+  padding: var(--pad) var(--pad3);
+  margin: var(--pad) 0;
+  border: solid 1px;
+  border-color: rgba(0,0,0,0);
+  font-weight: bold;
+  
+  background: var(--color-bg-focus);
+  border-radius: var(--border-radius);
+  text-decoration: none;
+  cursor: pointer;
+
+  &:link, &:visited {
+    color: var(--color-font-focus);
+  }
+
+  &:hover {
+    background-color: var(--color-bg-primary);
+  }
+
+  &--hollow {
+    border-color: var(--color-font-base);
+    background: none;
+    color: var(--color-font-base);
+  }
+
+  &--primary {
+    background: var(--color-contrast-bg-primary);
+    color: var(--color-contrast-font-base);
+
+    &:link, &:visited {
+      color: var(--color-contrast-font-base);
+    }
+
+    &:hover {
+      color: var(--color-font-base);
+    }
+  }
+
+  &--secondary {
+    background: var(--color-contrast-bg-secondary);
+    color: var(--color-contrast-font-base);
+
+    &:link, &:visited {
+      color: var(--color-contrast-font-base);
+    }
+
+    &:hover {
+      color: var(--color-font-base);
+    }
+  }
+
+  &--minimal {
+    background: none;
+    color: var(--color-font-base);
+    text-decoration: underline;
+    padding-left: 0;
+    padding-right: 0;
+    margin: 0;
+
+    &:hover {
+      color: var(--color-font-primary);
+      background: none;
+    }
+  }
+
+  &--tight {
+    padding: var(--pad-quart) var(--pad);
+    margin: 0;
+  }
+
+  &--wide {
+    width: 100%;
+  }
+
+  &--disabled {
+    cursor: auto;
+    color: var(--color-font-base);
+    background: var(--color-contrast-font-focus);
+
+    &:hover {
+      color: var(--color-font-base);
+      background: var(--color-contrast-font-focus);
+    }
+  }
+}
