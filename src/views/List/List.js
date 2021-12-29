@@ -14,7 +14,7 @@ const ListView = ({list, basePath}) => {
   return (
     <div className={cn}>
       <div className={`${cn}__image-wrapper`}>
-        <Image className={`${cn}__image`} src={list.image} alt={'View ' + list.name}/>
+        <Image className={`${cn}__image`} src={list.image} alt={'View ' + list.name} isBordered={false} />
       </div>
       <section className={`${cn}__info`}>
         <h1>

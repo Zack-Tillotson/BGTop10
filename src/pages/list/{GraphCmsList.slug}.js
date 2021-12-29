@@ -7,11 +7,10 @@ import ListView from 'views/List'
 const ListPage = ({location, data}) => {
 
   const {siteUrl} = data.site.siteMetadata
-
   const list = data.allGraphCmsList.nodes[0]
   
   return (
-    <Page siteUrl={siteUrl} location={location}>
+    <Page siteUrl={siteUrl} location={location} crumbs={[{display: 'Home', url: '/'}, {display: list.name, url: location.pathname}]}>
       <ListView list={list} basePath={location.pathname} />
     </Page>
   )
@@ -24,42 +23,40 @@ export const query = graphql`
         siteUrl
       }
     }
-    allGraphCmsList {
-      nodes {
-        description {
-          markdown
-        }
-        image
-        link
-        creator {
-          slug
-          name
-          link
-          imageBanner
-          imageAvatar
-          description
-        }
-        listGameLink {
-          id
-          title
-          game {
-            artist
-            bggId
-            designer
-            family
-            image
-            imageThumbnail
-            mechanic
-            name
-            playerCountMax
-            playerCountMin
-            publisher
-            yearPublished
-          }
-        }
-        name
-        slug
+    graphCmsList {
+      description {
+        markdown
       }
+      image
+      link
+      creator {
+        slug
+        name
+        link
+        imageBanner
+        imageAvatar
+        description
+      }
+      listGameLink {
+        id
+        title 
+        game {
+          artist
+          bggId
+          designer
+          family
+          image
+          imageThumbnail
+          mechanic
+          name
+          playerCountMax
+          playerCountMin
+          publisher
+          yearPublished
+        }
+      }
+      name
+      slug
     }
   }
 `

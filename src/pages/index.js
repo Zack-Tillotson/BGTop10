@@ -12,7 +12,7 @@ const IndexPage = ({location, data}) => {
   const creators = data.allGraphCmsCreator.nodes
 
   return (
-    <Page siteUrl={siteUrl} location={location}>
+    <Page siteUrl={siteUrl} location={location} crumbs={[{display: 'Home', url: '/'}]}>
       <title>BG Top 10 Homepage</title>
       <h1 className="--screen-reader">
         BG Top 10 Homepage

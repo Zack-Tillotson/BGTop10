@@ -2,6 +2,7 @@ import React, { useEffect } from 'react'
 import cn from 'classnames'
 
 import PageHead from '../PageHead'
+import Breadcrumbs from '../Breadcrumbs'
 
 import './component.scss'
 
@@ -10,6 +11,7 @@ function Component({
   className, 
   children,
   location,
+  crumbs = [],
   Ele = 'main',
 }) {
 
@@ -23,6 +25,7 @@ function Component({
         <PageHead className="page__head" />
       )}
       <div className={cn('page__content', 'page__container', className)}>
+        <Breadcrumbs locations={crumbs} />
         {children}
       </div>
       <div className="page__foot">
