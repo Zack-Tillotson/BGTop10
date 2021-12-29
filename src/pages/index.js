@@ -1,5 +1,5 @@
 import * as React from "react"
-import { graphql } from 'gatsby'
+import { Link, graphql } from 'gatsby'
 
 import Page from 'layout/Page'
 
@@ -21,8 +21,8 @@ const IndexPage = ({location, data}) => {
         <h2>New lists</h2>
         <ul>
           {lists.map(list => (
-            <li key={list.id}>
-              {list.name} by {list.creator.name}
+            <li key={list.slug}>
+              <Link to={`/list/${list.slug}/`}>{list.name}</Link> by {list.creator.name}
             </li>
           ))}
         </ul>
@@ -41,7 +41,7 @@ const IndexPage = ({location, data}) => {
         <h2>Popular creators</h2>
         <ul>
           {creators.map(creator => (
-            <li key={creator.id}>
+            <li key={creator.slug}>
               {creator.name}
             </li>
           ))}
@@ -60,14 +60,15 @@ export const query = graphql`
     }
     allGraphCmsList(sort: {order: DESC, fields: createdAt}) {
       nodes {
-        id
+        slug
         description {
           markdown
         }
-        imageThumbnail
+        image
         link
         name
         creator {
+          slug
           name
           link
           imageBanner
@@ -114,7 +115,7 @@ export const query = graphql`
     }
     allGraphCmsCreator(sort: {fields: list___publishedAt, order: DESC}) {
       nodes {
-        id
+        slug
         imageAvatar
         imageBanner
         name

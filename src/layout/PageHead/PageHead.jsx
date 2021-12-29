@@ -32,7 +32,7 @@ function Component({className, user}) {
   return (
     <div className={cn(className, 'page-head')}>
       <div className="page-head__content page__container">
-        <Link to="/app/" className="page-head__logo">
+        <Link to="/" className="page-head__logo">
           {/* <img src={logoTitleDark} alt="BG Shelf logo" className="page-head__logo-title-light" />
           <img src={logoTitle} alt="BG Shelf logo" className="page-head__logo-title-dark" /> */}
           BG Top 10

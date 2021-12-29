@@ -1,0 +1,44 @@
+.list-view {
+  display: grid;
+  grid-template-areas: 
+    "image"
+    "info"
+    "creator"
+    "games";
+  grid-gap: var(--pad);
+}
+
+.list-view__image-wrapper { grid-area: image; }
+.list-view__info { grid-area: info; }
+.list-view__creator { grid-area: creator; }
+.list-view__games { grid-area: games; }
+
+.list-view__image-wrapper {
+  text-align: center;
+}
+
+.list-view__game-list {
+  padding: 0;
+  list-style: none;
+}
+
+.list-view__game-title {
+  font-weight: bold;
+}
+
+.list-view__game-info {
+  margin-left: var(--pad2);
+}
+
+@media (min-width: 1024px) {
+  .list-view {
+    grid-template-areas: 
+      "image creator"
+      "info creator"
+      "games creator";
+  }
+
+  .list-view__image-wrapper {
+    text-align: left;
+  }
+}

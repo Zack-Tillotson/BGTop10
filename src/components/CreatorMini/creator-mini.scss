@@ -1,0 +1,17 @@
+.creator-mini {
+  display: flex;
+  flex-flow: column nowrap;
+  text-align: center;
+}
+
+.creator-mini__image {
+  display: inline-block;
+  width: 88px;
+  height: 88px;
+  margin: 0 auto;
+}
+
+.creator-mini__title {
+  flex: 1;
+  margin-left: var(--pad);
+}

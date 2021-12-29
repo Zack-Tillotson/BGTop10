@@ -9,6 +9,7 @@ fragment Creator on Creator {
   imageBanner
   description
   link
+  slug
   createdBy {
     ... on User {
       remoteTypeName: __typename

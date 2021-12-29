@@ -5,7 +5,7 @@ fragment List on List {
   updatedAt
   publishedAt
   name
-  imageThumbnail
+  image
   description {
     ... on RichText {
       raw
@@ -15,6 +15,7 @@ fragment List on List {
     }
   }
   link
+  slug
   createdBy {
     ... on User {
       remoteTypeName: __typename
