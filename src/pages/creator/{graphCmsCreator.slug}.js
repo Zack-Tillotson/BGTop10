@@ -7,7 +7,7 @@ import CreatorView from 'views/Creator'
 const ListPage = ({location, data}) => {
 
   const {siteUrl} = data.site.siteMetadata
-  const creator = data.graphCmsCreator
+  const {creator} = data
   
   return (
     <Page siteUrl={siteUrl} location={location} crumbs={[{display: 'Home', url: '/'}, {display: creator.name, url: location.pathname}]}>
@@ -17,13 +17,13 @@ const ListPage = ({location, data}) => {
 }
 
 export const query = graphql`
-  query CreatorPageQuery {
+  query CreatorPageQuery($slug: String!) {
     site {
       siteMetadata {
         siteUrl
       }
     }
-    graphCmsCreator {
+    creator: graphCmsCreator(slug: {eq: $slug}) {
       slug
       name
       link

@@ -1,5 +1,6 @@
 import * as React from "react"
 
+import Button from 'atoms/Button'
 import Font from 'atoms/Font'
 import Image from 'atoms/Image'
 
@@ -27,6 +28,9 @@ const GameView = ({game}) => {
         <Image className={`${cn}__image`} src={game.image} alt={'View ' + game.name} />
       </div>
       <section className={`${cn}__attributes`}>
+        <Font level="charlie" className={`${cn}__bgg-link`}>
+          <Button type="anchor" wide secondary href={`https://boardgamegeek.com/boardgame/${game.bggId}/`} target="_blank">Board Game Geek</Button>
+        </Font>
         <h2>Attributes</h2>
         <Font level="delta" className={`${cn}__key`}>Player Count</Font>
         <Font level="delta" className={`${cn}__value`}>{playerCount}</Font>

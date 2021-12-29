@@ -12,3 +12,9 @@
 .creator-view__lists-list {
   list-style: none;
 }
+
+.creator-view__links {
+  display: flex;
+  flex: row wrap;
+  justify-content: space-between;
+}

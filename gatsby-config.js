@@ -16,8 +16,8 @@ module.exports = {
       options: {
         endpoint: process.env.GRAPHCMS_ENDPOINT,
         token: process.env.GRAPHCMS_TOKEN,
+        stages: [process.env.NODE_ENV === 'development' ? 'DRAFT' : 'PUBLISHED'],
       },
-      stages: ['DRAFT', 'PUBLISHED']
     },
   ],
 };

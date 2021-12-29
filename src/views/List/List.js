@@ -2,6 +2,8 @@ import * as React from "react"
 
 import Font from 'atoms/Font'
 import Image from 'atoms/Image'
+import Button from 'atoms/Button'
+
 import CreatorMini from 'components/CreatorMini'
 import GameMini from 'components/GameMini'
 
@@ -23,6 +25,7 @@ const ListView = ({list, basePath}) => {
         <Font level="delta" className={`${cn}__desc`}>
           {list.description.markdown}
         </Font>
+        <Button type="link" hollow to={list.link} target="_blank">Original URL</Button>
       </section>
       <section className={`${cn}__creator`}>
         <CreatorMini creator={list.creator} />

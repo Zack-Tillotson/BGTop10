@@ -7,7 +7,7 @@ import Game from 'views/Game'
 const ListPage = ({location, data}) => {
 
   const {siteUrl} = data.site.siteMetadata
-  const game = data.graphCmsGame
+  const {game} = data
   
   return (
     <Page siteUrl={siteUrl} location={location} crumbs={[{display: 'Home', url: '/'}, {display: game.name, url: location.pathname}]}>
@@ -17,13 +17,13 @@ const ListPage = ({location, data}) => {
 }
 
 export const query = graphql`
-  query ListGamePageQuery {
+  query ListGamePageQuery($bggId: Int!) {
     site {
       siteMetadata {
         siteUrl
       }
     }
-    graphCmsGame {
+    game: graphCmsGame(bggId: {eq: $bggId}) {
       bggId
       artist
       designer

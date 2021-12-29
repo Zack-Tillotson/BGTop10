@@ -6,6 +6,10 @@
     "creator"
     "games";
   grid-gap: var(--pad);
+
+  h2 {
+    border-bottom: var(--border-1); /* xxx */
+  }
 }
 
 .list-view__image-wrapper { grid-area: image; }

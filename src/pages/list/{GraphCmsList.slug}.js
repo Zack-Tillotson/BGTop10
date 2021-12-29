@@ -7,7 +7,7 @@ import ListView from 'views/List'
 const ListPage = ({location, data}) => {
 
   const {siteUrl} = data.site.siteMetadata
-  const list = data.allGraphCmsList.nodes[0]
+  const {list} = data
   
   return (
     <Page siteUrl={siteUrl} location={location} crumbs={[{display: 'Home', url: '/'}, {display: list.name, url: location.pathname}]}>
@@ -17,13 +17,13 @@ const ListPage = ({location, data}) => {
 }
 
 export const query = graphql`
-  query ListPageQuery {
+  query ListPageQuery($slug: String!) {
     site {
       siteMetadata {
         siteUrl
       }
     }
-    graphCmsList {
+    list: graphCmsList(slug: {eq: $slug}) {
       description {
         markdown
       }
