@@ -1,5 +1,8 @@
+const env = process.env.NODE_ENV
+console.log('\n\n Loading dotenv config - ' + env)
+
 require("dotenv").config({
-  path: `.env.${process.env.NODE_ENV}`,
+  path: `.env.${env}`,
 })
 
 module.exports = {
@@ -16,7 +19,7 @@ module.exports = {
       options: {
         endpoint: process.env.GRAPHCMS_ENDPOINT,
         token: process.env.GRAPHCMS_TOKEN,
-        stages: [process.env.NODE_ENV === 'development' ? 'DRAFT' : 'PUBLISHED'],
+        stages: [env === 'development' ? 'DRAFT' : 'PUBLISHED'],
       },
     },
   ],
