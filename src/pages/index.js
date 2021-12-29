@@ -1,5 +1,5 @@
 import * as React from "react"
-import { Link, graphql } from 'gatsby'
+import { graphql } from 'gatsby'
 
 import Page from 'layout/Page'
 
@@ -11,9 +11,9 @@ const IndexPage = ({location, data}) => {
 
   const {siteUrl} = data.site.siteMetadata
 
-  const lists = data.allGraphCmsList.nodes
-  const games = data.allGraphCmsGame.nodes
-  const creators = data.allGraphCmsCreator.nodes
+  const lists = data.lists.nodes
+  const games = data.games.nodes
+  const creators = data.creators.nodes
 
   return (
     <Page siteUrl={siteUrl} location={location} crumbs={[{display: 'Home', url: '/'}]}>
@@ -62,7 +62,7 @@ export const query = graphql`
         siteUrl
       }
     }
-    allGraphCmsList(sort: {order: DESC, fields: createdAt}) {
+    lists: allGraphCmsList(sort: {order: DESC, fields: createdAt}) {
       nodes {
         slug
         description {
@@ -98,7 +98,7 @@ export const query = graphql`
         }
       }
     }
-    allGraphCmsGame(
+    games: allGraphCmsGame(
       sort: {order: DESC, fields: listGameLink___updatedAt}
       limit: 10
     ) {
@@ -117,7 +117,7 @@ export const query = graphql`
         yearPublished
       }
     }
-    allGraphCmsCreator(sort: {fields: list___publishedAt, order: DESC}) {
+    creators: allGraphCmsCreator(sort: {fields: list___publishedAt, order: DESC}) {
       nodes {
         slug
         imageAvatar
