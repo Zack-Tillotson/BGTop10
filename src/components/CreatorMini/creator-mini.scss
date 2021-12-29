@@ -4,6 +4,11 @@
   text-align: center;
 }
 
+.creator-mini--wide {
+  flex-flow: row-reverse nowrap;
+  text-align: left;
+}
+
 .creator-mini__image {
   display: inline-block;
   width: 88px;

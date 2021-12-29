@@ -1,11 +1,15 @@
 .game-view {
   display: grid;
   grid-template-areas: 
-    "image"
     "info"
+    "image"
     "attributes"
     "lists";
   grid-gap: var(--pad);
+
+  h2 {
+    border-bottom: var(--border-1); /* xxx */
+  }
 }
 
 .game-view__image-wrapper { grid-area: image; }
@@ -21,15 +25,18 @@
   color: var(--color-font-focus);
 }
 
-
-.game-view__image-wrapper {
-  text-align: center;
+.game-view__info {
   margin-top: var(--pad2);
 }
 
-.game-view__image {
-  width: 400px;
+.game-view__image-wrapper {
+  width: 100%;
   height: 250px;
+}
+
+.game-view__image {
+  width: 100%;
+  height: 100%;
 }
 
 .game-view__lists-list {

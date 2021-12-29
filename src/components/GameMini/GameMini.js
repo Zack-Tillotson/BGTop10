@@ -16,7 +16,7 @@ const GameMini = ({game, className}) => {
   return (
     <section className={classnames(cn, className)}>
       <Link to={`/game/${game.bggId}/`} className={`${cn}__image-wrapper`}>
-        <Image src={game.image} className={`${cn}__image`} />
+        <Image src={game.image} className={`${cn}__image`} isBordered={false} />
       </Link>
       <div className={`${cn}__primary-attrs`}>
         <Link to={`/game/${game.bggId}/`}>

@@ -3,6 +3,10 @@ import { Link, graphql } from 'gatsby'
 
 import Page from 'layout/Page'
 
+import GameMini from 'components/GameMini'
+import ListMini from 'components/ListMini'
+import CreatorMini from 'components/CreatorMini'
+
 const IndexPage = ({location, data}) => {
 
   const {siteUrl} = data.site.siteMetadata
@@ -22,7 +26,7 @@ const IndexPage = ({location, data}) => {
         <ul>
           {lists.map(list => (
             <li key={list.slug}>
-              <Link to={`/list/${list.slug}/`}>{list.name}</Link> by {list.creator.name}
+              <ListMini list={list} />
             </li>
           ))}
         </ul>
@@ -32,7 +36,7 @@ const IndexPage = ({location, data}) => {
         <ul>
           {games.map(game => (
             <li key={game.bggId}>
-              {game.name} by ({game.yearPublished})
+              <GameMini game={game} />
             </li>
           ))}
         </ul>
@@ -42,7 +46,7 @@ const IndexPage = ({location, data}) => {
         <ul>
           {creators.map(creator => (
             <li key={creator.slug}>
-              {creator.name}
+              <CreatorMini creator={creator} wide />
             </li>
           ))}
         </ul>

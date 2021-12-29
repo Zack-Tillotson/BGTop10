@@ -1,0 +1,22 @@
+.list-mini {
+  display: flex;
+  flex-flow: row nowrap;
+}
+
+.list-mini__image-wrapper {
+  height: 75px;
+  width: 250px;
+}
+
+.list-mini__image {
+  width: 100%;
+  height: 100%;
+}
+
+.list-mini__primary-attrs {
+  margin-left: var(--pad);
+}
+
+.list-mini__value {
+  font-weight: bold;
+}

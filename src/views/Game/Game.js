@@ -15,17 +15,17 @@ const GameView = ({game}) => {
 
   return (
     <div className={cn}>
-      <div className={`${cn}__image-wrapper`}>
-        <Image className={`${cn}__image`} src={game.image} alt={'View ' + game.name} isBordered={false} />
-      </div>
       <section className={`${cn}__info`}>
         <h1>
           {game.name}
         </h1>
         <Font level="charlie" className={`${cn}__desc`}>
-          ({game.yearPublished})
+          <span className={`${cn}__value`}>Year:</span> {game.yearPublished}
         </Font>
       </section>
+      <div className={`${cn}__image-wrapper`}>
+        <Image className={`${cn}__image`} src={game.image} alt={'View ' + game.name} />
+      </div>
       <section className={`${cn}__attributes`}>
         <h2>Attributes</h2>
         <Font level="delta" className={`${cn}__key`}>Player Count</Font>
