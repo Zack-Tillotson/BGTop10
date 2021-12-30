@@ -23,7 +23,7 @@ export const query = graphql`
         siteUrl
       }
     }
-    game: graphCmsGame(bggId: {eq: $bggId}) {
+    game: contentfulGame(bggId: {eq: $bggId}) {
       bggId
       artist
       designer
@@ -37,25 +37,22 @@ export const query = graphql`
       publisher
       yearPublished
       listGameLink {
-        id
-        title
         list {
-          description {
-            markdown
-          }
-          image
-          link
           name
-          slug
           creator {
             slug
             name
-            link
             imageBanner
             imageAvatar
-            description
+            description {
+              description
+            }
           }
+          image
+          link
         }
+        title
+        id
       }
     }
   }

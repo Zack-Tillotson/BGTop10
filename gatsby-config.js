@@ -1,5 +1,4 @@
 const env = process.env.NODE_ENV
-console.log('\n\n Loading dotenv config - ' + env)
 
 require("dotenv").config({
   path: `.env.${env}`,
@@ -15,11 +14,11 @@ module.exports = {
     "gatsby-plugin-root-import",
     "gatsby-plugin-image",
     {
-      resolve: 'gatsby-source-graphcms',
+      resolve: 'gatsby-source-contentful',
       options: {
-        endpoint: process.env.GRAPHCMS_ENDPOINT,
-        token: process.env.GRAPHCMS_TOKEN,
-        stages: [env === 'development' ? 'DRAFT' : 'PUBLISHED'],
+        spaceId: process.env.CONTENTFUL_SPACE_ID,
+        accessToken: process.env.CONTENTFUL_ACCESS_TOKEN,
+        host: process.env.CONTENTFUL_HOST,
       },
     },
   ],

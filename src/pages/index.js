@@ -62,11 +62,11 @@ export const query = graphql`
         siteUrl
       }
     }
-    lists: allGraphCmsList(sort: {order: DESC, fields: createdAt}) {
+    lists: allContentfulList {
       nodes {
         slug
         description {
-          markdown
+          description
         }
         image
         link
@@ -77,7 +77,9 @@ export const query = graphql`
           link
           imageBanner
           imageAvatar
-          description
+          description {
+            description
+          }
         }
         listGameLink {
           title
@@ -98,10 +100,7 @@ export const query = graphql`
         }
       }
     }
-    games: allGraphCmsGame(
-      sort: {order: DESC, fields: listGameLink___updatedAt}
-      limit: 10
-    ) {
+    games: allContentfulGame(limit: 10) {
       totalCount
       nodes {
         bggId
@@ -115,15 +114,19 @@ export const query = graphql`
         playerCountMin
         publisher
         yearPublished
+        mechanic
       }
     }
-    creators: allGraphCmsCreator(sort: {fields: list___publishedAt, order: DESC}) {
+    creators: allContentfulCreator {
       nodes {
         slug
         imageAvatar
         imageBanner
         name
-        description
+        description {
+          description
+        }
+        link
       }
     }
   }

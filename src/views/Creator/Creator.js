@@ -11,6 +11,15 @@ import './creator.scss'
 
 const cn = 'creator-view'
 
+function getLinkTextFromUrl(url) {
+  if(url.toLowerCase().includes('youtube.com')) return 'Youtube'
+  if(url.toLowerCase().includes('twitch.tv')) return 'Twitch'
+  if(url.toLowerCase().includes('facebook.com')) return 'Facebook'
+  if(url.toLowerCase().includes('instagram.com')) return 'Instagram'
+  if(url.toLowerCase().includes('patreon.com')) return 'Patreon'
+  return 'Site'
+}
+
 const CreatorView = ({creator}) => {
 
   return (
@@ -34,7 +43,7 @@ const CreatorView = ({creator}) => {
         <h4>Links</h4>
         <div className={`${cn}__links`}>
           {creator.link.map(link => (
-            <Button type="anchor" href={link.url} target="_blank">{link.display}</Button>
+            <Button type="anchor" href={link} target="_blank">{getLinkTextFromUrl(link)}</Button>
           ))}
         </div>
       </section>

@@ -23,16 +23,18 @@ export const query = graphql`
         siteUrl
       }
     }
-    creator: graphCmsCreator(slug: {eq: $slug}) {
+    creator: contentfulCreator(slug: {eq: $slug}) {
       slug
       name
       link
       imageBanner
       imageAvatar
-      description
+      description {
+        description
+      }
       list {
         description {
-          markdown
+          description
         }
         image
         link

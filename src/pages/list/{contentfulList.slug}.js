@@ -23,9 +23,9 @@ export const query = graphql`
         siteUrl
       }
     }
-    list: graphCmsList(slug: {eq: $slug}) {
+    list: contentfulList(slug: {eq: $slug}) {
       description {
-        markdown
+        description
       }
       image
       link
@@ -35,7 +35,9 @@ export const query = graphql`
         link
         imageBanner
         imageAvatar
-        description
+        description {
+          description
+        }
       }
       listGameLink {
         id
