@@ -1,0 +1,24 @@
+.admin {
+  display: grid;
+  grid-template-areas:
+    "crumbs crumbs"
+    "title title"
+    "main summary";
+  grid-template-columns: 1fr auto;
+  grid-template-rows: auto auto 1fr;
+  grid-gap: var(--pad);
+}
+
+.admin .breadcrumbs { grid-area: crumbs; }
+.admin__title { grid-area: title; }
+.admin__main { grid-area: main; }
+.admin__summary { grid-area: summary; }
+
+.admin__input {
+  width: 100%;
+}
+
+.admin__summary {
+  border-left: var(--border-1);
+  padding: var(--pad);
+}

@@ -21,5 +21,11 @@ module.exports = {
         host: process.env.CONTENTFUL_HOST,
       },
     },
+    {
+      resolve: 'gatsby-plugin-sitemap',
+      options: {
+        excludes: ['/admin/', '/admin/creator/', '/admin/list/'],
+      }
+    }
   ],
 };
