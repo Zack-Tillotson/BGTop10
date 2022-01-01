@@ -35,7 +35,7 @@ const CreatorView = ({creator}) => {
       <section className={`${cn}__attributes`}>
         <Font level="delta">
           <ReactMarkdown>
-            {creator.description}
+            {creator.description.description}
           </ReactMarkdown>
         </Font>
       </section>

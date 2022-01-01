@@ -1,8 +1,8 @@
-
+import slugify from 'slugify'
 import {useRecoilState} from 'recoil'
 import accessTokenAtom from './atoms/accessToken'
 import creatorFormAtom from './atoms/creatorForm'
-import {storeAccessToken} from './util'
+import {storeAccessToken, storeCreatorForm} from './util'
 
 function useContentful() {
   const [accessToken, setAccessTokenState] = useRecoilState(accessTokenAtom)
@@ -13,8 +13,23 @@ function useContentful() {
     storeAccessToken(value)
   }
 
-  const handleCreatorFormChange = (formName) => (field, value) => {
-    setCreatorForm({...creatorForm, [field.id]: value})
+  const handleCreatorFormChange = (field, value) => {
+    const newValue = {...creatorForm, [field.id]: value}
+
+    if(field.id === 'name') {
+      newValue.slug = slugify(value, {lower: true})
+    }
+    setCreatorForm(newValue)
+    storeCreatorForm(newValue)
+  }
+
+  const handleCreatorFormClear = () => {
+    setCreatorForm({})
+    storeCreatorForm({})
+  }
+
+  const handleCreatorFormSubmit = () => {
+    // Create creator in CMS
   }
 
   return {
@@ -24,6 +39,8 @@ function useContentful() {
       creator: {
         values: creatorForm,
         handleChange: handleCreatorFormChange,
+        handleClear: handleCreatorFormClear,
+        handleSubmit: handleCreatorFormSubmit,
       },
     },
   }

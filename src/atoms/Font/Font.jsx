@@ -5,11 +5,11 @@ import './component.scss'
 
 const baseCn = 'atom-font'
 
-function Font({level, className, children, ...rest}) {
+function Font({level, className, children, Ele = 'div', ...rest}) {
   return (
-    <div className={cn(baseCn, className, `${baseCn}--${level}`)} {...rest}>
+    <Ele className={cn(baseCn, className, `${baseCn}--${level}`)} {...rest}>
       {children}
-    </div>
+    </Ele>
   );
 }
 

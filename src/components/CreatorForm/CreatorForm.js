@@ -1,10 +1,10 @@
 import * as React from "react"
-import {Link} from 'gatsby'
 
 import Font from 'atoms/Font'
-import Image from 'atoms/Image'
 
 import useContentful from 'contentful/useContentful'
+
+import {useDebugValue} from 'react'
 
 import './creator-form.scss'
 
@@ -12,28 +12,28 @@ const baseCn = 'creator-form'
 
 const creatorFields = [
   {
-    id: 'creator-name',
+    id: 'name',
     label: 'Name',
   },
   {
-    id: 'creator-slug',
+    id: 'slug',
     label: 'Slug',
   },
   {
-    id: 'creator-avatar',
+    id: 'avatar',
     label: 'Image Avatar',
   },
   {
-    id: 'creator-banner',
+    id: 'banner',
     label: 'Image Banner',
   },
   {
-    id: 'creator-description',
+    id: 'description',
     label: 'Description',
     type: 'textarea'
   },
   {
-    id: 'creator-links',
+    id: 'links',
     label: 'Links (comma delimited)',
   },
 ]
@@ -44,6 +44,7 @@ const CreatorForm = () => {
   const handleChange = event => {
     const {id, value} = event.target
     const field = creatorFields.find(field => field.id === id)
+    
     contentful.forms.creator.handleChange(field, value)
   }
 
@@ -61,7 +62,7 @@ const CreatorForm = () => {
           <input 
             id={field.id}
             type={field.type || 'text'}
-            value={contentful.forms.creator.values[field.id]} 
+            value={contentful.forms.creator.values[field.id] || ''} 
             onChange={handleChange} 
             className={`${baseCn}__input`} />
         </div>
