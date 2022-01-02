@@ -10,6 +10,7 @@ import './list-mini.scss'
 const cn = 'list-mini'
 
 const ListMini = ({list, className, showCreator = true}) => {
+  if(!list || !list.creator) return null
   return (
     <section className={classnames(cn, className)}>
       <Link to={`/list/${list.slug}/`} className={`${cn}__image-wrapper`}>
