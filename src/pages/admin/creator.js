@@ -22,6 +22,7 @@ const AdminCreatorPage = ({location, data}) => {
   const {nodes: creators, totalCount} = data.creators
   const contentful = useContentful()
   const [isReview, updateIsReview] = useState(false)
+  const [isSuccessful, updateIsSuccessful] = useState(null) // null, true, false
 
   const isValid = 
     !!contentful.forms.creator.values.name
@@ -60,12 +61,25 @@ const AdminCreatorPage = ({location, data}) => {
 
   const handleSaveClick = event => {
     contentful.forms.creator.handleSubmit()
+      .then(result => {
+        updateIsSuccessful(result)
+        if(result) {
+          updateIsReview(false)
+        }
+      })
+  }
+
+  const handleResultClear = () => {
+    updateIsSuccessful(null)
   }
   
   return (
     <Page crumbs={crumbs} className={baseCn} location={location}>
       <h1 className={`${baseCn}__title`}>Creators</h1>
       <section className={`${baseCn}__main`}>
+        {isSuccessful !== null && (
+          <Button onClick={handleResultClear} primary={isSuccessful} secondary={!isSuccessful}>{isSuccessful ? 'success' : 'error'} - click to close</Button>
+        )}
         <h3>Add new creator</h3>
         {!isReview && (
           <CreatorForm />

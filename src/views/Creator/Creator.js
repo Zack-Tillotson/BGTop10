@@ -17,6 +17,8 @@ function getLinkTextFromUrl(url) {
   if(url.toLowerCase().includes('facebook.com')) return 'Facebook'
   if(url.toLowerCase().includes('instagram.com')) return 'Instagram'
   if(url.toLowerCase().includes('patreon.com')) return 'Patreon'
+  if(url.toLowerCase().includes('discord.com')) return 'Discord'
+  if(url.toLowerCase().includes('twitter.com')) return 'Twitter'
   return 'Site'
 }
 
@@ -43,14 +45,14 @@ const CreatorView = ({creator}) => {
         <h4>Links</h4>
         <div className={`${cn}__links`}>
           {creator.link.map(link => (
-            <Button type="anchor" href={link} target="_blank">{getLinkTextFromUrl(link)}</Button>
+            <Button key={link} type="anchor" href={link} target="_blank">{getLinkTextFromUrl(link)}</Button>
           ))}
         </div>
       </section>
       <section className={`${cn}__lists`}>
         <h2>Lists</h2>
         <ol className={`${cn}__lists-list`}>
-          {creator.list.map(list => (
+          {(creator.list || []).map(list => (
             <li key={list.slug}>
               <ListMini list={list} showCreator={false} />
             </li>

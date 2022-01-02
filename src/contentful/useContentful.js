@@ -3,6 +3,7 @@ import {useRecoilState} from 'recoil'
 import accessTokenAtom from './atoms/accessToken'
 import creatorFormAtom from './atoms/creatorForm'
 import {storeAccessToken, storeCreatorForm} from './util'
+import {newCreator} from './cms'
 
 function useContentful() {
   const [accessToken, setAccessTokenState] = useRecoilState(accessTokenAtom)
@@ -29,7 +30,15 @@ function useContentful() {
   }
 
   const handleCreatorFormSubmit = () => {
-    // Create creator in CMS
+    return newCreator(accessToken, creatorForm)
+      .then(() => {
+        handleCreatorFormClear()
+        return true
+      })
+      .catch(e => {
+        console.log(e)
+        return false
+      })
   }
 
   return {

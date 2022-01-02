@@ -4,8 +4,6 @@ import Font from 'atoms/Font'
 
 import useContentful from 'contentful/useContentful'
 
-import {useDebugValue} from 'react'
-
 import './creator-form.scss'
 
 const baseCn = 'creator-form'
