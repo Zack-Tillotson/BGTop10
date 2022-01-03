@@ -5,14 +5,14 @@ import Font from 'atoms/Font'
 
 import Page from 'layout/Page'
 
-import useContentful from 'contentful/useContentful'
+import useAccessToken from 'contentful/useAccessToken'
 
 import './admin.scss'
 
 const AdminIndexPage = () => {
-  const contentful = useContentful()
+  const accessToken = useAccessToken()
 
-  const handleAccessTokenChange = event => contentful.handleAccessTokenChange(event.target.value)
+  const handleAccessTokenChange = event => accessToken.updateValue(event.target.value)
 
   return (
     <Page crumbs={[{display: 'Home', url: '/'}, {display: 'Admin', url: '/admin/'}]}>
@@ -40,7 +40,7 @@ const AdminIndexPage = () => {
           <input 
             id="access-token-input" 
             type="text" 
-            value={contentful.accessToken} 
+            value={accessToken.value} 
             onChange={handleAccessTokenChange} 
             className="admin__input" />
         </div>

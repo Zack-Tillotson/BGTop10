@@ -38,7 +38,7 @@ function getContentfulObject(rawObject) {
   }
 }
 
-export function newCreator(accessToken, rawCreator) {
+export function creatEntryCreator(accessToken, rawCreator) {
   const cleanObject = getContentfulObject(rawCreator)
   return getEnvironment(accessToken)
     .then(env => env.createEntry(CREATOR_ENTRY_TYPE, cleanObject))
