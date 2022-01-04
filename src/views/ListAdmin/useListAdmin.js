@@ -23,7 +23,7 @@ function useListAdmin() {
   }
 
   const saveClick = event => {
-    contentful.saveEntry(form.value)
+    contentful.saveEntry(form.base.value, form.gameLinks.value)
       .then(result => {
         updateIsSuccessful(result)
         if(result) {

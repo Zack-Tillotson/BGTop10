@@ -1,4 +1,5 @@
 import * as React from "react"
+import ReactMarkdown from 'react-markdown'
 
 import Font from 'atoms/Font'
 import Image from 'atoms/Image'
@@ -23,7 +24,7 @@ const ListView = ({list, basePath}) => {
           {list.name}
         </h1>
         <Font level="delta" className={`${cn}__desc`}>
-          {list.description.markdown}
+          <ReactMarkdown>{list.description.description}</ReactMarkdown>
         </Font>
         <Button type="link" hollow to={list.link} target="_blank">Original URL</Button>
       </section>

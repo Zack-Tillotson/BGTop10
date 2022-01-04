@@ -42,7 +42,6 @@ export function rawToGraphQl(raw) {
   return contentfulToGraphQl(contentful)
 }
 
-
 export function contentfulToGraphQl(contentful) {
   const built = Object.keys(contentful.fields).reduce((sofar, key) => ({
     ...sofar,

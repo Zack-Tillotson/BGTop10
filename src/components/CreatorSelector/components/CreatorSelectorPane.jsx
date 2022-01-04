@@ -18,10 +18,8 @@ function CreatorSelectorPane(props) {
   const {list} = useCreatorSelector()
 
   const handleCreatorClick = creator => () => {
-    setTimeout(() => {
-      onSelect(creator)
-      onClose()
-    }, 0)
+    onSelect(creator)
+    onClose()
   }
   
   return (

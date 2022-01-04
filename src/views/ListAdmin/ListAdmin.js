@@ -16,7 +16,7 @@ const ListAdmin = ({Element, className}) => {
   
   const {state, handlers, contentful} = useListAdmin()
 
-  const viewList = contentful.rawToGraphQl(state.form.value)
+  const viewList = contentful.rawToGraphQl(state.form.base.value, state.form.gameLinks.value)
   
   return (
     <Element className={`${className} ${baseCn}`}>
@@ -28,15 +28,15 @@ const ListAdmin = ({Element, className}) => {
       {!state.isReview && (
         <>
           <ListForm />
-          <Button onClick={handlers.reviewClick} primary disabled={!state.isValid}>Review and save</Button>
+          <Button onClick={handlers.reviewClick} primary>Review and save</Button>
           <Button onClick={handlers.clearClick} minimal>Clear</Button>
         </>
       )}
       
       {state.isReview && (
         <>
-          <ListMini creator={viewList} />
-          <ListView creator={viewList} />
+          <ListMini list={viewList} />
+          <ListView list={viewList} />
           <Button onClick={handlers.cancelClick} hollow>Cancel</Button>
           <Button onClick={handlers.saveClick} primary>Save</Button>
         </>

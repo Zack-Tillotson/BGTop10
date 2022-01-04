@@ -1,12 +1,14 @@
+import creatorMapper from './creator'
+import gameLinksMapper from './gameLinks'
 
-export function rawToContentful(raw = {}) {
-  
+export function rawToContentful(raw = {}, rawGameLinks) {
   const {
     name = '',
     slug = '',
     link = '',
     image = '',
     description = '',
+    creator = {},
   } = raw
   
   return {
@@ -27,17 +29,17 @@ export function rawToContentful(raw = {}) {
         'en-US': description,
       },
       listGameLink: {
-        'en-US': 'TBD',
+        'en-US': gameLinksMapper.rawToGraphQl(rawGameLinks),
       },
       creator: {
-        'en-US': 'TBD',
+        'en-US': creatorMapper.rawToGraphQl(creator),
       },
     }
   }
 }
 
-export function rawToGraphQl(raw) {
-  const contentful = rawToContentful(raw)
+export function rawToGraphQl(...args) {
+  const contentful = rawToContentful(...args)
   return contentfulToGraphQl(contentful)
 }
 

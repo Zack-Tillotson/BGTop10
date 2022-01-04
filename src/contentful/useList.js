@@ -21,9 +21,12 @@ function getEntries(accessToken) {
     })
 }
 
-const saveEntryWithAccessToken = accessToken => raw => {
+const saveEntryWithAccessToken = accessToken => (rawAttrs, rawGameLinks) => {
   return getEnvironment(accessToken)
-    .then(env => env.createEntry(LIST_ENTRY_TYPE, rawToContentful(raw)))
+    .then(env => {
+      console.log('lets goo!!!', rawAttrs, rawGameLinks)
+    })
+    // .then(env => env.createEntry(LIST_ENTRY_TYPE, rawToContentful(raw)))
 }
 
 const useCmsListWithAccessToken = (accessToken, isEnabled) => {
@@ -37,7 +40,7 @@ const useCmsListWithAccessToken = (accessToken, isEnabled) => {
         updateState(cleaned)
       })
     }
-  }, [isEnabled])
+  }, [accessToken, isEnabled])
   return state
 }
 
