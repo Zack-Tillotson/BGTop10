@@ -1,12 +1,17 @@
 import {useState, useEffect, useDebugValue} from 'react'
 import { createClient } from 'contentful-management'
+import gameMapper from './mapping/game'
 
 import {rawToContentful, rawToGraphQl, contentfulToGraphQl} from './mapping/list'
 import useAccessToken from './useAccessToken';
+import getAttrsFromBgg from './getAttrsFromBgg'
 
 const SPACE_ID = 'c2zc4p6tmkah' // xxx
 const ENVIRONMENT_ID = 'master'
 const LIST_ENTRY_TYPE = 'list'
+const GAME_ENTRY_TYPE = 'game'
+const CREATOR_ENTRY_TYPE = 'creator'
+const LIST_GAME_LINK_ENTRY_TYPE = 'listGameLink'
 
 function getEnvironment(accessToken) {
   return createClient({
@@ -21,10 +26,69 @@ function getEntries(accessToken) {
     })
 }
 
+function getOrAddGames(env, gameStubs) {
+  return env.getEntries({content_type: GAME_ENTRY_TYPE})
+    .then(entries => {
+      console.log('contentful games', entries)
+      return Promise.all(gameStubs.map(game => {
+        const entry = entries.items.find(entry => entry.fields.bggId['en-US'] == game.bggId)
+        if(entry) {
+          return Promise.resolve(entry)
+        }
+
+        return getAttrsFromBgg(game.bggId)
+          .then(attrs => {
+            const cleanAttrs = gameMapper.rawToContentful(attrs)
+            return env.createEntry(GAME_ENTRY_TYPE, cleanAttrs)
+          })
+      }))
+    })
+}
+
+function getCreator(env, creatorStub) {
+  return env.getEntries({content_type: CREATOR_ENTRY_TYPE})
+    .then(entries => {
+      return entries.items.find(entry => entry.fields.slug['en-US'] == creatorStub.slug)
+    })
+}
+
+function addSimpleList(env, listStub, contentfulCreator) {
+  const {listGameLink, creator, ...restListStub} = listStub.fields
+  
+  const contentfulList = {
+    fields: {
+      ...restListStub,
+      creator: {
+        'en-US': {
+          sys: {
+            id: contentfulCreator.sys.id,
+            linkType: 'Entry',
+            type: 'Link'
+          },
+        },
+      },
+    }
+  }
+
+  return env.createEntry(LIST_ENTRY_TYPE, contentfulList)
+}
+
 const saveEntryWithAccessToken = accessToken => (rawAttrs, rawGameLinks) => {
+  const list = rawToContentful(rawAttrs, rawGameLinks)
   return getEnvironment(accessToken)
     .then(env => {
-      console.log('lets goo!!!', rawAttrs, rawGameLinks)
+      return Promise.all([
+        env, 
+        getOrAddGames(env, list.fields.listGameLink['en-US'].map(link => link.game)),
+        getCreator(env, list.fields.creator['en-US']),
+      ])
+    }).then(([env, contentfulGames, contentfulCreator]) => {
+      console.log('base contentful', contentfulGames, contentfulCreator)
+      // Create list in Contentful
+      return addSimpleList(env, list, contentfulCreator)
+      // Create list game links (with game, list references)
+      // Update games with game link refs
+      // Update list with game link refs
     })
     // .then(env => env.createEntry(LIST_ENTRY_TYPE, rawToContentful(raw)))
 }

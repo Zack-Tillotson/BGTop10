@@ -35,7 +35,7 @@ const ListView = ({list, basePath}) => {
         <h2>Games</h2>
         <ol className={`${cn}__game-list`}>
           {list.listGameLink.map(link => (
-            <li key={link.id}>
+            <li key={link.id || Math.random()}>
               <div className={`${cn}__game-title`}>{link.title}</div>
               <GameMini className={`${cn}__game-info`} game={link.game} basePath={basePath} />
             </li>

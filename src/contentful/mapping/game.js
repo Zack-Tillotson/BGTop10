@@ -22,10 +22,10 @@ export function rawToContentful(raw = {}) {
         'en-US': name
       },
       bggId: {
-        'en-US': bggId,
+        'en-US': Number(bggId),
       },
       yearPublished: {
-        'en-US': yearPublished,
+        'en-US': Number(yearPublished),
       },
       publisher: {
         'en-US': publisher,
@@ -49,10 +49,10 @@ export function rawToContentful(raw = {}) {
         'en-US': mechanic,
       },
       playerCountMax: {
-        'en-US': playerCountMax,
+        'en-US': Number(playerCountMax),
       },
       playerCountMin: {
-        'en-US': playerCountMin,
+        'en-US': Number(playerCountMin),
       },
       
     }

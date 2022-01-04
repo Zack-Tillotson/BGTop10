@@ -23,15 +23,15 @@ function CreatorSelectorPane(props) {
   }
   
   return (
-    <div className={cn(baseCn)} role="document" tabIndex="0">
+    <div className={cn(baseCn)} role="document">
       <h1>
         Select a creator
       </h1>
       <section>
         <ul>
           {list.map(creator => (
-            <li key={creator.slug} onClick={handleCreatorClick(creator)}>
-              <CreatorBrief creator={creator} />
+            <li key={creator.slug}>
+              <CreatorBrief creator={creator} onClick={handleCreatorClick(creator)} />
             </li>
           ))}
         </ul>
