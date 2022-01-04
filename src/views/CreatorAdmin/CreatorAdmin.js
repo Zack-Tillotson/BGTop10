@@ -1,12 +1,10 @@
-import React, {useState} from "react"
-import { Link, graphql } from 'gatsby'
+import React from "react"
 
 import Button from 'atoms/Button'
-import Font from 'atoms/Font'
-import Page from 'layout/Page'
 
 import CreatorMini from 'components/CreatorMini'
 import CreatorForm from 'components/CreatorForm'
+
 import CreatorView from 'views/Creator'
 
 import useCreatorAdmin from "./useCreatorAdmin"
@@ -15,12 +13,14 @@ const baseCn = 'creator-admin'
 
 const CreatorAdmin = ({Element, className}) => {
   
-  const {state, handlers, viewCreator} = useCreatorAdmin()
+  const {state, handlers, contentful} = useCreatorAdmin()
+
+  const viewCreator = contentful.rawToGraphQl(state.form.value)
   
   return (
-    <Element className={className}>
+    <Element className={`${className} ${baseCn}`}>
       {state.isSuccessful !== null && (
-        <Button onClick={handlers.resultClear} primary={state.isSuccessful} secondary={!state.isSuccessful}>
+        <Button onClick={handlers.clearResultClick} primary={state.isSuccessful} secondary={!state.isSuccessful}>
           {state.isSuccessful ? 'success' : 'error'} - click to close
         </Button>
       )}

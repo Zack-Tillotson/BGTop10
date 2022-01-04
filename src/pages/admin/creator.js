@@ -5,6 +5,7 @@ import Font from 'atoms/Font'
 import Page from 'layout/Page'
 
 import CreatorAdminView from 'views/CreatorAdmin'
+import ContentfulCreatorList from 'components/ContentfulCreatorList'
 
 const baseCn = 'admin'
 const crumbs = [
@@ -14,7 +15,7 @@ const crumbs = [
 ]
 
 const AdminCreatorPage = ({location, data}) => {
-  const {nodes: creators, totalCount} = data.creators
+  const {totalCount} = data.creators
   
   return (
     <Page crumbs={crumbs} className={baseCn} location={location}>
@@ -23,15 +24,9 @@ const AdminCreatorPage = ({location, data}) => {
       <section className={`${baseCn}__summary`}>
         <h3>Live Creators</h3>
         <Font level="delta">
-          <strong>Total Count:</strong> {totalCount}
+          <strong>Count:</strong> {totalCount}
         </Font>
-        <div className={`${baseCn}__summary-list`}>
-          {creators.map(creator => (
-            <div key={creator.slug}>
-              <Link to={`/creator/${creator.slug}/`}>{creator.name}</Link>
-            </div>
-          ))}
-        </div>
+        <ContentfulCreatorList />
       </section>
     </Page>
   )
@@ -45,10 +40,6 @@ export const query = graphql`
       }
     }
     creators: allContentfulCreator {
-      nodes {
-        slug
-        name
-      }
       totalCount
     }
   }

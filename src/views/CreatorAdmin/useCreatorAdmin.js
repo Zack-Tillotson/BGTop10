@@ -1,6 +1,5 @@
-import React, {useState} from 'react'
+import {useState} from 'react'
 
-import slugify from 'slugify'
 import useCreatorForm from 'useCreatorForm'
 import useCreator from 'contentful/useCreator'
 
@@ -24,7 +23,7 @@ function useCreatorAdmin() {
   }
 
   const saveClick = event => {
-    contentful.newCreator(form.value)
+    contentful.saveEntry(form.value)
       .then(result => {
         updateIsSuccessful(result)
         if(result) {
