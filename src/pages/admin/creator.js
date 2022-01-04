@@ -1,5 +1,5 @@
-import React, {useState} from "react"
-import { Link, graphql } from 'gatsby'
+import React from "react"
+import { graphql } from 'gatsby'
 
 import Font from 'atoms/Font'
 import Page from 'layout/Page'
@@ -19,7 +19,7 @@ const AdminCreatorPage = ({location, data}) => {
   
   return (
     <Page crumbs={crumbs} className={baseCn} location={location}>
-      <h1 className={`${baseCn}__title`}>Creators</h1>
+      <h1 className={`${baseCn}__title`}>Create new creator</h1>
       <CreatorAdminView Element="section" className={`${baseCn}__main`} />
       <section className={`${baseCn}__summary`}>
         <h3>Live Creators</h3>

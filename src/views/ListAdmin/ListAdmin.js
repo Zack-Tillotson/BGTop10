@@ -2,20 +2,21 @@ import React from "react"
 
 import Button from 'atoms/Button'
 
-import CreatorMini from 'components/CreatorMini'
-import CreatorForm from 'components/CreatorForm'
+import ListForm from 'components/ListForm'
 
-import CreatorView from 'views/Creator'
+import ListMini from 'components/ListMini'
+import ListView from 'views/List'
 
-import useCreatorAdmin from "./useCreatorAdmin"
+import useListAdmin from "./useListAdmin"
+import './list-admin.scss'
 
-const baseCn = 'creator-admin'
+const baseCn = 'list-admin'
 
-const CreatorAdmin = ({Element, className}) => {
+const ListAdmin = ({Element, className}) => {
   
-  const {state, handlers, contentful} = useCreatorAdmin()
+  const {state, handlers, contentful} = useListAdmin()
 
-  const viewCreator = contentful.rawToGraphQl(state.form.value)
+  const viewList = contentful.rawToGraphQl(state.form.value)
   
   return (
     <Element className={`${className} ${baseCn}`}>
@@ -26,7 +27,7 @@ const CreatorAdmin = ({Element, className}) => {
       )}
       {!state.isReview && (
         <>
-          <CreatorForm />
+          <ListForm />
           <Button onClick={handlers.reviewClick} primary disabled={!state.isValid}>Review and save</Button>
           <Button onClick={handlers.clearClick} minimal>Clear</Button>
         </>
@@ -34,8 +35,8 @@ const CreatorAdmin = ({Element, className}) => {
       
       {state.isReview && (
         <>
-          <CreatorMini creator={viewCreator} />
-          <CreatorView creator={viewCreator} />
+          <ListMini creator={viewList} />
+          <ListView creator={viewList} />
           <Button onClick={handlers.cancelClick} hollow>Cancel</Button>
           <Button onClick={handlers.saveClick} primary>Save</Button>
         </>
@@ -44,4 +45,4 @@ const CreatorAdmin = ({Element, className}) => {
   )
 }
 
-export default CreatorAdmin
+export default ListAdmin

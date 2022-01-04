@@ -1,6 +1,7 @@
 import * as React from "react"
 
 import Font from 'atoms/Font'
+import CreatorBrief from 'components/CreatorBrief'
 
 import useCreator from 'contentful/useCreator'
 
@@ -18,9 +19,7 @@ const ContentfulCreatorList = () => {
         <strong>Count:</strong> {cmsList.length}
       </Font>
       {cmsList.map(creator => (
-        <div key={creator.slug}>
-          {creator.name}
-        </div>
+        <CreatorBrief key={creator.slug} creator={creator} />
       ))}
     </section>
   )

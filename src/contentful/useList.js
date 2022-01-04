@@ -1,12 +1,12 @@
 import {useState, useEffect, useDebugValue} from 'react'
 import { createClient } from 'contentful-management'
 
-import {rawToContentful, rawToGraphQl, contentfulToGraphQl} from './mapping/creator'
+import {rawToContentful, rawToGraphQl, contentfulToGraphQl} from './mapping/list'
 import useAccessToken from './useAccessToken';
 
 const SPACE_ID = 'c2zc4p6tmkah' // xxx
 const ENVIRONMENT_ID = 'master'
-const CREATOR_ENTRY_TYPE = 'creator'
+const LIST_ENTRY_TYPE = 'list'
 
 function getEnvironment(accessToken) {
   return createClient({
@@ -17,13 +17,13 @@ function getEnvironment(accessToken) {
 function getEntries(accessToken) {
   return getEnvironment(accessToken)
     .then(env => {
-      return env.getEntries({content_type: CREATOR_ENTRY_TYPE})
+      return env.getEntries({content_type: LIST_ENTRY_TYPE})
     })
 }
 
-const saveEntryWithAccessToken = accessToken => rawCreator => {
+const saveEntryWithAccessToken = accessToken => raw => {
   return getEnvironment(accessToken)
-    .then(env => env.createEntry(CREATOR_ENTRY_TYPE, rawToContentful(rawCreator)))
+    .then(env => env.createEntry(LIST_ENTRY_TYPE, rawToContentful(raw)))
 }
 
 const useCmsListWithAccessToken = (accessToken, isEnabled) => {
@@ -41,7 +41,7 @@ const useCmsListWithAccessToken = (accessToken, isEnabled) => {
   return state
 }
 
-export default function useCreator(cmsListEnabled = false) {
+export default function useList(cmsListEnabled = false) {
 
   const {value} = useAccessToken()
   const saveEntry = saveEntryWithAccessToken(value)

@@ -1,0 +1,17 @@
+.game-brief {
+  display: flex;
+  flex-flow: row nowrap;
+}
+
+.game-brief__image {
+  display: inline-block;
+  width: 45px;
+  height: 45px;
+  margin: 0 auto;
+}
+
+.game-brief__title {
+  flex: 1;
+  margin-left: var(--pad);
+  line-height: 45px;
+}

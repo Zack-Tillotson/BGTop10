@@ -13,13 +13,15 @@ function Breadcrumbs({
 
   return (
     <div className={baseCn}>
-      <Font level="delta">
-        {locations.map(location => (
+      <Font level="charlie">
+        {locations.map((location, index) => (
           <Link to={location.url} key={location.url} className={`${baseCn}__link`}>
-            {location.display}
+            <span className={`${baseCn}__link ${index === 0 ? `${baseCn}__link--highlight` : ``}`}>
+              {location.display}
+            </span>
           </Link>
         ))
-        .map(link => [link, ' | '])
+        .map((link, index) => [link, (<span key={'span'+index} className="breadcrumbs__spacer"> › </span>)])
         .reduce((soFar, pair) => [...soFar, ...pair], [])
         .slice(0, -1)}
       </Font>

@@ -1,3 +1,13 @@
 .breadcrumbs__link {
   display: inline-block;
+  padding-bottom: var(--pad);
+  color: var(--color-font-focus);
+
+  &--highlight {
+    color: var(--color-font-primary);
+  }
+}
+
+.breadcrumbs__spacer {
+  padding: 0 var(--pad-half);
 }

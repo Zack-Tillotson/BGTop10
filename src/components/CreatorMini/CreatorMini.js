@@ -7,16 +7,17 @@ import './creator-mini.scss'
 
 const cn = 'creator-mini'
 
-const CreatorMini = ({creator, wide = false}) => {
+const CreatorMini = ({creator, wide = false, isLink = true}) => {
+  const Element = isLink ? Link : 'div'
 
   return (
     <section className={`${cn} ${wide && `${cn}--wide`}`}>
-      <Link to={`/creator/${creator.slug}/`} className={`${cn}__title`}>
+      <Element to={`/creator/${creator.slug}/`} className={`${cn}__title`}>
         <h3>{creator.name}</h3>
-      </Link>
-      <Link to={`/creator/${creator.slug}/`}>
+      </Element>
+      <Element to={`/creator/${creator.slug}/`}>
         <Image src={creator.imageAvatar} className={`${cn}__image`} />
-      </Link>
+      </Element>
     </section>
   )
 }
