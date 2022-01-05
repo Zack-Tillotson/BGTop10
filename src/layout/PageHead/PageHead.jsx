@@ -7,8 +7,7 @@ import Button from 'atoms/Button'
 
 import './component.scss'
 
-// import logoTitle from 'assets/bgshelf/headline-250x50.webp'
-// import logoTitleDark from 'assets/bgshelf/headline-dark-250x50.webp'
+import logoTitle from 'images/bgtop10-logo.png'
 
 function Component({className, user}) {
   const [isMenuOpen, updateIsMenuOpen] = useState(false)
@@ -20,24 +19,22 @@ function Component({className, user}) {
     }
   }
 
-  const handleMenuBackgroundClick = event => {
-    updateIsMenuOpen(false)
-  }
+  // const handleMenuBackgroundClick = event => {
+  //   updateIsMenuOpen(false)
+  // }
 
-  const handleLogOutClick = event => {
-    updateIsMenuOpen(false)
-    // logout() // xxx
-  }
+  // const handleLogOutClick = event => {
+  //   updateIsMenuOpen(false)
+  //   // logout() // xxx
+  // }
 
   return (
     <div className={cn(className, 'page-head')}>
       <div className="page-head__content page__container">
         <Link to="/" className="page-head__logo">
-          {/* <img src={logoTitleDark} alt="BG Shelf logo" className="page-head__logo-title-light" />
-          <img src={logoTitle} alt="BG Shelf logo" className="page-head__logo-title-dark" /> */}
-          BG Top 10
+          <img src={logoTitle} alt="BG Top 10" className="page-head__logo-title" width="125" height="30" />
         </Link>
-        <div className="page-head__menu-container page-head-menu">
+        {/* <div className="page-head__menu-container page-head-menu">
           <div className={cn('page-head-menu__background', {['page-head-menu__background--open']: isMenuOpen})} onClick={handleMenuBackgroundClick}> </div>
           <Button className="page-head-menu__toggle" onClick={handleMenuToggleClick}>
             {isMenuOpen ? '✖' : '☰'}
@@ -52,9 +49,8 @@ function Component({className, user}) {
                 <hr />
               </div>
             )}
-            <Link to="/about/" className="page-head-menu__item">About</Link>
           </div>
-        </div>
+        </div> */}
       </div>
     </div>
   );

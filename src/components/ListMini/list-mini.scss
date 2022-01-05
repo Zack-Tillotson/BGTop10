@@ -5,7 +5,7 @@
 
 .list-mini__image-wrapper {
   height: 75px;
-  width: 250px;
+  width: 90px;
 }
 
 .list-mini__image {
@@ -15,6 +15,7 @@
 
 .list-mini__primary-attrs {
   margin-left: var(--pad);
+  flex: 1;
 }
 
 .list-mini__value {
