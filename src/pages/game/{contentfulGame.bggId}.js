@@ -7,11 +7,11 @@ import Game from 'views/Game'
 const ListPage = ({location, data}) => {
 
   const {siteUrl} = data.site.siteMetadata
-  const {game} = data
+  const {game, allContentfulList: {lists}} = data
   
   return (
     <Page siteUrl={siteUrl} location={location} crumbs={[{display: 'Home', url: '/'}, {display: game.name, url: location.pathname}]}>
-      <Game game={game} basePath={location.pathname} />
+      <Game game={game} lists={lists} basePath={location.pathname} />
     </Page>
   )
 }
@@ -36,24 +36,41 @@ export const query = graphql`
       playerCountMin
       publisher
       yearPublished
-      listGameLink {
-        list {
-          name
+    }
+    allContentfulList(filter: {games: {elemMatch: {bggId: {eq: $bggId}}}}) {
+      lists: nodes {
+        image
+        name
+        link
+        slug
+        creator {
           slug
-          creator {
-            slug
-            name
-            imageBanner
-            imageAvatar
-            description {
-              description
-            }
-          }
-          image
+          name
           link
+          imageBanner
+          imageAvatar
+          description {
+            description
+          }
         }
-        title
-        id
+        games {
+          artist
+          bggId
+          designer
+          family
+          image
+          imageThumbnail
+          mechanic
+          name
+          playerCountMax
+          playerCountMin
+          publisher
+          yearPublished
+        }
+        gameLink {
+          title
+          bggId
+        }
       }
     }
   }

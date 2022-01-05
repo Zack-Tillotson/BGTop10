@@ -1,7 +1,7 @@
 import creatorMapper from './creator'
 import gameLinksMapper from './gameLinks'
 
-export function rawToContentful(raw = {}, rawGameLinks) {
+export function rawToContentful(raw = {}, cmsCreator, cmsGames) {
   const {
     name = '',
     slug = '',
@@ -9,6 +9,8 @@ export function rawToContentful(raw = {}, rawGameLinks) {
     image = '',
     description = '',
     creator = {},
+    gameLink = [],
+    games = [],
   } = raw
   
   return {
@@ -28,11 +30,26 @@ export function rawToContentful(raw = {}, rawGameLinks) {
       description: {
         'en-US': description,
       },
-      listGameLink: {
-        'en-US': gameLinksMapper.rawToGraphQl(rawGameLinks),
+      gameLink: {
+        'en-US': gameLink,
+      },
+      games: {
+        'en-US': cmsGames ? cmsGames.map(game => ({
+          sys: {
+            id: game.sys.id,
+            linkType: 'Entry',
+            type: 'Link'
+          },
+        })) : games,
       },
       creator: {
-        'en-US': creatorMapper.rawToGraphQl(creator),
+        'en-US': cmsCreator ? ({
+          sys: {
+            id: cmsCreator.sys.id,
+            linkType: 'Entry',
+            type: 'Link'
+          },
+        }) : creator,
       },
     }
   }

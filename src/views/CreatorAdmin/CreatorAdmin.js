@@ -9,6 +9,8 @@ import CreatorView from 'views/Creator'
 
 import useCreatorAdmin from "./useCreatorAdmin"
 
+import './creator-admin.scss'
+
 const baseCn = 'creator-admin'
 
 const CreatorAdmin = ({Element, className}) => {
@@ -27,8 +29,10 @@ const CreatorAdmin = ({Element, className}) => {
       {!state.isReview && (
         <>
           <CreatorForm />
-          <Button onClick={handlers.reviewClick} primary disabled={!state.isValid}>Review and save</Button>
-          <Button onClick={handlers.clearClick} minimal>Clear</Button>
+          <div className="creator-admin__controls">
+            <Button onClick={handlers.reviewClick} primary>Review and save</Button>
+            <Button onClick={handlers.clearClick} minimal>Clear</Button>
+          </div>
         </>
       )}
       
@@ -36,8 +40,10 @@ const CreatorAdmin = ({Element, className}) => {
         <>
           <CreatorMini creator={viewCreator} />
           <CreatorView creator={viewCreator} />
-          <Button onClick={handlers.cancelClick} hollow>Cancel</Button>
-          <Button onClick={handlers.saveClick} primary>Save</Button>
+          <div className="creator-admin__controls">
+            <Button onClick={handlers.cancelClick} hollow>Cancel</Button>
+            <Button onClick={handlers.saveClick} primary>Save</Button>
+          </div>
         </>
       )}
     </Element>

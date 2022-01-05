@@ -16,6 +16,19 @@ function useListForm() {
   const linkFields = usePersistentState(LINK_FIELDS_NAME, LINK_FIELDS_DEFAULT_VALUE)
   const linkState = usePersistentState(LINK_STATE_NAME, LINK_STATE_DEFAULT_VALUE)
 
+  const combinedValue = {
+    ...formState.value,
+    games: linkFields.value.filter(field => field.type === 'game')
+      .map(field => linkState.value[field.id]),
+    gameLink: linkFields.value.filter(field => field.type === 'game')
+      .map(field => {
+        return {
+          title: linkState.value[field.id.replaceAll(' game', ' title')],
+          bggId: Number(linkState.value[field.id].bggId),
+        }
+    }),
+  }
+
   const handleBaseChange = (field, value) => {
     const newValue = {...formState.value, [field.id]: value}
 
@@ -88,7 +101,8 @@ function useListForm() {
       handleChange: handleGameLinksChange,
       handleGenerateGameLinks,
     },
-    
+    combinedValue,
+
     handleClear,
   }
 }

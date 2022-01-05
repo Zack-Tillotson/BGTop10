@@ -10,11 +10,9 @@ import './game.scss'
 
 const cn = 'game-view'
 
-const GameView = ({game}) => {
+const GameView = ({game, lists}) => {
 
   const playerCount = game.playerCountMin + (game.playerCountMax !== game.playerCountMin ? `- ${game.playerCountMax}` : '')
-  const rawLists = game.listGameLink.map(link => link.list)
-  const lists = rawLists.filter((item, index) => index === 0 || item.slug !== rawLists[index-1].slug)
 
   return (
     <div className={cn}>

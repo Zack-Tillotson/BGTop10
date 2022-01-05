@@ -7,11 +7,11 @@ import CreatorView from 'views/Creator'
 const ListPage = ({location, data}) => {
 
   const {siteUrl} = data.site.siteMetadata
-  const {creator} = data
+  const {creator, allContentfulList: {lists}} = data
   
   return (
     <Page siteUrl={siteUrl} location={location} crumbs={[{display: 'Home', url: '/'}, {display: creator.name, url: location.pathname}]}>
-      <CreatorView creator={creator} basePath={location.pathname} />
+      <CreatorView creator={creator} lists={lists} basePath={location.pathname} />
     </Page>
   )
 }
@@ -32,14 +32,41 @@ export const query = graphql`
       description {
         description
       }
-      list {
-        description {
-          description
-        }
+    }
+    allContentfulList(filter: {creator: {slug: {eq: $slug}}}) {
+      lists: nodes {
         image
-        link
         name
+        link
         slug
+        creator {
+          slug
+          name
+          link
+          imageBanner
+          imageAvatar
+          description {
+            description
+          }
+        }
+        games {
+          artist
+          bggId
+          designer
+          family
+          image
+          imageThumbnail
+          mechanic
+          name
+          playerCountMax
+          playerCountMin
+          publisher
+          yearPublished
+        }
+        gameLink {
+          title
+          bggId
+        }
       }
     }
   }

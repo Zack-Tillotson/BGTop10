@@ -24,11 +24,13 @@ export const query = graphql`
       }
     }
     list: contentfulList(slug: {eq: $slug}) {
+      slug
       description {
         description
       }
       image
       link
+      name
       creator {
         slug
         name
@@ -39,26 +41,24 @@ export const query = graphql`
           description
         }
       }
-      listGameLink {
-        id
-        title 
-        game {
-          artist
-          bggId
-          designer
-          family
-          image
-          imageThumbnail
-          mechanic
-          name
-          playerCountMax
-          playerCountMin
-          publisher
-          yearPublished
-        }
+      games {
+        artist
+        bggId
+        designer
+        family
+        image
+        imageThumbnail
+        mechanic
+        name
+        playerCountMax
+        playerCountMin
+        publisher
+        yearPublished
       }
-      name
-      slug
+      gameLink {
+        title
+        bggId
+      }
     }
   }
 `

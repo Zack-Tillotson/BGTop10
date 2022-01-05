@@ -23,8 +23,8 @@ const AdminIndexPage = () => {
       <section>
         <h3>Pages</h3>
         <ol>
-          <li><Button type="link" to="creator" primary>Creator</Button> - Add a creator</li>
-          <li><Button type="link" to="list" primary>List</Button> - Add a list, must have creator beforehand</li>
+          <li><Button type="link" to="creator" minimal>Creator</Button> - Add a creator</li>
+          <li><Button type="link" to="list" minimal>List</Button> - Add a list, must have creator beforehand</li>
         </ol>
       </section>
       <section>

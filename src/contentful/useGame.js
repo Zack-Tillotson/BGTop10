@@ -1,12 +1,14 @@
 import {useState, useEffect, useDebugValue} from 'react'
 import { createClient } from 'contentful-management'
 
-import {rawToContentful, rawToGraphQl, contentfulToGraphQl} from './mapping/creator'
+import {rawToContentful, rawToGraphQl, contentfulToGraphQl} from './mapping/game'
 import useAccessToken from './useAccessToken';
+import throttler from './throttlePromiser'
+import getAttrsFromBgg from './getAttrsFromBgg';
 
 const SPACE_ID = 'c2zc4p6tmkah' // xxx
 const ENVIRONMENT_ID = 'master'
-const CREATOR_ENTRY_TYPE = 'creator'
+const ENTRY_TYPE = 'game'
 
 function getEnvironment(accessToken) {
   return createClient({
@@ -15,20 +17,29 @@ function getEnvironment(accessToken) {
 }
 
 function getEntries(accessToken) {
-  return getEnvironment(accessToken)
+  return throttler()
+    .then(() => getEnvironment(accessToken))
     .then(env => {
-      return env.getEntries({content_type: CREATOR_ENTRY_TYPE})
+      return env.getEntries({content_type: ENTRY_TYPE})
     })
 }
 
-const saveEntryWithAccessToken = accessToken => rawCreator => {
-  return getEnvironment(accessToken)
-    .then(env => env.createEntry(CREATOR_ENTRY_TYPE, rawToContentful(rawCreator)))
+const saveEntryWithAccessToken = accessToken => raw => {
+  return throttler()
+    .then(() => Promise.all([
+      getAttrsFromBgg(raw.bggId),
+      getEnvironment(accessToken),
+    ]))
+    .then(([attrs, env]) => {
+      const cleanAttrs = rawToContentful(attrs)
+      return env.createEntry(ENTRY_TYPE, cleanAttrs)
+    })
 }
 
 const useCmsListWithAccessToken = (accessToken, isEnabled) => {
   const [state, updateState] = useState([])
   const [contentfulState, updateContentfulState] = useState([])
+  const [random, updateRandom] = useState(0)
   useDebugValue(`state: ${JSON.stringify(state)}`)
 
   useEffect(() => {
@@ -39,23 +50,26 @@ const useCmsListWithAccessToken = (accessToken, isEnabled) => {
         updateContentfulState(result.items)
       })
     }
-  }, [accessToken, isEnabled])
-  return [state, contentfulState]
+  }, [accessToken, isEnabled, random])
+
+  const forceRefresh = () => updateRandom(Math.random())
+  return [state, contentfulState, forceRefresh]
 }
 
 export default function useCreator(cmsListEnabled = false) {
 
   const {value} = useAccessToken()
-  const saveEntry = saveEntryWithAccessToken(value)
-  const [cmsList, contentfulList] = useCmsListWithAccessToken(value, cmsListEnabled)
+  const createAndStore = saveEntryWithAccessToken(value)
+  const [cmsList, contentfulList, refreshCmsList] = useCmsListWithAccessToken(value, cmsListEnabled)
 
   return {
     rawToContentful,
     rawToGraphQl,
-    
+
     cmsList,
     contentfulList,
 
-    saveEntry,
+    createAndStore,
+    refreshCmsList,
   }
 }

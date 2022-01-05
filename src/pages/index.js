@@ -81,22 +81,23 @@ export const query = graphql`
             description
           }
         }
-        listGameLink {
+        games {
+          artist
+          bggId
+          designer
+          family
+          image
+          imageThumbnail
+          mechanic
+          name
+          playerCountMax
+          playerCountMin
+          publisher
+          yearPublished
+        }
+        gameLink {
           title
-          game {
-            artist
-            bggId
-            designer
-            family
-            image
-            imageThumbnail
-            mechanic
-            name
-            playerCountMax
-            playerCountMin
-            publisher
-            yearPublished
-          }
+          bggId
         }
       }
     }

@@ -1,8 +1,8 @@
 import useCreator from 'contentful/useCreator'
 
 function useCreatorSelector() {
-  const {cmsList: list} = useCreator(true)
-  return {list}
+  const {cmsList: list, contentfulList} = useCreator(true)
+  return {list, contentfulList}
 }
 
 export default useCreatorSelector

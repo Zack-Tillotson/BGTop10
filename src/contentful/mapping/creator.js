@@ -30,9 +30,6 @@ export function rawToContentful(raw = {}) {
       description: {
         'en-US': description,
       },
-      list: {
-        'en-US': [],
-      }
     }
   }
 }

@@ -34,10 +34,10 @@ const ListView = ({list, basePath}) => {
       <section className={`${cn}__games`}>
         <h2>Games</h2>
         <ol className={`${cn}__game-list`}>
-          {list.listGameLink.map(link => (
-            <li key={link.id || Math.random()}>
-              <div className={`${cn}__game-title`}>{link.title}</div>
-              <GameMini className={`${cn}__game-info`} game={link.game} basePath={basePath} />
+          {list.gameLink.map(({title, bggId}, index) => (
+            <li key={index}>
+              <div className={`${cn}__game-title`}>{title}</div>
+              <GameMini className={`${cn}__game-info`} game={list.games.find(game => game.bggId == bggId)} basePath={basePath} />
             </li>
           ))}
         </ol>

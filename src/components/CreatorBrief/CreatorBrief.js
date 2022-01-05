@@ -7,13 +7,13 @@ import './creator-brief.scss'
 
 const cn = 'creator-brief'
 
-const CreatorBrief = ({creator, wide = false, ...rest}) => {
-
+const CreatorBrief = ({creator, wide = false, isLink = true, ...rest}) => {
+  const Element = isLink ? Button : 'div'
   return (
-    <Button className={`${cn} ${wide && `${cn}--wide`}`} wide tight {...rest}>
+    <Element className={`${cn} ${wide && `${cn}--wide`}`} wide tight {...rest}>
       <Image src={creator.imageAvatar} className={`${cn}__image`} isBordered={false} />
       <div className={`${cn}__title`}>{creator.name}</div>
-    </Button>
+    </Element>
   )
 }
 
