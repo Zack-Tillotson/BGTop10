@@ -52,7 +52,7 @@ const CreatorView = ({creator}) => {
       <section className={`${cn}__lists`}>
         <h2>Lists</h2>
         <ol className={`${cn}__lists-list`}>
-          {(creator.list || []).map(list => (
+          {(creator.list || []).filter((item, index) => index === 0 || item.slug !== creator.list[index-1].slug).map(list => (
             <li key={list.slug}>
               <ListMini list={list} showCreator={false} />
             </li>

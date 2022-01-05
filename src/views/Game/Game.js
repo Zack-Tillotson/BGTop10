@@ -35,13 +35,13 @@ const GameView = ({game}) => {
         <Font level="delta" className={`${cn}__key`}>Player Count</Font>
         <Font level="delta" className={`${cn}__value`}>{playerCount}</Font>
         <Font level="delta" className={`${cn}__key`}>Designer</Font>
-        <Font level="delta" className={`${cn}__value ${cn}__longish`}>{game.designer.join(', ')}</Font>
+        <Font level="delta" className={`${cn}__value ${cn}__longish`}>{(game.designer || []).join(', ')}</Font>
         <Font level="delta" className={`${cn}__key`}>Publisher</Font>
-        <Font level="delta" className={`${cn}__value ${cn}__longish`}>{game.publisher.join(', ')}</Font>
+        <Font level="delta" className={`${cn}__value ${cn}__longish`}>{(game.publisher || []).join(', ')}</Font>
         <Font level="delta" className={`${cn}__key`}>Artists</Font>
-        <Font level="delta" className={`${cn}__value ${cn}__longish`}>{game.artist.join(', ')}</Font>
+        <Font level="delta" className={`${cn}__value ${cn}__longish`}>{(game.artist || []).join(', ')}</Font>
         <Font level="delta" className={`${cn}__key`}>Mechanics</Font>
-        <Font level="delta" className={`${cn}__value ${cn}__longish`}>{game.mechanic.join(', ')}</Font>
+        <Font level="delta" className={`${cn}__value ${cn}__longish`}>{(game.mechanic || []).join(', ')}</Font>
       </section>
       <section className={`${cn}__lists`}>
         <h2>Part of these lists</h2>
