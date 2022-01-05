@@ -37,7 +37,7 @@ const useCmsListWithAccessToken = (accessToken, isEnabled) => {
         updateState(cleaned)
       })
     }
-  }, [isEnabled])
+  }, [accessToken, isEnabled])
   return state
 }
 

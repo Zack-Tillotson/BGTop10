@@ -2,7 +2,7 @@
 // in the order it was made, promises will be delayed such that
 // every promise will resolve after a delay.
 
-const THROTTLE = 1000
+const THROTTLE = 2000
 const promises = []
 
 function makePromise() {

@@ -29,7 +29,8 @@ function getEntries(accessToken) {
 }
 
 function getOrAddGames(env, gameStubs) {
-  return env.getEntries({content_type: GAME_ENTRY_TYPE})
+  return throttler()
+    .then(() => env.getEntries({content_type: GAME_ENTRY_TYPE}))
     .then(entries => {
       return Promise.all(gameStubs.map(game => {
         const entry = entries.items.find(entry => entry.fields.bggId['en-US'] == game.bggId)
@@ -73,7 +74,7 @@ function addSimpleList(env, listStub, contentfulCreator) {
     }
   }
 
-  return env.createEntry(LIST_ENTRY_TYPE, contentfulList)
+  return throttler().then(() => env.createEntry(LIST_ENTRY_TYPE, contentfulList))
 }
 
 function creatListGameLinks(env, linkStubs, list, games) {
@@ -146,7 +147,7 @@ function updateListWithListGameLinks(env, contentfulList, contentfulListGameLink
 
 function updateCreatorWithList(env, contentfulCreator, contentfulList) {
   if(!contentfulCreator.fields.list) {
-    contentfulList.fields.list = {'en-US': []}
+    contentfulCreator.fields.list = {'en-US': []}
   }
   
   contentfulCreator.fields.list['en-US'].push({
