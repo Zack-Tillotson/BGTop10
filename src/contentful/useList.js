@@ -1,6 +1,7 @@
 import {useState, useEffect, useDebugValue} from 'react'
 import { createClient } from 'contentful-management'
 import gameMapper from './mapping/game'
+import gameLinksMapper from './mapping/gameLinks'
 
 import {rawToContentful, rawToGraphQl, contentfulToGraphQl} from './mapping/list'
 import useAccessToken from './useAccessToken';
@@ -29,7 +30,6 @@ function getEntries(accessToken) {
 function getOrAddGames(env, gameStubs) {
   return env.getEntries({content_type: GAME_ENTRY_TYPE})
     .then(entries => {
-      console.log('contentful games', entries)
       return Promise.all(gameStubs.map(game => {
         const entry = entries.items.find(entry => entry.fields.bggId['en-US'] == game.bggId)
         if(entry) {
@@ -73,6 +73,89 @@ function addSimpleList(env, listStub, contentfulCreator) {
   return env.createEntry(LIST_ENTRY_TYPE, contentfulList)
 }
 
+function creatListGameLinks(env, linkStubs, list, games) {
+  return Promise.all(linkStubs.map(link => {
+    const {game, title} = link
+    const contentfulGame = games.find(findGame => findGame.fields.bggId['en-US'] == game.bggId)
+  
+    const contentfulLink = {
+      fields: {
+        title: {
+          'en-US': title,
+        },
+        list: {
+          'en-US': {
+            sys: {
+              id: list.sys.id,
+              linkType: 'Entry',
+              type: 'Link'
+            },
+          },
+        },
+        game: {
+          'en-US': {
+            sys: {
+              id: contentfulGame.sys.id,
+              linkType: 'Entry',
+              type: 'Link'
+            },
+          },
+        },
+      }
+    }
+    return env.createEntry(LIST_GAME_LINK_ENTRY_TYPE, contentfulLink)
+  }))
+}
+
+function updateGamesWithLinks(env, contentfulGames, contentfulListGameLinks) {
+  return contentfulGames.map(game => {
+    if(!game.fields.listGameLink) {
+      game.fields.listGameLink = {'en-US': []}
+    }
+    const link = contentfulListGameLinks.find(searchLink => searchLink.fields.game['en-US'].sys.id === game.sys.id)
+    if(!link) throw new Error('game not found to link', game, contentfulListGameLinks)
+
+    game.fields.listGameLink['en-US'].push({
+      sys: {
+        id: link.sys.id,
+        linkType: 'Entry',
+        type: 'Link'
+      },
+    })
+    return game.update()
+  })
+}
+
+function updateListWithListGameLinks(env, contentfulList, contentfulListGameLinks) {
+  if(!contentfulList.fields.listGameLink) {
+    contentfulList.fields.listGameLink = {'en-US': []}
+  }
+  
+  contentfulList.fields.listGameLink['en-US'].push(...contentfulListGameLinks.map(link => ({
+    sys: {
+      id: link.sys.id,
+      linkType: 'Entry',
+      type: 'Link'
+    },
+  })))
+  return contentfulList.update()
+}
+
+function updateCreatorWithList(env, contentfulCreator, contentfulList) {
+  if(!contentfulCreator.fields.list) {
+    contentfulList.fields.list = {'en-US': []}
+  }
+  
+  contentfulCreator.fields.list['en-US'].push({
+    sys: {
+      id: contentfulList.sys.id,
+      linkType: 'Entry',
+      type: 'Link'
+    },
+  })
+  return contentfulCreator.update()
+}
+
 const saveEntryWithAccessToken = accessToken => (rawAttrs, rawGameLinks) => {
   const list = rawToContentful(rawAttrs, rawGameLinks)
   return getEnvironment(accessToken)
@@ -83,14 +166,27 @@ const saveEntryWithAccessToken = accessToken => (rawAttrs, rawGameLinks) => {
         getCreator(env, list.fields.creator['en-US']),
       ])
     }).then(([env, contentfulGames, contentfulCreator]) => {
-      console.log('base contentful', contentfulGames, contentfulCreator)
-      // Create list in Contentful
-      return addSimpleList(env, list, contentfulCreator)
-      // Create list game links (with game, list references)
-      // Update games with game link refs
-      // Update list with game link refs
+      return Promise.all([
+        env, 
+        contentfulGames, 
+        contentfulCreator,
+        addSimpleList(env, list, contentfulCreator),
+      ])
+    }).then(([env, contentfulGames, contentfulCreator, contentfulList]) => {
+      return Promise.all([
+        env, 
+        contentfulGames, 
+        contentfulCreator,
+        contentfulList,
+        creatListGameLinks(env, list.fields.listGameLink['en-US'], contentfulList, contentfulGames),
+      ])
+    }).then(([env, contentfulGames, contentfulCreator, contentfulList, contentfulListGameLinks]) => {
+      return Promise.all([
+        ...updateGamesWithLinks(env, contentfulGames, contentfulListGameLinks),
+        updateListWithListGameLinks(env, contentfulList, contentfulListGameLinks),
+        updateCreatorWithList(env, contentfulCreator, contentfulList)
+      ])
     })
-    // .then(env => env.createEntry(LIST_ENTRY_TYPE, rawToContentful(raw)))
 }
 
 const useCmsListWithAccessToken = (accessToken, isEnabled) => {

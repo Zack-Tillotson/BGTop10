@@ -28,7 +28,7 @@ function useListAdmin() {
         updateIsSuccessful(result)
         if(result) {
           updateIsReview(false)
-          form.handleClear()
+          // form.handleClear()
         }
       })
   }

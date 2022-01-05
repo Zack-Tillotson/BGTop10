@@ -1,5 +1,30 @@
 import gameMapper from './game'
 
+
+export function rawToContentful(raw = {}) {
+  
+  const {
+    title = '',
+    list = {},
+    game = {},    
+  } = raw
+  
+  return {
+    fields: {
+      title: {
+        'en-US': title,
+      },
+      list: {
+        'en-US': list,
+      },
+      game: {
+        'en-US': game,
+      },
+    }
+  }
+}
+
+// Form raw
 function rawToGraphQl(raw = {}) {
   const builtObjects = {}
   Object.keys(raw).forEach(key => {
@@ -17,5 +42,14 @@ function rawToGraphQl(raw = {}) {
   return Object.keys(builtObjects).map(key=> builtObjects[key])
 }
 
-const built = {rawToGraphQl}
+export function contentfulToGraphQl(contentful) {
+  const built = Object.keys(contentful.fields).reduce((sofar, key) => ({
+    ...sofar,
+    [key]: contentful.fields[key]['en-US'],
+  }), {})
+  return built
+}
+
+
+const built = {rawToGraphQl, rawToContentful, contentfulToGraphQl}
 export default built
