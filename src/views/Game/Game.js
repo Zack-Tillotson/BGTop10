@@ -13,6 +13,8 @@ const cn = 'game-view'
 const GameView = ({game}) => {
 
   const playerCount = game.playerCountMin + (game.playerCountMax !== game.playerCountMin ? `- ${game.playerCountMax}` : '')
+  const rawLists = game.listGameLink.map(link => link.list)
+  const lists = rawLists.filter((item, index) => index === 0 || item.slug !== rawLists[index-1].slug)
 
   return (
     <div className={cn}>
@@ -46,9 +48,9 @@ const GameView = ({game}) => {
       <section className={`${cn}__lists`}>
         <h2>Part of these lists</h2>
         <ol className={`${cn}__lists-list`}>
-          {game.listGameLink.map(link => (
-            <li key={link.id}>
-              <ListMini list={link.list} />
+          {lists.map(list => (
+            <li key={list.slug}>
+              <ListMini list={list} />
             </li>
           ))}
         </ol>

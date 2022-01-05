@@ -39,6 +39,7 @@ export const query = graphql`
       listGameLink {
         list {
           name
+          slug
           creator {
             slug
             name
