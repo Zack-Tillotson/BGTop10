@@ -9,8 +9,7 @@ function getSafeValue(item, getter, defaultValue = '') {
 
 
 function getAttrsFromBgg(id) {
-return new Promise(resolve => setTimeout(resolve, Math.random() * 5000))
-  .then(() => fetch(`https://api.geekdo.com/xmlapi2/thing?id=${id}`))
+return fetch(`https://api.geekdo.com/xmlapi2/thing?id=${id}`)
   .then(resp => resp.text())
   .then(stringData => {
     const xmlData = new DOMParser().parseFromString(stringData, "application/xml")

@@ -1,11 +1,12 @@
 import {useState, useEffect, useDebugValue} from 'react'
 import { createClient } from 'contentful-management'
-import gameMapper from './mapping/game'
-import gameLinksMapper from './mapping/gameLinks'
 
+import gameMapper from './mapping/game'
 import {rawToContentful, rawToGraphQl, contentfulToGraphQl} from './mapping/list'
+
 import useAccessToken from './useAccessToken';
 import getAttrsFromBgg from './getAttrsFromBgg'
+import throttler from './throttlePromiser'
 
 const SPACE_ID = 'c2zc4p6tmkah' // xxx
 const ENVIRONMENT_ID = 'master'
@@ -36,7 +37,8 @@ function getOrAddGames(env, gameStubs) {
           return Promise.resolve(entry)
         }
 
-        return getAttrsFromBgg(game.bggId)
+        return throttler()
+          .then(() => getAttrsFromBgg(game.bggId))
           .then(attrs => {
             const cleanAttrs = gameMapper.rawToContentful(attrs)
             return env.createEntry(GAME_ENTRY_TYPE, cleanAttrs)
@@ -46,7 +48,8 @@ function getOrAddGames(env, gameStubs) {
 }
 
 function getCreator(env, creatorStub) {
-  return env.getEntries({content_type: CREATOR_ENTRY_TYPE})
+  return throttler()
+    .then(() => env.getEntries({content_type: CREATOR_ENTRY_TYPE}))
     .then(entries => {
       return entries.items.find(entry => entry.fields.slug['en-US'] == creatorStub.slug)
     })
@@ -103,7 +106,7 @@ function creatListGameLinks(env, linkStubs, list, games) {
         },
       }
     }
-    return env.createEntry(LIST_GAME_LINK_ENTRY_TYPE, contentfulLink)
+    return throttler().then(() => env.createEntry(LIST_GAME_LINK_ENTRY_TYPE, contentfulLink))
   }))
 }
 
@@ -122,7 +125,7 @@ function updateGamesWithLinks(env, contentfulGames, contentfulListGameLinks) {
         type: 'Link'
       },
     })
-    return game.update()
+    return throttler().then(() => game.update())
   })
 }
 
@@ -138,7 +141,7 @@ function updateListWithListGameLinks(env, contentfulList, contentfulListGameLink
       type: 'Link'
     },
   })))
-  return contentfulList.update()
+  return throttler().then(() => contentfulList.update())
 }
 
 function updateCreatorWithList(env, contentfulCreator, contentfulList) {
@@ -153,7 +156,7 @@ function updateCreatorWithList(env, contentfulCreator, contentfulList) {
       type: 'Link'
     },
   })
-  return contentfulCreator.update()
+  return throttler().then(() => contentfulCreator.update())
 }
 
 const saveEntryWithAccessToken = accessToken => (rawAttrs, rawGameLinks) => {
