@@ -11,7 +11,7 @@ const cn = 'game-mini'
 
 const GameMini = ({game = {}, className}) => {
 
-  const {
+  let {
     bggId = 0,
     name = '',
     image = '',
@@ -21,6 +21,9 @@ const GameMini = ({game = {}, className}) => {
     designer = [],
     publisher = [],
   } = game
+
+  if(!designer) designer = []
+  if(!publisher) publisher = []
 
   const playerCount = playerCountMin + (playerCountMax !== playerCountMin ? `- ${playerCountMax}` : '')
 

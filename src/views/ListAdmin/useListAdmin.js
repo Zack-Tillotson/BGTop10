@@ -60,7 +60,7 @@ function useListAdmin() {
         updateIsSuccessful(result)
         if(result) {
           updateStep('form')
-          // form.handleClear()
+          form.handleClear()
         }
       })
   }

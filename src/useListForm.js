@@ -18,13 +18,14 @@ function useListForm() {
 
   const combinedValue = {
     ...formState.value,
-    games: linkFields.value.filter(field => field.type === 'game')
+    games: (linkFields.value || []).filter(field => field.type === 'game')
       .map(field => linkState.value[field.id]),
-    gameLink: linkFields.value.filter(field => field.type === 'game')
+    gameLink: (linkFields.value || []).filter(field => field.type === 'game')
       .map(field => {
+        const value = (linkState.value[field.id] || {}).bggId || 0
         return {
           title: linkState.value[field.id.replaceAll(' game', ' title')],
-          bggId: Number(linkState.value[field.id].bggId),
+          bggId: Number(value),
         }
     }),
   }
