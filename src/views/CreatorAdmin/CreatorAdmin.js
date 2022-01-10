@@ -13,9 +13,9 @@ import './creator-admin.scss'
 
 const baseCn = 'creator-admin'
 
-const CreatorAdmin = ({Element, className}) => {
+const CreatorAdmin = ({Element, className, editTarget}) => {
   
-  const {state, handlers, contentful} = useCreatorAdmin()
+  const {state, handlers, contentful} = useCreatorAdmin(editTarget)
 
   const viewCreator = contentful.rawToGraphQl(state.form.value)
   

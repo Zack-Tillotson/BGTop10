@@ -7,6 +7,18 @@ const DEFAULT_VALUE = {}
 function useCreatorForm() {
   const formState = usePersistentState(STATE_NAME, DEFAULT_VALUE)
 
+  const hydrateForm = creator => {
+    if(!creator) return
+    formState.updateValue({
+      name: creator.name,
+      slug: creator.slug,
+      description: creator.description.description,
+      avatar: creator.imageAvatar,
+      banner: creator.imageBanner,
+      links: creator.link.join(', '),
+    })
+  }
+
   const handleCreatorFormChange = (field, value) => {
     const newValue = {...formState.value, [field.id]: value}
 
@@ -22,6 +34,9 @@ function useCreatorForm() {
 
   return {
     value: formState.value,
+
+    hydrate: hydrateForm,
+
     handleChange: handleCreatorFormChange,
     handleClear: handleCreatorFormClear,
   }

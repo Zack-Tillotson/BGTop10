@@ -1,14 +1,18 @@
-import {useState} from 'react'
+import {useState, useEffect} from 'react'
 
 import useCreatorForm from 'useCreatorForm'
 import useCreator from 'contentful/useCreator'
 
-function useCreatorAdmin() {
+function useCreatorAdmin(editTarget) {
   const form = useCreatorForm()
-  const contentful = useCreator()
+  const contentful = useCreator(editTarget)
 
   const [isReview, updateIsReview] = useState(false)
   const [isSuccessful, updateIsSuccessful] = useState(null) // null, true, false
+
+  useEffect(() => {
+    form.hydrate(editTarget)
+  }, [editTarget, contentful.cmsList])
 
   const reviewClick = event => {
     updateIsReview(true)
@@ -23,7 +27,7 @@ function useCreatorAdmin() {
   }
 
   const saveClick = event => {
-    contentful.saveEntry(form.value)
+    contentful.saveEntry(form.value, editTarget.slug)
       .then(result => {
         updateIsSuccessful(result)
         if(result) {

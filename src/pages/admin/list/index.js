@@ -22,10 +22,6 @@ const AdminCreatorPage = ({location, data}) => {
       <h1 className={`${baseCn}__title`}>Create new list</h1>
       <ListAdminView Element="section" className={`${baseCn}__main`} />
       <section className={`${baseCn}__summary`}>
-        <h3>Live Lists</h3>
-        <Font level="delta">
-          <strong>Count:</strong> {totalCount}
-        </Font>
         {/* <ContentfulCreatorList /> */}
       </section>
     </Page>

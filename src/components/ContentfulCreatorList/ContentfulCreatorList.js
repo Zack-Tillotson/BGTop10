@@ -14,12 +14,12 @@ const ContentfulCreatorList = () => {
 
   return (
     <section className={baseCn}>
-      <h3>CMS Creators</h3>
+      <h3>Creators</h3>
       <Font level="delta">
         <strong>Count:</strong> {cmsList.length}
       </Font>
       {cmsList.map(creator => (
-        <CreatorBrief key={creator.slug} creator={creator} />
+        <CreatorBrief key={creator.slug} creator={creator} to={`/admin/creator/${creator.slug}/`} />
       ))}
     </section>
   )

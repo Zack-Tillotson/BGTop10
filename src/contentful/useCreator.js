@@ -21,9 +21,21 @@ function getEntries(accessToken) {
     })
 }
 
-const saveEntryWithAccessToken = accessToken => rawCreator => {
+const saveEntry = (accessToken, rawCreator) => {
   return getEnvironment(accessToken)
     .then(env => env.createEntry(CREATOR_ENTRY_TYPE, rawToContentful(rawCreator)))
+}
+
+const handleSave = (accessToken, list) => (rawCreator, editSlug) => {
+  if(!editSlug) {
+    return saveEntry(accessToken, rawCreator)
+  }
+
+  const item = list.find(item => item.fields.slug['en-US'] == editSlug)
+  if(!item) throw  new Error('Unable to find item to edit')
+
+  const updatedItem = rawToContentful(rawCreator, item)
+  return updatedItem.update()
 }
 
 const useCmsListWithAccessToken = (accessToken, isEnabled) => {
@@ -46,8 +58,8 @@ const useCmsListWithAccessToken = (accessToken, isEnabled) => {
 export default function useCreator(cmsListEnabled = false) {
 
   const {value} = useAccessToken()
-  const saveEntry = saveEntryWithAccessToken(value)
   const [cmsList, contentfulList] = useCmsListWithAccessToken(value, cmsListEnabled)
+  const saveEntry = handleSave(value, contentfulList)
 
   return {
     rawToContentful,
