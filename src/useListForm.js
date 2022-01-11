@@ -11,6 +11,29 @@ const LINK_FIELDS_DEFAULT_VALUE = []
 const LINK_STATE_NAME = 'contentful-list-form-link-state'
 const LINK_STATE_DEFAULT_VALUE = []
 
+function buildStateObjects(linksAry, gamesAry) {
+  const fieldAry = []
+  const newLinkState = {}
+  linksAry.forEach((link, index) => {
+    const titleId = `${LINK_FIELD_ID} ${index} title`
+    const gameId = `${LINK_FIELD_ID} ${index} game`
+    fieldAry.push(
+      {
+        id: titleId,
+        label: `Title #${index+1}`,
+      }, {
+        id: gameId,
+        label: `Game`,
+        type: 'game',
+      },
+    )
+    newLinkState[titleId] = link
+    newLinkState[gameId] = gamesAry[index] || undefined
+  })
+
+  return [fieldAry, newLinkState]
+}
+
 function useListForm() {
   const formState = usePersistentState(STATE_NAME, DEFAULT_VALUE)
   const linkFields = usePersistentState(LINK_FIELDS_NAME, LINK_FIELDS_DEFAULT_VALUE)
@@ -29,6 +52,31 @@ function useListForm() {
         }
     }),
   }
+
+  const hydrateForm = list => {
+    if(!list) return
+
+    formState.updateValue({
+      name: list.name,
+      slug: list.slug,
+      description: list.description.description,
+      image: list.image,
+      link: list.link,
+      creator: list.creator,
+    })
+
+    const titleAry = list.gameLink.map(gameLink => gameLink.title)
+    const gamesAry = list.gameLink
+      .map(gameLink => gameLink.bggId)
+      .map(bggId => list.games.find(game => game.bggId === bggId))
+
+    const [fieldAry, newLinkState] = buildStateObjects(titleAry, gamesAry)
+    
+    linkFields.updateValue(fieldAry)
+    linkState.updateValue(newLinkState)
+    
+  }
+
 
   const handleBaseChange = (field, value) => {
     const newValue = {...formState.value, [field.id]: value}
@@ -67,24 +115,9 @@ function useListForm() {
       })
     })
 
-    const fieldAry = []
-    const newLinkState = {}
-    linksAry.forEach((link, index) => {
-      const titleId = `${LINK_FIELD_ID} ${index} title`
-      const gameId = `${LINK_FIELD_ID} ${index} game`
-      fieldAry.push(
-        {
-          id: titleId,
-          label: `Title #${index+1}`,
-        }, {
-          id: gameId,
-          label: `Game`,
-          type: 'game',
-        },
-      )
-      newLinkState[titleId] = link
-      newLinkState[gameId] = linkState[gameId] || undefined
-    })
+    const gamesAry = Object.keys(linkState).filter(key => key.indexOf(' game') >= 0).map(key => linkState[key])
+
+    const [fieldAry, newLinkState] = buildStateObjects(linksAry, gamesAry)
     
     linkFields.updateValue(fieldAry)
     linkState.updateValue(newLinkState)
@@ -103,6 +136,8 @@ function useListForm() {
       handleGenerateGameLinks,
     },
     combinedValue,
+
+    hydrate: hydrateForm,
 
     handleClear,
   }

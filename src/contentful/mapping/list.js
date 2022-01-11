@@ -1,8 +1,37 @@
-import creatorMapper from './creator'
-import gameLinksMapper from './gameLinks'
+function getEmptyObject() {
+  return {
+    fields: {
+      name: {
+        'en-US': ''
+      },
+      slug: {
+        'en-US': ''
+      },
+      link: {
+        'en-US': []
+      },
+      image: {
+        'en-US': '',
+      },
+      description: {
+        'en-US': '',
+      },
+      creator: {
+        'en-US': {},
+      },
+      games: {
+        'en-US': [],
+      },
+      gameLink: {
+        'en-US': [],
+      },
+    }
+  }
+}
 
-export function rawToContentful(raw = {}, cmsCreator, cmsGames) {
-  const {
+export function rawToContentful(raw = {}, options = {}) {
+  const {cmsCreator, cmsGames, updateObject} = options
+  let {
     name = '',
     slug = '',
     link = '',
@@ -12,47 +41,36 @@ export function rawToContentful(raw = {}, cmsCreator, cmsGames) {
     gameLink = [],
     games = [],
   } = raw
-  
-  return {
-    fields: {
-      name: {
-        'en-US': name
-      },
-      slug: {
-        'en-US': slug,
-      },
-      link: {
-        'en-US': link,
-      },
-      image: {
-        'en-US': image,
-      },
-      description: {
-        'en-US': description,
-      },
-      gameLink: {
-        'en-US': gameLink,
-      },
-      games: {
-        'en-US': cmsGames ? cmsGames.map(game => ({
-          sys: {
-            id: game.sys.id,
-            linkType: 'Entry',
-            type: 'Link'
-          },
-        })) : games,
-      },
-      creator: {
-        'en-US': cmsCreator ? ({
-          sys: {
-            id: cmsCreator.sys.id,
-            linkType: 'Entry',
-            type: 'Link'
-          },
-        }) : creator,
-      },
-    }
-  }
+
+  if(description instanceof Object) description = description.description
+
+  const updateGames = cmsGames ? cmsGames.map(game => ({
+    sys: {
+      id: game.sys.id,
+      linkType: 'Entry',
+      type: 'Link'
+    },
+  })) : games
+  const updateCreator = cmsCreator ? ({
+    sys: {
+      id: cmsCreator.sys.id,
+      linkType: 'Entry',
+      type: 'Link'
+    },
+  }) : creator
+
+  const updateTarget = updateObject || getEmptyObject()
+
+  updateTarget.fields.name['en-US'] = name
+  updateTarget.fields.slug['en-US'] = slug
+  updateTarget.fields.link['en-US'] = link
+  updateTarget.fields.image['en-US'] = image
+  updateTarget.fields.description['en-US'] = description  
+  updateTarget.fields.creator['en-US'] = updateCreator
+  updateTarget.fields.gameLink['en-US'] = gameLink
+  updateTarget.fields.games['en-US'] = updateGames
+
+  return updateTarget
 }
 
 export function rawToGraphQl(...args) {

@@ -27,7 +27,9 @@ function useCreatorAdmin(editTarget) {
   }
 
   const saveClick = event => {
-    contentful.saveEntry(form.value, editTarget.slug)
+    const editTargetSlug = editTarget ? editTarget.slug : ''
+
+    contentful.saveEntry(form.value, editTargetSlug)
       .then(result => {
         updateIsSuccessful(result)
         if(result) {

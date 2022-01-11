@@ -9,15 +9,15 @@ import './list-mini.scss'
 
 const cn = 'list-mini'
 
-const ListMini = ({list, className, showCreator = true}) => {
+const ListMini = ({list, className, to = `/list/${list.slug}/`, showCreator = true}) => {
   
   return (
     <section className={classnames(cn, className)}>
-      <Link to={`/list/${list.slug}/`} className={`${cn}__image-wrapper`}>
+      <Link to={to} className={`${cn}__image-wrapper`}>
         <Image src={list.image} className={`${cn}__image`} isBordered={false} />
       </Link>
       <div className={`${cn}__primary-attrs`}>
-        <Link to={`/list/${list.slug}/`}>
+        <Link to={to}>
           <Font level="bravo" className={`${cn}__name ${cn}__value`}>{list.name}</Font>
           {showCreator && (
             <Font level="bravo" className={`${cn}__creator`}> by {list.creator.name}</Font>

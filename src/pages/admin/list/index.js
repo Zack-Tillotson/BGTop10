@@ -1,11 +1,11 @@
-import React from "react"
+import React, { useState } from "react"
 import { graphql } from 'gatsby'
 
-import Font from 'atoms/Font'
+import Button from 'atoms/Button'
 import Page from 'layout/Page'
 
 import ListAdminView from 'views/ListAdmin'
-import ContentfulCreatorList from 'components/ContentfulCreatorList'
+import ContentfulListList from 'components/ContentfulListList'
 
 const baseCn = 'admin'
 const crumbs = [
@@ -15,14 +15,25 @@ const crumbs = [
 ]
 
 const AdminCreatorPage = ({location, data}) => {
-  const {totalCount} = data.lists
+  const [tab, updateTab] = useState('new')
   
   return (
     <Page crumbs={crumbs} className={baseCn} location={location}>
-      <h1 className={`${baseCn}__title`}>Create new list</h1>
-      <ListAdminView Element="section" className={`${baseCn}__main`} />
-      <section className={`${baseCn}__summary`}>
-        {/* <ContentfulCreatorList /> */}
+      <section className={`${baseCn}__main`}>
+        <Button primary={tab === 'new'} onClick={() => updateTab('new')} tight>New</Button>
+        <Button primary={tab === 'list'} onClick={() => updateTab('list')} tight>Existing</Button>
+      {tab === 'new' && (
+        <>
+          <h1 className={`${baseCn}__title`}>Create new list</h1>
+          <ListAdminView Element="section" />
+        </>
+      )}
+      {tab === 'list' && (
+        <>
+          <h1 className={`${baseCn}__title`}>Select list to edit</h1>
+          <ContentfulListList />
+        </>
+      )}
       </section>
     </Page>
   )
@@ -34,9 +45,6 @@ export const query = graphql`
       siteMetadata {
         siteUrl
       }
-    }
-    lists: allContentfulList {
-      totalCount
     }
   }
 `

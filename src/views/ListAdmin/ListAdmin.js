@@ -14,9 +14,9 @@ import './list-admin.scss'
 
 const baseCn = 'list-admin'
 
-const ListAdmin = ({Element, className}) => {
+const ListAdmin = ({Element, className, editTarget}) => {
   
-  const {state, handlers, contentful, games} = useListAdmin()
+  const {state, handlers, contentful, games} = useListAdmin(editTarget)
 
   const viewList = contentful.rawToGraphQl(state.form.combinedValue)
   

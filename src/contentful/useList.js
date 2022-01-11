@@ -23,8 +23,21 @@ function getEntries(accessToken) {
     })
 }
 
-const saveEntryWithAccessToken = accessToken => (rawAttrs, cmsCreator, cmsGames) => {
-  const list = rawToContentful(rawAttrs, cmsCreator, cmsGames)
+const handleSave = (accessToken, fullList) => (rawList, cmsCreator, cmsGames, editSlug) => {
+  if(!editSlug) {
+    return saveEntry(accessToken, rawList, cmsCreator, cmsGames)
+  }
+
+  const item = fullList.find(item => item.fields.slug['en-US'] == editSlug)
+  if(!item) throw  new Error('Unable to find item to edit')
+
+  const updatedItem = rawToContentful(rawList, {cmsCreator , cmsGames, updateObject: item})
+  return updatedItem.update()
+}
+
+
+const saveEntry = (accessToken, rawAttrs, cmsCreator, cmsGames) => {
+  const list = rawToContentful(rawAttrs, {cmsCreator, cmsGames})
   list.fields.description['en-US'] = list.fields.description['en-US'].description
   return getEnvironment(accessToken)
     .then(env => env.createEntry(ENTRY_TYPE, list))
@@ -32,24 +45,27 @@ const saveEntryWithAccessToken = accessToken => (rawAttrs, cmsCreator, cmsGames)
 
 const useCmsListWithAccessToken = (accessToken, isEnabled) => {
   const [state, updateState] = useState([])
-  useDebugValue(`state: ${JSON.stringify(state)}`)
+  const [contentfulState, updateContentfulState] = useState([])
+  useDebugValue(`state: ${JSON.stringify(state)} ${JSON.stringify(contentfulState)}`)
 
   useEffect(() => {
     if(isEnabled) {
       getEntries(accessToken).then(result => {
+        updateContentfulState(result.items)
+
         const cleaned = result.items.map(contentfulToGraphQl)
         updateState(cleaned)
       })
     }
   }, [accessToken, isEnabled])
-  return state
+  return [state, contentfulState]
 }
 
 export default function useList(cmsListEnabled = false) {
 
   const {value} = useAccessToken()
-  const cmsList = useCmsListWithAccessToken(value, cmsListEnabled)
-  const saveEntry = saveEntryWithAccessToken(value)
+  const [cmsList, contentfulList] = useCmsListWithAccessToken(value, cmsListEnabled)
+  const saveEntry = handleSave(value, contentfulList)
 
   return {
     rawToContentful,

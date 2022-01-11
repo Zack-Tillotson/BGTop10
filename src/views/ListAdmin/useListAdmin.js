@@ -1,18 +1,22 @@
-import {useState} from 'react'
+import {useState, useEffect} from 'react'
 
 import useListForm from 'useListForm'
 import useList from 'contentful/useList'
 import useGame from 'contentful/useGame'
 import useCreator from 'contentful/useCreator'
 
-function useListAdmin() {
+function useListAdmin(editTarget) {
   const form = useListForm()
-  const contentful = useList()
+  const contentful = useList(editTarget)
   const contentfulCreator = useCreator(true)
   const contentfulGames = useGame(true)
 
   const [step, updateStep] = useState('form') // form, games, review
   const [isSuccessful, updateIsSuccessful] = useState(null) // null, true, false
+
+  useEffect(() => {
+    form.hydrate(editTarget)
+  }, [editTarget, contentful.cmsList])
 
   const gameStubs = Object.values(form.gameLinks.value)
     .filter(a => a instanceof Object) // objects are games
@@ -54,8 +58,11 @@ function useListAdmin() {
     const rawList = contentful.rawToGraphQl(form.combinedValue)
 
     const creator = contentfulCreator.contentfulList.find(item => item.fields.slug['en-US'] == rawList.creator.slug)
+    const games = contentfulGames.contentfulList.filter(game => rawList.gameLink.find(link => link.bggId == game.fields.bggId['en-US']))
 
-    contentful.saveEntry(rawList, creator, contentfulGames.contentfulList)
+    const editTargetSlug = editTarget ? editTarget.slug : ''
+
+    contentful.saveEntry(rawList, creator, games, editTargetSlug)
       .then(result => {
         updateIsSuccessful(result)
         if(result) {
