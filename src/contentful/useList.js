@@ -38,7 +38,7 @@ const handleSave = (accessToken, fullList) => (rawList, cmsCreator, cmsGames, ed
 
 const saveEntry = (accessToken, rawAttrs, cmsCreator, cmsGames) => {
   const list = rawToContentful(rawAttrs, {cmsCreator, cmsGames})
-  list.fields.description['en-US'] = list.fields.description['en-US'].description
+  
   return getEnvironment(accessToken)
     .then(env => env.createEntry(ENTRY_TYPE, list))
 }

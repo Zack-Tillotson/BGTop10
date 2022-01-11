@@ -31,7 +31,7 @@ function CreatorSelectorPane(props) {
         <ul>
           {list.map(creator => (
             <li key={creator.slug}>
-              <CreatorBrief creator={creator} onClick={handleCreatorClick(creator)} />
+              <CreatorBrief creator={creator} onClick={handleCreatorClick(creator)} isLink={false} />
             </li>
           ))}
         </ul>

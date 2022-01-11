@@ -84,7 +84,7 @@ export function contentfulToGraphQl(contentful) {
     ...sofar,
     [key]: contentful.fields[key]['en-US'],
   }), {})
-  built.description = {description: contentful.fields.description['en-US']}
+  built.description = {description: contentful.fields.description['en-US'] || ''}
   return built
 }
 
