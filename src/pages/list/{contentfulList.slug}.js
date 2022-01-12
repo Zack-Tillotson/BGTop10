@@ -1,5 +1,7 @@
 import * as React from "react"
 import { graphql } from 'gatsby'
+import {Helmet} from 'react-helmet'
+
 
 import Page from 'layout/Page'
 import ListView from 'views/List'
@@ -11,6 +13,10 @@ const ListPage = ({location, data}) => {
   
   return (
     <Page siteUrl={siteUrl} location={location} crumbs={[{display: 'Home', url: '/'}, {display: list.name, url: location.pathname}]}>
+      <Helmet>
+        <title>{list.name} | Cardboard Salad</title>
+        <meta name="description" content={`The games in ${list.name}`} />
+      </Helmet>
       <ListView list={list} basePath={location.pathname} />
     </Page>
   )

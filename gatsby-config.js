@@ -6,8 +6,8 @@ require("dotenv").config({
 
 const config = {
   siteMetadata: {
-    siteUrl: "https://bgtop10.web.app",
-    title: "BG Top 10",
+    siteUrl: process.env.SITE_METADATA_SITE_URL,
+    title: process.env.SITE_METADATA_SITE_TITLE,
   },
   plugins: [
     "gatsby-plugin-sass",
@@ -27,26 +27,20 @@ const config = {
         excludes: ['/admin/', '/admin/creator/', '/admin/list/'],
       }
     },
-    
+    {
+      resolve: `gatsby-plugin-google-gtag`,
+      options: {
+        trackingIds: [
+          process.env.GOOGLE_ANALYTICS_ID,
+        ],
+        pluginConfig: {
+          head: true,
+          anonymize_ip: true,
+          respectDNT: true,
+        },
+      },
+    },
   ],
 };
-
-if(env === 'production') {
-  config.plugins.push({
-    resolve: `gatsby-plugin-google-analytics`,
-    options: {
-      trackingId: "G-60P5Y2NR53",
-      head: true,
-      anonymize: true,
-      respectDNT: true,
-      exclude: ["/admin/**"],
-      pageTransitionDelay: 0,
-      defer: false,
-      sampleRate: 5,
-      siteSpeedSampleRate: 10,
-      enableWebVitalsTracking: true,
-    },
-  })
-}
 
 module.exports = config

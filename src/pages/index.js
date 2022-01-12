@@ -1,5 +1,6 @@
 import * as React from "react"
 import { graphql } from 'gatsby'
+import {Helmet} from 'react-helmet'
 
 import Page from 'layout/Page'
 
@@ -26,9 +27,12 @@ const IndexPage = ({location, data}) => {
 
   return (
     <Page siteUrl={siteUrl} location={location} crumbs={[{display: 'Home', url: '/'}]}>
-      <title>BG Top 10 Homepage</title>
+      <Helmet>
+        <title>Cardboard Salad</title>
+        <meta name="description" content="A site for those who love board games and love board game top 10 lists." />
+      </Helmet>
       <h1 className="--screen-reader">
-        BG Top 10 Homepage
+        Cardboard Salad
       </h1>
       <section>
         <h2>New lists</h2>

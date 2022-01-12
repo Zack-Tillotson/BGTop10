@@ -1,5 +1,7 @@
 import * as React from "react"
 import { graphql } from 'gatsby'
+import {Helmet} from 'react-helmet'
+
 
 import Page from 'layout/Page'
 import CreatorView from 'views/Creator'
@@ -11,6 +13,10 @@ const ListPage = ({location, data}) => {
   
   return (
     <Page siteUrl={siteUrl} location={location} crumbs={[{display: 'Home', url: '/'}, {display: creator.name, url: location.pathname}]}>
+      <Helmet>
+        <title>{creator.name} | Cardboard Salad</title>
+        <meta name="description" content={`View board game lists from ${creator.name}`} />
+      </Helmet>
       <CreatorView creator={creator} lists={lists} basePath={location.pathname} />
     </Page>
   )
