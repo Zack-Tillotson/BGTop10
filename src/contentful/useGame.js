@@ -36,6 +36,22 @@ const saveEntryWithAccessToken = accessToken => raw => {
     })
 }
 
+const updateEntryWithAccessToken = accessToken => bggId => {
+  return throttler()
+    .then(() => Promise.all([
+      getAttrsFromBgg(bggId),
+      getEnvironment(accessToken).then(env => env.getEntries({content_type: ENTRY_TYPE, 'fields.bggId': bggId})),
+    ]))
+    .then(([attrs, entries]) => {
+      if(entries.total !== 1) throw new Error('entry not found')
+      const entry = entries.items[0]
+      
+      rawToContentful(attrs, {targetObject: entry})
+
+      return entry.update()
+    })
+}
+
 const useCmsListWithAccessToken = (accessToken, isEnabled) => {
   const [state, updateState] = useState([])
   const [contentfulState, updateContentfulState] = useState([])
@@ -56,10 +72,12 @@ const useCmsListWithAccessToken = (accessToken, isEnabled) => {
   return [state, contentfulState, forceRefresh]
 }
 
-export default function useCreator(cmsListEnabled = false) {
+export default function useGame(cmsListEnabled = false) {
 
   const {value} = useAccessToken()
   const createAndStore = saveEntryWithAccessToken(value)
+  const updateAndStore = updateEntryWithAccessToken(value)
+
   const [cmsList, contentfulList, refreshCmsList] = useCmsListWithAccessToken(value, cmsListEnabled)
 
   return {
@@ -70,6 +88,8 @@ export default function useCreator(cmsListEnabled = false) {
     contentfulList,
 
     createAndStore,
+    updateAndStore,
+
     refreshCmsList,
   }
 }

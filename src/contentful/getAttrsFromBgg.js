@@ -7,6 +7,13 @@ function getSafeValue(item, getter, defaultValue = '') {
   return value
 }
 
+// lol bgg wut
+function cleanText(text) {
+  const ele = document.createElement('html')
+  ele.innerHTML = text
+  ele.innerHTML = ele.innerText
+  return ele.innerText
+}
 
 function getAttrsFromBgg(id) {
 return fetch(`https://api.geekdo.com/xmlapi2/thing?id=${id}`)
@@ -15,6 +22,8 @@ return fetch(`https://api.geekdo.com/xmlapi2/thing?id=${id}`)
     const xmlData = new DOMParser().parseFromString(stringData, "application/xml")
 
     const item = [...xmlData.documentElement.children].find(ele => ele.tagName === 'item')
+
+    const cleanDesc = cleanText(getSafeValue(item, item => [...item.children].find(attr => attr.tagName === 'description').innerHTML))
 
     const retItem = {
       bggId: Number(id),
@@ -29,6 +38,10 @@ return fetch(`https://api.geekdo.com/xmlapi2/thing?id=${id}`)
       mechanic: getSafeValue(item, item => [...item.children].filter(attr => attr.tagName === 'link' && attr.getAttribute('type') === 'boardgamemechanic'), []).map(pub => pub.getAttribute('value')),
       playerCountMin: Number(getSafeValue(item, item => [...item.children].find(attr => attr.tagName === 'minplayers').getAttribute('value'))),
       playerCountMax: Number(getSafeValue(item, item => [...item.children].find(attr => attr.tagName === 'maxplayers').getAttribute('value'))),
+      playTimeMin: Number(getSafeValue(item, item => [...item.children].find(attr => attr.tagName === 'minplaytime').getAttribute('value'))),
+      playTimeMax: Number(getSafeValue(item, item => [...item.children].find(attr => attr.tagName === 'maxplaytime').getAttribute('value'))),
+      playTimeAvg: Number(getSafeValue(item, item => [...item.children].find(attr => attr.tagName === 'playingtime').getAttribute('value'))),
+      description: cleanDesc,
     }
     return retItem
   })

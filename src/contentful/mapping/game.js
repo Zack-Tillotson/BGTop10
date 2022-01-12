@@ -1,5 +1,63 @@
+function getEmtpyObject() {
+  return {
+    fields: {
+      name: {
+        'en-US': ''
+      },
+      bggId: {
+        'en-US': 0,
+      },
+      yearPublished: {
+        'en-US': 0,
+      },
+      publisher: {
+        'en-US': [],
+      },
+      artist: {
+        'en-US': [],
+      }, 
+      designer: {
+        'en-US': [],
+      },
+      family: {
+        'en-US': [],
+      },
+      image: {
+        'en-US': '',
+      },
+      imageThumbnail: {
+        'en-US': '',
+      },
+      mechanic: {
+        'en-US': [],
+      },
+      playerCountMax: {
+        'en-US': 0,
+      },
+      playerCountMin: {
+        'en-US': 0,
+      },
+      playTimeMin: {
+        'en-US': 0,
+      },
+      playTimeMax: {
+        'en-US': 0,
+      },
+      playTimeAvg: {
+        'en-US': 0,
+      },
+      description: {
+        'en-US': '',
+      },
+    }
+  }
+}
 
-export function rawToContentful(raw = {}) {
+
+export function rawToContentful(raw = {}, options = {}) {
+  const {
+    targetObject = getEmtpyObject(),
+  } = options
   
   const {
     bggId = 0,
@@ -14,49 +72,30 @@ export function rawToContentful(raw = {}) {
     mechanic = [],
     playerCountMax = 0,
     playerCountMin = 0,
+    description = '',
+    playTimeMin = 0,
+    playTimeMax = 0,
+    playTimeAvg = 0,
   } = raw
   
-  return {
-    fields: {
-      name: {
-        'en-US': name
-      },
-      bggId: {
-        'en-US': Number(bggId),
-      },
-      yearPublished: {
-        'en-US': Number(yearPublished),
-      },
-      publisher: {
-        'en-US': publisher,
-      },
-      artist: {
-        'en-US': artist,
-      }, 
-      designer: {
-        'en-US': designer,
-      },
-      family: {
-        'en-US': family,
-      },
-      image: {
-        'en-US': image,
-      },
-      imageThumbnail: {
-        'en-US': imageThumbnail,
-      },
-      mechanic: {
-        'en-US': mechanic,
-      },
-      playerCountMax: {
-        'en-US': Number(playerCountMax),
-      },
-      playerCountMin: {
-        'en-US': Number(playerCountMin),
-      },
-      
-    }
-  }
+  targetObject.fields.name = {['en-US']: name}
+  targetObject.fields.bggId = {['en-US'] : Number(bggId)}
+  targetObject.fields.yearPublished = {['en-US'] : Number(yearPublished)}
+  targetObject.fields.publisher = {['en-US'] : publisher}
+  targetObject.fields.artist = {['en-US'] : artist}
+  targetObject.fields.designer = {['en-US'] : designer}
+  targetObject.fields.family = {['en-US'] : family}
+  targetObject.fields.image = {['en-US'] : image}
+  targetObject.fields.imageThumbnail = {['en-US'] : imageThumbnail}
+  targetObject.fields.mechanic = {['en-US']: mechanic}
+  targetObject.fields.playerCountMax = {['en-US'] : playerCountMax}
+  targetObject.fields.playerCountMin = {['en-US'] : playerCountMin}
+  targetObject.fields.description = {['en-US'] : description}
+  targetObject.fields.playTimeMin = {['en-US'] : playTimeMin}
+  targetObject.fields.playTimeMax = {['en-US'] : playTimeMax}
+  targetObject.fields.playTimeAvg = {['en-US'] : playTimeAvg}
+
+  return targetObject
 }
 
 export function rawToGraphQl(raw) {

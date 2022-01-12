@@ -1,4 +1,5 @@
 import * as React from "react"
+import ReactMarkdown from "react-markdown"
 
 import Button from 'atoms/Button'
 import Font from 'atoms/Font'
@@ -31,17 +32,24 @@ const GameView = ({game, lists}) => {
         <Font level="charlie" className={`${cn}__bgg-link`}>
           <Button type="anchor" wide secondary href={`https://boardgamegeek.com/boardgame/${game.bggId}/`} target="_blank">Board Game Geek</Button>
         </Font>
+        {!!game.description && (
+          <Font level="charlie" className={`${cn}__bgg-link`}>
+            <ReactMarkdown>
+              {game.description.description}
+            </ReactMarkdown>
+          </Font>
+        )}
         <h2>Attributes</h2>
         <Font level="delta" className={`${cn}__key`}>Player Count</Font>
-        <Font level="delta" className={`${cn}__value`}>{playerCount}</Font>
+        <Font level="charlie" className={`${cn}__value`}>{playerCount}</Font>
         <Font level="delta" className={`${cn}__key`}>Designer</Font>
-        <Font level="delta" className={`${cn}__value ${cn}__longish`}>{(game.designer || []).join(', ')}</Font>
+        <Font level="charlie" className={`${cn}__value ${cn}__longish`}>{(game.designer || []).join(', ')}</Font>
         <Font level="delta" className={`${cn}__key`}>Publisher</Font>
-        <Font level="delta" className={`${cn}__value ${cn}__longish`}>{(game.publisher || []).join(', ')}</Font>
+        <Font level="charlie" className={`${cn}__value ${cn}__longish`}>{(game.publisher || []).join(', ')}</Font>
         <Font level="delta" className={`${cn}__key`}>Artists</Font>
-        <Font level="delta" className={`${cn}__value ${cn}__longish`}>{(game.artist || []).join(', ')}</Font>
+        <Font level="charlie" className={`${cn}__value ${cn}__longish`}>{(game.artist || []).join(', ')}</Font>
         <Font level="delta" className={`${cn}__key`}>Mechanics</Font>
-        <Font level="delta" className={`${cn}__value ${cn}__longish`}>{(game.mechanic || []).join(', ')}</Font>
+        <Font level="charlie" className={`${cn}__value ${cn}__longish`}>{(game.mechanic || []).join(', ')}</Font>
       </section>
       <section className={`${cn}__lists`}>
         <h2>Part of these lists</h2>

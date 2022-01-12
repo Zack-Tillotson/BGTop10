@@ -24,6 +24,7 @@ const AdminIndexPage = () => {
         <h3>Pages</h3>
         <ol>
           <li><Button type="link" to="creator" minimal>Creator</Button> - Add a creator</li>
+          <li><Button type="link" to="games" minimal>Games</Button> - Add a game</li>
           <li><Button type="link" to="list" minimal>List</Button> - Add a list, must have creator beforehand</li>
         </ol>
       </section>

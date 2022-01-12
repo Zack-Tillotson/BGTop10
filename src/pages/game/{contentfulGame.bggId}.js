@@ -42,6 +42,12 @@ export const query = graphql`
       playerCountMin
       publisher
       yearPublished
+      description {
+        description
+      }
+      playTimeMin
+      playTimeMax
+      playTimeAvg
     }
     allContentfulList(filter: {games: {elemMatch: {bggId: {eq: $bggId}}}}) {
       lists: nodes {
