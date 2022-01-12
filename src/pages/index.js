@@ -5,8 +5,8 @@ import {Helmet} from 'react-helmet'
 import Page from 'layout/Page'
 
 import GameMini from 'components/GameMini'
-import ListMini from 'components/ListMini'
-import CreatorMini from 'components/CreatorMini'
+import ListsBox from 'components/ListsBox'
+import CreatorPills from 'components/CreatorPills'
 
 const IndexPage = ({location, data}) => {
 
@@ -26,40 +26,25 @@ const IndexPage = ({location, data}) => {
   }), {}))
 
   return (
-    <Page siteUrl={siteUrl} location={location} crumbs={[{display: 'Home', url: '/'}]}>
+    <Page siteUrl={siteUrl} location={location}>
       <Helmet>
         <title>Cardboard Salad</title>
-        <meta name="description" content="A site for those who love board games and love board game top 10 lists." />
       </Helmet>
       <h1 className="--screen-reader">
         Cardboard Salad
       </h1>
       <section>
-        <h2>New lists</h2>
-        <ul>
-          {lists.map(list => (
-            <li key={list.slug}>
-              <ListMini list={list} />
-            </li>
-          ))}
-        </ul>
+        <CreatorPills creators={creators} />
+      </section>
+      <section>
+        <ListsBox lists={lists} />
       </section>
       <section>
         <h2>Hot games</h2>
         <ul>
-          {games.sort(() => Math.random()-.5).slice(0, 10).map(game => (
+          {games.slice(0, 10).map(game => (
             <li key={game.bggId}>
               <GameMini game={game} />
-            </li>
-          ))}
-        </ul>
-      </section>
-      <section>
-        <h2>Popular creators</h2>
-        <ul>
-          {creators.sort(() => Math.random() - .5).slice(0, 10).map(creator => (
-            <li key={creator.slug}>
-              <CreatorMini creator={creator} wide />
             </li>
           ))}
         </ul>

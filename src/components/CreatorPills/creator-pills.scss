@@ -1,0 +1,22 @@
+.creator-pills {
+  white-space: nowrap;
+  overflow-x: auto;
+  overflow-y: hidden;
+  touch-action: pan-x;
+
+  -ms-overflow-style: none; /* for Internet Explorer, Edge */
+  scrollbar-width: none; /* for Firefox */
+  
+  &::-webkit-scrollbar {
+    display: none; /* for Chrome, Safari, and Opera */
+  }
+}
+
+.creator-pills__pills {
+  display: flex;
+  flex-flow: row nowrap;
+}
+
+.creator-pills__creator {
+  margin-right: var(--pad);
+}

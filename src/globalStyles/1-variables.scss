@@ -4,14 +4,18 @@
 :root {
 
   /* brand colors (each 1-4, 2 is standard) */
-  --brand-primary-1: #C7ECFF;
-  --brand-primary-2: #0086CD;
-  --brand-primary-3: #025886;
-  --brand-primary-4: #012d46;
-  --brand-secondary-1: #9af1ad;
-  --brand-secondary-2: #2DB34A;
-  --brand-secondary-3: #13852b;
-  --brand-secondary-4: #035214;
+  --brand-primary-1: #ecffd2;
+  --brand-primary-2: #77c40d;
+  --brand-primary-3: #4d8103;
+  --brand-primary-4: #274201;
+  --brand-secondary-1: #fdebcb;
+  --brand-secondary-2: #f8a515;
+  --brand-secondary-3: #9b6810;
+  --brand-secondary-4: #553806;
+  --brand-tertiary-1: #c0d4ee;
+  --brand-tertiary-2: #4983cf;
+  --brand-tertiary-3: #1d4a85;
+  --brand-tertiary-4: #09274e;
   --brand-white: #ffffff;
   --brand-grey-1: #f5f5f5;
   --brand-grey-2: #7c7c7c;
@@ -36,7 +40,9 @@
   --color-bg-base-transparent: #f5f5f593; /* manually keep to up to date with above */
   --color-bg-focus: var(--brand-grey-1);
   --color-bg-primary: var(--brand-primary-1);
+  --color-bg-primary-transparent: #ecffd293; /* manually keep to up to date with above */
   --color-bg-secondary: var(--brand-secondary-1);
+  --color-bg-tertiary: var(--brand-tertiary-1);
 
   --color-font-base: var(--brand-black);
   --color-font-focus: var(--brand-grey-3);
@@ -49,11 +55,13 @@
 
   /* semantics contrast */
 
-  --color-contrast-bg-base: var(--brand-grey-3);
+  --color-contrast-bg-base: var(--brand-tertiary-4);
   --color-contrast-bg-base-transparent: rgba(73, 73, 73, .8); /* manually keep to up to date with above */
   --color-contrast-bg-focus: var(--brand-grey-4);
   --color-contrast-bg-primary: var(--brand-primary-3);
+  --color-contrast-bg-primary-transparent: #4d810393; /* manually keep to up to date with above */
   --color-contrast-bg-secondary: var(--brand-secondary-3);
+  --color-contrast-bg-tertiary: var(--brand-tertiary-3);
 
   --color-contrast-font-base: var(--brand-grey-1);
   --color-contrast-font-focus: var(--brand-grey-2);
@@ -65,7 +73,9 @@
     --color-bg-base-transparent: #24242493; /* manually keep to up to date with above */
     --color-bg-focus: var(--brand-black);
     --color-bg-primary: var(--brand-primary-4);
+    --color-bg-primary-transparent: #27420193; /* manually keep to up to date with above */
     --color-bg-secondary: var(--brand-secondary-4);
+    --color-bg-tertiary: var(--brand-tertiary-4);
   
     --color-font-base: var(--brand-white);
     --color-font-focus: var(--brand-grey-2);
@@ -82,7 +92,9 @@
     --color-contrast-bg-base-transparent: #7c7c7c80; /* manually keep to up to date with above */
     --color-contrast-bg-focus: var(--brand-grey-1);
     --color-contrast-bg-primary: var(--brand-primary-2);
+    --color-contrast-bg-primary-transparent: #77c40d93; /* manually keep to up to date with above */
     --color-contrast-bg-secondary: var(--brand-secondary-2);
+    --color-contrast-bg-tertiary: var(--brand-tertiary-2);
   
     --color-contrast-font-base: var(--brand-grey-1);
     --color-contrast-font-focus: var(--brand-grey-3);
@@ -104,10 +116,10 @@
   --font-content: 'Open Sans', -apple-system, BlinkMacSystemFont, 'Helvetica Neue', sans-serif;
 
   /* Typography */
-  --font-size-alpha: 1.6rem;
-  --font-size-beta: 1.35rem;
+  --font-size-alpha: 1.75rem;
+  --font-size-beta: 1.3rem;
   --font-size-charlie: 1rem; // Default
-  --font-size-delta: .75rem;
+  --font-size-delta: .85rem;
 
   /* Borders */
   --border-1: solid 1px var(--color-contrast-bg-base);

@@ -1,0 +1,10 @@
+.lists-box {
+  display: grid;
+  grid-template-columns: 1fr;
+  grid-gap: var(--pad);
+  margin-top: var(--pad); /*xxx*/
+
+  @media(min-width: 800px) {
+    grid-template-columns: 1fr 1fr 1fr;
+  }
+}

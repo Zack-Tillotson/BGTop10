@@ -1,11 +1,6 @@
 .list-mini {
   display: flex;
-  flex-flow: row nowrap;
-}
-
-.list-mini__image-wrapper {
-  height: 75px;
-  width: 90px;
+  flex-flow: column nowrap;
 }
 
 .list-mini__image {
@@ -14,7 +9,7 @@
 }
 
 .list-mini__primary-attrs {
-  margin-left: var(--pad);
+  margin: var(--pad);
   flex: 1;
 }
 

@@ -15,7 +15,6 @@ const ListPage = ({location, data}) => {
     <Page siteUrl={siteUrl} location={location} crumbs={[{display: 'Home', url: '/'}, {display: list.name, url: location.pathname}]}>
       <Helmet>
         <title>{list.name} | Cardboard Salad</title>
-        <meta name="description" content={`The games in ${list.name}`} />
       </Helmet>
       <ListView list={list} basePath={location.pathname} />
     </Page>

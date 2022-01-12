@@ -1,5 +1,6 @@
 import React, { useEffect } from 'react'
 import cn from 'classnames'
+import { Helmet } from 'react-helmet'
 
 import PageHead from '../PageHead'
 import Breadcrumbs from '../Breadcrumbs'
@@ -21,6 +22,15 @@ function Component({
 
   return (
     <Ele className="page">
+      <Helmet>
+        <meta charset="utf-8" />
+        <link rel="icon" href="/icon.png" />
+        <meta name="viewport" content="width=device-width, initial-scale=1" />
+        <link href="https://fonts.googleapis.com/css?family=Montserrat:400,700|Open+Sans:400,700&display=swap" rel="stylesheet" />
+        <meta name="theme-color" content="#77c40d" />
+        <meta name="description" content="A site for those who love board games and love board game top 10 lists." />
+        <link rel="apple-touch-icon" href="/icon.png" />
+      </Helmet>
       {isHeadShown && (
         <PageHead className="page__head" />
       )}
