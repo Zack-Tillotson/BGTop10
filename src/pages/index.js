@@ -12,8 +12,17 @@ const IndexPage = ({location, data}) => {
   const {siteUrl} = data.site.siteMetadata
 
   const lists = data.lists.nodes
-  const games = data.games.nodes
-  const creators = data.creators.nodes
+  const games = Object.values(lists.reduce((gameMap, list) => ({
+    ...gameMap,
+    ...list.games.reduce((aGameMap, game) => ({
+      ...aGameMap,
+      [game.bggId]: game,
+    }), {}),
+  }), {}))
+  const creators = Object.values(lists.reduce((map, list) => ({
+    ...map,
+    [list.creator.slug]: list.creator,
+  }), {}))
 
   return (
     <Page siteUrl={siteUrl} location={location} crumbs={[{display: 'Home', url: '/'}]}>
@@ -34,7 +43,7 @@ const IndexPage = ({location, data}) => {
       <section>
         <h2>Hot games</h2>
         <ul>
-          {games.map(game => (
+          {games.sort(() => Math.random()-.5).slice(0, 10).map(game => (
             <li key={game.bggId}>
               <GameMini game={game} />
             </li>
@@ -44,7 +53,7 @@ const IndexPage = ({location, data}) => {
       <section>
         <h2>Popular creators</h2>
         <ul>
-          {creators.map(creator => (
+          {creators.sort(() => Math.random() - .5).slice(0, 10).map(creator => (
             <li key={creator.slug}>
               <CreatorMini creator={creator} wide />
             </li>
@@ -56,81 +65,53 @@ const IndexPage = ({location, data}) => {
 }
 
 export const query = graphql`
-  query IndexPageQuery {
-    site {
-      siteMetadata {
-        siteUrl
-      }
+query IndexPageQuery {
+  site {
+    siteMetadata {
+      siteUrl
     }
-    lists: allContentfulList {
-      nodes {
+  }
+  lists: allContentfulList(limit: 20, sort: {fields: updatedAt, order: DESC}) {
+    nodes {
+      slug
+      description {
+        description
+      }
+      image
+      link
+      name
+      creator {
         slug
+        name
+        link
+        imageBanner
+        imageAvatar
         description {
           description
         }
-        image
-        link
-        name
-        creator {
-          slug
-          name
-          link
-          imageBanner
-          imageAvatar
-          description {
-            description
-          }
-        }
-        games {
-          artist
-          bggId
-          designer
-          family
-          image
-          imageThumbnail
-          mechanic
-          name
-          playerCountMax
-          playerCountMin
-          publisher
-          yearPublished
-        }
-        gameLink {
-          title
-          bggId
-        }
       }
-    }
-    games: allContentfulGame(limit: 10) {
-      totalCount
-      nodes {
+      games {
+        artist
         bggId
-        name
         designer
         family
-        artist
         image
         imageThumbnail
+        mechanic
+        name
         playerCountMax
         playerCountMin
         publisher
         yearPublished
-        mechanic
       }
-    }
-    creators: allContentfulCreator {
-      nodes {
-        slug
-        imageAvatar
-        imageBanner
-        name
-        description {
-          description
-        }
-        link
+      gameLink {
+        title
+        bggId
       }
     }
   }
+}
+
 `
 
 export default IndexPage
