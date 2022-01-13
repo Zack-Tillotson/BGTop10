@@ -4,6 +4,9 @@
   overflow-y: hidden;
   touch-action: pan-x;
 
+  border-bottom: var(--border-1);
+  margin-bottom: var(--pad2);
+
   -ms-overflow-style: none; /* for Internet Explorer, Edge */
   scrollbar-width: none; /* for Firefox */
   
@@ -15,8 +18,13 @@
 .creator-pills__pills {
   display: flex;
   flex-flow: row nowrap;
+  margin-bottom: var(--pad);
 }
 
 .creator-pills__creator {
+  border: var(--border-1);
+  border-color: var(--color-font-focus);
+  border-radius: 999px;
+  padding: var(--pad);
   margin-right: var(--pad);
 }

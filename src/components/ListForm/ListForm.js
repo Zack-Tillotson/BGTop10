@@ -82,7 +82,7 @@ const ListForm = () => {
           <Font level="delta" className="list-form__input">{creatorField.label}</Font>
           <CreatorSelector onSelect={handleCreatorSelect} buttonProps={{chidlren: "Select", primary: !state.base.value.creator, hollow: !!state.base.value.creator}} />
         </div>
-        {state.base.value.creator && <CreatorBrief creator={state.base.value.creator} isLink={false} />}
+        {state.base.value.creator && <CreatorBrief creator={state.base.value.creator} />}
       </div>
       {state.base.value.creator && ( /* Only show the list info after the user has selected a creator */
         <>

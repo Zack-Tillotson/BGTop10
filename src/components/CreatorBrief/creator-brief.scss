@@ -1,19 +1,14 @@
 .creator-brief {
   display: flex;
   flex-flow: row nowrap;
-
-  border-bottom: var(--border-1);
-}
-
-.creator-brief__image {
-  display: inline-block;
-  width: 45px;
-  height: 45px;
-  margin: 0 auto;
+  align-items: center;
 }
 
 .creator-brief__title {
-  flex: 1;
-  margin-left: var(--pad);
-  line-height: 45px;
+  margin-right: var(--pad2);
+}
+
+.creator-brief__image {
+  height: var(--font-size-charlie);
+  margin-right: var(--pad-half);
 }

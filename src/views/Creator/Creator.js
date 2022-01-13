@@ -5,7 +5,7 @@ import Button from 'atoms/Button'
 import Font from 'atoms/Font'
 import Image from 'atoms/Image'
 
-import ListMini from 'components/ListMini'
+import ListsBox from 'components/ListsBox'
 
 import './creator.scss'
 
@@ -51,13 +51,7 @@ const CreatorView = ({creator, lists = []}) => {
       </section>
       <section className={`${cn}__lists`}>
         <h2>Lists</h2>
-        <ol className={`${cn}__lists-list`}>
-          {lists.map(list => (
-            <li key={list.slug}>
-              <ListMini list={list} showCreator={false} />
-            </li>
-          ))}
-        </ol>
+        <ListsBox lists={lists} />
       </section>
     </div>
   )

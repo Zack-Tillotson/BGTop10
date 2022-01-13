@@ -1,7 +1,7 @@
 import * as React from "react"
 import {Link} from 'gatsby'
 
-import Pill from 'atoms/Pill'
+import CreatorBrief from "components/CreatorBrief"
 
 import './creator-pills.scss'
 
@@ -13,13 +13,12 @@ const CreatorPills = ({creators}) => {
     <div className={`${baseCn}`}>
       <div className={`${baseCn}__pills`}>
         {creators.map(creator=> (
-          <Pill 
+          <CreatorBrief
             key={creator.slug} 
-            Element={Link} 
+            Element={Link}
             to={`/creator/${creator.slug}/`}
-            className={`${baseCn}__creator`}>
-              {creator.name}
-          </Pill>
+            creator={creator}
+            className={`${baseCn}__creator`} />
         ))}
       </div>
     </div>

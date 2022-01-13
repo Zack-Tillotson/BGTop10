@@ -38,12 +38,13 @@ export const query = graphql`
         description
       }
     }
-    allContentfulList(filter: {creator: {slug: {eq: $slug}}}) {
+    allContentfulList(filter: {creator: {slug: {eq: $slug}}}, sort: {fields: datePublished, order: DESC}) {
       lists: nodes {
         image
         name
         link
         slug
+        datePublished
         creator {
           slug
           name

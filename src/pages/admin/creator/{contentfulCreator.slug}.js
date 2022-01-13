@@ -21,7 +21,7 @@ const AdminCreatorEditPage = ({location, data}) => {
       <h1 className={`${baseCn}__title`}>Create new creator</h1>
       <CreatorAdminView Element="section" className={`${baseCn}__main`} editTarget={data.creator} />
       <section className={`${baseCn}__summary`}>
-        <CreatorBrief creator={data.creator} isLink={false} />
+        <CreatorBrief creator={data.creator} />
       </section>
     </Page>
   )

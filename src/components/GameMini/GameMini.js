@@ -38,14 +38,16 @@ const GameMini = ({game = {}, className}) => {
         </Link>
         <Font level="delta">({yearPublished})</Font>
       </div>
-      <div className={`${cn}__secondary-attrs ${cn}__longish`}>
-        <Font level="delta" className={`${cn}__key`}>Player Count</Font>
-        <Font level="delta" className={`${cn}__value`}>{playerCount}</Font>
-        <Font level="delta" className={`${cn}__key`}>Designer</Font>
-        <Font level="delta" className={`${cn}__value ${cn}__longish`}>{designer.join(', ')}</Font>
-        <Font level="delta" className={`${cn}__key`}>Publisher</Font>
-        <Font level="delta" className={`${cn}__value ${cn}__longish`}>{publisher.join(', ')}</Font>
-      </div>
+      <Font level="delta" className={`${cn}__secondary-attrs`}>
+        <div className={`${cn}__attr-name`}>Players: </div>
+        <div className={`${cn}__attr-value`}>{playerCount}</div>
+
+        <div className={`${cn}__attr-name`}>Designer: </div>
+        <div className={`${cn}__longish`}>{designer.join(', ')}</div>
+
+        <div className={`${cn}__attr-name`}>Publisher: </div>
+        <div className={`${cn}__longish`}>{publisher.join(', ')}</div>
+      </Font>
     </section>
   )
 }

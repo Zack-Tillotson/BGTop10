@@ -36,7 +36,7 @@ h1 {
 }
 
 h2 {
-  font-size: var(--font-size-beta);
+  font-size: var(--font-size-bravo);
   margin: .5rem 0;
 }
 
@@ -45,6 +45,10 @@ h3 {
 }
 
 h4 {
+  font-size: var(--font-size-delta);
+  font-weight: bold;
+  color: var(--color-font-focus);
+  margin: var(--pad) 0;
 }
 
 p {

@@ -7,9 +7,7 @@ import './creator-mini.scss'
 
 const cn = 'creator-mini'
 
-const CreatorMini = ({creator, wide = false, isLink = true}) => {
-  const Element = isLink ? Link : 'div'
-
+const CreatorMini = ({creator, wide = false, Element = 'div'}) => {
   return (
     <section className={`${cn} ${wide && `${cn}--wide`}`}>
       <Element to={`/creator/${creator.slug}/`} className={`${cn}__title`}>

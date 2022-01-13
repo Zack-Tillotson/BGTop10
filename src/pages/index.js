@@ -13,17 +13,19 @@ const IndexPage = ({location, data}) => {
   const {siteUrl} = data.site.siteMetadata
 
   const lists = data.lists.nodes
-  const games = Object.values(lists.reduce((gameMap, list) => ({
-    ...gameMap,
-    ...list.games.reduce((aGameMap, game) => ({
-      ...aGameMap,
-      [game.bggId]: game,
-    }), {}),
-  }), {}))
-  const creators = Object.values(lists.reduce((map, list) => ({
-    ...map,
-    [list.creator.slug]: list.creator,
-  }), {}))
+  const gameMap = {}
+  lists.forEach(list => list.games.forEach(game => {
+    gameMap[game.bggId] = gameMap[game.bggId] || {game, count: 0}
+    gameMap[game.bggId].count++
+  }))
+  const games = Object.values(gameMap).sort((a, b) => b.count - a.count).map(item => item.game)
+
+  const creatorMap = {}
+  lists.forEach(({creator}) => {
+    creatorMap[creator.slug] = creatorMap[creator.slug] || {creator, count: 0}
+    creatorMap[creator.slug].count++
+  })
+  const creators = Object.values(creatorMap).sort((a, b) => b.count - a.count).map(item => item.creator)
 
   return (
     <Page siteUrl={siteUrl} location={location}>
@@ -34,9 +36,11 @@ const IndexPage = ({location, data}) => {
         Cardboard Salad
       </h1>
       <section>
+        <h4>Popular creators</h4>
         <CreatorPills creators={creators} />
       </section>
       <section>
+        <h2>Check out these game lists</h2>
         <ListsBox lists={lists} />
       </section>
       <section>
@@ -60,7 +64,7 @@ query IndexPageQuery {
       siteUrl
     }
   }
-  lists: allContentfulList(limit: 20, sort: {fields: updatedAt, order: DESC}) {
+  lists: allContentfulList(limit: 20, sort: {fields: datePublished, order: DESC}) {
     nodes {
       slug
       description {
@@ -69,6 +73,7 @@ query IndexPageQuery {
       image
       link
       name
+      datePublished
       creator {
         slug
         name

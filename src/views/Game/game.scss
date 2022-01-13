@@ -25,10 +25,6 @@
   color: var(--color-font-focus);
 }
 
-.game-view__info {
-  margin-top: var(--pad2);
-}
-
 .game-view__image-wrapper {
   width: 100%;
   height: 250px;
@@ -37,6 +33,29 @@
 .game-view__image {
   width: 100%;
   height: 100%;
+}
+
+.game-view__description-wrapper {
+  position: relative;
+}
+
+.game-view__description--shrunk {
+  max-height: 150px;
+  overflow: hidden;
+}
+
+.game-view__description-haze {
+  position: absolute;
+  bottom: 0;
+  pointer-events: none;
+  left: 0;
+  width: 100%;
+  text-align: center;
+  margin: 0;
+  padding: 30px 0;
+  background-image: linear-gradient(
+180deg
+,hsla(0,0%,100%,0),#fff);
 }
 
 .game-view__lists-list {

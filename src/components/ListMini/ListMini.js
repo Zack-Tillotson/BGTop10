@@ -3,7 +3,7 @@ import classnames from 'classnames'
 import {Link} from 'gatsby'
 
 import Font from 'atoms/Font'
-import Image from 'atoms/Image'
+import CreatorBrief from "components/CreatorBrief"
 
 import './list-mini.scss'
 
@@ -16,15 +16,16 @@ const ListMini = ({list, className, to = `/list/${list.slug}/`, showCreator = tr
       <Link to={to} className={`${cn}__image-wrapper`}>
         <img src={list.image} className={`${cn}__image`} />
       </Link>
+      <div className={`${cn}__secondary-attrs`}>
+        <Font level="delta">Published: {new Date(list.datePublished).toLocaleDateString(undefined, { year: 'numeric', month: 'short', day: 'numeric' })}</Font>
+      </div>
       <div className={`${cn}__primary-attrs`}>
         <Link to={to}>
-          <Font level="bravo" className={`${cn}__name ${cn}__value`}>{list.name}</Font>
-        </Link>
+          <Font level="charlie" className={`${cn}__name ${cn}__value`}>{list.name}</Font>
         {showCreator && (
-          <Link to={creatorTo}>
-            <Font level="bravo" className={`${cn}__creator`}>{list.creator.name}</Font>
-          </Link>
+          <CreatorBrief className={`${cn}__creator`} creator={list.creator} to={creatorTo} Element={Link} />
         )}
+        </Link>
       </div>
     </section>
   )

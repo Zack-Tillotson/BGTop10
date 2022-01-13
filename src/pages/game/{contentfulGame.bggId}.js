@@ -48,12 +48,13 @@ export const query = graphql`
       playTimeMax
       playTimeAvg
     }
-    allContentfulList(filter: {games: {elemMatch: {bggId: {eq: $bggId}}}}) {
+    allContentfulList(filter: {games: {elemMatch: {bggId: {eq: $bggId}}}}, sort: {fields: datePublished, order: DESC}) {
       lists: nodes {
         image
         name
         link
         slug
+        datePublished
         creator {
           slug
           name

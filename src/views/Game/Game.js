@@ -1,11 +1,11 @@
-import * as React from "react"
+import React, {useState} from "react"
 import ReactMarkdown from "react-markdown"
 
 import Button from 'atoms/Button'
 import Font from 'atoms/Font'
 import Image from 'atoms/Image'
 
-import ListMini from 'components/ListMini'
+import ListsBox from 'components/ListsBox'
 
 import './game.scss'
 
@@ -13,7 +13,11 @@ const cn = 'game-view'
 
 const GameView = ({game, lists}) => {
 
+  const [isDescExpanded, updateIsDescExpanded] = useState(false)
+
   const playerCount = game.playerCountMin + (game.playerCountMax !== game.playerCountMin ? `- ${game.playerCountMax}` : '')
+
+  const handleDescriptionToggle = () => updateIsDescExpanded(!isDescExpanded)
 
   return (
     <div className={cn}>
@@ -33,11 +37,19 @@ const GameView = ({game, lists}) => {
           <Button type="anchor" wide secondary href={`https://boardgamegeek.com/boardgame/${game.bggId}/`} target="_blank">Board Game Geek</Button>
         </Font>
         {!!game.description && (
-          <Font level="charlie" className={`${cn}__bgg-link`}>
-            <ReactMarkdown>
-              {game.description.description}
-            </ReactMarkdown>
-          </Font>
+          <>
+            <div className={`${cn}__description-wrapper`}>
+              <Font level="charlie" className={`${cn}__description ${isDescExpanded ? `${cn}__description--expanded` : `${cn}__description--shrunk`}`}>
+                <ReactMarkdown>
+                  {game.description.description}
+                </ReactMarkdown>
+              </Font>
+              {!isDescExpanded && (
+                <div className={`${cn}__description-haze`} />
+              )}
+            </div>
+            <Button minimal onClick={handleDescriptionToggle}>{isDescExpanded ? '- Less' : '+ More'}</Button>
+          </>
         )}
         <h2>Attributes</h2>
         <Font level="delta" className={`${cn}__key`}>Player Count</Font>
@@ -53,13 +65,7 @@ const GameView = ({game, lists}) => {
       </section>
       <section className={`${cn}__lists`}>
         <h2>Part of these lists</h2>
-        <ol className={`${cn}__lists-list`}>
-          {lists.map(list => (
-            <li key={list.slug}>
-              <ListMini list={list} />
-            </li>
-          ))}
-        </ol>
+        <ListsBox lists={lists} />
       </section>
     </div>
   )
