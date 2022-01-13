@@ -8,6 +8,7 @@ const config = {
   siteMetadata: {
     siteUrl: process.env.SITE_METADATA_SITE_URL,
     title: process.env.SITE_METADATA_SITE_TITLE,
+    description: `Fun mix of board game info and top 10 lists`,
   },
   plugins: [
     "gatsby-plugin-sass",
