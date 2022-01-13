@@ -28,11 +28,6 @@ const AdminGamesPage = ({location, data}) => {
 
 export const query = graphql`
   query AdminGamePageQuery {
-    site {
-      siteMetadata {
-        siteUrl
-      }
-    }
     games: allContentfulGame {
       nodes {
         artist

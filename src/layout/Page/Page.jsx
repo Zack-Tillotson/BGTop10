@@ -43,9 +43,9 @@ function Component({
       </div>
       <div className="page__foot">
         <div className="page__container page__foot-links">
-          <Link href="/"><img className="page__foot-logo" src={imageIcon} alt="Cardboard Salad logo" /></Link>
-          <Link href="/terms-of-use">Terms of Use</Link>
-          <Link href="/contact-us">Contact Us</Link>
+          <Link to="/"><img className="page__foot-logo" src={imageIcon} alt="Cardboard Salad logo" /></Link>
+          <Link to="/terms-of-use">Terms of Use</Link>
+          <Link to="/contact-us">Contact Us</Link>
           <span>© Cardboard SALAD</span>
           <a href="https://zacherytillotson-com.web.app">© Zachery Tillotson</a>
         </div>

@@ -26,26 +26,33 @@ const CreatorView = ({creator, lists = []}) => {
 
   return (
     <div className={cn}>
-      <div className={`${cn}__image-wrapper`}>
-        <Image className={`${cn}__image`} src={creator.imageBanner} alt={creator.name} isBordered={false} />
+      <div className={`${cn}__banner-wrapper`}>
+        <Image className={`${cn}__banner`} src={creator.imageBanner} alt={creator.name + ' creator'} isBordered={false} />
       </div>
       <section className={`${cn}__info`}>
-        <h1>
+        <div className={`${cn}__avatar-wrapper`}>
+          <Image className={`${cn}__avatar`} src={creator.imageAvatar} alt={creator.name + ' avatar'} isBordered={false} />
+        </div>
+        <h1 className={`${cn}____title`}>
           {creator.name}
         </h1>
-      </section>
-      <section className={`${cn}__attributes`}>
-        <Font level="delta">
+        <Font level="delta" className={`${cn}__description`}>
+          <h3>Description</h3>
           <ReactMarkdown>
             {creator.description.description}
           </ReactMarkdown>
         </Font>
       </section>
       <section>
-        <h4>Links</h4>
+        <h3>Links</h3>
         <div className={`${cn}__links`}>
           {creator.link.map(link => (
-            <Button key={link} type="anchor" href={link} target="_blank">{getLinkTextFromUrl(link)}</Button>
+            <span key={link}>
+              •
+              <Button type="anchor" minimal href={link} target="_blank" className={`${cn}__link`}>
+                {getLinkTextFromUrl(link)}
+              </Button>
+            </span>
           ))}
         </div>
       </section>

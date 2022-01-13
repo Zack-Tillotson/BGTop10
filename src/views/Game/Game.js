@@ -1,5 +1,6 @@
 import React, {useState} from "react"
 import ReactMarkdown from "react-markdown"
+import {Link} from 'gatsby'
 
 import Button from 'atoms/Button'
 import Font from 'atoms/Font'
@@ -29,9 +30,9 @@ const GameView = ({game, lists}) => {
           <span className={`${cn}__value`}>Year:</span> {game.yearPublished}
         </Font>
       </section>
-      <div className={`${cn}__image-wrapper`}>
+      <Link to="image" className={`${cn}__image-wrapper`}>
         <Image className={`${cn}__image`} src={game.image} alt={'View ' + game.name} />
-      </div>
+      </Link>
       <section className={`${cn}__attributes`}>
         <Font level="charlie" className={`${cn}__bgg-link`}>
           <Button type="anchor" wide secondary href={`https://boardgamegeek.com/boardgame/${game.bggId}/`} target="_blank">Board Game Geek</Button>

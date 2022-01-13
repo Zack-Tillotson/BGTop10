@@ -60,9 +60,14 @@
     padding-right: 0;
     margin: 0;
 
-    &:hover {
+    &:link, &:visited {
       color: var(--color-font-primary);
+    }
+
+    &:hover {
+      color: var(--color-font-secondary);
       background: none;
+      text-decoration: underline;
     }
   }
 

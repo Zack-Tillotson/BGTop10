@@ -42,11 +42,6 @@ const AdminCreatorEditPage = ({location, data}) => {
 
 export const query = graphql`
   query AdminGameEditQuery($bggId: Int) {
-    site {
-      siteMetadata {
-        siteUrl
-      }
-    }
     game: contentfulGame(bggId: {eq: $bggId}) {
       bggId
       artist

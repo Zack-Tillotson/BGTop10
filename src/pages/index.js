@@ -10,8 +10,6 @@ import CreatorPills from 'components/CreatorPills'
 
 const IndexPage = ({location, data}) => {
 
-  const {siteUrl} = data.site.siteMetadata
-
   const lists = data.lists.nodes
   const gameMap = {}
   lists.forEach(list => list.games.forEach(game => {
@@ -28,7 +26,7 @@ const IndexPage = ({location, data}) => {
   const creators = Object.values(creatorMap).sort((a, b) => b.count - a.count).map(item => item.creator)
 
   return (
-    <Page siteUrl={siteUrl} location={location}>
+    <Page location={location}>
       <Helmet>
         <title>Cardboard Salad</title>
       </Helmet>
@@ -59,11 +57,6 @@ const IndexPage = ({location, data}) => {
 
 export const query = graphql`
 query IndexPageQuery {
-  site {
-    siteMetadata {
-      siteUrl
-    }
-  }
   lists: allContentfulList(limit: 20, sort: {fields: datePublished, order: DESC}) {
     nodes {
       slug

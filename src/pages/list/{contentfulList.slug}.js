@@ -8,11 +8,10 @@ import ListView from 'views/List'
 
 const ListPage = ({location, data}) => {
 
-  const {siteUrl} = data.site.siteMetadata
   const {list} = data
   
   return (
-    <Page siteUrl={siteUrl} location={location} crumbs={[{display: 'Home', url: '/'}, {display: list.name, url: location.pathname}]}>
+    <Page location={location} crumbs={[{display: 'Home', url: '/'}, {display: list.name, url: location.pathname}]}>
       <Helmet>
         <title>{list.name} | Cardboard Salad</title>
       </Helmet>
@@ -23,11 +22,6 @@ const ListPage = ({location, data}) => {
 
 export const query = graphql`
   query ListPageQuery($slug: String!) {
-    site {
-      siteMetadata {
-        siteUrl
-      }
-    }
     list: contentfulList(slug: {eq: $slug}) {
       slug
       description {

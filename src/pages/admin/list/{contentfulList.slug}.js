@@ -29,12 +29,6 @@ const AdminListEditPage = ({location, data}) => {
 
 export const query = graphql`
   query AdminEditListPageQuery($slug: String!) {
-    site {
-      siteMetadata {
-        siteUrl
-
-      }
-    }
     list: contentfulList(slug: {eq: $slug}) {
       slug
       description {

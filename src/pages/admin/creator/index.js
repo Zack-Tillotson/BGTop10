@@ -14,7 +14,7 @@ const crumbs = [
   {display: 'Creator', url: '/admin/creator/'}
 ]
 
-const AdminCreatorPage = ({location, data}) => {
+const AdminCreatorPage = ({location}) => {
   
   return (
     <Page crumbs={crumbs} className={baseCn} location={location}>
@@ -26,15 +26,5 @@ const AdminCreatorPage = ({location, data}) => {
     </Page>
   )
 }
-
-export const query = graphql`
-  query AdminCreatorPageQuery {
-    site {
-      siteMetadata {
-        siteUrl
-      }
-    }
-  }
-`
 
 export default AdminCreatorPage

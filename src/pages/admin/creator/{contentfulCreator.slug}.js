@@ -29,11 +29,6 @@ const AdminCreatorEditPage = ({location, data}) => {
 
 export const query = graphql`
   query AdminCreatorEditQuery($slug: String) {
-    site {
-      siteMetadata {
-        siteUrl
-      }
-    }
     creator: contentfulCreator(slug: {eq: $slug}) {
       slug
       name

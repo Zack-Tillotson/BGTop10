@@ -1,13 +1,12 @@
 import * as React from "react"
-import { Link, graphql } from "gatsby"
 import {Helmet} from 'react-helmet'
 
 import Page from 'layout/Page'
 import logoTitle from 'images/square-logo-256x256.png'
 
-const NotFoundPage = ({location, data}) => {
+const NotFoundPage = () => {
   return (
-    <Page siteUrl={data.site.siteMetadata.siteUrl + location.pathname} style={{textAlign: 'center'}}>
+    <Page style={{textAlign: 'center'}}>
       <Helmet>
         <title>Page Not Found</title>
       </Helmet>
@@ -16,16 +15,5 @@ const NotFoundPage = ({location, data}) => {
     </Page>
   )
 }
-
-
-export const query = graphql`
-  query ErrorPageQuery {
-    site {
-      siteMetadata {
-        siteUrl
-      }
-    }
-  }
-`
 
 export default NotFoundPage

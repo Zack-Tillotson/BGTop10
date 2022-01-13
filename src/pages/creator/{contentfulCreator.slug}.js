@@ -8,11 +8,10 @@ import CreatorView from 'views/Creator'
 
 const ListPage = ({location, data}) => {
 
-  const {siteUrl} = data.site.siteMetadata
   const {creator, allContentfulList: {lists}} = data
   
   return (
-    <Page siteUrl={siteUrl} location={location} crumbs={[{display: 'Home', url: '/'}, {display: creator.name, url: location.pathname}]}>
+    <Page location={location} crumbs={[{display: 'Home', url: '/'}, {display: creator.name, url: location.pathname}]}>
       <Helmet>
         <title>{creator.name} | Cardboard Salad</title>
       </Helmet>
@@ -23,11 +22,6 @@ const ListPage = ({location, data}) => {
 
 export const query = graphql`
   query CreatorPageQuery($slug: String!) {
-    site {
-      siteMetadata {
-        siteUrl
-      }
-    }
     creator: contentfulCreator(slug: {eq: $slug}) {
       slug
       name

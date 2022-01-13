@@ -22,10 +22,10 @@ const ListMini = ({list, className, to = `/list/${list.slug}/`, showCreator = tr
       <div className={`${cn}__primary-attrs`}>
         <Link to={to}>
           <Font level="charlie" className={`${cn}__name ${cn}__value`}>{list.name}</Font>
+        </Link>
         {showCreator && (
           <CreatorBrief className={`${cn}__creator`} creator={list.creator} to={creatorTo} Element={Link} />
         )}
-        </Link>
       </div>
     </section>
   )

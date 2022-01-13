@@ -8,11 +8,10 @@ import Game from 'views/Game'
 
 const ListPage = ({location, data}) => {
 
-  const {siteUrl} = data.site.siteMetadata
   const {game, allContentfulList: {lists}} = data
   
   return (
-    <Page siteUrl={siteUrl} location={location} crumbs={[{display: 'Home', url: '/'}, {display: game.name, url: location.pathname}]}>
+    <Page location={location} crumbs={[{display: 'Home', url: '/'}, {display: game.name, url: location.pathname}]}>
       <Helmet>
         <title>{game.name} | Cardboard Salad</title>
       </Helmet>
@@ -23,11 +22,6 @@ const ListPage = ({location, data}) => {
 
 export const query = graphql`
   query ListGamePageQuery($bggId: Int!) {
-    site {
-      siteMetadata {
-        siteUrl
-      }
-    }
     game: contentfulGame(bggId: {eq: $bggId}) {
       bggId
       artist

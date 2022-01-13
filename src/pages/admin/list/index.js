@@ -14,7 +14,7 @@ const crumbs = [
   {display: 'List', url: '/admin/list/'}
 ]
 
-const AdminCreatorPage = ({location, data}) => {
+const AdminCreatorPage = ({location}) => {
   const [tab, updateTab] = useState('new')
   
   return (
@@ -38,15 +38,5 @@ const AdminCreatorPage = ({location, data}) => {
     </Page>
   )
 }
-
-export const query = graphql`
-  query AdminListPageQuery {
-    site {
-      siteMetadata {
-        siteUrl
-      }
-    }
-  }
-`
 
 export default AdminCreatorPage
