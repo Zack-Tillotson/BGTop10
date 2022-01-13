@@ -1,11 +1,13 @@
 import React, { useEffect } from 'react'
 import cn from 'classnames'
 import { Helmet } from 'react-helmet'
+import {Link} from 'gatsby'
 
 import PageHead from '../PageHead'
 import Breadcrumbs from '../Breadcrumbs'
 
 import './component.scss'
+import imageIcon from 'images/square-logo-64x64.png'
 
 function Component({ 
   isHeadShown = true, 
@@ -14,6 +16,7 @@ function Component({
   location,
   crumbs = [],
   Ele = 'main',
+  ...rest
 }) {
 
   useEffect(() => {
@@ -21,7 +24,7 @@ function Component({
   }, [location])
 
   return (
-    <Ele className="page">
+    <Ele className="page" {...rest}>
       <Helmet>
         <meta charset="utf-8" />
         <link rel="icon" href="/icon.png" />
@@ -39,8 +42,12 @@ function Component({
         {children}
       </div>
       <div className="page__foot">
-        <div className="page__container">
-          <a href="https://zacherytillotson-com.web.app">© Zack Tillotson</a>
+        <div className="page__container page__foot-links">
+          <Link href="/"><img className="page__foot-logo" src={imageIcon} alt="Cardboard Salad logo" /></Link>
+          <Link href="/terms-of-use">Terms of Use</Link>
+          <Link href="/contact-us">Contact Us</Link>
+          <span>© Cardboard SALAD</span>
+          <a href="https://zacherytillotson-com.web.app">© Zachery Tillotson</a>
         </div>
       </div>
     </Ele>

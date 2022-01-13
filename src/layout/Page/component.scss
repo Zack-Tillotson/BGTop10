@@ -24,12 +24,23 @@
   }
 
   .page__foot {
+    
     margin-top: var(--pad2);
     padding: var(--pad);
     border-top: var(--border-1);
-
+    
     a:link, a:visited {
       color: var(--color-font-base);
     }
+  }
+
+  .page__foot-links {
+    display: flex;
+    flex-flow: row wrap;
+    justify-content: space-evenly;
+  }
+
+  .page__foot-logo {
+    height: 24px;
   }
 }
