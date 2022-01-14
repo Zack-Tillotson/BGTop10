@@ -22,3 +22,9 @@
   display: grid;
   grid-template-columns: 1fr auto;
 }
+
+.list-form__tag-list {
+  display: flex;
+  flex-flow: row wrap;
+  justify-content: space-evenly;
+}

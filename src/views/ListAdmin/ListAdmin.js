@@ -56,7 +56,7 @@ const ListAdmin = ({Element, className, editTarget}) => {
       {state.step === 'review' && (
         <>
           <ListMini list={viewList} />
-          <ListView list={viewList} />
+          <ListView list={viewList} games={games.foundCmsGames} />
           <div className={`${baseCn}__controls`}>
             <Button onClick={handlers.previousStep} hollow>Go back: load game info</Button>
             <Button onClick={handlers.saveClick} primary>Save</Button>

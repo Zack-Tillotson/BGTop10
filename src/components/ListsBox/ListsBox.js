@@ -5,11 +5,11 @@ import './component.scss'
 
 const baseCn = 'lists-box'
 
-function ListsBox({lists}) {
+function ListsBox({lists, getListTo}) {
   return (
     <div className={baseCn}>
       {lists.map(list => (
-        <ListMini key={list.slug} list={list} showCreator className={`${baseCn}__list`} />
+        <ListMini key={list.slug} list={list} showCreator getListTo={getListTo} className={`${baseCn}__list`} />
       ))}
     </div>
   )

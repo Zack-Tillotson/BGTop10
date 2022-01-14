@@ -58,11 +58,10 @@ function useListAdmin(editTarget) {
     const rawList = contentful.rawToGraphQl(form.combinedValue)
 
     const creator = contentfulCreator.contentfulList.find(item => item.fields.slug['en-US'] == rawList.creator.slug)
-    const games = contentfulGames.contentfulList.filter(game => rawList.gameLink.find(link => link.bggId == game.fields.bggId['en-US']))
 
     const editTargetSlug = editTarget ? editTarget.slug : ''
 
-    contentful.saveEntry(rawList, creator, games, editTargetSlug)
+    contentful.saveEntry(rawList, creator, editTargetSlug)
       .then(result => {
         updateIsSuccessful(result)
         if(result) {

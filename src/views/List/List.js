@@ -12,7 +12,7 @@ import './list.scss'
 
 const cn = 'list-view'
 
-const ListView = ({list, basePath}) => {
+const ListView = ({list, games, basePath}) => {
 
   return (
     <div className={cn}>
@@ -37,7 +37,7 @@ const ListView = ({list, basePath}) => {
           {list.gameLink.map(({title, bggId}, index) => (
             <li key={index}>
               <div className={`${cn}__game-title`}>{title}</div>
-              <GameMini className={`${cn}__game-info`} game={list.games.find(game => game.bggId == bggId)} basePath={basePath} />
+              <GameMini className={`${cn}__game-info`} game={games.find(game => game.bggId == bggId)} basePath={basePath} />
             </li>
           ))}
         </ol>

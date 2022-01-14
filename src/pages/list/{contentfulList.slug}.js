@@ -2,20 +2,23 @@ import * as React from "react"
 import { graphql } from 'gatsby'
 import {Helmet} from 'react-helmet'
 
+import useListGames from 'useListGames'
 
 import Page from 'layout/Page'
 import ListView from 'views/List'
 
+
 const ListPage = ({location, data}) => {
 
   const {list} = data
+  const games = useListGames(list)
   
   return (
     <Page location={location} crumbs={[{display: 'Home', url: '/'}, {display: list.name, url: location.pathname}]}>
       <Helmet>
         <title>{list.name} | Cardboard Salad</title>
       </Helmet>
-      <ListView list={list} basePath={location.pathname} />
+      <ListView list={list} games={games} basePath={location.pathname} />
     </Page>
   )
 }
@@ -40,20 +43,6 @@ export const query = graphql`
         description {
           description
         }
-      }
-      games {
-        artist
-        bggId
-        designer
-        family
-        image
-        imageThumbnail
-        mechanic
-        name
-        playerCountMax
-        playerCountMin
-        publisher
-        yearPublished
       }
       gameLink {
         title

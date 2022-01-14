@@ -16,11 +16,15 @@ function buildStateObjects(linksAry, gamesAry) {
   const newLinkState = {}
   linksAry.forEach((link, index) => {
     const titleId = `${LINK_FIELD_ID} ${index} title`
+    const gameSearchId = `${LINK_FIELD_ID} ${index} search`
     const gameId = `${LINK_FIELD_ID} ${index} game`
     fieldAry.push(
       {
         id: titleId,
         label: `Title #${index+1}`,
+      }, {
+        id: gameSearchId,
+        label: `Search game name`,
       }, {
         id: gameId,
         label: `Game`,
@@ -28,6 +32,7 @@ function buildStateObjects(linksAry, gamesAry) {
       },
     )
     newLinkState[titleId] = link
+    newLinkState[gameSearchId] = ''
     newLinkState[gameId] = gamesAry[index] || undefined
   })
 
@@ -77,13 +82,20 @@ function useListForm() {
     
   }
 
-
   const handleBaseChange = (field, value) => {
     const newValue = {...formState.value, [field.id]: value}
 
     if(field.id === 'name') {
-      newValue.slug = slugify(`${newValue.creator.name} ${value}`, {lower: true})
+      newValue.slug = slugify(`${newValue.creator.name} ${value}`, {lower: true, strict: true})
     }
+
+    if(field.id === 'date') {
+      const date = new Date(value)
+      if(!isNaN(date)) {
+        newValue.date = `${date.getMonth()+1}/${date.getDate()}/${date.getFullYear()}`
+      }
+    }
+
     formState.updateValue(newValue)
   }
 

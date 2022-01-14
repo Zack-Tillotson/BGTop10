@@ -9,7 +9,7 @@ import './list-mini.scss'
 
 const cn = 'list-mini'
 
-const ListMini = ({list, className, to = `/list/${list.slug}/`, showCreator = true, creatorTo = `/creator/${list.creator.slug}/`}) => {
+const ListMini = ({list, className, getListTo, to = getListTo ? getListTo(list) : `/list/${list.slug}/`, showCreator = true, creatorTo = `/creator/${list.creator.slug}/`}) => {
   
   return (
     <section className={classnames(cn, className)}>

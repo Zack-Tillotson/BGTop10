@@ -14,11 +14,12 @@ const filterInputId = 'game-selector-input'
 
 function GameSelectorPane(props) {
   const {
+    defaultInput = '',
     onSelect = () => {},
     onClose,
   } = props
 
-  const state = useGameSelector()
+  const state = useGameSelector(defaultInput)
 
   const handleItemClick = item => event => {
     event.preventDefault()

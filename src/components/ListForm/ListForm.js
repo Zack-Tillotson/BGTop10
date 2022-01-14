@@ -37,12 +37,39 @@ const staticFields = [
     label: 'Thumbnail image',
   },
   {
+    id: 'date',
+    label: 'Published date',
+  },
+  {
     id: 'description',
     label: 'Description',
     type: 'textarea',
     otherAttrs: {
       rows: "5",
       col: "50",
+    },
+  },
+  {
+    id: 'tags',
+    label: 'Tags',
+    type: 'list-tags',
+    otherAttrs: {
+      values: [
+        '2019', 
+        '2020', 
+        '2021', 
+        '2022', 
+        '2023', 
+        '2024', 
+        'Game of the year', 
+        'Upcoming', 
+        'Expansion',
+        'Big list',
+        'Crowd funding',
+
+        'Solo / Solitaire Game', // mechanics
+        'Cooperative Game',
+      ]
     },
   },
 ]
@@ -73,6 +100,19 @@ const ListForm = () => {
     state.gameLinks.handleChange(field, value)
   }
 
+  const handleTagClick = (field, tag, index) => e => {
+    e.preventDefault()
+    let value = state.base.value.tags || []
+    if(index === -1) {
+      value = [...value, tag]
+    } else {
+      value = [...value]
+      value.splice(index, 1)
+    }
+    state.base.handleChange(field, value)
+
+  }
+
   const gameLinkFieldsKeys = Object.keys(state.gameLinks.fields)
 
   return (
@@ -88,7 +128,34 @@ const ListForm = () => {
         <>
           {staticFields.map(field => {
             const CustomEle = field.type || 'input'
-              
+
+            let inputElement
+            
+            if(field.type === 'list-tags') {
+              inputElement = (
+                <div className={`${baseCn}__tag-list`}>
+                  {field.otherAttrs.values.map(value => {
+                    const index = (state.base.value.tags || []).indexOf(value)
+                    return (
+                      <Button key={value} primary={index >= 0} onClick={handleTagClick(field, value, index)}>
+                        {value}
+                      </Button>
+                    )
+                  })}
+                </div>
+              )
+            } else {
+              inputElement = (
+                <CustomEle
+                id={field.id}
+                type={field.type || 'text'}
+                {...(field.otherAttrs || {})}
+                value={state.base.value[field.id] || ''} 
+                onChange={handleChange} 
+                className={`${baseCn}__input`} />
+              )
+            }
+
             return (
               <div key={field.id} className={`${baseCn}____input-group`}>
                 <Font
@@ -98,13 +165,7 @@ const ListForm = () => {
                   className={`${baseCn}__label`}>
                     {field.label}
                 </Font>
-                <CustomEle
-                  id={field.id}
-                  type={field.type || 'text'}
-                  {...(field.otherAttrs || {})}
-                  value={state.base.value[field.id] || ''} 
-                  onChange={handleChange} 
-                  className={`${baseCn}__input`} />
+                {inputElement}
               </div>
             )
           })}
@@ -121,11 +182,13 @@ const ListForm = () => {
               </div>
               <Button onClick={handlePopulateLinksClick} secondary>Generate links</Button>
             </Font>
-            {new Array(gameLinkFieldsKeys.length / 2).fill().map((_, index) => {
-              const titleField = state.gameLinks.fields[gameLinkFieldsKeys[index * 2]]
-              const gameField = state.gameLinks.fields[gameLinkFieldsKeys[index * 2 + 1]]
+            {new Array(gameLinkFieldsKeys.length / 3).fill().map((_, index) => {
+              const titleField = state.gameLinks.fields[gameLinkFieldsKeys[index * 3]]
+              const searchField = state.gameLinks.fields[gameLinkFieldsKeys[index * 3 + 1]]
+              const gameField = state.gameLinks.fields[gameLinkFieldsKeys[index * 3 + 2]]
               
               const titleValue = state.gameLinks.value[titleField.id]
+              const searchValue = state.gameLinks.value[searchField.id]
               const gameValue = state.gameLinks.value[gameField.id]
               
               return (
@@ -147,11 +210,29 @@ const ListForm = () => {
                   </div>
                   <div  className={`${baseCn}____input-group`}>
                     <Font
+                      Ele="label"
+                      level="delta"
+                      htmlFor={searchField.id}
+                      className={`${baseCn}__label`}>
+                        {searchField.label}
+                    </Font>
+                    <input
+                      id={searchField.id}
+                      type={'text'}
+                      value={searchValue} 
+                      onChange={handleFieldChange(searchField)} 
+                      className={`${baseCn}__input`} />
+                  </div>
+                  <div  className={`${baseCn}____input-group`}>
+                    <Font
                       level="delta"
                       className={`${baseCn}__label`}>
                         {gameField.label}
                     </Font>
-                    <GameSelector onSelect={handleFieldChange(gameField)} buttonProps={{children: "Select", primary: !gameValue, hollow: !!gameValue}} />
+                    <GameSelector 
+                      defaultInput={searchValue}
+                      onSelect={handleFieldChange(gameField)} 
+                      buttonProps={{children: "Select", primary: !gameValue, hollow: !!gameValue}} />
                   </div>
                   <div className={`${baseCn}__input-group`}>
                     <Font

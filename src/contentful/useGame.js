@@ -20,7 +20,7 @@ function getEntries(accessToken) {
   return throttler()
     .then(() => getEnvironment(accessToken))
     .then(env => {
-      return env.getEntries({content_type: ENTRY_TYPE})
+      return env.getEntries({content_type: ENTRY_TYPE, limit: 999})
     })
 }
 

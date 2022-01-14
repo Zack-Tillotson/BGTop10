@@ -49,20 +49,6 @@ export const query = graphql`
             description
           }
         }
-        games {
-          artist
-          bggId
-          designer
-          family
-          image
-          imageThumbnail
-          mechanic
-          name
-          playerCountMax
-          playerCountMin
-          publisher
-          yearPublished
-        }
         gameLink {
           title
           bggId

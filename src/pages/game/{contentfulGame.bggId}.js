@@ -42,7 +42,7 @@ export const query = graphql`
       playTimeMax
       playTimeAvg
     }
-    allContentfulList(filter: {games: {elemMatch: {bggId: {eq: $bggId}}}}, sort: {fields: datePublished, order: DESC}) {
+    allContentfulList(filter: {gameLink: {elemMatch: {bggId: {eq: $bggId}}}}, sort: {fields: datePublished, order: DESC}) {
       lists: nodes {
         image
         name
@@ -58,20 +58,6 @@ export const query = graphql`
           description {
             description
           }
-        }
-        games {
-          artist
-          bggId
-          designer
-          family
-          image
-          imageThumbnail
-          mechanic
-          name
-          playerCountMax
-          playerCountMin
-          publisher
-          yearPublished
         }
         gameLink {
           title

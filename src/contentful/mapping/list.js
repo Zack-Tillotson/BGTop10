@@ -10,17 +10,20 @@ function getEmptyObject() {
       link: {
         'en-US': []
       },
+      datePublished: {
+        'en-US': '',
+      },
       image: {
         'en-US': '',
+      },
+      tags: {
+        'en-US': [],
       },
       description: {
         'en-US': '',
       },
       creator: {
         'en-US': {},
-      },
-      games: {
-        'en-US': [],
       },
       gameLink: {
         'en-US': [],
@@ -30,27 +33,21 @@ function getEmptyObject() {
 }
 
 export function rawToContentful(raw = {}, options = {}) {
-  const {cmsCreator, cmsGames, updateObject} = options
+  const {cmsCreator, updateObject} = options
   let {
     name = '',
     slug = '',
     link = '',
     image = '',
+    datePublished = new Date().toString(),
     description = '',
+    tags = [],
     creator = {},
     gameLink = [],
-    games = [],
   } = raw
 
   if(description instanceof Object) description = description.description
 
-  const updateGames = cmsGames ? cmsGames.map(game => ({
-    sys: {
-      id: game.sys.id,
-      linkType: 'Entry',
-      type: 'Link'
-    },
-  })) : games
   const updateCreator = cmsCreator ? ({
     sys: {
       id: cmsCreator.sys.id,
@@ -64,11 +61,12 @@ export function rawToContentful(raw = {}, options = {}) {
   updateTarget.fields.name['en-US'] = name
   updateTarget.fields.slug['en-US'] = slug
   updateTarget.fields.link['en-US'] = link
+  updateTarget.fields.datePublished['en-US'] = new Date(datePublished).toISOString()
   updateTarget.fields.image['en-US'] = image
   updateTarget.fields.description['en-US'] = description  
+  updateTarget.fields.tags['en-US'] = tags
   updateTarget.fields.creator['en-US'] = updateCreator
   updateTarget.fields.gameLink['en-US'] = gameLink
-  updateTarget.fields.games['en-US'] = updateGames
 
   return updateTarget
 }

@@ -2,6 +2,8 @@ import * as React from "react"
 import { graphql } from 'gatsby'
 import {Helmet} from 'react-helmet'
 
+import useListGames from "useListGames"
+
 import Page from 'layout/Page'
 
 import GameMini from 'components/GameMini'
@@ -10,13 +12,17 @@ import CreatorPills from 'components/CreatorPills'
 
 const IndexPage = ({location, data}) => {
 
+  const allGames = useListGames()
+
   const lists = data.lists.nodes
   const gameMap = {}
-  lists.forEach(list => list.games.forEach(game => {
+  lists.forEach(list => list.gameLink.forEach(game => {
     gameMap[game.bggId] = gameMap[game.bggId] || {game, count: 0}
     gameMap[game.bggId].count++
   }))
-  const games = Object.values(gameMap).sort((a, b) => b.count - a.count).map(item => item.game)
+  const games = Object.values(gameMap)
+    .sort((a, b) => b.count - a.count)
+    .map(link => allGames.find(game => game.bggId === link.game.bggId))
 
   const creatorMap = {}
   lists.forEach(({creator}) => {
@@ -76,20 +82,6 @@ query IndexPageQuery {
         description {
           description
         }
-      }
-      games {
-        artist
-        bggId
-        designer
-        family
-        image
-        imageThumbnail
-        mechanic
-        name
-        playerCountMax
-        playerCountMin
-        publisher
-        yearPublished
       }
       gameLink {
         title

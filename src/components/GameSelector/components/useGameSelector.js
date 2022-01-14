@@ -1,4 +1,4 @@
-import {useState} from 'react'
+import {useEffect, useState} from 'react'
 
 import bggSearch from './bggNameSearch'
 
@@ -8,13 +8,13 @@ const SEARCH_STATES = {
   COMPLETE: 'COMPLETE',
 }
 
-function useGameSelector() {
+function useGameSelector(initialInput) {
   
   const [results, updateResults] = useState([])
-  const [inputValue, updateInputValue] = useState('')
+  const [inputValue, updateInputValue] = useState(initialInput)
   const [searchTerm, updateSearchTerm] = useState('')
   const [searchState, updateSearchState] = useState(SEARCH_STATES.NOT_SEARCHED)
-  
+
   const onInputChange = value => updateInputValue(value)
   
   const onStartBggSearch = () => {
@@ -27,6 +27,10 @@ function useGameSelector() {
       updateSearchState(SEARCH_STATES.COMPLETE)
     })
   }
+
+  useEffect(() => {
+    onStartBggSearch()
+  }, [])
   
   return {
     results,
