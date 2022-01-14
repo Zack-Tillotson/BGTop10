@@ -1,35 +1,37 @@
-function getEmptyObject() {
-  return {
-    fields: {
-      name: {
-        'en-US': ''
-      },
-      slug: {
-        'en-US': ''
-      },
-      link: {
-        'en-US': []
-      },
-      datePublished: {
-        'en-US': '',
-      },
-      image: {
-        'en-US': '',
-      },
-      tags: {
-        'en-US': [],
-      },
-      description: {
-        'en-US': '',
-      },
-      creator: {
-        'en-US': {},
-      },
-      gameLink: {
-        'en-US': [],
-      },
-    }
+function getEmptyObject(targetObject = {}) {
+  
+  if(!targetObject.fields) targetObject.fields = {}
+  const fields = {
+    name: {
+      'en-US': ''
+    },
+    slug: {
+      'en-US': ''
+    },
+    link: {
+      'en-US': []
+    },
+    datePublished: {
+      'en-US': '',
+    },
+    image: {
+      'en-US': '',
+    },
+    tags: {
+      'en-US': [],
+    },
+    description: {
+      'en-US': '',
+    },
+    creator: {
+      'en-US': {},
+    },
+    gameLink: {
+      'en-US': [],
+    },
   }
+  targetObject.fields = {...fields, ...targetObject.fields}
+  return targetObject
 }
 
 export function rawToContentful(raw = {}, options = {}) {
@@ -56,12 +58,12 @@ export function rawToContentful(raw = {}, options = {}) {
     },
   }) : creator
 
-  const updateTarget = updateObject || getEmptyObject()
+  const updateTarget = getEmptyObject(updateObject)
 
   updateTarget.fields.name['en-US'] = name
   updateTarget.fields.slug['en-US'] = slug
   updateTarget.fields.link['en-US'] = link
-  updateTarget.fields.datePublished['en-US'] = new Date(datePublished).toISOString()
+  updateTarget.fields.datePublished['en-US'] = datePublished
   updateTarget.fields.image['en-US'] = image
   updateTarget.fields.description['en-US'] = description  
   updateTarget.fields.tags['en-US'] = tags

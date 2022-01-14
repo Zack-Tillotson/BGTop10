@@ -17,7 +17,7 @@ const ListMini = ({list, className, getListTo, to = getListTo ? getListTo(list) 
         <img src={list.image} className={`${cn}__image`} />
       </Link>
       <div className={`${cn}__secondary-attrs`}>
-        <Font level="delta">Published: {new Date(list.datePublished).toLocaleDateString(undefined, { year: 'numeric', month: 'short', day: 'numeric' })}</Font>
+        <Font level="delta">Published: {new Date(list.datePublished).toGMTString().slice(5, 16)}</Font>
       </div>
       <div className={`${cn}__primary-attrs`}>
         <Link to={to}>

@@ -34,6 +34,7 @@ export const query = graphql`
       link
       name
       datePublished
+      tags
       creator {
         slug
         name

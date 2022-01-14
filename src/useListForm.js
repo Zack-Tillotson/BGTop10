@@ -58,7 +58,7 @@ function useListForm() {
     }),
   }
 
-  const hydrateForm = list => {
+  const hydrateForm = (list, games) => {
     if(!list) return
 
     formState.updateValue({
@@ -68,12 +68,14 @@ function useListForm() {
       image: list.image,
       link: list.link,
       creator: list.creator,
+      datePublished: list.datePublished,
+      tags: list.tags,
     })
 
     const titleAry = list.gameLink.map(gameLink => gameLink.title)
     const gamesAry = list.gameLink
       .map(gameLink => gameLink.bggId)
-      .map(bggId => list.games.find(game => game.bggId === bggId))
+      .map(bggId => games.find(game => game.bggId === bggId))
 
     const [fieldAry, newLinkState] = buildStateObjects(titleAry, gamesAry)
     
@@ -89,10 +91,10 @@ function useListForm() {
       newValue.slug = slugify(`${newValue.creator.name} ${value}`, {lower: true, strict: true})
     }
 
-    if(field.id === 'date') {
+    if(field.id === 'datePublished') {
       const date = new Date(value)
       if(!isNaN(date)) {
-        newValue.date = `${date.getMonth()+1}/${date.getDate()}/${date.getFullYear()}`
+        newValue.datePublished = `${date.getUTCFullYear()}-${date.getUTCMonth()<10?'0':''}${date.getUTCMonth()+1}-${date.getUTCDate()<10?'0':''}${date.getUTCDate()}`
       }
     }
 

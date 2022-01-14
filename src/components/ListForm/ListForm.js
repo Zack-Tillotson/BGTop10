@@ -37,7 +37,7 @@ const staticFields = [
     label: 'Thumbnail image',
   },
   {
-    id: 'date',
+    id: 'datePublished',
     label: 'Published date',
   },
   {
@@ -61,7 +61,8 @@ const staticFields = [
         '2022', 
         '2023', 
         '2024', 
-        'Game of the year', 
+        'Game of the year',
+        'Best of all time',
         'Upcoming', 
         'Expansion',
         'Big list',

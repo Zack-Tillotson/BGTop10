@@ -73,6 +73,7 @@ query IndexPageQuery {
       link
       name
       datePublished
+      tags
       creator {
         slug
         name

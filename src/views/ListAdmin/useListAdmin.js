@@ -1,11 +1,13 @@
 import {useState, useEffect} from 'react'
 
 import useListForm from 'useListForm'
+import useListGames from 'useListGames'
 import useList from 'contentful/useList'
 import useGame from 'contentful/useGame'
 import useCreator from 'contentful/useCreator'
 
 function useListAdmin(editTarget) {
+  const listGames = useListGames(editTarget)
   const form = useListForm()
   const contentful = useList(editTarget)
   const contentfulCreator = useCreator(true)
@@ -15,7 +17,7 @@ function useListAdmin(editTarget) {
   const [isSuccessful, updateIsSuccessful] = useState(null) // null, true, false
 
   useEffect(() => {
-    form.hydrate(editTarget)
+    form.hydrate(editTarget, listGames)
   }, [editTarget, contentful.cmsList])
 
   const gameStubs = Object.values(form.gameLinks.value)
