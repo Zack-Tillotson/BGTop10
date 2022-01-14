@@ -38,7 +38,7 @@ function Component({
         <PageHead className="page__head" />
       )}
       <div className={cn('page__content', 'page__container', className)}>
-        <Breadcrumbs locations={crumbs} />
+        {/* <Breadcrumbs locations={crumbs} /> */}
         {children}
       </div>
       <div className="page__foot">

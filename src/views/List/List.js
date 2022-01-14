@@ -1,10 +1,11 @@
 import * as React from "react"
 import ReactMarkdown from 'react-markdown'
+import {Link} from 'gatsby'
 
 import Font from 'atoms/Font'
-import Image from 'atoms/Image'
 import Button from 'atoms/Button'
 
+import CreatorBrief from 'components/CreatorBrief'
 import CreatorMini from 'components/CreatorMini'
 import GameMini from 'components/GameMini'
 
@@ -16,8 +17,13 @@ const ListView = ({list, games, basePath}) => {
 
   return (
     <div className={cn}>
-      <div className={`${cn}__image-wrapper`}>
-        <Image className={`${cn}__image`} src={list.image} alt={'View ' + list.name} isBordered={false} />
+      <div className={`${cn}__image-wrapper video-container`}>
+        <iframe 
+          src={`https://www.youtube.com/embed/${list.link.split('=').slice(-1)}`} 
+          title={`${list.name} | YouTube`} 
+          frameborder="0" 
+          allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
+          allowfullscreen />
       </div>
       <section className={`${cn}__info`}>
         <h1>
@@ -26,10 +32,16 @@ const ListView = ({list, games, basePath}) => {
         <Font level="delta" className={`${cn}__desc`}>
           <ReactMarkdown>{list.description.description}</ReactMarkdown>
         </Font>
-        <Button type="link" hollow to={list.link} target="_blank">Original URL</Button>
       </section>
       <section className={`${cn}__creator`}>
-        <CreatorMini creator={list.creator} />
+        <div className={`${cn}__date`}>
+          <span className={`${cn}__date-title`}>Published: </span> {new Date(list.datePublished).toUTCString().slice(5, 16)}
+        </div>
+        <CreatorMini creator={list.creator} className={`${cn}__creator-mini`} Element={Link} to={`/creator/${list.creator.slug}/`} />
+        <CreatorBrief creator={list.creator} className={`${cn}__creator-brief`} Element={Link} to={`/creator/${list.creator.slug}/`} />
+        <Button type="link" primary to={list.link} wide target="_blank">
+          Original URL
+        </Button>
       </section>
       <section className={`${cn}__games`}>
         <h2>Games</h2>

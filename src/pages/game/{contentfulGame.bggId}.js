@@ -9,13 +9,14 @@ import Game from 'views/Game'
 const ListPage = ({location, data}) => {
 
   const {game, allContentfulList: {lists}} = data
+  const filteredLists = lists.filter((list, index) => index === 0 || list.slug !== lists[index-1].slug)
   
   return (
     <Page location={location} crumbs={[{display: 'Home', url: '/'}, {display: game.name, url: location.pathname}]}>
       <Helmet>
         <title>{game.name} | Cardboard Salad</title>
       </Helmet>
-      <Game game={game} lists={lists} basePath={location.pathname} />
+      <Game game={game} lists={filteredLists} basePath={location.pathname} />
     </Page>
   )
 }
