@@ -19,6 +19,8 @@ function getLinkTextFromUrl(url) {
   if(url.toLowerCase().includes('patreon.com')) return 'Patreon'
   if(url.toLowerCase().includes('discord.com')) return 'Discord'
   if(url.toLowerCase().includes('twitter.com')) return 'Twitter'
+  if(url.toLowerCase().includes('pinterest.com')) return 'Pinterest'
+
   return 'Site'
 }
 
@@ -46,9 +48,9 @@ const CreatorView = ({creator, lists = []}) => {
       <section>
         <h3>Links</h3>
         <div className={`${cn}__links`}>
-          {creator.link.map(link => (
+          {creator.link.map((link, index) => (
             <span key={link}>
-              •
+              {index !== 0 && "• "}
               <Button type="anchor" minimal href={link} target="_blank" className={`${cn}__link`}>
                 {getLinkTextFromUrl(link)}
               </Button>

@@ -94,7 +94,7 @@ function useListForm() {
     if(field.id === 'datePublished') {
       const date = new Date(value)
       if(!isNaN(date)) {
-        newValue.datePublished = `${date.getUTCFullYear()}-${date.getUTCMonth()<10?'0':''}${date.getUTCMonth()+1}-${date.getUTCDate()<10?'0':''}${date.getUTCDate()}`
+        newValue.datePublished = `${date.getUTCFullYear()}-${date.getUTCMonth()<9?'0':''}${date.getUTCMonth()+1}-${date.getUTCDate()<10?'0':''}${date.getUTCDate()}`
       }
     }
 

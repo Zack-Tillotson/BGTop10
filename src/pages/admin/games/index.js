@@ -1,6 +1,6 @@
 import React from "react"
 import { graphql } from 'gatsby'
-
+import Breadcrumbs from "layout/Breadcrumbs"
 import Page from 'layout/Page'
 
 import GameBrief from "components/GameBrief"
@@ -16,6 +16,7 @@ const AdminGamesPage = ({location, data}) => {
   
   return (
     <Page crumbs={crumbs} className={baseCn} location={location}>
+      <Breadcrumbs locations={crumbs} />
       <h1 className={`${baseCn}__title`}>Games</h1>
       <section className={`${baseCn}__summary`}>
         {data.games.nodes.map(game => (

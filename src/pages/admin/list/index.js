@@ -3,6 +3,7 @@ import { graphql } from 'gatsby'
 
 import Button from 'atoms/Button'
 import Page from 'layout/Page'
+import Breadcrumbs from "layout/Breadcrumbs"
 
 import ListAdminView from 'views/ListAdmin'
 import ContentfulListList from 'components/ContentfulListList'
@@ -20,6 +21,7 @@ const AdminCreatorPage = ({location}) => {
   return (
     <Page crumbs={crumbs} className={baseCn} location={location}>
       <section className={`${baseCn}__main`}>
+        <Breadcrumbs locations={crumbs} />
         <Button primary={tab === 'new'} onClick={() => updateTab('new')} tight>New</Button>
         <Button primary={tab === 'list'} onClick={() => updateTab('list')} tight>Existing</Button>
       {tab === 'new' && (
