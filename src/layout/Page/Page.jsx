@@ -9,7 +9,7 @@ import Breadcrumbs from '../Breadcrumbs'
 import './component.scss'
 import imageFavicon from 'images/square-logo-16x16.png'
 import imageIcon from 'images/square-logo-64x64.png'
-import imageApplIcon from 'images/square-logo-57x57.png'
+import imageApplIcon from 'images/square-logo-192x192.png'
 
 function Component({ 
   isHeadShown = true, 
@@ -27,7 +27,10 @@ function Component({
 
   return (
     <Ele className="page" {...rest}>
-      <Helmet>
+      <Helmet
+        htmlAttributes={{
+          lang: 'en',
+        }}>
         <meta charset="utf-8" />
         <link rel="icon" href={imageFavicon} />
         <meta name="viewport" content="width=device-width, initial-scale=1" />
@@ -46,8 +49,8 @@ function Component({
       <div className="page__foot">
         <div className="page__container page__foot-links">
           <Link to="/"><img className="page__foot-logo" src={imageIcon} alt="Cardboard Salad logo" /></Link>
-          <Link to="/terms-of-use">Terms of Use</Link>
-          <Link to="/contact-us">Contact Us</Link>
+          <Link to="/privacy-policy">Privacy policy</Link>
+          <Link to="/contact-us">Contact us</Link>
           <span>© Cardboard SALAD</span>
           <a href="https://zacherytillotson-com.web.app">© Zachery Tillotson</a>
         </div>

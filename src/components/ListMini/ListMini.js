@@ -14,7 +14,7 @@ const ListMini = ({list, className, getListTo, to = getListTo ? getListTo(list) 
   return (
     <section className={classnames(cn, className)}>
       <Link to={to} className={`${cn}__image-wrapper`}>
-        <img src={list.image} className={`${cn}__image`} />
+        <img src={list.image} className={`${cn}__image`} alt={'View the list: ' + list.title} />
       </Link>
       <div className={`${cn}__secondary-attrs`}>
         <Font level="delta">Published: {new Date(list.datePublished).toGMTString().slice(5, 16)}</Font>
