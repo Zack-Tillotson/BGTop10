@@ -63,7 +63,7 @@ const IndexPage = ({location, data}) => {
 
 export const query = graphql`
 query IndexPageQuery {
-  lists: allContentfulList(limit: 20, sort: {fields: datePublished, order: DESC}) {
+  lists: allContentfulList(limit: 21, sort: {fields: datePublished, order: DESC}) {
     nodes {
       slug
       description {

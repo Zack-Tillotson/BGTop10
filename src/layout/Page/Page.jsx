@@ -7,7 +7,9 @@ import PageHead from '../PageHead'
 import Breadcrumbs from '../Breadcrumbs'
 
 import './component.scss'
+import imageFavicon from 'images/square-logo-16x16.png'
 import imageIcon from 'images/square-logo-64x64.png'
+import imageApplIcon from 'images/square-logo-57x57.png'
 
 function Component({ 
   isHeadShown = true, 
@@ -27,12 +29,12 @@ function Component({
     <Ele className="page" {...rest}>
       <Helmet>
         <meta charset="utf-8" />
-        <link rel="icon" href="/icon.png" />
+        <link rel="icon" href={imageFavicon} />
         <meta name="viewport" content="width=device-width, initial-scale=1" />
         <link href="https://fonts.googleapis.com/css?family=Montserrat:400,700|Open+Sans:400,700&display=swap" rel="stylesheet" />
         <meta name="theme-color" content="#77c40d" />
         <meta name="description" content="A site for those who love board games and love board game top 10 lists." />
-        <link rel="apple-touch-icon" href="/icon.png" />
+        <link rel="apple-touch-icon" href={imageApplIcon} />
       </Helmet>
       {isHeadShown && (
         <PageHead className="page__head" />

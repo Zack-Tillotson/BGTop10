@@ -25,7 +25,7 @@ const config = {
     {
       resolve: 'gatsby-plugin-sitemap',
       options: {
-        excludes: ['/admin/**'],
+        excludes: ['/admin/', '/admin/**', '**/image/'],
       }
     },
     {
