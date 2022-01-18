@@ -13,6 +13,7 @@ const config = {
   plugins: [
     "gatsby-plugin-sass",
     "gatsby-plugin-root-import",
+    `gatsby-plugin-react-helmet`,
     "gatsby-plugin-image",
     {
       resolve: 'gatsby-source-contentful',

@@ -61,15 +61,15 @@ const staticFields = [
         '2022', 
         '2023', 
         '2024', 
-        'Game of the year',
-        'Best of all time',
-        'Upcoming', 
-        'Expansion',
-        'Big list',
-        'Crowd funding',
+        'game-of-the-year',
+        'best-of-all-time',
+        'upcoming', 
+        'expansion',
+        'big-list',
+        'crowd-funding',
 
-        'Solo / Solitaire Game', // mechanics
-        'Cooperative Game',
+        'solo-solitaire-game', // mechanics
+        'cooperative-game',
       ]
     },
   },

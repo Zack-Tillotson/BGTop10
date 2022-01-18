@@ -73,6 +73,10 @@
   color: var(--color-font-focus);
 }
 
+.list-view__tag {
+  display: block;
+}
+
 
 .video-container { position: relative; padding-bottom: 56.25%; padding-top: 30px; height: 0; overflow: hidden; }
 

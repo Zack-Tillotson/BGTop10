@@ -3,6 +3,7 @@ import ReactMarkdown from 'react-markdown'
 import {Link} from 'gatsby'
 
 import Font from 'atoms/Font'
+import Pill from 'atoms/Pill'
 import Button from 'atoms/Button'
 
 import CreatorBrief from 'components/CreatorBrief'
@@ -42,6 +43,18 @@ const ListView = ({list, games, basePath}) => {
         <Button type="link" primary to={list.link} wide target="_blank">
           Original URL
         </Button>
+        {list.tags && (
+          <div className={`${cn}__tags`}>
+            <h3>Tags</h3>
+            {list.tags.map(tag => (
+              <Button type="link" key={tag} to={`/tag/${tag}/`} minimal wide className={`${cn}__tag`}>
+                <Pill>
+                  {tag}
+                </Pill>
+              </Button>
+            ))}
+          </div>
+        )}
       </section>
       <section className={`${cn}__games`}>
         <h2>Games</h2>

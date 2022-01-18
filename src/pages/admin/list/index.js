@@ -1,5 +1,4 @@
 import React, { useState } from "react"
-import { graphql } from 'gatsby'
 
 import Button from 'atoms/Button'
 import Page from 'layout/Page'

@@ -23,7 +23,7 @@ function useCreatorForm() {
     const newValue = {...formState.value, [field.id]: value}
 
     if(field.id === 'name') {
-      newValue.slug = slugify(value, {lower: true})
+      newValue.slug = slugify(value, {lower: true, strict: true})
     }
     formState.updateValue(newValue)
   }
