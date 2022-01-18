@@ -1,4 +1,5 @@
 import * as React from "react"
+import {Link} from 'gatsby'
 
 import Font from 'atoms/Font'
 import CreatorBrief from 'components/CreatorBrief'
@@ -19,7 +20,7 @@ const ContentfulCreatorList = () => {
         <strong>Count:</strong> {cmsList.length}
       </Font>
       {cmsList.map(creator => (
-        <CreatorBrief key={creator.slug} creator={creator} to={`/admin/creator/${creator.slug}/`} />
+        <CreatorBrief key={creator.slug} creator={creator} Element={Link} to={`/admin/creator/${creator.slug}/`} />
       ))}
     </section>
   )
