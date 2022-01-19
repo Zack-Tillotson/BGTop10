@@ -47,7 +47,8 @@ const ListView = ({list, games, basePath}) => {
           <div className={`${cn}__tags`}>
             <h3>Tags</h3>
             {list.tags.map(tag => (
-              <Button type="link" key={tag} to={`/tag/${tag}/`} minimal wide className={`${cn}__tag`}>
+              /*to={`/tag/${list.tags.join('-')}/`}*/
+              <Button type="link" key={tag} minimal wide className={`${cn}__tag`}>
                 <Pill>
                   {tag}
                 </Pill>

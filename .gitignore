@@ -5,3 +5,4 @@ public
 .env.production
 .firebaserc
 hosting.cHVibGlj.cache
+firebase-debug.log
