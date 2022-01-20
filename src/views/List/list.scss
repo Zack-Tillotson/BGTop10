@@ -73,10 +73,14 @@
   color: var(--color-font-focus);
 }
 
-.list-view__tag {
-  display: block;
+.list-view__tags-list {
+  display: flex;
+  flex-flow: row wrap;
 }
 
+.list-view__tag {
+  display: inline-block;
+}
 
 .video-container { position: relative; padding-bottom: 56.25%; padding-top: 30px; height: 0; overflow: hidden; }
 

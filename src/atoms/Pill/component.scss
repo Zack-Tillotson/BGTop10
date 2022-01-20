@@ -1,15 +1,7 @@
 .atom-pill {
-  display: inline;
-}
-
-.atom-pill__inner {
-  display: inline-block;
-  padding: var(--pad);
-  width: 100%;
-  
-  color: var(--color-font-base);  
-  border: var(--border);
-  border-color: var(--color-contrast-bg-primary);
-  background: var(--color-contrast-bg-primary-transparent);
-  border-radius: 999px;
+  border: var(--border-1);
+  border-color: var(--color-font-focus);
+  border-radius: var(--pad);
+  padding: var(--pad-half);
+  margin-right: var(--pad);
 }

@@ -46,14 +46,16 @@ const ListView = ({list, games, basePath}) => {
         {list.tags && (
           <div className={`${cn}__tags`}>
             <h3>Tags</h3>
-            {list.tags.map(tag => (
-              /*to={`/tag/${list.tags.join('-')}/`}*/
-              <Button type="link" key={tag} minimal wide className={`${cn}__tag`}>
-                <Pill>
-                  {tag}
-                </Pill>
-              </Button>
-            ))}
+            <Font level="delta" className={`${cn}__tag-list`}>
+              {list.tags.map(tag => (
+                /*to={`/tag/${list.tags.join('-')}/`}*/
+                <Link key={tag} className={`${cn}__tag`}>
+                  <Pill>
+                    {tag}
+                  </Pill>
+                </Link>
+              ))}
+            </Font>
           </div>
         )}
       </section>
