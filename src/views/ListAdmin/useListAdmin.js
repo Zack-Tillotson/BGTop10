@@ -5,13 +5,16 @@ import useListGames from 'useListGames'
 import useList from 'contentful/useList'
 import useGame from 'contentful/useGame'
 import useCreator from 'contentful/useCreator'
+import useTags from 'contentful/useTags'
 
 function useListAdmin(editTarget) {
   const listGames = useListGames(editTarget)
-  const form = useListForm()
   const contentful = useList(editTarget)
   const contentfulCreator = useCreator(true)
   const contentfulGames = useGame(true)
+  const contentfulTags = useTags(true)
+
+  const form = useListForm()
 
   const [step, updateStep] = useState('form') // form, games, review
   const [isSuccessful, updateIsSuccessful] = useState(null) // null, true, false
@@ -60,10 +63,11 @@ function useListAdmin(editTarget) {
     const rawList = contentful.rawToGraphQl(form.combinedValue)
 
     const creator = contentfulCreator.contentfulList.find(item => item.fields.slug['en-US'] == rawList.creator.slug)
+    const tags = form.base.value.tags.map(rawTag => contentfulTags.contentfulList.find(list => list.fields.slug['en-US'] === rawTag.slug))
 
     const editTargetSlug = editTarget ? editTarget.slug : ''
 
-    contentful.saveEntry(rawList, creator, editTargetSlug)
+    contentful.saveEntry(rawList, creator, tags, editTargetSlug)
       .then(result => {
         updateIsSuccessful(result)
         if(result) {

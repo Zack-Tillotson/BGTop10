@@ -1,5 +1,7 @@
 import slugify from 'slugify'
+
 import usePersistentState from 'usePersistentState'
+import useTags from 'contentful/useTags'
 
 const STATE_NAME = 'contentful-list-form'
 const DEFAULT_VALUE = {}
@@ -11,7 +13,7 @@ const LINK_FIELDS_DEFAULT_VALUE = []
 const LINK_STATE_NAME = 'contentful-list-form-link-state'
 const LINK_STATE_DEFAULT_VALUE = []
 
-function buildStateObjects(linksAry, gamesAry) {
+function buildStateObjects(linksAry, gamesAry, searchAry) {
   const fieldAry = []
   const newLinkState = {}
   linksAry.forEach((link, index) => {
@@ -32,7 +34,7 @@ function buildStateObjects(linksAry, gamesAry) {
       },
     )
     newLinkState[titleId] = link
-    newLinkState[gameSearchId] = ''
+    newLinkState[gameSearchId] = searchAry[index] || ''
     newLinkState[gameId] = gamesAry[index] || undefined
   })
 
@@ -40,6 +42,8 @@ function buildStateObjects(linksAry, gamesAry) {
 }
 
 function useListForm() {
+  const tags = useTags(true)
+
   const formState = usePersistentState(STATE_NAME, DEFAULT_VALUE)
   const linkFields = usePersistentState(LINK_FIELDS_NAME, LINK_FIELDS_DEFAULT_VALUE)
   const linkState = usePersistentState(LINK_STATE_NAME, LINK_STATE_DEFAULT_VALUE)
@@ -129,9 +133,10 @@ function useListForm() {
       })
     })
 
-    const gamesAry = Object.keys(linkState).filter(key => key.indexOf(' game') >= 0).map(key => linkState[key])
-
-    const [fieldAry, newLinkState] = buildStateObjects(linksAry, gamesAry)
+    const gamesAry = Object.keys(linkState.value).filter(key => key.indexOf(' game') >= 0).map(key => linkState.value[key])
+    const searchAry = Object.keys(linkState.value).filter(key => key.indexOf(' search') >= 0).map(key => linkState.value[key])
+    
+    const [fieldAry, newLinkState] = buildStateObjects(linksAry, gamesAry, searchAry)
     
     linkFields.updateValue(fieldAry)
     linkState.updateValue(newLinkState)
@@ -139,6 +144,7 @@ function useListForm() {
   }
 
   return {
+    tags: tags.cmsList,
     base: {
       value: formState.value,
       handleChange: handleBaseChange,

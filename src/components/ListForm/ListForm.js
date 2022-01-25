@@ -53,25 +53,6 @@ const staticFields = [
     id: 'tags',
     label: 'Tags',
     type: 'list-tags',
-    otherAttrs: {
-      values: [
-        '2019', 
-        '2020', 
-        '2021', 
-        '2022', 
-        '2023', 
-        '2024', 
-        'game-of-the-year',
-        'best-of-all-time',
-        'upcoming', 
-        'expansion',
-        'big-list',
-        'crowd-funding',
-
-        'solo-solitaire-game', // mechanics
-        'cooperative-game',
-      ]
-    },
   },
 ]
 
@@ -79,7 +60,7 @@ const linkPopNumbersId = 'pop-numbers-input'
 const linkPopNamesId = 'pop-names-input'
 
 const ListForm = () => {
-  const state = useListForm()
+  const state = useListForm(true)
 
   const handleChange = event => {
     const {id, value} = event.target
@@ -135,11 +116,11 @@ const ListForm = () => {
             if(field.type === 'list-tags') {
               inputElement = (
                 <div className={`${baseCn}__tag-list`}>
-                  {field.otherAttrs.values.map(value => {
-                    const index = (state.base.value.tags || []).indexOf(value)
+                  {state.tags.map(tag => {
+                    const index = (state.base.value.tags || []).findIndex(findTag => findTag.slug === tag.slug)
                     return (
-                      <Button key={value} primary={index >= 0} onClick={handleTagClick(field, value, index)}>
-                        {value}
+                      <Button key={tag.slug} primary={index >= 0} onClick={handleTagClick(field, tag, index)}>
+                        {tag.display}
                       </Button>
                     )
                   })}

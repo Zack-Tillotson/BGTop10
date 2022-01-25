@@ -17,7 +17,7 @@ function getEmptyObject(targetObject = {}) {
     image: {
       'en-US': '',
     },
-    tags: {
+    listTags: {
       'en-US': [],
     },
     description: {
@@ -35,7 +35,7 @@ function getEmptyObject(targetObject = {}) {
 }
 
 export function rawToContentful(raw = {}, options = {}) {
-  const {cmsCreator, updateObject} = options
+  const {cmsCreator, cmsTags, updateObject} = options
   let {
     name = '',
     slug = '',
@@ -43,7 +43,7 @@ export function rawToContentful(raw = {}, options = {}) {
     image = '',
     datePublished = new Date().toString(),
     description = '',
-    tags = [],
+    listTags = [],
     creator = {},
     gameLink = [],
   } = raw
@@ -58,6 +58,14 @@ export function rawToContentful(raw = {}, options = {}) {
     },
   }) : creator
 
+  const updateTags = cmsTags ? cmsTags.map(cmsTag => ({
+    sys: {
+      id: cmsTag.sys.id,
+      linkType: 'Entry',
+      type: 'Link'
+    },
+  })) : listTags
+
   const updateTarget = getEmptyObject(updateObject)
 
   updateTarget.fields.name['en-US'] = name
@@ -66,7 +74,7 @@ export function rawToContentful(raw = {}, options = {}) {
   updateTarget.fields.datePublished['en-US'] = datePublished
   updateTarget.fields.image['en-US'] = image
   updateTarget.fields.description['en-US'] = description  
-  updateTarget.fields.tags['en-US'] = tags
+  updateTarget.fields.listTags['en-US'] = updateTags
   updateTarget.fields.creator['en-US'] = updateCreator
   updateTarget.fields.gameLink['en-US'] = gameLink
 

@@ -43,15 +43,15 @@ const ListView = ({list, games, basePath}) => {
         <Button type="link" primary to={list.link} wide target="_blank">
           Original URL
         </Button>
-        {list.tags && (
+        {list.listTags && (
           <div className={`${cn}__tags`}>
             <h3>Tags</h3>
             <Font level="delta" className={`${cn}__tag-list`}>
-              {list.tags.map(tag => (
+              {list.listTags.map(tag => (
                 /*to={`/tag/${list.tags.join('-')}/`}*/
-                <Link key={tag} className={`${cn}__tag`}>
+                <Link key={tag.slug} className={`${cn}__tag`}>
                   <Pill>
-                    {tag}
+                    {tag.display}
                   </Pill>
                 </Link>
               ))}

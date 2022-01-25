@@ -23,21 +23,21 @@ function getEntries(accessToken) {
     })
 }
 
-const handleSave = (accessToken, fullList) => (rawList, cmsCreator, editSlug) => {
+const handleSave = (accessToken, fullList) => (rawList, cmsCreator, cmsTags, editSlug) => {
   if(!editSlug) {
-    return saveEntry(accessToken, rawList, cmsCreator)
+    return saveEntry(accessToken, rawList, cmsCreator, cmsTags)
   }
 
   const item = fullList.find(item => item.fields.slug['en-US'] == editSlug)
   if(!item) throw  new Error('Unable to find item to edit')
 
-  const updatedItem = rawToContentful(rawList, {cmsCreator , updateObject: item})
+  const updatedItem = rawToContentful(rawList, {cmsCreator , cmsTags, updateObject: item})
   return updatedItem.update()
 }
 
 
-const saveEntry = (accessToken, rawAttrs, cmsCreator) => {
-  const list = rawToContentful(rawAttrs, {cmsCreator})
+const saveEntry = (accessToken, rawAttrs, cmsCreator, cmsTags) => {
+  const list = rawToContentful(rawAttrs, {cmsCreator, cmsTags})
   
   return getEnvironment(accessToken)
     .then(env => env.createEntry(ENTRY_TYPE, list))
