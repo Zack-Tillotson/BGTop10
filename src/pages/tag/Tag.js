@@ -11,8 +11,9 @@ import MetaView from 'views/Meta'
 const TagPage = ({location, data}) => {
 
   const {tag} = data
-
   const allGames = useListGames()
+
+  if(!tag) return null
 
   const lists = data.lists.nodes
   const gameMap = {}
@@ -34,10 +35,10 @@ const TagPage = ({location, data}) => {
   return (
     <Page location={location} crumbs={[{display: 'Home', url: '/'}, {display: tag.display, url: location.pathname}]}>
       <Helmet>
-        <title>{tag.display} | Cardboard Salad</title>
+        <title>{tag.pageTitle} | Cardboard Salad</title>
       </Helmet>
       <h1>
-        {tag.display}
+        {tag.pageTitle}
       </h1>
       <MetaView creators={creators} games={games} lists={lists} />
     </Page>
@@ -45,10 +46,18 @@ const TagPage = ({location, data}) => {
 }
 
 export const query = graphql`
-  query TagPageQuery($slug: String!) {
+  query TagPageQuery($slug: String = "") {
     tag: contentfulTag(slug: {eq: $slug}) {
+      pageTitle
       slug
       display
+    }
+    xxx: allContentfulTag(limit: 1) {
+      nodes {
+        pageTitle
+        slug
+        display
+      }
     }
     lists: allContentfulList(
       limit: 21
