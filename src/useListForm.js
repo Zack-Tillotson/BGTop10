@@ -13,7 +13,7 @@ const LINK_FIELDS_DEFAULT_VALUE = []
 const LINK_STATE_NAME = 'contentful-list-form-link-state'
 const LINK_STATE_DEFAULT_VALUE = []
 
-function buildStateObjects(linksAry, gamesAry, searchAry) {
+function buildStateObjects(linksAry, gamesAry = [], searchAry = []) {
   const fieldAry = []
   const newLinkState = {}
   linksAry.forEach((link, index) => {

@@ -52,13 +52,6 @@ export const query = graphql`
       slug
       display
     }
-    xxx: allContentfulTag(limit: 1) {
-      nodes {
-        pageTitle
-        slug
-        display
-      }
-    }
     lists: allContentfulList(
       limit: 21
       sort: {fields: datePublished, order: DESC}
