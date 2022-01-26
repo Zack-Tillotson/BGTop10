@@ -3,7 +3,7 @@ import { graphql, useStaticQuery } from "gatsby"
 const allGamesQuery = graphql`
   query AllGamesQuery {
     allContentfulGame {
-      games: nodes{
+      games: nodes {
         artist
         bggId
         designer

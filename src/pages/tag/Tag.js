@@ -2,12 +2,15 @@ import * as React from "react"
 import { graphql } from 'gatsby'
 import {Helmet} from 'react-helmet'
 
-import useListGames from "useListGames"
+import useListGames from 'useListGames'
 
 import Page from 'layout/Page'
 import MetaView from 'views/Meta'
 
-const IndexPage = ({location, data}) => {
+
+const TagPage = ({location, data}) => {
+
+  const {tag} = data
 
   const allGames = useListGames()
 
@@ -27,14 +30,14 @@ const IndexPage = ({location, data}) => {
     creatorMap[creator.slug].count++
   })
   const creators = Object.values(creatorMap).sort((a, b) => b.count - a.count).map(item => item.creator)
-
+  
   return (
-    <Page location={location}>
+    <Page location={location} crumbs={[{display: 'Home', url: '/'}, {display: tag.display, url: location.pathname}]}>
       <Helmet>
-        <title>Cardboard Salad</title>
+        <title>{tag.display} | Cardboard Salad</title>
       </Helmet>
-      <h1 className="--screen-reader">
-        Cardboard Salad
+      <h1>
+        {tag.display}
       </h1>
       <MetaView creators={creators} games={games} lists={lists} />
     </Page>
@@ -42,39 +45,47 @@ const IndexPage = ({location, data}) => {
 }
 
 export const query = graphql`
-query IndexPageQuery {
-  lists: allContentfulList(limit: 21, sort: {fields: datePublished, order: DESC}) {
-    nodes {
+  query TagPageQuery($slug: String!) {
+    tag: contentfulTag(slug: {eq: $slug}) {
       slug
-      description {
-        description
-      }
-      image
-      link
-      name
-      datePublished
-      listTags {
-        display
+      display
+    }
+    lists: allContentfulList(
+      limit: 21
+      sort: {fields: datePublished, order: DESC}
+      filter: {listTags: {elemMatch: {slug: {eq: $slug}}}}
+    ) {
+      nodes {
         slug
-      }
-      creator {
-        slug
-        name
-        link
-        imageBanner
-        imageAvatar
         description {
           description
         }
-      }
-      gameLink {
-        title
-        bggId
+        image
+        link
+        name
+        datePublished
+        listTags {
+          display
+          slug
+        }
+        creator {
+          slug
+          name
+          link
+          imageBanner
+          imageAvatar
+          description {
+            description
+          }
+        }
+        gameLink {
+          title
+          bggId
+        }
       }
     }
   }
-}
 
 `
 
-export default IndexPage
+export default TagPage

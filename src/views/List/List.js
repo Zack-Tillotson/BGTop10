@@ -48,8 +48,7 @@ const ListView = ({list, games, basePath}) => {
             <h3>Tags</h3>
             <Font level="delta" className={`${cn}__tag-list`}>
               {list.listTags.map(tag => (
-                /*to={`/tag/${list.tags.join('-')}/`}*/
-                <Link key={tag.slug} className={`${cn}__tag`}>
+                <Link key={tag.slug} className={`${cn}__tag`} to={`/tag/${tag.slug}/`}>
                   <Pill>
                     {tag.display}
                   </Pill>
