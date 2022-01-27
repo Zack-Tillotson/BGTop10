@@ -21,19 +21,20 @@ const AdminCreatorPage = ({location}) => {
     <Page crumbs={crumbs} className={baseCn} location={location}>
       <section className={`${baseCn}__main`}>
         <Breadcrumbs locations={crumbs} />
-        <Button primary={tab === 'new'} onClick={() => updateTab('new')} tight>New</Button>
-        <Button primary={tab === 'list'} onClick={() => updateTab('list')} tight>Existing</Button>
+        <div className="admin__nav-list">
+          <Button onClick={() => updateTab('new')} minimal className={tab === 'new' ? "admin__nav-item--active" : ''}>
+            New
+          </Button>
+          |
+          <Button onClick={() => updateTab('list')} minimal className={tab === 'list' ? "admin__nav-item--active" : ''}>
+            Existing
+          </Button>
+        </div>
       {tab === 'new' && (
-        <>
-          <h1 className={`${baseCn}__title`}>Create new list</h1>
-          <ListAdminView Element="section" />
-        </>
+        <ListAdminView Element="section" />
       )}
       {tab === 'list' && (
-        <>
-          <h1 className={`${baseCn}__title`}>Select list to edit</h1>
-          <ContentfulListList />
-        </>
+        <ContentfulListList />
       )}
       </section>
     </Page>

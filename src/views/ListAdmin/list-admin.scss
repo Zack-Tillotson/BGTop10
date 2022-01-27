@@ -3,3 +3,9 @@
   flex-flow: row nowrap;
   justify-content: space-between;
 }
+
+.list-admin__alert {
+  position: fixed;
+  left: var(--pad);
+  top: var(--pad4);
+}

@@ -1,10 +1,14 @@
+.list-form {
+  min-height: 50vh;
+}
+
 .list-form__input {
   width: 100%;
 }
 
 .list-form__input-row {
   display: grid;
-  grid-template-columns: auto auto 1fr;
+  grid-template-columns: 15% 25% 10% 50%;
   grid-gap: var(--pad);
 }
 

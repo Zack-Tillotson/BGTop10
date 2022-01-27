@@ -1,6 +1,7 @@
 import React from 'react';
 import cn from 'classnames'
 
+import Button from 'atoms/Button'
 import CreatorBrief from 'components/CreatorBrief'
 
 import useCreatorSelector from './useCreatorSelector'
@@ -30,8 +31,10 @@ function CreatorSelectorPane(props) {
       <section>
         <ul>
           {list.map(creator => (
-            <li key={creator.slug}>
-              <CreatorBrief creator={creator} onClick={handleCreatorClick(creator)} />
+            <li key={creator.slug} className={`${baseCn}__creator`}>
+              <Button onClick={handleCreatorClick(creator)} minimal>
+                <CreatorBrief creator={creator} />
+              </Button>
             </li>
           ))}
         </ul>

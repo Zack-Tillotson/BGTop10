@@ -1,6 +1,7 @@
 import React from "react"
 import { graphql } from 'gatsby'
 
+import Breadcrumbs from "layout/Breadcrumbs"
 import Page from 'layout/Page'
 
 import ListAdminView from 'views/ListAdmin'
@@ -18,7 +19,8 @@ const AdminListEditPage = ({location, data}) => {
   ]
   
   return (
-    <Page crumbs={crumbs} className={baseCn} location={location}>
+    <Page className={baseCn} location={location}>
+      <Breadcrumbs locations={crumbs} />
       <section className={`${baseCn}__main`}>
         <h1 className={`${baseCn}__title`}>Edit list</h1>
         <ListAdminView Element="section" editTarget={list} />

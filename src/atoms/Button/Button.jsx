@@ -25,6 +25,7 @@ function Button(props) {
     wide = false,
     tight = false,
     minimal = false,
+    semitight = false,
     ...restProps
   } = props
   
@@ -39,6 +40,7 @@ function Button(props) {
       [`${baseCn}--wide`]: wide,
       [`${baseCn}--tight`]: tight,
       [`${baseCn}--minimal`]: minimal,
+      [`${baseCn}--semitight`]: semitight,
     },
   )
 

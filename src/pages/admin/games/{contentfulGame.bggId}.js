@@ -5,6 +5,7 @@ import Page from 'layout/Page'
 import Game from "views/Game"
 import GameBrief from "components/GameBrief"
 import Button from "atoms/Button"
+import Breadcrumbs from "layout/Breadcrumbs"
 
 import useGame from 'contentful/useGame'
 
@@ -17,7 +18,7 @@ const AdminCreatorEditPage = ({location, data}) => {
     {display: 'Home', url: '/'}, 
     {display: 'Admin', url: '/admin/'}, 
     {display: 'Games', url: '/admin/games/'},
-    {display: data.games.name, url: `/admin/games/${data.games.bggId}/`},
+    {display: data.game.name, url: `/admin/games/${data.games.bggId}/`},
   ]
 
   const handleRefreshClick = () => {
@@ -27,6 +28,7 @@ const AdminCreatorEditPage = ({location, data}) => {
   return (
     <Page crumbs={crumbs} className={baseCn} location={location}>
       <h1 className={`${baseCn}__title`}>Edit Game</h1>
+      <Breadcrumbs locations={crumbs} />
       <div>
         <Button onClick={handleRefreshClick} primary>Refresh Data from BGG</Button>
         <Game game={data.game} lists={[]} />
@@ -45,6 +47,9 @@ export const query = graphql`
     game: contentfulGame(bggId: {eq: $bggId}) {
       bggId
       artist
+      description {
+        description
+      }
       designer
       family
       image

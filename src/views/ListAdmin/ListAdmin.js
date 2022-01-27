@@ -23,7 +23,7 @@ const ListAdmin = ({Element, className, editTarget}) => {
   return (
     <Element className={`${className} ${baseCn}`}>
       {state.isSuccessful !== null && (
-        <Button onClick={handlers.clearResultClick} primary={state.isSuccessful} secondary={!state.isSuccessful}>
+        <Button onClick={handlers.clearResultClick} primary={state.isSuccessful} secondary={!state.isSuccessful} className={`${baseCn}__alert`}>
           {state.isSuccessful ? 'success' : 'error'} - click to close
         </Button>
       )}

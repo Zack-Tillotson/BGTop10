@@ -1,4 +1,4 @@
-import * as React from "react"
+import React, {useState} from "react"
 
 import Button from 'atoms/Button'
 import Font from 'atoms/Font'
@@ -45,7 +45,7 @@ const staticFields = [
     label: 'Description',
     type: 'textarea',
     otherAttrs: {
-      rows: "5",
+      rows: "3",
       col: "50",
     },
   },
@@ -61,6 +61,7 @@ const linkPopNamesId = 'pop-names-input'
 
 const ListForm = () => {
   const state = useListForm(true)
+  const [isCreatorButtonVisible, updateisCreatorButtonVisible] = useState(!!(state.base.value.creator))
 
   const handleChange = event => {
     const {id, value} = event.target
@@ -71,15 +72,21 @@ const ListForm = () => {
 
   const handleCreatorSelect = creator => {
     state.base.handleChange(creatorField, creator)
+    updateisCreatorButtonVisible(false)
   }
   
   const handlePopulateLinksClick = () => {
     state.gameLinks.handleGenerateGameLinks(document.getElementById(linkPopNumbersId).value, document.getElementById(linkPopNamesId).value)
   }
 
-  const handleFieldChange = field => val => {
+  const handleFieldChange = (field, nextTabId) => val => {
     const value = val.target ? val.target.value : val
     state.gameLinks.handleChange(field, value)
+    if(nextTabId) {
+      try {
+        document.querySelectorAll(`[tabindex="${nextTabId}"]`)[0].focus()
+      } catch(e) {}
+    }
   }
 
   const handleTagClick = (field, tag, index) => e => {
@@ -100,11 +107,15 @@ const ListForm = () => {
   return (
     <section className={baseCn}>
       <div className={`${baseCn}__creator-section`}>
-        <div className={`${baseCn}____input-group`}>
+        <div className={`${baseCn}____input-group ${!isCreatorButtonVisible ? '--hidden' : ''}`}>
           <Font level="delta" className="list-form__input">{creatorField.label}</Font>
-          <CreatorSelector onSelect={handleCreatorSelect} buttonProps={{chidlren: "Select", primary: !state.base.value.creator, hollow: !!state.base.value.creator}} />
+          <CreatorSelector onSelect={handleCreatorSelect} buttonProps={{children: "Select", primary: !state.base.value.creator, hollow: !!state.base.value.creator}} />
         </div>
-        {state.base.value.creator && <CreatorBrief creator={state.base.value.creator} />}
+        {state.base.value.creator && (
+          <Button onClick={() => updateisCreatorButtonVisible(true)} minimal>
+            <CreatorBrief creator={state.base.value.creator} />
+          </Button>
+        )}
       </div>
       {state.base.value.creator && ( /* Only show the list info after the user has selected a creator */
         <>
@@ -119,7 +130,7 @@ const ListForm = () => {
                   {state.tags.map(tag => {
                     const index = (state.base.value.tags || []).findIndex(findTag => findTag.slug === tag.slug)
                     return (
-                      <Button key={tag.slug} primary={index >= 0} onClick={handleTagClick(field, tag, index)}>
+                      <Button key={tag.slug} onClick={handleTagClick(field, tag, index)} minimal className={`${index < 0 ? '' : 'admin__nav-item--active'}`}>
                         {tag.display}
                       </Button>
                     )
@@ -164,7 +175,7 @@ const ListForm = () => {
               </div>
               <Button onClick={handlePopulateLinksClick} secondary>Generate links</Button>
             </Font>
-            {new Array(gameLinkFieldsKeys.length / 3).fill().map((_, index) => {
+            {new Array(gameLinkFieldsKeys.length / 3).fill().map((_, index, inputAry) => {
               const titleField = state.gameLinks.fields[gameLinkFieldsKeys[index * 3]]
               const searchField = state.gameLinks.fields[gameLinkFieldsKeys[index * 3 + 1]]
               const gameField = state.gameLinks.fields[gameLinkFieldsKeys[index * 3 + 2]]
@@ -172,6 +183,8 @@ const ListForm = () => {
               const titleValue = state.gameLinks.value[titleField.id]
               const searchValue = state.gameLinks.value[searchField.id]
               const gameValue = state.gameLinks.value[gameField.id]
+
+              const tabIndex = 2 * inputAry.length + index + 1
               
               return (
                 <div key={titleField.id} className={`${baseCn}__input-row`}>
@@ -190,7 +203,7 @@ const ListForm = () => {
                       onChange={handleFieldChange(titleField)} 
                       className={`${baseCn}__input`} />
                   </div>
-                  <div  className={`${baseCn}____input-group`}>
+                  <div  className={`${baseCn}__input-group`}>
                     <Font
                       Ele="label"
                       level="delta"
@@ -203,9 +216,10 @@ const ListForm = () => {
                       type={'text'}
                       value={searchValue} 
                       onChange={handleFieldChange(searchField)} 
+                      tabIndex={index+1}
                       className={`${baseCn}__input`} />
                   </div>
-                  <div  className={`${baseCn}____input-group`}>
+                  <div  className={`${baseCn}__input-group`}>
                     <Font
                       level="delta"
                       className={`${baseCn}__label`}>
@@ -213,17 +227,10 @@ const ListForm = () => {
                     </Font>
                     <GameSelector 
                       defaultInput={searchValue}
-                      onSelect={handleFieldChange(gameField)} 
-                      buttonProps={{children: "Select", primary: !gameValue, hollow: !!gameValue}} />
+                      onSelect={handleFieldChange(gameField, tabIndex + 1)} 
+                      buttonProps={{children: "Select", primary: !gameValue, hollow: !!gameValue, semitight: true, tabIndex}} />
                   </div>
                   <div className={`${baseCn}__input-group`}>
-                    <Font
-                      Ele="label"
-                      level="delta"
-                      htmlFor={titleField.id}
-                      className={`${baseCn}__label`}>
-                        Selected game
-                    </Font>
                     {gameValue ? <GameBrief game={gameValue} Element="div" /> : ''}
                   </div>
                 </div>

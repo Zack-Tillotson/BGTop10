@@ -26,3 +26,41 @@
 .admin__game-summary {
   max-width: 250px;
 }
+
+.admin__nav {
+  display: flex;
+  flex-flow: column nowrap;
+  min-height: 75vh;
+}
+
+.admin__nav-section {
+  flex: 1;
+}
+
+.admin__nav-link-list {
+  display: flex;
+  flex-flow: row nowrap;
+  justify-content: space-evenly;
+}
+
+.admin__nav-link {
+  display: inline-flex;
+  flex-flow: column nowrap;
+  min-width: 200px;
+  border: var(--border-1);
+  border-radius: var(--pad);
+  padding: var(--pad);
+  text-align: center;
+}
+
+.admin__nav-title {
+  font-size: var(--font-size-alpha);
+}
+
+.admin__nav-logo {
+  font-size: var(--font-size-alpha);
+}
+
+.admin__nav-item--active {
+  border-bottom: var(--border-4);
+}
