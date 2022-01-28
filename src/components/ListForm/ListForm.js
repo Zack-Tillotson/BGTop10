@@ -61,7 +61,7 @@ const linkPopNamesId = 'pop-names-input'
 
 const ListForm = () => {
   const state = useListForm(true)
-  const [isCreatorButtonVisible, updateisCreatorButtonVisible] = useState(!!(state.base.value.creator))
+  const [isCreatorButtonVisible, updateisCreatorButtonVisible] = useState(!(state.base.value.creator))
 
   const handleChange = event => {
     const {id, value} = event.target
