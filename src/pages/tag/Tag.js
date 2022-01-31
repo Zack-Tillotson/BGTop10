@@ -7,6 +7,7 @@ import useListGames from 'useListGames'
 import Page from 'layout/Page'
 import MetaView from 'views/Meta'
 
+const baseCn = 'tag-page'
 
 const TagPage = ({location, data}) => {
 
@@ -33,14 +34,11 @@ const TagPage = ({location, data}) => {
   const creators = Object.values(creatorMap).sort((a, b) => b.count - a.count).map(item => item.creator)
   
   return (
-    <Page location={location} crumbs={[{display: 'Home', url: '/'}, {display: tag.display, url: location.pathname}]}>
+    <Page location={location}>
       <Helmet>
         <title>{tag.pageTitle} | Cardboard Salad</title>
       </Helmet>
-      <h1>
-        {tag.pageTitle}
-      </h1>
-      <MetaView creators={creators} games={games} lists={lists} />
+      <MetaView tag={tag} creators={creators} games={games} lists={lists} />
     </Page>
   )
 }
@@ -51,6 +49,12 @@ export const query = graphql`
       pageTitle
       slug
       display
+      pageSubtitle {
+        pageSubtitle
+      }
+      introduction {
+        introduction
+      }
     }
     lists: allContentfulList(
       limit: 21
