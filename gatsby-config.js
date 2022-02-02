@@ -30,6 +30,15 @@ const config = {
       }
     },
     {
+      resolve: 'gatsby-plugin-robots-txt',
+      options: {
+        policy: [
+          {userAgent: '*', disallow: '/admin/'},
+          {userAgent: '*', allow: '/'},
+        ],
+      }
+    },
+    {
       resolve: `gatsby-plugin-google-gtag`,
       options: {
         trackingIds: [
