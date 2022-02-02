@@ -2,10 +2,9 @@ import * as React from "react"
 import { Link, graphql } from 'gatsby'
 import {Helmet} from 'react-helmet'
 
-import useListGames from "useListGames"
-
 import Page from 'layout/Page'
-import MetaView from 'views/Meta'
+
+import TagBrief from 'components/TagBrief'
 
 const IndexPage = ({location, data}) => {
 
@@ -20,8 +19,8 @@ const IndexPage = ({location, data}) => {
       <section>
         <h2>Board game lists</h2>
         {data.allContentfulTag.tags.map(tag => (
-          <div>
-            <Link to={`/${tag.slug}/`}>{tag.display}</Link>
+          <div key={tag.slug} style={{marginBottom: "10px"}}>
+            <TagBrief Element={Link} tag={tag} to={`/${tag.slug}/`} className="tag-view__title" />
           </div>
         ))}
       </section>
@@ -31,7 +30,7 @@ const IndexPage = ({location, data}) => {
 
 export const query = graphql`
 query IndexPageQuery {
-  allContentfulTag {
+  allContentfulTag(sort: {fields: display}) {
     tags: nodes {
       slug
       display
@@ -41,7 +40,6 @@ query IndexPageQuery {
     }
   }
 }
-
 `
 
 export default IndexPage

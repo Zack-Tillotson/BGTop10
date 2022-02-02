@@ -5,7 +5,7 @@ import {Helmet} from 'react-helmet'
 import useListGames from 'useListGames'
 
 import Page from 'layout/Page'
-import MetaView from 'views/Meta'
+import TagView from 'views/Tag'
 
 const baseCn = 'tag-page'
 
@@ -24,7 +24,7 @@ const TagPage = ({location, data}) => {
   }))
   const games = Object.values(gameMap)
     .sort((a, b) => b.count - a.count)
-    .map(link => allGames.find(game => game.bggId === link.game.bggId))
+    .map(link => ({...allGames.find(game => game.bggId === link.game.bggId), count: link.count}))
 
   const creatorMap = {}
   lists.forEach(({creator}) => {
@@ -38,7 +38,7 @@ const TagPage = ({location, data}) => {
       <Helmet>
         <title>{tag.pageTitle} | Cardboard Salad</title>
       </Helmet>
-      <MetaView tag={tag} creators={creators} games={games} lists={lists} />
+      <TagView tag={tag} creators={creators} games={games} lists={lists} />
     </Page>
   )
 }

@@ -1,0 +1,15 @@
+.tag-brief {
+  display: flex;
+  flex-flow: row nowrap;
+  background: none;
+}
+
+.tag-brief__title {
+  flex: 1;
+  font-size: var(--font-size-charlie);
+}
+
+.tag-brief__subtitle {
+  color: var(--color-font-focus);
+  font-size: var(--font-size-delta);
+}

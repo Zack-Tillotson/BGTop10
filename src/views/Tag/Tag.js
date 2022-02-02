@@ -1,6 +1,8 @@
 import * as React from "react"
+
 import ReactMarkdown from "react-markdown"
 
+import TitleRow from 'atoms/TitleRow'
 import GameMini from 'components/GameMini'
 import ListsBox from 'components/ListsBox'
 import CreatorPills from 'components/CreatorPills'
@@ -34,22 +36,28 @@ const TagView = ({tag, creators, lists, games}) => {
         </section>
       )}
       <section>
+        <TitleRow title={`Top 10 ${tag.display}`} className={`${baseCn}__title-row`}>
+        </TitleRow>
+        <ol reversed className={`${baseCn}__ordered-list`}>
+          {games.slice(0, 10).reverse().map((game, index, {length: arraySize}) => (
+            <li key={game.bggId} className={`${baseCn}__ordered-list-line`} data-count={game.count}>
+              <div className={`${baseCn}__ordered-list-number-wrapper`}>
+                <div className={`${baseCn}__ordered-list-number`}>
+                  {arraySize - index}.
+                </div>
+              </div>
+              <GameMini game={game} className={`${baseCn}__ordered-list-mini`} />
+            </li>
+          ))}
+        </ol>
+      </section>
+      <section>
         <h4>Popular creators</h4>
         <CreatorPills creators={creators} />
       </section>
       <section>
-        <h2>Check out these game lists</h2>
+        <h2>See why these games make the best {tag.display}</h2>
         <ListsBox lists={lists} />
-      </section>
-      <section>
-        <h2>Hot games</h2>
-        <ul>
-          {games.slice(0, 10).map(game => (
-            <li key={game.bggId}>
-              <GameMini game={game} />
-            </li>
-          ))}
-        </ul>
       </section>
     </>
   )

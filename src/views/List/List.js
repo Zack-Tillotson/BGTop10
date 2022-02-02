@@ -22,9 +22,9 @@ const ListView = ({list, games, basePath}) => {
         <iframe 
           src={`https://www.youtube.com/embed/${list.link.split('=').slice(-1)}`} 
           title={`${list.name} | YouTube`} 
-          frameborder="0" 
+          frameBorder="0" 
           allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
-          allowfullscreen />
+          allowFullScreen />
       </div>
       <section className={`${cn}__info`}>
         <h1>
