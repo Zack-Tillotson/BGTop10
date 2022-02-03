@@ -18,9 +18,9 @@ const TagPage = ({location, data}) => {
 
   const lists = data.lists.nodes
   const gameMap = {}
-  lists.forEach(list => list.gameLink.forEach(game => {
+  lists.forEach(list => list.gameLink.forEach((game, index, {length: linkCount}) => {
     gameMap[game.bggId] = gameMap[game.bggId] || {game, count: 0}
-    gameMap[game.bggId].count++
+    gameMap[game.bggId].count += (linkCount - index)/linkCount*10 // 10-1 pt, 10 for a top 10% 1 for a 90% of list
   }))
   const games = Object.values(gameMap)
     .sort((a, b) => b.count - a.count)
