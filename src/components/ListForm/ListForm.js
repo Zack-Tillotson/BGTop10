@@ -175,26 +175,28 @@ const ListForm = () => {
               </div>
               <Button onClick={handlePopulateLinksClick} secondary>Generate links</Button>
             </Font>
-            {new Array(gameLinkFieldsKeys.length / 3).fill().map((_, index, inputAry) => {
-              const titleField = state.gameLinks.fields[gameLinkFieldsKeys[index * 3]]
-              const searchField = state.gameLinks.fields[gameLinkFieldsKeys[index * 3 + 1]]
-              const gameField = state.gameLinks.fields[gameLinkFieldsKeys[index * 3 + 2]]
+            {new Array(gameLinkFieldsKeys.length / 4).fill().map((_, index, inputAry) => {
+              const titleField = state.gameLinks.fields[gameLinkFieldsKeys[index * 4]]
+              const searchField = state.gameLinks.fields[gameLinkFieldsKeys[index * 4 + 1]]
+              const gameField = state.gameLinks.fields[gameLinkFieldsKeys[index * 4 + 2]]
+              const personField = state.gameLinks.fields[gameLinkFieldsKeys[index * 4 + 3]]
               
               const titleValue = state.gameLinks.value[titleField.id]
               const searchValue = state.gameLinks.value[searchField.id]
               const gameValue = state.gameLinks.value[gameField.id]
+              const personValue = state.gameLinks.value[personField.id]
 
               const tabIndex = 2 * inputAry.length + index + 1
               
               return (
-                <div key={titleField.id} className={`${baseCn}__input-row`}>
+                <div key={titleField.id} className={`${baseCn}__input-row`} data-person={personValue}>
                   <div  className={`${baseCn}____input-group`}>
                     <Font
                       Ele="label"
                       level="delta"
                       htmlFor={titleField.id}
                       className={`${baseCn}__label`}>
-                        {titleField.label}
+                        {index + 1}. {personValue}
                     </Font>
                     <input
                       id={titleField.id}

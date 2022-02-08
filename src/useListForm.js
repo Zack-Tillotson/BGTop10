@@ -13,13 +13,14 @@ const LINK_FIELDS_DEFAULT_VALUE = []
 const LINK_STATE_NAME = 'contentful-list-form-link-state'
 const LINK_STATE_DEFAULT_VALUE = []
 
-function buildStateObjects(linksAry, gamesAry = [], searchAry = []) {
+function buildStateObjects(linksAry, gamesAry = [], searchAry = [], personAry = []) {
   const fieldAry = []
   const newLinkState = {}
   linksAry.forEach((link, index) => {
     const titleId = `${LINK_FIELD_ID} ${index} title`
     const gameSearchId = `${LINK_FIELD_ID} ${index} search`
     const gameId = `${LINK_FIELD_ID} ${index} game`
+    const personId = `${LINK_FIELD_ID} ${index} person`
     fieldAry.push(
       {
         id: titleId,
@@ -31,11 +32,15 @@ function buildStateObjects(linksAry, gamesAry = [], searchAry = []) {
         id: gameId,
         label: `Game`,
         type: 'game',
+      }, {
+        id: personId,
+        label: `Person`,
       },
     )
     newLinkState[titleId] = link
     newLinkState[gameSearchId] = searchAry[index] || ''
     newLinkState[gameId] = gamesAry[index] || undefined
+    newLinkState[personId] = personAry[index] || ''
   })
 
   return [fieldAry, newLinkState]
@@ -58,6 +63,7 @@ function useListForm() {
         return {
           title: linkState.value[field.id.replaceAll(' game', ' title')],
           bggId: Number(value),
+          person: linkState.value[field.id.replaceAll(' game', ' person')],
         }
     }),
   }
@@ -80,8 +86,9 @@ function useListForm() {
     const gamesAry = list.gameLink
       .map(gameLink => gameLink.bggId)
       .map(bggId => games.find(game => game.bggId === bggId))
+    const personAry = list.gameLink.map(gameLink => gameLink.person)
 
-    const [fieldAry, newLinkState] = buildStateObjects(titleAry, gamesAry)
+    const [fieldAry, newLinkState] = buildStateObjects(titleAry, gamesAry, undefined, personAry)
     
     linkFields.updateValue(fieldAry)
     linkState.updateValue(newLinkState)
@@ -121,8 +128,9 @@ function useListForm() {
     const maxNum = (numbersValue).split('-')[0]
     const minNum = (numbersValue).split('-')[1]
     const numbersAry = new Array(maxNum - minNum + 1).fill().map((_, index) => maxNum - index)
-
+    
     const namesAry = names.split(',').map(num => num.trim()).filter(num => num !== '')
+    const personAry = []
     if(namesAry.length === 0) {
       namesAry.push('')
     }
@@ -130,13 +138,14 @@ function useListForm() {
     numbersAry.forEach(number => {
       namesAry.forEach(name => {
         linksAry.push(`#${number} ${name}`.trim())
+        personAry.push(name)
       })
     })
 
     const gamesAry = Object.keys(linkState.value).filter(key => key.indexOf(' game') >= 0).map(key => linkState.value[key])
     const searchAry = Object.keys(linkState.value).filter(key => key.indexOf(' search') >= 0).map(key => linkState.value[key])
     
-    const [fieldAry, newLinkState] = buildStateObjects(linksAry, gamesAry, searchAry)
+    const [fieldAry, newLinkState] = buildStateObjects(linksAry, gamesAry, searchAry, personAry)
     
     linkFields.updateValue(fieldAry)
     linkState.updateValue(newLinkState)

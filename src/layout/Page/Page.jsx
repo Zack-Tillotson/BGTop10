@@ -38,6 +38,7 @@ function Component({
         <meta name="theme-color" content="#77c40d" />
         <meta name="description" content="A site for those who love board games and love board game top 10 lists." />
         <link rel="apple-touch-icon" href={imageApplIcon} />
+        <meta http-equiv='content-language' content='en-US' />
       </Helmet>
       {isHeadShown && (
         <PageHead className="page__head" />
