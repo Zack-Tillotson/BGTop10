@@ -1,0 +1,12 @@
+.home-view__tag-list {
+  display: grid;
+  grid-template-columns: 1fr;
+  grid-gap: var(--pad);
+  
+  @media(min-width: 800px) {
+    grid-template-columns: 1fr 1fr;
+  }
+}
+.home-view__tag {
+  padding-bottom: var(--pad);
+}

@@ -1,12 +1,15 @@
 import * as React from "react"
-import { Link, graphql } from 'gatsby'
+import { graphql } from 'gatsby'
 import {Helmet} from 'react-helmet'
 
 import Page from 'layout/Page'
-
-import TagBrief from 'components/TagBrief'
+import HomeView from 'views/Home'
 
 const IndexPage = ({location, data}) => {
+
+  const {tags} = data.allContentfulTag
+  const {lists} = data.allContentfulList
+
 
   return (
     <Page location={location}>
@@ -16,14 +19,7 @@ const IndexPage = ({location, data}) => {
       <h1 className="--screen-reader">
         Cardboard Salad
       </h1>
-      <section>
-        <h2>Board game lists</h2>
-        {data.allContentfulTag.tags.map(tag => (
-          <div key={tag.slug} style={{marginBottom: "10px"}}>
-            <TagBrief Element={Link} tag={tag} to={`/${tag.slug}/`} className="tag-view__title" />
-          </div>
-        ))}
-      </section>
+      <HomeView tags={tags} lists={lists} />
     </Page>
   )
 }
@@ -36,6 +32,40 @@ query IndexPageQuery {
       display
       pageSubtitle {
         pageSubtitle
+      }
+      icon
+    }
+  }
+  allContentfulList(
+    limit: 3
+    sort: {fields: datePublished, order: DESC}
+  ) {
+    lists: nodes {
+      slug
+      description {
+        description
+      }
+      image
+      link
+      name
+      datePublished
+      listTags {
+        display
+        slug
+      }
+      creator {
+        slug
+        name
+        link
+        imageBanner
+        imageAvatar
+        description {
+          description
+        }
+      }
+      gameLink {
+        title
+        bggId
       }
     }
   }

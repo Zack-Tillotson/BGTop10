@@ -1,15 +1,38 @@
 .tag-brief {
-  display: flex;
-  flex-flow: row nowrap;
+  display: grid;
+  grid-template-areas: 
+    "icon title"
+    "icon subtitle";
+  grid-template-columns: auto 1fr;
+  grid-row-gap: 0;
+  grid-column-gap: var(--pad);
+
   background: none;
 }
 
+.tag-brief__icon {
+  grid-area: icon;
+  font-size: var(--font-size-alpha);
+  width: 50px;
+  text-align: center;
+  background-position: center center;
+  background-repeat: no-repeat;
+
+  color: var(--color-font-secondary);
+  text-shadow: 0 0 5px var(--color-bg-base);
+  font-weight: bold;
+}
+
 .tag-brief__title {
-  flex: 1;
+  grid-area: title;
   font-size: var(--font-size-charlie);
 }
 
 .tag-brief__subtitle {
+  grid-area: subtitle;
   color: var(--color-font-focus);
   font-size: var(--font-size-delta);
+  padding-bottom: var(--pad);
+  border-bottom: var(--border-1);
+  border-color: var(--color-bg-focus);
 }
