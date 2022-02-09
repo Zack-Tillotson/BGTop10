@@ -103,6 +103,20 @@ const ListForm = () => {
   }
 
   const gameLinkFieldsKeys = Object.keys(state.gameLinks.fields)
+  const handleSearchInputKeyDown = event => {
+    if(event.code !== 'Tab' || !event.altKey) {
+      return
+    }
+
+    const {person} = event.target.dataset
+    const personInputs = [...document.querySelectorAll(`[data-person="${person}"]`)]
+    const currentInput = personInputs.findIndex(input => input === event.target)
+
+    if(currentInput < personInputs.length - 1) {
+      personInputs[currentInput+1].focus()
+      event.preventDefault()
+    }
+  }
 
   return (
     <section className={baseCn}>
@@ -189,7 +203,7 @@ const ListForm = () => {
               const tabIndex = 2 * inputAry.length + index + 1
               
               return (
-                <div key={titleField.id} className={`${baseCn}__input-row`} data-person={personValue}>
+                <div key={titleField.id} className={`${baseCn}__input-row`}>
                   <div  className={`${baseCn}____input-group`}>
                     <Font
                       Ele="label"
@@ -217,9 +231,11 @@ const ListForm = () => {
                       id={searchField.id}
                       type={'text'}
                       value={searchValue} 
-                      onChange={handleFieldChange(searchField)} 
+                      onChange={handleFieldChange(searchField)}
+                      onKeyDown={handleSearchInputKeyDown}
                       tabIndex={index+1}
-                      className={`${baseCn}__input`} />
+                      className={`${baseCn}__input`} 
+                      data-person={personValue} />
                   </div>
                   <div  className={`${baseCn}__input-group`}>
                     <Font
