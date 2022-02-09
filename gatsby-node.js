@@ -11,7 +11,7 @@ exports.createPages = async function ({ actions, graphql }) {
   data.allContentfulTag.nodes.forEach(node => {
     const {slug} = node
     actions.createPage({
-      path: slug,
+      path: `${slug}/`,
       component: require.resolve(`./src/pages/tag/Tag.js`),
       context: { slug },
     })
