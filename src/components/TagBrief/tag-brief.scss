@@ -10,6 +10,13 @@
   background: none;
 }
 
+.tag-brief--stacked {
+  grid-template-areas: 
+    "icon title"
+    "subtitle subtitle";
+  justify-items: left;
+}
+
 .tag-brief__icon {
   grid-area: icon;
   font-size: var(--font-size-alpha);
@@ -28,6 +35,11 @@
   font-size: var(--font-size-charlie);
 }
 
+.tag-brief--stacked .tag-brief__title {
+  align-self: center;
+  text-align: left;
+}
+
 .tag-brief__subtitle {
   grid-area: subtitle;
   color: var(--color-font-focus);
@@ -35,4 +47,8 @@
   padding-bottom: var(--pad);
   border-bottom: var(--border-1);
   border-color: var(--color-bg-focus);
+}
+
+.tag-brief--stacked .tag-brief__subtitle {
+  text-align: left;
 }

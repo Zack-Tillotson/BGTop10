@@ -17,8 +17,8 @@ const AdminCreatorEditPage = ({location, data}) => {
   const crumbs = [
     {display: 'Home', url: '/'}, 
     {display: 'Admin', url: '/admin/'}, 
-    {display: 'Games', url: '/admin/games/'},
-    {display: data.game.name, url: `/admin/games/${data.games.bggId}/`},
+    {display: 'Games', url: '/admin/game/'},
+    {display: data.game.name, url: `/admin/game/${data.games.bggId}/`},
   ]
 
   const handleRefreshClick = () => {
@@ -35,7 +35,7 @@ const AdminCreatorEditPage = ({location, data}) => {
       </div>
       <section className={`${baseCn}__game-summary ${baseCn}__summary`}>
         {data.games.nodes.map(game => (
-          <GameBrief key={game.bggId} game={game} type="link" to={`/admin/games/${game.bggId}/`} />
+          <GameBrief key={game.bggId} game={game} type="link" to={`/admin/game/${game.bggId}/`} />
         ))}
       </section>
     </Page>

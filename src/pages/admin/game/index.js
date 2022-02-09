@@ -9,7 +9,7 @@ const baseCn = 'admin'
 const crumbs = [
   {display: 'Home', url: '/'}, 
   {display: 'Admin', url: '/admin/'}, 
-  {display: 'Games', url: '/admin/games/'}
+  {display: 'Games', url: '/admin/game/'}
 ]
 
 const AdminGamesPage = ({location, data}) => {
@@ -20,7 +20,7 @@ const AdminGamesPage = ({location, data}) => {
       <h1 className={`${baseCn}__title`}>Games</h1>
       <section className={`${baseCn}__summary`}>
         {data.games.nodes.map(game => (
-          <GameBrief key={game.bggId} game={game} type="link" to={`/admin/games/${game.bggId}/`} />
+          <GameBrief key={game.bggId} game={game} type="link" to={`/admin/game/${game.bggId}/`} />
         ))}
       </section>
     </Page>

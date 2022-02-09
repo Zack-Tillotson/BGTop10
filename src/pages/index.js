@@ -5,11 +5,13 @@ import {Helmet} from 'react-helmet'
 import Page from 'layout/Page'
 import HomeView from 'views/Home'
 
+import useListGames from 'useListGames'
+
 const IndexPage = ({location, data}) => {
 
   const {tags} = data.allContentfulTag
   const {lists} = data.allContentfulList
-
+  const {creators} = data.allContentfulCreator
 
   return (
     <Page location={location}>
@@ -19,7 +21,7 @@ const IndexPage = ({location, data}) => {
       <h1 className="--screen-reader">
         Cardboard Salad
       </h1>
-      <HomeView tags={tags} lists={lists} />
+      <HomeView tags={tags} lists={lists} creators={creators} />
     </Page>
   )
 }
@@ -66,6 +68,18 @@ query IndexPageQuery {
       gameLink {
         title
         bggId
+      }
+    }
+  }
+  allContentfulCreator(sort: {fields: slug, order: ASC}, limit: 5) {
+    creators: nodes {
+      slug
+      name
+      link
+      imageBanner
+      imageAvatar
+      description {
+        description
       }
     }
   }

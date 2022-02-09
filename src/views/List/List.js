@@ -9,6 +9,7 @@ import Button from 'atoms/Button'
 import CreatorBrief from 'components/CreatorBrief'
 import CreatorMini from 'components/CreatorMini'
 import GameMini from 'components/GameMini'
+import TagBrief from 'components/TagBrief'
 
 import './list.scss'
 
@@ -45,13 +46,11 @@ const ListView = ({list, games, basePath}) => {
         </Button>
         {list.listTags && (
           <div className={`${cn}__tags`}>
-            <h3>Tags</h3>
+            <h2>Categories</h2>
             <Font level="delta" className={`${cn}__tag-list`}>
               {list.listTags.map(tag => (
                 <Link key={tag.slug} className={`${cn}__tag`} to={`/${tag.slug}/`}>
-                  <Pill>
-                    {tag.display}
-                  </Pill>
+                  <TagBrief tag={tag} stacked />
                 </Link>
               ))}
             </Font>

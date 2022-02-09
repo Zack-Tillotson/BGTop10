@@ -19,7 +19,7 @@ const ContentfulCreatorList = () => {
         <strong>Count:</strong> {cmsList.length}
       </Font>
       {cmsList.map(game => (
-        <GameBrief key={game.bggId} game={game} type="link" to={`/admin/games/${game.bggId}/`} />
+        <GameBrief key={game.bggId} game={game} type="link" to={`/admin/game/${game.bggId}/`} />
       ))}
     </section>
   )
