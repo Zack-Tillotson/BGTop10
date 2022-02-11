@@ -10,13 +10,17 @@ const ListPage = ({location, data}) => {
 
   const {game, allContentfulList: {lists}} = data
   const filteredLists = lists.filter((list, index) => index === 0 || list.slug !== lists[index-1].slug)
+
+  const tagMap = {}
+  lists.forEach(list => list.listTags.forEach(tag => tagMap[tag.slug] = tag))
+  const tags = Object.values(tagMap)
   
   return (
     <Page location={location} crumbs={[{display: 'Home', url: '/'}, {display: game.name, url: location.pathname}]}>
       <Helmet>
         <title>{game.name} | Cardboard Salad</title>
       </Helmet>
-      <Game game={game} lists={filteredLists} basePath={location.pathname} />
+      <Game game={game} lists={filteredLists} basePath={location.pathname} tags={tags} />
     </Page>
   )
 }
@@ -51,8 +55,12 @@ export const query = graphql`
         slug
         datePublished
         listTags {
-          display
           slug
+          display
+          pageSubtitle {
+            pageSubtitle
+          }
+          icon
         }
         creator {
           slug

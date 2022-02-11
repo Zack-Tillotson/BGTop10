@@ -1,21 +1,8 @@
 .list-view {
-  display: grid;
-  grid-template-areas: 
-    "image"
-    "info"
-    "creator"
-    "games";
-  grid-gap: var(--pad);
-
   h2 {
     border-bottom: var(--border-1); /* xxx */
   }
 }
-
-.list-view__image-wrapper { grid-area: image; }
-.list-view__info { grid-area: info; }
-.list-view__creator { grid-area: creator; }
-.list-view__games { grid-area: games; }
 
 .list-view__image-wrapper {
   text-align: center;
@@ -41,13 +28,6 @@
 }
 
 @media (min-width: 1024px) {
-  .list-view {
-    grid-template-areas: 
-      "image creator"
-      "info creator"
-      "games creator";
-  }
-
   .list-view__image-wrapper {
     text-align: left;
   }
@@ -71,6 +51,10 @@
 
 .list-view__date-title {
   color: var(--color-font-focus);
+}
+
+.list-view__date {
+  padding: var(--pad) 0;
 }
 
 .list-view__tags-list {

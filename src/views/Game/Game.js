@@ -6,13 +6,35 @@ import Button from 'atoms/Button'
 import Font from 'atoms/Font'
 import Image from 'atoms/Image'
 
+import SimpleTwoColumn from 'layout/SimpleTwoColumn'
+
 import ListsBox from 'components/ListsBox'
+import TagBrief from 'components/TagBrief'
 
 import './game.scss'
 
 const cn = 'game-view'
 
-const GameView = ({game, lists}) => {
+const AttributeValue = ({value, isShortable = true}) => {
+  if(value.length === 1) {
+    return value
+  }
+  
+  const shortList = isShortable && value.length > 4 ? value.slice(0, 3) : value
+  const isEtc = shortList.length < value.length
+  const etcLength = value.length - shortList.length
+  
+  return (
+    <ul>
+      {shortList.map(item => <li key={item}>{item}</li>)}
+      {isEtc && (
+        <li className={`${cn}__minimalized`}>... {etcLength} more</li>
+      )}
+    </ul>
+  )
+}
+
+const GameView = ({game, lists, tags}) => {
 
   const [isDescExpanded, updateIsDescExpanded] = useState(false)
 
@@ -21,54 +43,92 @@ const GameView = ({game, lists}) => {
   const handleDescriptionToggle = () => updateIsDescExpanded(!isDescExpanded)
 
   return (
-    <div className={cn}>
-      <section className={`${cn}__info`}>
-        <h1>
-          {game.name}
-        </h1>
-        <Font level="charlie" className={`${cn}__desc`}>
-          <span className={`${cn}__value`}>Year:</span> {game.yearPublished}
-        </Font>
-      </section>
-      <Link to="image" className={`${cn}__image-wrapper`}>
-        <Image className={`${cn}__image`} src={game.image} alt={'View ' + game.name} />
-      </Link>
-      <section className={`${cn}__attributes`}>
-        <Font level="charlie" className={`${cn}__bgg-link`}>
-          <Button type="anchor" wide secondary href={`https://boardgamegeek.com/boardgame/${game.bggId}/`} target="_blank">Board Game Geek</Button>
-        </Font>
-        {!!game.description && (
+    <SimpleTwoColumn 
+      className={cn}
+      classNames={{
+        right: `${cn}__right`
+      }}
+      content={{
+        leftTop: (
           <>
-            <div className={`${cn}__description-wrapper`}>
-              <Font level="charlie" className={`${cn}__description ${isDescExpanded ? `${cn}__description--expanded` : `${cn}__description--shrunk`}`}>
-                <ReactMarkdown>
-                  {game.description.description}
-                </ReactMarkdown>
+            <div>
+              <h1>
+                {game.name}
+              </h1>
+              <Font level="charlie" className={`${cn}__desc`}>
+                <span className={`${cn}__value`}>Year:</span> {game.yearPublished}
               </Font>
-              {!isDescExpanded && (
-                <div className={`${cn}__description-haze`} />
-              )}
             </div>
-            <Button minimal onClick={handleDescriptionToggle}>{isDescExpanded ? '- Less' : '+ More'}</Button>
+            <div>
+              <Link to="image" className={`${cn}__image-wrapper`}>
+                <Image className={`${cn}__image`} src={game.image} alt={'View ' + game.name} />
+              </Link>
+            </div>
+            <Font level="charlie" className={`${cn}__bgg-link`}>
+              <Button type="anchor" wide secondary href={`https://boardgamegeek.com/boardgame/${game.bggId}/`} target="_blank">Board Game Geek</Button>
+            </Font>
+            {!!game.description && (
+              <>
+                <div className={`${cn}__description-wrapper`}>
+                  <Font level="charlie" className={`${cn}__description ${isDescExpanded ? `${cn}__description--expanded` : `${cn}__description--shrunk`}`}>
+                    <ReactMarkdown>
+                      {game.description.description}
+                    </ReactMarkdown>
+                  </Font>
+                  {!isDescExpanded && (
+                    <div className={`${cn}__description-haze`} />
+                  )}
+                </div>
+                <Button minimal onClick={handleDescriptionToggle}>{isDescExpanded ? '- Less' : '+ More'}</Button>
+              </>
+            )}
           </>
-        )}
-        <h2>Attributes</h2>
-        <Font level="delta" className={`${cn}__key`}>Player Count</Font>
-        <Font level="charlie" className={`${cn}__value`}>{playerCount}</Font>
-        <Font level="delta" className={`${cn}__key`}>Designer</Font>
-        <Font level="charlie" className={`${cn}__value ${cn}__longish`}>{(game.designer || []).join(', ')}</Font>
-        <Font level="delta" className={`${cn}__key`}>Publisher</Font>
-        <Font level="charlie" className={`${cn}__value ${cn}__longish`}>{(game.publisher || []).join(', ')}</Font>
-        <Font level="delta" className={`${cn}__key`}>Artists</Font>
-        <Font level="charlie" className={`${cn}__value ${cn}__longish`}>{(game.artist || []).join(', ')}</Font>
-        <Font level="delta" className={`${cn}__key`}>Mechanics</Font>
-        <Font level="charlie" className={`${cn}__value ${cn}__longish`}>{(game.mechanic || []).join(', ')}</Font>
-      </section>
-      <section className={`${cn}__lists`}>
-        <h2>Part of these lists</h2>
-        <ListsBox lists={lists} />
-      </section>
-    </div>
+        ),
+        right: (
+          <>
+            {tags.length > 0 && (
+              <div className={`${cn}__tags`}>
+                <h2>Categories</h2>
+                <Font level="delta" className={`${cn}__tag-list`}>
+                  {tags.map(tag => (
+                    <Link key={tag.slug} className={`${cn}__tag`} to={`/${tag.slug}/`}>
+                      <TagBrief tag={tag} stacked />
+                    </Link>
+                  ))}
+                </Font>
+              </div>
+            )}
+            <h2>Details</h2>
+            <Font level="delta" Ele="dl">
+              <dt className={`${cn}__attr-label`}>Player Count</dt>
+              <dd className={`${cn}__attr-value`}>{playerCount}</dd>
+              <dt className={`${cn}__attr-label`}>Designer{game.designer.length > 1 ? 's' : ''}</dt>
+              <dd className={`${cn}__attr-value`}>
+                <AttributeValue value={game.designer} />
+              </dd>
+              <dt className={`${cn}__attr-label`}>Publisher{game.publisher.length > 1 ? 's' : ''}</dt>
+              <dd className={`${cn}__attr-value`}>
+                <AttributeValue value={game.publisher} />
+              </dd>
+              <dt className={`${cn}__attr-label`}>Artist{game.artist.length > 1 ? 's' : ''}</dt>
+              <dd className={`${cn}__attr-value`}>
+                <AttributeValue value={game.artist} />
+              </dd>
+              <dt className={`${cn}__attr-label`}>Mechanic{game.mechanic.length > 1 ? 's' : ''}</dt>
+              <dd className={`${cn}__attr-value`}>
+                <AttributeValue value={game.mechanic} isShortable={false} />
+              </dd>
+            </Font>
+          </>
+        ),
+        leftBot: (
+          <>
+            <h2>Part of these lists</h2>
+            <ListsBox lists={lists} />
+          </>
+        )
+      }}
+      />
   )
 }
 

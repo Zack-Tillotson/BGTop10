@@ -1,33 +1,31 @@
 .game-view {
-  display: grid;
-  grid-template-areas: 
-    "info"
-    "image"
-    "attributes"
-    "lists";
-  grid-gap: var(--pad);
-
   h2 {
     border-bottom: var(--border-1); /* xxx */
   }
 }
 
-.game-view__image-wrapper { grid-area: image; }
-.game-view__info { grid-area: info; }
-.game-view__attributes { grid-area: attributes; }
-.game-view__lists { grid-area: lists; }
-
-.game-view__value {
-  font-weight: bold;
+@media (min-width: 800px) {
+  .game-view__right {
+    max-width: 200px;
+  }
 }
 
-.game-view__key {
+.game-view dt {
   color: var(--color-font-focus);
+  margin-top: var(--pad);
+}
+
+.game-view__attr-value {
+  padding-left: var(--pad);
+}
+
+.game-view__minimalized {
+  font-weight: normal;
 }
 
 .game-view__image-wrapper {
-  width: 100%;
   height: 250px;
+  display: block;
 }
 
 .game-view__image {

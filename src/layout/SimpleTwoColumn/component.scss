@@ -1,0 +1,23 @@
+.layout-simple-two-column {
+  display: grid;
+  grid-template-areas: 
+    "leftTop"
+    "right"
+    "leftBot"
+    "children";
+  grid-gap: var(--pad);
+}
+
+.layout-simple-two-column__leftTop { grid-area: leftTop; }
+.layout-simple-two-column__right { grid-area: right; }
+.layout-simple-two-column__leftBot { grid-area: leftBot; }
+.layout-simple-two-column__children { grid-area: children; }
+
+@media (min-width: 1024px) {
+  .layout-simple-two-column {
+    grid-template-areas: 
+      "leftTop  right"
+      "leftBot  right"
+      "children right";
+  }
+}
