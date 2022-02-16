@@ -43,7 +43,7 @@ const AdminIndexPage = () => {
             </Link>
           </li>
           <li>
-            <Link to="games" className="admin__nav-link">
+            <Link to="game" className="admin__nav-link">
               <div className="admin__nav-title">Games</div>
               <div className="admin__nav-logo">🎲</div>
               <div className="admin__nav-desc">Edit a game</div>

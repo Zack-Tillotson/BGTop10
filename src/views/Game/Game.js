@@ -86,7 +86,7 @@ const GameView = ({game, lists, tags}) => {
         ),
         right: (
           <>
-            {tags.length > 0 && (
+            {(tags || []).length > 0 && (
               <div className={`${cn}__tags`}>
                 <h2>Categories</h2>
                 <Font level="delta" className={`${cn}__tag-list`}>
@@ -102,21 +102,21 @@ const GameView = ({game, lists, tags}) => {
             <Font level="delta" Ele="dl">
               <dt className={`${cn}__attr-label`}>Player Count</dt>
               <dd className={`${cn}__attr-value`}>{playerCount}</dd>
-              <dt className={`${cn}__attr-label`}>Designer{game.designer.length > 1 ? 's' : ''}</dt>
+              <dt className={`${cn}__attr-label`}>Designer{(game.designer || []).length > 1 ? 's' : ''}</dt>
               <dd className={`${cn}__attr-value`}>
-                <AttributeValue value={game.designer} />
+                <AttributeValue value={game.designer || []} />
               </dd>
-              <dt className={`${cn}__attr-label`}>Publisher{game.publisher.length > 1 ? 's' : ''}</dt>
+              <dt className={`${cn}__attr-label`}>Publisher{(game.publisher || []).length > 1 ? 's' : ''}</dt>
               <dd className={`${cn}__attr-value`}>
-                <AttributeValue value={game.publisher} />
+                <AttributeValue value={game.publisher || []} />
               </dd>
-              <dt className={`${cn}__attr-label`}>Artist{game.artist.length > 1 ? 's' : ''}</dt>
+              <dt className={`${cn}__attr-label`}>Artist{(game.artist || []).length > 1 ? 's' : ''}</dt>
               <dd className={`${cn}__attr-value`}>
-                <AttributeValue value={game.artist} />
+                <AttributeValue value={game.artist || []} />
               </dd>
-              <dt className={`${cn}__attr-label`}>Mechanic{game.mechanic.length > 1 ? 's' : ''}</dt>
+              <dt className={`${cn}__attr-label`}>Mechanic{(game.mechanic || []).length > 1 ? 's' : ''}</dt>
               <dd className={`${cn}__attr-value`}>
-                <AttributeValue value={game.mechanic} isShortable={false} />
+                <AttributeValue value={game.mechanic || []} isShortable={false} />
               </dd>
             </Font>
           </>

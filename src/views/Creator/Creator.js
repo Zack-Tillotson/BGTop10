@@ -72,7 +72,7 @@ const CreatorView = ({creator, lists = [], tags}) => {
         ),
         right: (
           <>
-            {tags.length > 0 && (
+            {(tags || []).length > 0 && (
               <div className={`${cn}__tags`}>
                 <h2>Categories</h2>
                 <Font level="delta" className={`${cn}__tag-list`}>

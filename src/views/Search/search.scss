@@ -1,0 +1,22 @@
+.search-view__input-wrapper {
+  display: inline-block;
+
+  margin-top: var(--pad);
+  padding: var(--pad-half);
+  border: var(--border-1);
+  border-radius: var(--pad-half);
+  border-color: var(--color-bg-focus);
+}
+
+.search-view__input {
+  border: none;
+  background: none;
+  padding: var(--pad);
+  min-width: 320px;
+}
+
+.search-view__input-clear {
+  border: none;
+  background: none;
+  padding: var(--pad);
+}

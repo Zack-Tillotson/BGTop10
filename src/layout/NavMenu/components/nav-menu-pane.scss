@@ -1,0 +1,27 @@
+.nav-menu-pane {
+  position: fixed;
+  right: 0;
+  top: 0;
+  bottom: 0;
+  background: var(--color-bg-base);
+  width: 80%;
+  z-index: 2;
+  overflow-y: scroll;
+
+  @media(min-width: 800px) {
+    & {
+      width: 250px;
+    }
+  }
+}
+
+.nav-menu-pane__section {
+  padding: var(--pad2) var(--pad);
+  border-bottom: var(--border-1);
+  border-color: var(--color-bg-focus);
+}
+
+.nav-menu-pane__section-header {
+  padding: var(--pad) 0;
+  color: var(--color-font-focus);
+}

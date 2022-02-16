@@ -4,7 +4,6 @@ import { Helmet } from 'react-helmet'
 import {Link} from 'gatsby'
 
 import PageHead from '../PageHead'
-import Breadcrumbs from '../Breadcrumbs'
 
 import './component.scss'
 import imageFavicon from 'images/square-logo-16x16.png'
@@ -16,7 +15,6 @@ function Component({
   className, 
   children,
   location,
-  crumbs = [],
   Ele = 'main',
   ...rest
 }) {
@@ -44,12 +42,12 @@ function Component({
         <PageHead className="page__head" />
       )}
       <div className={cn('page__content', 'page__container', className)}>
-        {/* <Breadcrumbs locations={crumbs} /> */}
         {children}
       </div>
       <div className="page__foot">
         <div className="page__container page__foot-links">
           <Link to="/"><img className="page__foot-logo" src={imageIcon} alt="Cardboard Salad logo" /></Link>
+          <Link to="/about">About</Link>
           <Link to="/privacy-policy">Privacy policy</Link>
           <Link to="/contact-us">Contact us</Link>
           <span>© Cardboard SALAD</span>
