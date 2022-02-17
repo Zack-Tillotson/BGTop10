@@ -1,6 +1,6 @@
 import {useEffect, useState} from 'react'
 
-import bggSearch from './bggNameSearch'
+import bggSearch from 'bggNameSearch'
 
 const SEARCH_STATES = {
   NOT_SEARCHED: 'NOT_SEARCHED',

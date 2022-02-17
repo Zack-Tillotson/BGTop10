@@ -1,17 +1,19 @@
 import * as React from "react"
 
-import Button from 'atoms/Button'
+import Image from 'atoms/Image'
 
 import './game-brief.scss'
 
 const cn = 'game-brief'
 
-const GameBrief = ({game, wide = false, Element = Button, ...rest}) => {
-  const specialProps = Element === Button ? {wide: true, tight: true} : {}
+const GameBrief = ({game, className = '', ...rest}) => {
   return (
-    <Element className={`${cn} ${wide && `${cn}--wide`}`} {...specialProps} {...rest}>
+    <div className={`${cn} ${className}`} {...rest}>
+      {game.image && (
+        <Image src={game.image} className={`${cn}__image`} isBordered={false} />
+      )}
       <div className={`${cn}__title`}>{game.name} ({game.yearPublished})</div>
-    </Element>
+    </div>
   )
 }
 
