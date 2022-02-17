@@ -8,7 +8,7 @@ const STATES = {
   RESULTS: 'RESULTS',
 }
 
-const DEBOUNCE_TIME = 2000
+const DEBOUNCE_TIME = 1000
 
 const DEFALT_OPTIONS = {
   debounce: true,
@@ -22,56 +22,52 @@ function getOptions(rawOptions = {}) {
   }
 }
 
+const cancel = {fn: () => {}}
+
 function useGameSearch(games, query = '', rawOptions) {
 
   const options = getOptions(rawOptions)
 
   const [state, updateState] = useState(STATES.PRE)
   const [apiResults, updateApiResult] = useState([])  
-  const [cancel, updateCancel] = useState({fn: null})
 
-  // Called once whenever query changes
   useEffect(() => {
 
     if(!query) {
       updateState(STATES.PRE)
     }
 
-    if(cancel.fn) {
-      cancel.fn()
-      updateCancel({fn: null})
-    }
-
     if(!query || !options.initialQuery) {
       return
     }
 
+    cancel.fn()
+
     new Promise((resolve, reject) => {
-      updateState(STATES.DEBOUNCE)
-      updateCancel({fn: reject})
+        updateState(STATES.DEBOUNCE)
 
-      if(options.debounce) {
-        setTimeout(resolve, DEBOUNCE_TIME)
-      } else {
-        resolve(true)
-      }
-    })
-    .then(() => {
-      const fetch = bggNameSearch.searchNames(query)
+        if(options.debounce) {
+          setTimeout(resolve, DEBOUNCE_TIME)
+        } else {
+          resolve(true)
+        }
+        cancel.fn = reject
+      })
+      .then(() => {
+        const fetch = bggNameSearch.searchNames(query)
 
-      updateState(STATES.FETCH)
-      updateCancel({fn: fetch.cancel})
-      
-      return fetch
-    })
-    .then(results => {
-      updateState(STATES.RESULTS)
-      updateCancel({fn: null})
-      updateApiResult(results)
-    })
-    .catch(e => {
-      updateCancel({fn: null})
-    })
+        updateState(STATES.FETCH)
+        return fetch
+      })
+      .then(results => {
+        if(!results) return
+        updateState(STATES.RESULTS)
+        updateApiResult(results)
+      })
+      .catch(e => {
+        console.log(e)
+      })
+
   }, [games, query])
 
   const localList = []

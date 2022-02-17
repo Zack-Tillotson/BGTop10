@@ -31,7 +31,6 @@
   right: 0;
   top: 0;
   bottom: 0;
-  background: var(--color-contrast-bg-base-transparent);
 }
 
 .search-view__input-results {
@@ -41,5 +40,6 @@
   top: calc(100% + var(--pad-half));
   box-shadow: var(--box-shadow);
   background: var(--color-bg-base);
+  padding: var(--pad);
   z-index: 2;
 }

@@ -1,3 +1,4 @@
+
 function searchNames(queryString = '') {
   let queryTerm = queryString
   let typeQuery = '&type=boardgame'
@@ -13,7 +14,10 @@ function searchNames(queryString = '') {
     exactQuery = `&exact=true`
   }
 
-  return fetch(`https://api.geekdo.com/xmlapi2/search?query=${queryTerm}${typeQuery}${exactQuery}`)
+  const controller = new AbortController();
+  const { signal } = controller;
+
+  const result = fetch(`https://api.geekdo.com/xmlapi2/search?query=${queryTerm}${typeQuery}${exactQuery}`, {signal})
         .then(resp => resp.text())
         .then(stringData => {
           const xmlData = new DOMParser().parseFromString(stringData, "application/xml")
@@ -32,6 +36,10 @@ function searchNames(queryString = '') {
         .catch(err => {
           console.log('Error looking up game names', err)
         })
+
+  result.cancel = () => controller.abort()
+
+  return result
 }
 
 export default {

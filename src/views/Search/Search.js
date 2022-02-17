@@ -84,9 +84,7 @@ const SearchView = ({games, query}) => {
               <ul>
                 {querySearch.localList.map(game => (
                   <li key={game.bggId}>
-                    <Link to={`/game/${game.bggId}/`}>
-                      <GameMini game={game} />
-                    </Link>
+                    <GameMini game={game} />
                   </li>
                 ))}
               </ul>

@@ -7,7 +7,6 @@ import useListGames from 'useListGames'
 import Page from 'layout/Page'
 import ListView from 'views/List'
 
-
 const ListPage = ({location, data}) => {
 
   const {list} = data
