@@ -10,18 +10,21 @@
 
   @media(min-width: 800px) {
     & {
-      width: 250px;
+      width: 350px;
     }
   }
 }
 
-.nav-menu-pane__section {
-  padding: var(--pad2) var(--pad);
-  border-bottom: var(--border-1);
-  border-color: var(--color-bg-focus);
+.nav-menu-pane__section-content {
+  padding: var(--pad);
 }
 
 .nav-menu-pane__section-header {
-  padding: var(--pad) 0;
-  color: var(--color-font-focus);
+  padding: var(--pad);
+  color: var(--color-contrast-font-base);
+  background: var(--color-contrast-bg-base);
+}
+
+.nav-menu-pane__item {
+  margin-bottom: var(--pad);
 }

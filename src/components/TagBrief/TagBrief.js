@@ -7,10 +7,10 @@ import './tag-brief.scss'
 
 const cn = 'tag-brief'
 
-const TagBrief = ({tag, stacked = false, Element = Button, className, ...rest}) => {
+const TagBrief = ({tag, stacked = false, Element = Button, className, isLast, ...rest}) => {
   const specialProps = Element === Button ? {wide: true, tight: true} : {}
   return (
-    <Element className={classnames(cn, className, {[`${cn}--stacked`]: stacked})} {...specialProps} {...rest}>
+    <Element className={classnames(cn, className, {[`${cn}--stacked`]: stacked, [`${cn}--last`]: isLast})} {...specialProps} {...rest}>
       <div className={`${cn}__icon`} >{tag.icon}</div>
       <div className={`${cn}__title`}>{tag.display}</div>
       {tag.pageSubtitle && (
