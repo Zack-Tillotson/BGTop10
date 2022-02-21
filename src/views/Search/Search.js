@@ -26,16 +26,18 @@ const SearchView = ({games, query}) => {
   const handleClearClick = event => {
     event.preventDefault()
     updateInputValue('')
+    inputSearch.closeSearch()
   }
 
   const handleFormSubmit = event => {
     event.preventDefault()
     navigate(`?q=${inputValue}`)
+    inputSearch.closeSearch()
   }
 
   const handleMaskClick = event => {
     if(event.target.className.includes(maskClassName)) {
-      updateInputValue('')
+      inputSearch.closeSearch()
     }
   }
 

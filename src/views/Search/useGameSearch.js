@@ -82,6 +82,10 @@ function useGameSearch(games, query = '', rawOptions) {
     }
   })
 
+  const closeSearch = () => {
+    updateState(STATES.PRE)
+  }
+
   useDebugValue(`${state}, localList: ${localList.length}, bggList: ${bggList.length}`)
 
   return {
@@ -91,6 +95,7 @@ function useGameSearch(games, query = '', rawOptions) {
     apiResults,
     localList,
     bggList,
+    closeSearch,
   }
 }
 
