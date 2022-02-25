@@ -12,7 +12,7 @@ function NavMenuPane({onClose}) {
 
   const data = useStaticQuery(graphql`
     query NavMenuPaneQuery {
-      allContentfulTag(sort: {fields: display}, filter: {priority: {eq: 2}}) {
+      allContentfulTag(filter: {priority: {gt: 1}}, sort: {fields: priority, order: DESC}) {
         tags: nodes {
           slug
           display

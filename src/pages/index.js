@@ -10,7 +10,8 @@ import useListGames from 'useListGames'
 const IndexPage = ({location, data}) => {
 
   const {tags} = data.allContentfulTag
-  const {lists} = data.allContentfulList
+  const {lists: recents} = data.recentLists
+  const {lists: allLists} = data.allLists
   const {creators} = data.allContentfulCreator
 
   return (
@@ -21,7 +22,7 @@ const IndexPage = ({location, data}) => {
       <h1 className="--screen-reader">
         Cardboard Salad
       </h1>
-      <HomeView tags={tags} lists={lists} creators={creators} />
+      <HomeView tags={tags} recentLists={recents} allLists={allLists} creators={creators} />
     </Page>
   )
 }
@@ -30,18 +31,53 @@ export const query = graphql`
 query IndexPageQuery {
   allContentfulTag(sort: {fields: display}) {
     tags: nodes {
+      pageTitle
       slug
       display
+      icon
+      priority
       pageSubtitle {
         pageSubtitle
       }
-      icon
+      introduction {
+        introduction
+      }
     }
   }
-  allContentfulList(
+  recentLists : allContentfulList(
     limit: 3
     sort: {fields: datePublished, order: DESC}
   ) {
+    lists: nodes {
+      slug
+      description {
+        description
+      }
+      image
+      link
+      name
+      datePublished
+      listTags {
+        display
+        slug
+      }
+      creator {
+        slug
+        name
+        link
+        imageBanner
+        imageAvatar
+        description {
+          description
+        }
+      }
+      gameLink {
+        title
+        bggId
+      }
+    }
+  }
+  allLists: allContentfulList {
     lists: nodes {
       slug
       description {
