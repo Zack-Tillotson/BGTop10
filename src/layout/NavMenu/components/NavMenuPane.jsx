@@ -2,8 +2,9 @@ import React from 'react';
 import cn from 'classnames'
 import { useStaticQuery, graphql, Link } from "gatsby"
 
-import Button from 'atoms/Button'
+import Font from 'atoms/Font'
 import TagBrief from 'components/TagBrief'
+
 import './nav-menu-pane.scss'
 
 const baseCn = 'nav-menu-pane'
@@ -30,14 +31,6 @@ function NavMenuPane({onClose}) {
   return (
     <div className={cn(baseCn)} role="document" tabIndex="0">
       <section className={`${baseCn}__section`}>
-        <h3 className={`${baseCn}__section-header`}>Find a game</h3>
-        <div className={`${baseCn}__section-content`}>
-          <Button type="link" to="/search/" className="page-head-menu__item" primary wide onClick={onClose}>
-            Search games
-          </Button>
-        </div>
-      </section>
-      <section className={`${baseCn}__section`}>
         <h3 className={`${baseCn}__section-header`}>Popular Categories</h3>
         <div className={`${baseCn}__section-content`}>
           {tags.map((tag, index, ary) => (
@@ -47,9 +40,10 @@ function NavMenuPane({onClose}) {
       </section>
       <section className={`${baseCn}__section`}>
         <h3 className={`${baseCn}__section-header`}>More links</h3>
-        <div className={`${baseCn}__section-content`}>
+        <Font level="bravo" className={`${baseCn}__section-content`}>
           <Link to="/about/" className="page-head-menu__item">About</Link>
-        </div>
+          <Link to="/about/" className="page-head-menu__item">Privacy Policy</Link>
+        </Font>
       </section>
     </div>
   )

@@ -72,12 +72,20 @@ function useGameSearch(games, query = '', rawOptions) {
 
   const localList = []
   const bggList = []
-  
+
+  games.forEach(localGame => {
+    const apiResultIndex = apiResults.findIndex(apiGame => localGame.bggId === Number(apiGame.bggId))
+    const matchesQueryString = query.trim().length > 1 && localGame.name.toLowerCase().includes(query.toLowerCase().trim())
+    
+    const isMatch = apiResultIndex >= 0 || matchesQueryString
+    
+    if(isMatch) {
+      localList.push(localGame)
+    }
+  })
   apiResults.forEach(apiResult => {
-    const game = games.find(game => game.bggId === Number(apiResult.bggId))
-    if(game) {
-      localList.push(game)
-    } else {
+    const game = localList.find(game => game.bggId === Number(apiResult.bggId))
+    if(!game) {
       bggList.push(apiResult)
     }
   })
@@ -86,7 +94,7 @@ function useGameSearch(games, query = '', rawOptions) {
     updateState(STATES.PRE)
   }
 
-  useDebugValue(`${state}, localList: ${localList.length}, bggList: ${bggList.length}`)
+  useDebugValue(`${query}=>${state}, localList: ${localList.length}, bggList: ${bggList.length}`)
 
   return {
     STATES,

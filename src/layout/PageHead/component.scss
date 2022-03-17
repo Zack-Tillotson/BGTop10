@@ -26,4 +26,9 @@
   color: var(--color-contrast-font-base);
   font-size: 24px;
   font-weight: bold;
+  line-height: 33px;
+
+  &:link, &:visited {
+    color: var(--color-contrast-font-base);
+  }
 }
