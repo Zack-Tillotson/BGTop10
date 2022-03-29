@@ -22,13 +22,37 @@
   padding: 0 var(--pad);
   margin: 0;
 
+  display: flex;
+  align-items: center;
+
   background: none;
   color: var(--color-contrast-font-base);
   font-size: 24px;
   font-weight: bold;
-  line-height: 33px;
 
   &:link, &:visited {
     color: var(--color-contrast-font-base);
+  }
+  &:hover {
+    background: var(--color-contrast-bg-primary);
+  }
+}
+
+.page-head-menu__search {
+  font-size: 16px;
+}
+
+.page-head-menu__search-icon {
+
+  @media (min-width: 800px) {
+    display: none;
+  }
+}
+.page-head-menu__search-text {
+  display: none;
+  text-decoration: underline;
+
+  @media (min-width: 800px) {
+    display: inline-block;
   }
 }

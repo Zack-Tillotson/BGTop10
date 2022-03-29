@@ -50,7 +50,7 @@ const SearchView = ({games, query}) => {
         )}
         <form onSubmit={handleFormSubmit}>
           <div className={`${baseCn}__input-wrapper`}>
-            <input className={`${baseCn}__input`} type="text" aria-label="Search" placeholder="Search for a game" value={inputValue} onChange={handleInputChange} />
+            <input className={`${baseCn}__input`} type="text" aria-label="Search" placeholder="Enter the name of a game, eg 'Dominion'" value={inputValue} onChange={handleInputChange} />
             <button type="button" onClick={handleClearClick} className={`${baseCn}__input-clear`}>✕</button>
             {inputSearch.state !== inputSearch.STATES.PRE && (
               <div className={`${baseCn}__input-results`}>

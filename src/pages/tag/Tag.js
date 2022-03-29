@@ -13,7 +13,9 @@ const TagPage = ({location, data}) => {
   
   React.useEffect(() => {
     if(location.hash) {
-      document.getElementById(location.hash.slice(1)).scrollIntoView(false)
+      try {
+        document.getElementById(location.hash.slice(1)).scrollIntoView(false)
+      } catch(e) {}
     }
   }, [location])
 
