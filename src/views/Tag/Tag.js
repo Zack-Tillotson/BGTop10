@@ -38,7 +38,7 @@ const TagView = ({
     <div className={cn(baseCn, {[`${baseCn}--two-column`]: isTwoColumn, [`${baseCn}--right-imgs`]: isRightImages})}>
       <div className={`${baseCn}__title-section`}>
         <TitleWrapper {...titleProps}>
-          <TitleEle>{tag.pageTitle}</TitleEle>
+          <TitleEle className={`${baseCn}__header-title`}>{tag.pageTitle}</TitleEle>
         </TitleWrapper>
         {tag.pageSubtitle && (
           <p>{tag.pageSubtitle.pageSubtitle}</p>

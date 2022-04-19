@@ -18,6 +18,10 @@ button, a {
   font-family: var(--font-content);
 }
 
+input {
+  color: var(--color-font-base);
+}
+
 a:link, a:visited {
   text-decoration: none;
   color: var(--color-font-base);

@@ -1,4 +1,4 @@
-import React, {useState} from "react"
+import React, {useState, useRef, useEffect} from "react"
 import {Link, navigate} from 'gatsby'
 
 import GameMini from 'components/GameMini'
@@ -18,6 +18,13 @@ const SearchView = ({games, query}) => {
   // Input "in-line" results
   const [inputValue, updateInputValue] = useState(query)
   const inputSearch = useGameSearch(games, inputValue, {initialQuery: inputValue !== query})
+  const inputEle = useRef(null)
+
+  useEffect(() => {
+    if(inputEle.current) {
+      inputEle.current.focus()
+    }
+  }, [inputEle.current])
 
   const handleInputChange = event => {
     updateInputValue(event.target.value)
@@ -50,7 +57,15 @@ const SearchView = ({games, query}) => {
         )}
         <form onSubmit={handleFormSubmit}>
           <div className={`${baseCn}__input-wrapper`}>
-            <input className={`${baseCn}__input`} type="text" aria-label="Search" placeholder="Enter the name of a game, eg 'Dominion'" value={inputValue} onChange={handleInputChange} />
+            <input 
+              className={`${baseCn}__input`} 
+              type="text" 
+              aria-label="Search" 
+              placeholder="Enter the name of a game, eg 'Dominion'" 
+              value={inputValue} 
+              onChange={handleInputChange}
+              ref={inputEle}
+              />
             <button type="button" onClick={handleClearClick} className={`${baseCn}__input-clear`}>✕</button>
             {inputSearch.state !== inputSearch.STATES.PRE && (
               <div className={`${baseCn}__input-results`}>
