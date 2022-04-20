@@ -67,7 +67,7 @@ query IndexPageQuery {
         link
         imageBanner
         imageAvatar
-        description {
+      description {
           description
         }
       }

@@ -30,6 +30,12 @@ const config = {
       }
     },
     {
+      resolve: `gatsby-plugin-canonical-urls`,
+      options: {
+        siteUrl: process.env.SITE_METADATA_SITE_URL,
+      },
+    },
+    {
       resolve: 'gatsby-plugin-robots-txt',
       options: {
         policy: [
