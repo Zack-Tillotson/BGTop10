@@ -20,6 +20,8 @@ const TagPage = ({location, data}) => {
   }, [location])
 
   if(!tag) return null
+
+  const highlightGameId = (location.hash || '').slice(6)
   
   return (
     <Page location={location}>
@@ -27,7 +29,7 @@ const TagPage = ({location, data}) => {
         <title>{tag.pageTitle} | Cardboard Salad</title>
         <meta name="description" content={tag.pageSubtitle.pageSubtitle} />
       </Helmet>
-      <TagView tag={tag} lists={lists} />
+      <TagView tag={tag} lists={lists} highlightId={highlightGameId} titleLink={true} />
     </Page>
   )
 }

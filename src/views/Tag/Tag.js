@@ -1,4 +1,4 @@
-import * as React from "react"
+import React from "react"
 import {Link} from 'gatsby'
 import cn from 'classnames'
 import ReactMarkdown from 'react-markdown'
@@ -27,6 +27,7 @@ const TagView = ({
   showCtaLinks = false,
   isTwoColumn = false,
   isRightImages = false,
+  highlightId = '',
 }) => {
 
   const {games, creators} = useTagData(tag, lists)
@@ -46,12 +47,11 @@ const TagView = ({
       </div>
       <div className={`${baseCn}__header-images`}>
         {games.slice(0, 3).map(game => {
-          const Wrapper = showCtaLinks ? Link : 'div'
-          const wrapperProps = showCtaLinks ? {to: `/${tag.slug}/#game-${game.bggId}`} : {}
           return (
-            <Wrapper {...wrapperProps} key={game.bggId} role="presentation" className={`${baseCn}__header-image-wrapper`}>
+            <Link to={`/${tag.slug}/#game-${game.bggId}`} key={game.bggId} role="presentation" className={`${baseCn}__header-image-wrapper`}>
               <div key={game.bggId} role="presentation" className={`${baseCn}__header-image`} style={{backgroundImage: `url("${game.image}")`}} alt={game.title} />
-            </Wrapper>
+              <div className={`${baseCn}__header-image-title`}>{game.name}</div>
+            </Link>
           )
         })}
       </div>
@@ -73,7 +73,7 @@ const TagView = ({
             <TitleRow title={`Top 10 ${tag.display}`} className={`${baseCn}__title-row`} />
             <ol reversed className={`${baseCn}__ordered-list`}>
               {games.slice(0, 10).reverse().map((game, index, {length: arraySize}) => (
-                <li key={game.bggId} className={`${baseCn}__ordered-list-line`} data-count={game.count} id={`game-${game.bggId}`}>
+                <li key={game.bggId} className={`${baseCn}__ordered-list-line ${highlightId == game.bggId ? `${baseCn}--highlight` : ''}`} data-count={game.count} id={`game-${game.bggId}`}>
                   <div className={`${baseCn}__ordered-list-number-wrapper`}>
                     <div className={`${baseCn}__ordered-list-number`}>
                       {arraySize - index}.

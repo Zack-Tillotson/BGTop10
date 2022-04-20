@@ -25,16 +25,29 @@
   overflow: hidden;
 }
 
+.tag-view--highlight {
+  background: var(--color-contrast-bg-primary-transparent);
+}
+
 .tag-view__header-image {
   background-position: center center;
   background-size: cover; 
   background-repeat: no-repeat;
-  width: 800px;
   position: absolute;
   left: 0;
   right: 0;
   top: 0;
   bottom: 0;
+}
+
+.tag-view__header-image-title {
+  position: absolute;
+  color: var(--color-contrast-font-base);
+  bottom: 0;
+  background: var(--color-contrast-bg-base-transparent);
+  left: 0;
+  right: 0;
+  padding: 0 var(--pad-quart);
 }
 
 .tag-view__title-row {
