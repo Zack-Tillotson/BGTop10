@@ -26,7 +26,7 @@ const config = {
     {
       resolve: 'gatsby-plugin-sitemap',
       options: {
-        excludes: ['/admin/', '/admin/**', '**/image/', '/search/'],
+        excludes: ['**/image/', '/search/'],
       }
     },
     {
@@ -39,7 +39,6 @@ const config = {
       resolve: 'gatsby-plugin-robots-txt',
       options: {
         policy: [
-          {userAgent: '*', disallow: '/admin/'},
           {userAgent: '*', allow: '/'},
         ],
       }

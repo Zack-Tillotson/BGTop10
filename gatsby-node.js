@@ -17,3 +17,11 @@ exports.createPages = async function ({ actions, graphql }) {
     })
   })
 }
+
+exports.onCreatePage = ({ page, actions }) => {
+  const { deletePage } = actions
+  
+  if (process.env.NODE_ENV === 'production' && page.path.startsWith('/admin')) {
+    deletePage(page)
+  }
+}
