@@ -55,6 +55,10 @@
   margin-bottom: var(--pad);
 }
 
+.tag-view__title-row h2 {
+  line-height: var(--pad6);
+}
+
 .tag-view__ordered-list-line {
   display: flex;
   flex-flow: row nowrap;

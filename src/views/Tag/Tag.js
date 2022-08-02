@@ -1,4 +1,4 @@
-import React from "react"
+import React, { useState } from "react"
 import {Link} from 'gatsby'
 import cn from 'classnames'
 import ReactMarkdown from 'react-markdown'
@@ -31,9 +31,14 @@ const TagView = ({
 }) => {
 
   const {games, creators} = useTagData(tag, lists)
+  const [gameCount, updateGameCount] = useState(10)
 
   const TitleWrapper = titleLink ? Link : 'span'
   const titleProps = titleLink ? {to: `/${tag.slug}/`} : {}
+
+  const handleGameCountToggle = () => {
+    updateGameCount(100)
+  }
 
   return (
     <div className={cn(baseCn, {[`${baseCn}--two-column`]: isTwoColumn, [`${baseCn}--right-imgs`]: isRightImages})}>
@@ -70,9 +75,13 @@ const TagView = ({
       {showList && (
         <>
           <section>
-            <TitleRow title={`Top 10 ${tag.display}`} className={`${baseCn}__title-row`} />
+            <TitleRow title={`Top ${gameCount} ${tag.display}`} className={`${baseCn}__title-row`}>
+              {gameCount === 10 && (
+                <Button hollow onClick={handleGameCountToggle}>More</Button>
+              )}
+            </TitleRow>
             <ol reversed className={`${baseCn}__ordered-list`}>
-              {games.slice(0, 10).reverse().map((game, index, {length: arraySize}) => (
+              {games.slice(0, gameCount).reverse().map((game, index, {length: arraySize}) => (
                 <li key={game.bggId} className={`${baseCn}__ordered-list-line ${highlightId == game.bggId ? `${baseCn}--highlight` : ''}`} data-count={game.count} id={`game-${game.bggId}`}>
                   <div className={`${baseCn}__ordered-list-number-wrapper`}>
                     <div className={`${baseCn}__ordered-list-number`}>
