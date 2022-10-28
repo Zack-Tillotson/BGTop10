@@ -25,6 +25,13 @@ function useCreatorForm() {
     if(field.id === 'name') {
       newValue.slug = slugify(value, {lower: true, strict: true})
     }
+    if(field.id === 'avatar') {
+      newValue.avatar = value.replace('=s88-', '=s250-')
+    }
+    if(field.id === 'banner') {
+      const regex = /=w[0-9]{3,4}/
+      newValue.banner = value.replace(regex, '=w1024')
+    }
     formState.updateValue(newValue)
   }
 
