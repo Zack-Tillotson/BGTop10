@@ -118,6 +118,10 @@ const ListForm = () => {
     }
   }
 
+  const handleGameLinksPaste = event => {
+    state.gameLinks.handlePaste(event)
+  }
+
   return (
     <section className={baseCn}>
       <div className={`${baseCn}__creator-section`}>
@@ -181,7 +185,12 @@ const ListForm = () => {
             <Font level="delta" className={`${baseCn}__list-games-controls`}>
               <div className={`${baseCn}__input-group`}>
                 <label htmlFor={linkPopNumbersId}>Numbers</label>
-                <input className="list-form__input" id={linkPopNumbersId} type="text" placeholder="Eg. 10-1 or 50-41" />
+                <input 
+                  className="list-form__input" 
+                  id={linkPopNumbersId} 
+                  type="text" 
+                  placeholder="Eg. 10-1 or 50-41"
+                  onPaste={handleGameLinksPaste} />
               </div>
               <div className={`${baseCn}__input-group`}>
                 <label htmlFor={linkPopNamesId}>Contributers</label>

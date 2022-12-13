@@ -152,6 +152,33 @@ function useListForm() {
     
   }
 
+  const handlePaste = event => {
+    const stringData = event.clipboardData.getData('text')
+    const gameArray = stringData.split('\n')
+
+    if(gameArray.length < 2) {
+      return
+    }
+
+    const timeStampRegex = /[0-9][0-9]:[0-9][0-9] (.*$)/
+    const cleanGameArray = gameArray.map(gameString => {
+      const match = gameString.match(timeStampRegex)
+      if(match) {
+        return match[1]
+      }
+      return gameString
+    })
+    
+    const [fieldAry, newLinkState] = buildStateObjects(
+      new Array(cleanGameArray.length).fill(0).map((_, index) => `#${cleanGameArray.length - index}`), 
+      [], 
+      cleanGameArray,
+    )
+    
+    linkFields.updateValue(fieldAry)
+    linkState.updateValue(newLinkState)
+  }
+
   return {
     tags: tags.cmsList,
     base: {
@@ -163,6 +190,7 @@ function useListForm() {
       value: linkState.value,
       handleChange: handleGameLinksChange,
       handleGenerateGameLinks,
+      handlePaste,
     },
     combinedValue,
 

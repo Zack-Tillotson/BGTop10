@@ -22,24 +22,24 @@ function useTagData(tag, lists) {
 
       // oldest lists
       case(new Date(list.datePublished).getTime() < dateBoundary1): {
-        listMultiplier = 1
+        listMultiplier = 2
         break
       }
 
       // mid-oldest lists
       case(new Date(list.datePublished).getTime() < dateBoundary0): {
-        listMultiplier = 2
+        listMultiplier = 3
         break
       }
 
       // newest lists
       default: 
-        listMultiplier = 6
+        listMultiplier = 5
         break
     }
     
     //    placementValue is intended to emphasize higher ratings within a list
-    const placementValue = (linkCount - index)/linkCount*10 // 10-1 pt, 10 for a top 10% 1 for a 90% of list
+    const placementValue = index/linkCount*10 // range 10-1, 10 for the first 10% of items in a list, 1 for the last 10%
     gameMap[game.bggId].count += listMultiplier * placementValue
   }))
   const games = Object.values(gameMap)

@@ -18,8 +18,9 @@ button, a {
   font-family: var(--font-content);
 }
 
-input {
+input, textarea {
   color: var(--color-font-base);
+  background-color: var(--color-bg-base);
 }
 
 a:link, a:visited {
