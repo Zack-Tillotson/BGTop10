@@ -1,5 +1,6 @@
 import './lib/styles.scss'
 import '@fontsource/inter';
 
+export * from './lib/TagSummary'
 export * from './lib/GameSummary'
-export * from './lib/ListSummary'
+export * from './lib/GameList'

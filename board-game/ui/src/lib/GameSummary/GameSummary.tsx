@@ -8,27 +8,26 @@ import styles from './GameSummary.module.scss'
 export function GameSummary({
   name,
   description,
-  year,
+  yearPublished,
   designer,
   publisher,
-  playerMin,
-  playerMax,
-  imgSrc,
-  imgAlt,
+  playerCountMin,
+  playerCountMax,
+  imageThumbnail,
 }: Game) {
   return (
     <div className={styles.container}>
       <div className={styles.imageContainer}>
-        <img src={imgSrc} alt={imgAlt} className={styles.image} />
+        <img src={imageThumbnail} alt={name} className={styles.image} />
       </div>
       <div className={styles.primaryAttrs}>
         <Typography level="h3">{name}</Typography>
-        <Typography>({year})</Typography>
+        <Typography>({yearPublished})</Typography>
       </div>
       <Card variant="outlined" className={styles.secondaryAttrs}>
-        <Typography>Players: {playerMin} - {playerMax}</Typography>
-        <Typography>Designer: {designer}</Typography>
-        <Typography>Publisher: {publisher}</Typography>
+        <Typography>Players: {playerCountMin} - {playerCountMax}</Typography>
+        <Typography>Designer: {designer.slice(0, 1)}</Typography>
+        <Typography>Publisher: {publisher.slice(0, 1)}</Typography>
       </Card>
       <Typography className={styles.description}>{description}</Typography>
     </div>

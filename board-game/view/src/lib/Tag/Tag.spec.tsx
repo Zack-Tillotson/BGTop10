@@ -1,10 +1,10 @@
 import { render } from '@testing-library/react';
 
-import GameList from './GameList';
+import Tag from './Tag';
 
-describe('GameList', () => {
+describe('GameTagList', () => {
   it('should render successfully', () => {
-    const { baseElement } = render(<GameList />);
+    const { baseElement } = render(<Tag />);
     expect(baseElement).toBeTruthy();
   });
 });

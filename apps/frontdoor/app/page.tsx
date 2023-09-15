@@ -1,16 +1,12 @@
 import styles from './page.module.scss';
-import {GameList} from 'board-game-view'
+import {Tag} from 'board-game-view'
 
-export default async function Index() {
-  
-  const apiString = `${Date.now()}`
+interface IndexProps {
+  tagSlug: string,
+}
 
+export default async function Index({tagSlug = 'game-of-the-year-2021'} : IndexProps) {
   return (
-    <div>
-      <div>
-        String: {apiString}
-      </div>
-      <GameList />
-    </div>
+    'Homepage'
   );
 }
