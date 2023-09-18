@@ -1,12 +1,16 @@
+import { getTag } from 'board-game-data';
 import styles from './page.module.scss';
-import {Tag} from 'board-game-view'
+import {Home} from 'board-game-view'
 
-interface IndexProps {
-  tagSlug: string,
+export async function generateMetadata() {
+  return {
+    title: `Cardboard SALAD`,
+    description: `Ranking the best board games annually`,
+  }
 }
 
-export default async function Index({tagSlug = 'game-of-the-year-2021'} : IndexProps) {
+export default async function Index() {
   return (
-    'Homepage'
+    <Home />
   );
 }

@@ -6,7 +6,7 @@ import {Game} from 'board-game-data'
 import styles from './GameSummary.module.scss'
 import { Sheet, Table } from '@mui/joy'
 
-function getShortString(stringArray: string[], maxCount: number) {
+function getShortString(stringArray: string[] = [], maxCount: number) {
   return `${stringArray.slice(0, maxCount).join(', ')}${stringArray.length > maxCount ? ` + ${stringArray.length - maxCount} more` : ''}`
 }
 
@@ -22,6 +22,7 @@ export function GameSummary({
   designer,
   publisher,
   artist,
+  bggId,
   playerCountMin,
   playerCountMax,
   imageThumbnail,
@@ -68,6 +69,13 @@ export function GameSummary({
         </Table>
       </Sheet>
       <Typography className={styles.description}>{description}</Typography>
+      <a 
+        href={`https://boardgamegeek.com/boardgame/${bggId}`} 
+        target="_blank"
+        rel="noreferrer"
+      >
+        View on BoardGameGeek
+      </a>
     </div>
   )
 }

@@ -1,4 +1,5 @@
 export * from './lib/fetch/useTagData'
+export * from './lib/fetch/useTagsSummary'
 export * from './lib/calc/tagGameList'
 
 export interface List {

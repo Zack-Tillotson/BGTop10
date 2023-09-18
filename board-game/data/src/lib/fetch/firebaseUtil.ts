@@ -12,7 +12,12 @@ function getDbRef() {
   return db
 }
 
-export async function query(collection: string, query: [string, WhereFilterOp, string|number|string[]|number[]]) {
+export async function query(collection: string, query?: [string, WhereFilterOp, string|number|string[]|number[]]) {
   const db = getDbRef()
-  return db.collection(collection).where(...query).get()
+  const collectionRef = db.collection(collection)
+  if(query) {
+    return collectionRef.where(...query).get()
+  } else {
+    return collectionRef.orderBy('priority', 'desc').get()
+  }
 }

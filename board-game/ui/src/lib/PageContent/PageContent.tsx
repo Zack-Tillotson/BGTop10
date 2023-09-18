@@ -1,5 +1,4 @@
 import Typography from '@mui/joy/Typography'
-import Head from 'next/head';
 
 import styles from './PageContent.module.scss'
 
@@ -17,10 +16,6 @@ export function PageContent({
 }: PageContentProps) {
   return (
     <div>
-      <Head>
-        <title>{title}</title>
-        <meta name="description" content={subtitle} />
-      </Head>
       <div className={styles.headerContainer}>
         <div className={styles.pageContent}>
           <Typography level="h1" sx={{background: '#09274e', color: 'white'}} className={styles.pageTitle}>

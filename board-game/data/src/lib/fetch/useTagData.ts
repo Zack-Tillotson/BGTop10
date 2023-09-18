@@ -6,15 +6,18 @@ export interface Tag {
   pageTitle: string,
   pageSubtitle: string,
   introduction: string,
+  slug: string,
+  id: string,
+  display: string,
 }
 
-async function getTag(slug: string): Promise<Tag> {
+export async function getTag(slug: string): Promise<Tag> {
   const results = await query('tag', ['slug', '==', slug])
   const tag = results.docs[0].data() as Tag
   return tag
 }
 
-async function getGamesListForTag(slug: string): Promise<GamesList> {
+export async function getGamesListForTag(slug: string): Promise<GamesList> {
   const tagResult = await query('tag', ['slug', '==', slug])
   const tag = tagResult.docs[0].data()
   
