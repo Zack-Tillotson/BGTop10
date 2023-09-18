@@ -1,0 +1,24 @@
+.ol {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.li {
+  border-top: solid #666 1px;
+  margin-top: 16px;
+  padding: 16px 0;
+}
+
+.section {
+  display: flex;
+  flex-flow: row nowrap;
+}
+
+.liNumber {
+  padding: 8px;
+}
+
+.detailsTable {
+  width: 100%;
+}

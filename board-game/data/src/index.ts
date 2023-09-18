@@ -1,4 +1,5 @@
-export * from './lib/fetch/useTagData';
+export * from './lib/fetch/useTagData'
+export * from './lib/calc/tagGameList'
 
 export interface List {
   name: string,
@@ -17,10 +18,10 @@ export interface Game {
   yearPublished: number,
   designer: string[],
   publisher: string[],
+  artist: string[],
   playerCountMin: number,
   playerCountMax: number,
   image: string,
   imageThumbnail: string,
 }
-
 

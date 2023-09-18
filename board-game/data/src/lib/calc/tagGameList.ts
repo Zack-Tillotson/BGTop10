@@ -1,13 +1,17 @@
 import {List, Game} from '../..'
 
-export interface GameMap {
-  [key: string]: {
-    game: Game,
-    count: number,
-  },
+export interface GamesListItem {
+  game: Game,
+  count: number,
 }
 
-export function calculateTagGameList(lists: List[]) {
+export interface GameMap {
+  [key: string]: GamesListItem,
+}
+
+export type GamesList = GamesListItem[]
+
+export function calculateTagGameList(lists: List[]): GamesList {
   const gameMap: GameMap = {}
   const dateBoundary0 = new Date().getTime() - 6 * 30 * 24 * 60 * 60 * 1000 // 6 months
   const dateBoundary1 = new Date().getTime() - 12 * 30 * 24 * 60 * 60 * 1000 // 12 months
@@ -43,7 +47,7 @@ export function calculateTagGameList(lists: List[]) {
     gameMap[game.bggId].count += listMultiplier * placementValue
   }))
 
-  const games = Object.values(gameMap).sort((a, b) => b.count - a.count)
+  const games = Object.values(gameMap).sort((a, b) => b.count - a.count) as GamesList
 
   return games
 }

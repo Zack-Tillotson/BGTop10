@@ -1,4 +1,4 @@
-import {TagSummary, GameList} from 'board-game-ui'
+import {TagSummary, GameList, PageContent} from 'board-game-ui'
 import {useTagData} from 'board-game-data'
 
 export interface TagProps {
@@ -8,10 +8,13 @@ export interface TagProps {
 export async function Tag({tagSlug}: TagProps) {
   const data = await useTagData(tagSlug)
   return (
-    <div>
+    <PageContent
+      title={data.tag.pageTitle}
+      subtitle={data.tag.pageSubtitle}
+    >
       <TagSummary {...data.tag} /> 
-      <GameList games={data.games} /> 
-    </div>
+      <GameList gamesList={data.gamesList} /> 
+    </PageContent>
   )
 }
 
