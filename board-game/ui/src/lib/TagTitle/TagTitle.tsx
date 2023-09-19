@@ -4,14 +4,19 @@ import {GameSummary} from 'board-game-ui'
 import styles from './TagSummary.module.scss'
 import { Tag } from 'board-game-data';
 
+export interface TagProps extends Tag {
+  className: string,
+}
+
 export function TagTitle({
   pageTitle,
   pageSubtitle,
   introduction,
-}: Tag) {
+  className = '',
+}: TagProps) {
   return (
-    <section>
-      <Typography>{introduction}</Typography>
+    <section className={className}>
+      <Typography level="body-lg">{introduction}</Typography>
     </section>
   )
 }

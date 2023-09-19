@@ -7,13 +7,15 @@ import styles from './GameList.module.scss'
 /* eslint-disable-next-line */
 export interface GameListProps {
   gamesList: GamesList,
+  className: string,
 }
 
 export function GameList({
   gamesList,
+  className = '',
 }: GameListProps) {
   return (
-    <ol className={styles.ol}>
+    <ol className={[styles.ol, className].join(' ')}>
       {gamesList.map(({game, count}, index) => (
         <li key={game.id} className={styles.li}>
           <section className={styles.section}>

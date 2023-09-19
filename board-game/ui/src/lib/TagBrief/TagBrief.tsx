@@ -5,13 +5,11 @@ import styles from './TagSummary.module.scss'
 import { Tag } from 'board-game-data';
 
 export function TagBrief({
-  pageTitle,
-  pageSubtitle,
-  introduction,
+  display,
 }: Tag) {
   return (
     <section>
-      <Typography>{introduction}</Typography>
+      <Typography>{display}</Typography>
     </section>
   )
 }

@@ -1,10 +1,9 @@
-import Card from '@mui/joy/Card'
 import Typography from '@mui/joy/Typography'
+import { Card, Table } from '@mui/joy'
 
 import {Game} from 'board-game-data'
 
 import styles from './GameSummary.module.scss'
-import { Sheet, Table } from '@mui/joy'
 
 function getShortString(stringArray: string[] = [], maxCount: number) {
   return `${stringArray.slice(0, maxCount).join(', ')}${stringArray.length > maxCount ? ` + ${stringArray.length - maxCount} more` : ''}`
@@ -33,7 +32,7 @@ export function GameSummary({
         <img src={imageThumbnail} alt={name} className={styles.image} />
       </div>
       <div className={styles.primaryAttrs}>
-        <Typography level="h3">
+        <Typography level="h3" id={`game-${bggId}`}>
           {extraTitle && (
             <span className={styles.extraTitle}>{extraTitle}</span>
           )}
@@ -41,7 +40,7 @@ export function GameSummary({
         </Typography>
         <Typography className={styles.yearPublished}>({yearPublished})</Typography>
       </div>
-      <Sheet className={styles.secondaryAttrs}>
+      <Card className={styles.secondaryAttrs}>
         <Table className={styles.detailsTable} size="sm">
           <tbody>
             <tr>
@@ -67,14 +66,14 @@ export function GameSummary({
             </tr>
           </tbody>
         </Table>
-      </Sheet>
+      </Card>
       <Typography className={styles.description}>{description}</Typography>
       <a 
         href={`https://boardgamegeek.com/boardgame/${bggId}`} 
         target="_blank"
         rel="noreferrer"
       >
-        View on BoardGameGeek
+        <Typography level="body-md" sx={{color: 'blue'}}>BoardGameGeek</Typography>
       </a>
     </div>
   )

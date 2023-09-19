@@ -1,0 +1,28 @@
+.container {
+  display: grid;
+  grid-template-areas:
+    "title"
+    "quick"
+    "list";
+  grid-gap: 16px;
+
+  @media screen and (min-width: 1024px) {
+    grid-template-areas:
+      "title quick"
+      "list  list";
+    grid-template-columns: 1fr auto;
+  }
+}
+
+.title {
+  grid-area: title;
+  text-align: justify;
+}
+
+.quickLinks {
+  grid-area: quick;
+}
+
+.gamesList {
+  grid-area: list;
+}

@@ -11,16 +11,16 @@ export async function Home() {
       subtitle={'We\'ve scoured the internet to find the best board games, sorted by year and other collections.'}
     >
       <section>
-      {tags.slice(0, 3).map(({tag, gamesList}) => (
+      {tags.slice(0, 4).map(({tag, gamesList}) => (
         <TagSummary tag={tag} gamesList={gamesList} key={tag.id} />
       ))}
       </section>
       <section>
       <Typography level="h3">More categories</Typography>
-        {tags.slice(3).map(({tag, gamesList}) => (
+        {tags.slice(4).map(({tag, gamesList}) => (
           <Link href={`/${tag.slug}`} key={tag.id}>
             <section>
-              <TagBrief tag={tag} gamesList={gamesList} />
+              <TagBrief {...tag} />
             </section>
             </Link>
         ))}

@@ -16,10 +16,11 @@ export function TagSummary({
 }: TagSummaryProps) {
 
   return (
-    <section>
-      <Typography level="h2">{tag.pageTitle}</Typography>
+    <section className={styles.container}>
+      <Link href={`/${tag.slug}`} className={styles.link}>
+        <Typography level="h2">{tag.pageTitle}</Typography>
+      </Link>
       <Typography>{tag.pageSubtitle}</Typography>
-      <Link href={`/${tag.slug}`}>View the games</Link>
     </section>
   )
 }
