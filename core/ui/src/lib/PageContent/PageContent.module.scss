@@ -1,0 +1,43 @@
+.headerContainer {
+  background: #09274e;
+  color: white;
+  padding: 8px;
+}
+
+.pageTitle {
+
+}
+
+.pageSubtitle {
+
+}
+
+.breadcrumbs {
+  padding: 8xp;
+  border-bottom: solid 1px #ccc;
+}
+
+.breadcrumbs ol {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.breadcrumbs li {
+  display: inline-block;
+  text-transform: capitalize;
+}
+
+.breadcrumbs li + li {
+  ::before {
+    content: ' › ';
+    padding: 0 8px;
+    color: '#ccc';
+  }
+}
+
+.pageContent {
+  max-width: 1024px;
+  margin: 0 auto 8px auto;
+  padding: 8px;
+}

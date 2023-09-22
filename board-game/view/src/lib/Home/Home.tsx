@@ -1,10 +1,12 @@
-import {PageContent, TagSummary, TagBrief} from 'board-game-ui'
-import {useTagsSummary} from 'board-game-data'
 import { Typography } from '@mui/joy';
 import Link from 'next/link';
 
+import {PageContent} from 'core-ui'
+import {TagSummary, TagBrief} from 'board-game-ui'
+import {takeTags} from 'board-game-data'
+
 export async function Home() {
-  const tags = await useTagsSummary()
+  const tags = await takeTags()
   return (
     <PageContent
       title={'These are the best board games'}

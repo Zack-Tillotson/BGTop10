@@ -1,5 +1,6 @@
-import {TagTitle, GameList, GameBriefList, PageContent} from 'board-game-ui'
-import {useTagData} from 'board-game-data'
+import {TagTitle, GameList, GameBriefList} from 'board-game-ui'
+import {takeTag} from 'board-game-data'
+import {PageContent} from 'core-ui'
 
 import styles from './Tag.module.scss'
 
@@ -8,7 +9,7 @@ export interface TagProps {
 }
 
 export async function Tag({tagSlug}: TagProps) {
-  const data = await useTagData(tagSlug)
+  const data = await takeTag(tagSlug)
   return (
     <PageContent
       title={data.tag.pageTitle}

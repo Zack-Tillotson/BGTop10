@@ -1,7 +1,7 @@
-import { getTag } from 'board-game-data';
-import styles from './page.module.scss';
+import {takeTag, takeTags } from 'board-game-data';
 import {Tag} from 'board-game-view'
-import { getTags } from 'board-game/data/src/lib/fetch/queryUtil';
+
+import styles from './page.module.scss';
 
 interface IndexProps {
   params: {
@@ -10,7 +10,7 @@ interface IndexProps {
 }
 
 export async function generateMetadata({params: {tagSlug}}: IndexProps) {
-  const tag = await getTag(tagSlug)
+  const {tag} = await takeTag(tagSlug)
   return {
     title: `${tag.pageTitle} | Cardboard SALAD`,
     description: tag.pageSubtitle,
@@ -18,9 +18,9 @@ export async function generateMetadata({params: {tagSlug}}: IndexProps) {
 }
 
 export async function generateStaticParams() {
-  const tags = await getTags()
+  const tagsWithMeta = await takeTags()
  
-  return tags.map(tag => ({tagSlug: tag.slug}))
+  return tagsWithMeta.map(({tag}) => ({tagSlug: tag.slug}))
 }
 
 export default async function Index({params: {tagSlug}} : IndexProps) {

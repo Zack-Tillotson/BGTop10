@@ -16,8 +16,10 @@
     "baseUrl": ".",
     "paths": {
       "board-game-data": ["board-game/data/src/index.ts"],
+      "board-game-data/client": ["board-game/data/src/client.ts"],
       "board-game-ui": ["board-game/ui/src/index.ts"],
-      "board-game-view": ["board-game/view/src/index.ts"]
+      "board-game-view": ["board-game/view/src/index.ts"],
+      "core-ui": ["core/ui/src/index.ts"]
     }
   },
   "exclude": ["node_modules", "tmp"]
