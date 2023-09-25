@@ -37,13 +37,13 @@ export async function query(
   const collectionRef = db.collection(collection)
 
   if(query) {
-    let fbQuery = collectionRef.where(...query) 
+    let fbQuery = collectionRef.where(...query).limit(25)
     if(orderBy) {
       fbQuery = fbQuery.orderBy(...orderBy)
     }
     return fbQuery.get()
   } else if(orderBy) {
-    return collectionRef.orderBy(...orderBy).get()
+    return collectionRef.orderBy(...orderBy).limit(25).get()
   } else {
     return collectionRef.get()
   }

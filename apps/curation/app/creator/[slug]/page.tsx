@@ -7,12 +7,11 @@ import { CreatorFull } from 'board-game-ui';
 
 interface CreatorProps {
   params: {
-    contentType: string,
     slug: string,
   }
 }
 
-export default async function Index({params: {slug, contentType}}: CreatorProps) {
+export default async function Index({params: {slug}}: CreatorProps) {
   const creator = await takeCreator(slug)
   
   if(!creator) throw new Error('slug not found')
@@ -21,17 +20,17 @@ export default async function Index({params: {slug, contentType}}: CreatorProps)
     href: '/',
     display: 'Home',
   }, {
-    href: `/${contentType}`,
-    display: contentType,
+    href: `/creator`,
+    display: 'Creators',
   }, {
-    href: `/${contentType}/${slug}`,
+    href: `/creator/${slug}`,
     display: creator.name,
   }]
   
   return (
     <PageContent title={creator.name} subtitle="View creator" breadcrumbs={breadcrumbs}>
       <section className={styles.controls}>
-        <Link className={styles.link} href={`/${contentType}/${slug}/edit`}>
+        <Link className={styles.link} href={`/creator/${slug}/edit`}>
           Edit
         </Link>
       </section>

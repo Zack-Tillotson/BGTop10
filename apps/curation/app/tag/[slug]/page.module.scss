@@ -1,0 +1,19 @@
+.controls {
+  text-align: right;
+  margin-bottom: 8px;
+}
+
+.link {
+  text-decoration: none;
+  border: solid 1px blue;
+  border-radius: 3px;
+  padding: 4px;
+
+  &:link, &:visited {
+    color: blue;
+  }
+
+  &:hover {
+    background: lightblue;
+  }
+}

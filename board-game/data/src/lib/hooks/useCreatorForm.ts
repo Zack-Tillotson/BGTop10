@@ -72,10 +72,8 @@ export function useCreatorForm(creator?: Creator) {
   const handleConfirm = () => {
     updateIsPreview(false)
     updateIsLoading(true)
-    console.log('formCreator', formCreator, creator)
     submitForm('creator', formCreator)
       .then(() => {
-        updateIsLoading(false)
         router.push(`/creator/${formCreator.slug}`)
       })
   }

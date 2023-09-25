@@ -1,51 +1,14 @@
 .container {
-  display: grid;
-  grid-template-areas:
-    "primary"
-    "image"
-    "secondary"
-    "desc";
-  grid-template-columns: 1fr;
-  grid-gap: 8px;
-
-  @media (min-width: 1024px) {
-    grid-template-areas:
-      "image primary secondary"
-      "image primary secondary"
-      "desc  desc    desc";
-    grid-template-columns: auto 1fr 1fr;
-    grid-template-rows: auto 1fr;
-  }
+  position: relative;
+  min-height: 50px;
+  background-color: #000;
 }
 
-.yearPublished {
-  display: none;
-
-  @media (min-width: 1024px) {
-    display: block;
-  }
-}
-
-.imageContainer {
-  grid-area: image;
-  text-align: center;
-}
-
-.image {
+.name {
+  position: absolute;
   display: inline-block;
-  height: 150px;
-  width: 150px;
-  margin: 0 auto;
-}
-
-.primaryAttrs {
-  grid-area: primary;
-}
-
-.secondaryAttrs {
-  grid-area: secondary;
-}
-
-.description {
-  grid-area: desc;
+  left: 0;
+  top: 0;
+  padding: 0 8px;
+  background: #ffffffee;
 }

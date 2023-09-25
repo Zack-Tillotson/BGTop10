@@ -10,12 +10,15 @@ interface CreatorProps extends Creator {
 
 export function CreatorBrief({
   name,
+  imageBanner,
   className = '',
 }: CreatorProps) {
   return (
-    <Typography className={className}>
-      {name}
-    </Typography>
+    <div className={styles.container} style={{backgroundImage: `url('${imageBanner}')`}}>
+      <Typography className={className + ' ' + styles.name}>
+        {name}
+      </Typography>
+    </div>
   )
 }
 

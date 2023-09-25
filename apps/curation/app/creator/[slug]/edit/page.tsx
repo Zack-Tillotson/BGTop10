@@ -6,12 +6,11 @@ import styles from './page.module.scss';
 
 interface CreatorProps {
   params: {
-    contentType: string,
     slug: string,
   }
 }
 
-export default async function Index({params: {slug, contentType}}: CreatorProps) {
+export default async function Index({params: {slug}}: CreatorProps) {
   const creator = await takeCreator(slug)
   
   if(!creator) throw new Error('creator not found')
@@ -20,10 +19,10 @@ export default async function Index({params: {slug, contentType}}: CreatorProps)
     href: '/',
     display: 'Home',
   }, {
-    href: `/${contentType}`,
-    display: contentType,
+    href: `/creator`,
+    display: 'Creators',
   }, {
-    href: `/${contentType}/${slug}`,
+    href: `/creator/${slug}`,
     display: creator.name,
   }]
   

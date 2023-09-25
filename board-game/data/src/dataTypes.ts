@@ -29,6 +29,7 @@ export interface Tag {
   introduction: string,
   slug: string,
   display: string,
+  priority: number,
 }
 
 export interface Creator {

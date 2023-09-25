@@ -11,7 +11,6 @@ interface CreatorFormViewProps {
 
 export async function CreatorFormView({slug}: CreatorFormViewProps) {
   const creator = await takeCreator(slug)
-  console.log('CREATOR', creator)
   return (
     <CreatorFormClient creator={creator} />
   );
