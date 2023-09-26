@@ -1,32 +1,33 @@
 'use client'
-
 import {Button} from '@mui/joy'
-import { useCreatorForm, Creator } from 'board-game-data/client';
-import { CreatorForm, CreatorFull } from 'board-game-ui';
+import { useGameForm, Game } from 'board-game-data/client';
+import { GameForm, GameFull } from 'board-game-ui';
 import { ChangeEventHandler } from 'react';
 
-interface CreatorFormClientProps {
-  creator?: Creator
+interface GameFormClientProps {
+  bggId: number|string,
+  game?: Game
 }
 
-export default function CreatorFormClient({creator}: CreatorFormClientProps) {
+export default function GameFormClient({bggId, game}: GameFormClientProps) {
   const {
     isLoading,
     isPreview,
     formValues,
-    formCreator,
+    formGame,
     handleChange, 
     handleSubmit,
     handleCancel,
     handleConfirm,
-  } = useCreatorForm(creator)
+    handleUpdateFromBgg,
+  } = useGameForm(bggId, game)
   
   return (
     <div>
       {isLoading && '...'}
       {isPreview && (
         <div>
-          <CreatorFull {...formCreator} />
+          <GameFull {...formGame} />
           <div>
             <Button onClick={handleCancel} variant="outlined">Cancel</Button>
             <Button onClick={handleConfirm}>Submit</Button>
@@ -34,10 +35,11 @@ export default function CreatorFormClient({creator}: CreatorFormClientProps) {
         </div>
       )}
       {!isLoading && !isPreview && (
-        <CreatorForm 
+        <GameForm 
           formValues={formValues} 
           onSubmit={handleSubmit} 
-          onChange={handleChange as any as (key: string) => ChangeEventHandler<HTMLInputElement>} 
+          onChange={handleChange as unknown as (key: string) => ChangeEventHandler<HTMLInputElement>} 
+          onUpdateFromBgg={handleUpdateFromBgg}
         />
       )}
     </div>

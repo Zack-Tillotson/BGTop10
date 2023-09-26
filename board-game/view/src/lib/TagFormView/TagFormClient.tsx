@@ -1,5 +1,6 @@
 'use client'
 
+import {Button} from '@mui/joy'
 import { useTagForm, Tag } from 'board-game-data/client';
 import { TagForm, TagFull } from 'board-game-ui';
 import { ChangeEventHandler } from 'react';
@@ -27,8 +28,8 @@ export default function TagFormClient({tag}: TagFormClientProps) {
         <div>
           <TagFull tag={formTag} gamesList={[]} />
           <div>
-            <button onClick={handleCancel}>Cancel</button>
-            <button onClick={handleConfirm}>Submit</button>
+            <Button onClick={handleCancel} variant="outlined">Cancel</Button>
+            <Button onClick={handleConfirm}>Submit</Button>
           </div>
         </div>
       )}

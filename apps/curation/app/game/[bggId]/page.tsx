@@ -14,7 +14,7 @@ interface GameProps {
 export default async function Index({params: {bggId}}: GameProps) {
   const game = await takeGame(bggId)
 
-  const display = game?.display || `${bggId} - Game not found`
+  const display = game?.name || `${bggId} - Game not found`
 
   const breadcrumbs = [{
     href: '/',
@@ -35,7 +35,7 @@ export default async function Index({params: {bggId}}: GameProps) {
         </Link>
       </section>
       <section>
-        {!!game && (<GameFull {...game} />)}
+        {game && (<GameFull {...game} />)}
         {!game && ('Game not found')}
       </section>
     </PageContent>

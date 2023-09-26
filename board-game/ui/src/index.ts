@@ -17,3 +17,4 @@ export * from './lib/GameFull'
 
 export * from './lib/GameList'
 export * from './lib/GameBriefList'
+export * from './lib/GameForm'

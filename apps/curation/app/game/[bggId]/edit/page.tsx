@@ -6,14 +6,14 @@ import styles from './page.module.scss';
 
 interface GameProps {
   params: {
-    slug: string,
+    bggId: string,
   }
 }
 
-export default async function Index({params: {slug}}: GameProps) {
-  const {game} = await takeGame(slug)
-  
-  if(!game) throw new Error('game not found')
+export default async function Index({params: {bggId}}: GameProps) {
+  const game = await takeGame(bggId)
+
+  const display = game?.name || `${bggId} - Game not found`
 
   const breadcrumbs = [{
     href: '/',
@@ -22,14 +22,14 @@ export default async function Index({params: {slug}}: GameProps) {
     href: `/game`,
     display: 'Games',
   }, {
-    href: `/game/${slug}`,
-    display: game.display,
+    href: `/game/${bggId}`,
+    display,
   }]
   
   return (
-    <PageContent title={game.display} subtitle="View game" breadcrumbs={breadcrumbs}>
+    <PageContent title={display} subtitle="Edit game" breadcrumbs={breadcrumbs}>
       <section>
-        <GameFormView slug={slug} />
+        <GameFormView bggId={bggId} />
       </section>
     </PageContent>
   );
