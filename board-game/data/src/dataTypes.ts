@@ -1,10 +1,10 @@
-export interface List {
+export interface Ranking {
   name: string,
+  datePublished: string,
   gameLink: {
     bggId: number,
     index: number,
   }[],
-  datePublished: string,
 }
 
 export interface Game {

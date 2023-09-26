@@ -18,3 +18,7 @@ export * from './lib/GameFull'
 export * from './lib/GameList'
 export * from './lib/GameBriefList'
 export * from './lib/GameForm'
+
+export * from './lib/RankingBrief'
+export * from './lib/RankingFull'
+export * from './lib/RankingForm'

@@ -1,4 +1,4 @@
-import {List, Game} from '../..'
+import {Ranking, Game} from '../..'
 
 export interface GamesListItem {
   game: Game,
@@ -11,7 +11,7 @@ export interface GameMap {
 
 export type GamesList = GamesListItem[]
 
-export function calculateTagGameList(lists: List[]): GamesList {
+export function calculateTagGameList(lists: Ranking[]): GamesList {
   const gameMap: GameMap = {}
   const dateBoundary0 = new Date().getTime() - 6 * 30 * 24 * 60 * 60 * 1000 // 6 months
   const dateBoundary1 = new Date().getTime() - 12 * 30 * 24 * 60 * 60 * 1000 // 12 months

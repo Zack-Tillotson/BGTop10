@@ -11,10 +11,10 @@ export default async function Index() {
           <Link href="/creator">Creator</Link>
         </li>
         <li>
-          <Link href="/tag">Tag</Link>
+          <Link href="/ranking">Ranking</Link>
         </li>
         <li>
-          <Link href="/list">List</Link>
+          <Link href="/tag">Tag</Link>
         </li>
         <li>
           <Link href="/game">Game</Link>
