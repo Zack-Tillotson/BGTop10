@@ -1,16 +1,19 @@
-import { getGamesListForTag, Tag } from 'board-game-data'
+import { Tag } from '../../dataTypes'
 import {query, QueryOptions} from '../firebase/util'
-
+import { getGamesListForTag } from './takeTag'
 
 async function getTags(options?: QueryOptions): Promise<Tag[]> {
   const results = await query('tag', options)
-  const tags = results.docs.map(doc => doc.data()) as Tag[]
+  const tags = results.docs.map(doc => ({
+    ...doc.data(),
+    id: doc.id,
+  })) as Tag[]
   return tags
 }
 
-export async function takeTags(options?: QueryOptions) {
+export async function takeTags(withGames: boolean, options?: QueryOptions) {
   const tags = await getTags(options)
-  const gamesPromises = tags.slice(0, 1).map(tag => getGamesListForTag(tag.slug), [])
+  const gamesPromises = tags.map(tag => withGames ? getGamesListForTag(tag.slug) : Promise.resolve([]), [])
   const gamesLists = await Promise.all(gamesPromises)
   
   const tagsWithGames = tags.map((tag, index) => ({

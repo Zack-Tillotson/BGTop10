@@ -1,4 +1,4 @@
-import { Creator } from 'board-game-data'
+import { Creator } from '../../dataTypes'
 import {query, save} from '../firebase/util'
 
 export async function takeCreator(slug?: string) {

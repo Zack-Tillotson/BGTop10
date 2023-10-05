@@ -35,7 +35,7 @@ export default async function Index({params: {slug}}: RankingProps) {
         </Link>
       </section>
       <section>
-        {ranking && (<RankingFull {...ranking} />)}
+        {ranking && (<RankingFull ranking={ranking} />)}
         {!ranking && ('Ranking not found')}
       </section>
     </PageContent>

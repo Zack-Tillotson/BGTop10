@@ -1,85 +1,188 @@
 'use client'
 
-import { Ranking } from "board-game-data";
+import { Creator, Ranking } from "board-game-data/client";
 import { useRouter } from "next/navigation";
-import { ChangeEvent, SyntheticEvent, useState } from "react";
+import { ChangeEvent, SyntheticEvent, useCallback, useState } from "react";
 import { submitForm } from "../fetch/submitForm";
 
-export interface RankingForm extends Ranking {
+export interface RankingFormDataType {
   id: string,
+  creatorSlug: string,
+  creator: string,
+  name: string,
+  slug: string,
+  datePublished: string,
+  description: string,
+  link: string,
+  image: string,
+  tag: string,
+  creatorCount: number,
+  rankingCount: number,
+  gameLink: {person: string, games: {name: string, bggId: string}[]}[],
 }
 
-function buildRankingForm(ranking?: Ranking) {
+function buildRankingForm(creators: Creator[], ranking?: Ranking) {
   if(!ranking) {
     return {
       id: '',
+      creator: '',
+      creatorSlug: '',
       name: '',
       slug: '',
       datePublished: '',
+      description: '',
+      link: '',
+      image: '',
+      tag: '',
+      creatorCount: 1,
+      rankingCount: 10,
+      gameLink: [{person: '', games: new Array(10).fill(null).map(_ => ({name: '', bggId: ''}))}],
     }
   }
+
+  const creator = creators.find(creator => creator.id === ranking.creator)
+  const creatorSlug = creator?.slug || ''
     
   return {
     id: ranking.id,
+    creator: ranking.creator,
+    creatorSlug,
     name: ranking.name,
     slug: ranking.slug,
     datePublished: ranking.datePublished,
+    description: ranking.description,
+    link: ranking.link,
+    image: ranking.image,
+    tag: ranking.tag,
+    creatorCount: ranking.gameLink.length,
+    rankingCount: ranking.gameLink[0].games.length,
+    gameLink: ranking.gameLink.map(({person, games}) => ({person, games: games.map(bggId => ({name: '', bggId}))})),
   }
 }
 
-function buildRanking(form: RankingForm, id?: string) {
+function buildRanking(form: RankingFormDataType, id?: string) {
   return {
     id: id || '',
+    creator: form.creator,
     name: form.name,
     slug: form.slug,
     datePublished: form.datePublished,
+    description: form.description,
+    link: form.link,
+    image: form.image,
+    tag: form.tag,
+    gameLink: form.gameLink.map(({person, games}) => ({person, games: games.map(({bggId}) => bggId)})),
   }
 }
 
-export function useRankingForm(ranking?: Ranking) {
-  const rankingForm = buildRankingForm(ranking)
+const REQUIRED_FIELDS = ['creator', 'name', 'slug', 'datePublished', 'description', 'link', 'image', 'tag']
+function validateFormValues(formValues: RankingFormDataType) {
+
+  // Ensure all form values are non-empty
+  if(REQUIRED_FIELDS.filter(key => !formValues[key]).length) {
+    return false
+  }
+
+  // Ensure all games have BGG Ids
+  if(formValues.gameLink.filter(({person, games}) => !person || games.find(({bggId}) => !bggId)).length) {
+    return false
+  }
+
+  return true
+}
+
+export function useRankingForm(creators: Creator[], ranking?: Ranking) {
+  const rankingForm = buildRankingForm(creators, ranking)
   const [formValues, updateFormValues] = useState(rankingForm)
   const [isPreview, updateIsPreview] = useState(false)
   const [isLoading, updateIsLoading] = useState(false)
   const router = useRouter()
 
   const formRanking = buildRanking(formValues, ranking?.id)
+  const isFormValid = validateFormValues(formValues)
 
-  const handleSubmit = (event:  SyntheticEvent<HTMLFormElement, SubmitEvent>) => {
+  const handleSubmit = useCallback((event:  SyntheticEvent<HTMLFormElement, SubmitEvent>) => {
     event.preventDefault()
     updateIsPreview(true)
-  }
+  }, [])
 
-  const handleCancel = () => {
+  const handleCancel = useCallback(() => {
     updateIsPreview(false)
-  }
+  }, [])
 
-  const handleConfirm = () => {
+  const handleConfirm = useCallback(() => {
     updateIsPreview(false)
     updateIsLoading(true)
     submitForm('ranking', formRanking)
       .then(() => {
         router.push(`/ranking/${formRanking.slug}`)
       })
-  }
-  const handleChange = (key: string) => (event: SyntheticEvent<HTMLInputElement, ChangeEvent>) => {
-    const value = event.currentTarget.value
-    const newFormValues = {...formValues, [key]: value}
+  }, [formRanking, router])
+  
+  const handleChange = useCallback((key: string) => (event: SyntheticEvent<HTMLInputElement, ChangeEvent>, newValue: string) => {
+    if(!event) return
 
+    const value = event.target.value || newValue
+    const newFormValues = {...structuredClone(formValues), [key]: value}
+    
     if(key === 'name') {
-      newFormValues['slug'] = newFormValues['name'].toLowerCase().split(' ').join('-')
+      const creatorSlug = newFormValues['creatorSlug']
+      const nameSlug = (newFormValues['name'] || '').toLowerCase().split(' ').join('-')
+      newFormValues['slug'] = `${creatorSlug}-${nameSlug}`
+    } else if(key === 'creator') {
+      const creatorSlug = creators.find(({id}) => id === value)?.slug || ''
+      newFormValues['creatorSlug'] = creatorSlug
+    } else if(key === 'creatorCount' || key === 'rankingCount') {
+      const creatorCount = Number(newFormValues.creatorCount)
+      const rankingCount = Number(newFormValues.rankingCount)
+      const gameLink = new Array(creatorCount).fill(null).map((_, personIndex) => ({
+        person: newFormValues.gameLink[personIndex]?.person || '',
+        games: new Array(rankingCount).fill(null).map((_, gameIndex) => (
+          newFormValues.gameLink[personIndex]?.games[gameIndex] || {name: '', bggId: ''}
+        ))
+      }))
+
+      newFormValues['creatorCount'] = creatorCount
+      newFormValues['rankingCount'] = rankingCount
+      newFormValues['gameLink'] = gameLink
     }
 
     updateFormValues(newFormValues)
+  }, [formValues])
+
+  const handlePersonChange = useCallback((key: string, personIndex: number, gameIndex?: number) => (event: SyntheticEvent<HTMLInputElement, ChangeEvent>, newValue: string) => {
+    if(!event) return
+
+    const value = event.target.value || newValue
+    const newFormValues = structuredClone(formValues)
+
+    if(key === 'name') {
+      newFormValues.gameLink[personIndex].person = value
+    } else if(key === 'game') {
+      if(gameIndex === undefined) throw new Error('must specify gameIndex')
+      newFormValues.gameLink[personIndex].games[gameIndex].name = value
+    } else if(key === 'bggId') {
+      if(gameIndex === undefined) throw new Error('must specify gameIndex')
+      newFormValues.gameLink[personIndex].games[gameIndex].bggId = value
+    }
+
+    updateFormValues(newFormValues)
+  }, [formValues])
+
+  const handleBggSelection = (bggId: number, {personIndex, gameIndex}: {personIndex: number, gameIndex: number}) => () => {
+    console.log('bgg lookup', personIndex, gameIndex, bggId)
   }
 
   return {
     isPreview,
     isLoading,
+    isFormValid,
     ranking,
     formValues,
     formRanking,
     handleChange,
+    handlePersonChange,
+    handleBggSelection,
     handleSubmit,
     handleCancel,
     handleConfirm,

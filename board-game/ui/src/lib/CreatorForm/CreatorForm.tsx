@@ -1,20 +1,20 @@
 'use client'
 
 import { Button, FormControl, FormLabel, Input } from '@mui/joy'
-import {CreatorForm} from 'board-game-data/client'
+import {CreatorFormDataType} from 'board-game-data/client'
 
 import styles from './CreatorForm.module.scss'
 import { SyntheticEvent, ChangeEventHandler} from 'react'
 
 interface CreatorFormProps {
-  formValues: CreatorForm,
+  formValues: CreatorFormDataType,
   className?: string,
   onChange: (key: string) => ChangeEventHandler<HTMLInputElement>,
   onSubmit: (event: SyntheticEvent<HTMLFormElement, SubmitEvent>) => void,
 }
 
 interface Attribute {
-  key: keyof(CreatorForm), 
+  key: keyof(CreatorFormDataType), 
   display: string,
 }
 
@@ -53,5 +53,3 @@ export function CreatorForm({
     </form>
   )
 }
-
-export default CreatorForm;

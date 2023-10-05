@@ -1,4 +1,4 @@
-import { Game } from 'board-game-data'
+import { Game } from '../../dataTypes'
 import {query, save} from '../firebase/util'
 
 export async function takeGame(bggId?: string) {

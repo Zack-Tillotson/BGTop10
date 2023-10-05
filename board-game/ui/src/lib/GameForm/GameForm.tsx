@@ -1,7 +1,7 @@
 'use client'
 
 import { Button, FormControl, FormLabel, Input } from '@mui/joy'
-import {GameForm as GameFormDataType} from 'board-game-data/client'
+import {GameFormDataType} from 'board-game-data/client'
 
 import styles from './GameForm.module.scss'
 import { SyntheticEvent, ChangeEventHandler} from 'react'
@@ -66,5 +66,3 @@ export function GameForm({
     </form>
   )
 }
-
-export default GameForm;

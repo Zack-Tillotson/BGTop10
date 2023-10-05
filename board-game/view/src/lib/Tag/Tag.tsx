@@ -9,7 +9,7 @@ export interface TagProps {
 }
 
 export async function Tag({tagSlug}: TagProps) {
-  const data = await takeTag(tagSlug)
+  const data = await takeTag(tagSlug, true)
   return (
     <PageContent
       title={data.tag.pageTitle}

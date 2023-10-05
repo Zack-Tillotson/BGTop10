@@ -5,7 +5,7 @@ import { useRouter } from "next/navigation";
 import { ChangeEvent, SyntheticEvent, useState } from "react";
 import { submitForm } from "../fetch/submitForm";
 
-export interface TagForm {
+export interface TagFormDataType {
   display: string,
   slug: string,
   pageTitle: string,
@@ -36,7 +36,7 @@ function buildTagForm(tag?: Tag) {
   }
 }
 
-function buildTag(form: TagForm, id?: string) {
+function buildTag(form: TagFormDataType, id?: string) {
   return {
     id: id || '',
     display: form.display,

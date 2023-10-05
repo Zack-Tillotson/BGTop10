@@ -5,3 +5,12 @@
 .formControl {
   margin-right: 8px;
 }
+
+.controlSideBySide {
+  display: flex;
+  flex-flow: row nowrap;
+}
+
+.gameNameColumn {
+  width: 75%;
+}

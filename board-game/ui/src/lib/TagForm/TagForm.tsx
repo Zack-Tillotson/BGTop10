@@ -1,7 +1,7 @@
 'use client'
 
 import { Button, FormControl, FormLabel, Input } from '@mui/joy'
-import {TagForm as TagFormDataType} from 'board-game-data/client'
+import {TagFormDataType} from 'board-game-data/client'
 
 import styles from './TagForm.module.scss'
 import { SyntheticEvent, ChangeEventHandler} from 'react'
@@ -53,5 +53,3 @@ export function TagForm({
     </form>
   )
 }
-
-export default TagForm;

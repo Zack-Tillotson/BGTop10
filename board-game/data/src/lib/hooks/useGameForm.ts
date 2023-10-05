@@ -6,7 +6,7 @@ import { ChangeEvent, SyntheticEvent, useState } from "react";
 import { submitForm } from "../fetch/submitForm";
 import { bggGameAttrs } from '../calc/bggGameAttrs'
 
-export interface GameForm {
+export interface GameFormDataType {
   name: string,
   artist: string,
   bggId: string,

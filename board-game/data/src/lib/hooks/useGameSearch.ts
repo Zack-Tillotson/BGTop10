@@ -3,6 +3,12 @@
 import { ChangeEvent, SyntheticEvent, useState, useEffect, useDebugValue } from "react";
 import bggNameSearch from '../calc/bggNameSearch'
 
+interface BggGame {
+  name: string,
+  yearPublished: string,
+  bggId: number,
+}
+
 const STATES = {
   PRE: 'PRE',
   DEBOUNCE: 'DEBOUNCE',
@@ -19,7 +25,7 @@ export function useGameSearch() {
   
   const [queryState, updateQueryState] = useState(STATES.PRE)
   const [queryTerm, updateQueryTerm] = useState('')
-  const [gamesList, updateGamesList] = useState([])
+  const [gamesList, updateGamesList] = useState<BggGame[]>([])
 
   useEffect(() => {
     if(!queryTerm) {

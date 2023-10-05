@@ -1,9 +1,16 @@
 export interface Ranking {
+  id: string,
+  creator: string,
   name: string,
+  slug: string,
   datePublished: string,
+  image: string,
+  link: string,
+  description: string,
+  tag: string,
   gameLink: {
-    bggId: number,
-    index: number,
+    person: string,
+    games: string[],
   }[],
 }
 
@@ -42,4 +49,4 @@ export interface Creator {
   link: string[],
 }
 
-export type ContentTypeLabel = 'tag'|'game'|'creator'|'list'
+export type ContentTypeLabel = 'tag'|'game'|'creator'|'ranking'

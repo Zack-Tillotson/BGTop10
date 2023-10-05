@@ -12,7 +12,7 @@ interface TagProps {
 }
 
 export default async function Index({params: {slug}}: TagProps) {
-  const {tag, gamesList} = await takeTag(slug)
+  const {tag, gamesList} = await takeTag(slug, true)
   
   if(!tag) throw new Error('slug not found')
 

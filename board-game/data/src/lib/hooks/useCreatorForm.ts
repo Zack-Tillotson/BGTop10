@@ -5,7 +5,7 @@ import { useRouter } from "next/navigation";
 import { ChangeEvent, SyntheticEvent, useState } from "react";
 import { submitForm } from "../fetch/submitForm";
 
-export interface CreatorForm {
+export interface CreatorFormDataType {
   id: string,
   name: string,
   slug: string,
@@ -39,7 +39,7 @@ function buildCreatorForm(creator?: Creator) {
   }
 }
 
-function buildCreator(form: CreatorForm, id?: string) {
+function buildCreator(form: CreatorFormDataType, id?: string) {
   return {
     id: id || '',
     name: form.name,

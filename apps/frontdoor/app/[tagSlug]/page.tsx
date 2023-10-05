@@ -10,7 +10,7 @@ interface IndexProps {
 }
 
 export async function generateMetadata({params: {tagSlug}}: IndexProps) {
-  const {tag} = await takeTag(tagSlug)
+  const {tag} = await takeTag(tagSlug, false)
   return {
     title: `${tag.pageTitle} | Cardboard SALAD`,
     description: tag.pageSubtitle,
@@ -18,7 +18,7 @@ export async function generateMetadata({params: {tagSlug}}: IndexProps) {
 }
 
 export async function generateStaticParams() {
-  const tagsWithMeta = await takeTags()
+  const tagsWithMeta = await takeTags(false)
  
   return tagsWithMeta.map(({tag}) => ({tagSlug: tag.slug}))
 }

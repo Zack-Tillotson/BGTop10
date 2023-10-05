@@ -7,7 +7,7 @@ import { TagBrief } from 'board-game-ui';
 import styles from './TagList.module.scss'
 
 export async function TagList() {
-  const list = await takeTags({orderBy: ['priority', 'desc']})
+  const list = await takeTags(false, {orderBy: ['priority', 'desc']})
 
   return (
     <section>

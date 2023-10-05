@@ -1,5 +1,5 @@
 import {QueryOptions, query} from '../firebase/util'
-import {Creator} from 'board-game-data'
+import {Creator} from '../../dataTypes'
 
 export async function takeCreators(queryOptions?: QueryOptions) {
   const results = await query('creator', queryOptions)
