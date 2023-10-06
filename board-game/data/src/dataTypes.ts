@@ -10,7 +10,7 @@ export interface Ranking {
   tag: string,
   gameLink: {
     person: string,
-    games: string[],
+    games: number[],
   }[],
 }
 

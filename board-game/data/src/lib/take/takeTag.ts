@@ -1,5 +1,5 @@
 import { Game, Ranking, Tag } from '../../dataTypes'
-import { GamesList, calculateTagGameList } from '../calc/tagGameList'
+import { calculateTagGameList } from '../calc/tagGameList'
 import {QueryOptions, query, save} from '../firebase/util'
 
 export async function getTag(slug: string): Promise<Tag> {
@@ -10,25 +10,25 @@ export async function getTag(slug: string): Promise<Tag> {
   return tag
 }
 
-export async function getGamesListForTag(slug: string): Promise<GamesList> {
+export async function getGamesListForTag(slug: string): Promise<{game: Game, count: number}[]> {
   const tagResult = await query('tag', {query: ['slug', '==', slug]})
   const tagDoc = tagResult.docs[0]
   const tag = {...tagDoc.data(), id: tagDoc.id}
-  
-  const listResults = await query('list', {query: ['listTags', 'array-contains', tag.id]})
+
+  const listResults = await query('ranking', {query: ['tag', '==', tag.id]})
   const lists = listResults.docs.map(doc => ({...doc.data(), id: doc.id})) as unknown as Ranking[]
-  
+
   const sortedGameLinks = calculateTagGameList(lists).slice(0, 10).reverse()
-  
-  const gameIds = sortedGameLinks.map(link => link.game.bggId)
+  const gameIds = sortedGameLinks.map(link => link.bggId)
+
   const gameIdsQuery = gameIds.length ? {query: ['bggId', 'in', gameIds]} as QueryOptions: undefined
   const gamesResults = await query('game', gameIdsQuery)
-  
+
   const gameObjects = gamesResults.docs.map(game => ({...game.data(), id: game.id})) as unknown as Game[]
 
   const gamesList = sortedGameLinks.map(gameLink => {
     return {
-      game: gameObjects.find(game => game.bggId === gameLink.game.bggId) as Game,
+      game: gameObjects.find(game => game.bggId === gameLink.bggId) as Game,
       count: gameLink.count,
     }
   })
