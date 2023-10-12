@@ -5,6 +5,7 @@ export * from './lib/Home'
 export * from './lib/Tag'
 export * from './lib/TagList'
 export * from './lib/TagFormView'
+export * from './lib/TagGameListForm'
 
 export * from './lib/CreatorList'
 export * from './lib/CreatorFormView'

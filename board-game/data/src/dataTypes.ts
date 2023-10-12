@@ -29,6 +29,9 @@ export interface Game {
   imageThumbnail: string,
 }
 
+export type RankedGameIdList = {bggId: number, count: number}[]
+export type RankedGameList = {game: Game, count: number}[]
+
 export interface Tag {
   id: string,
   pageTitle: string,
@@ -37,6 +40,8 @@ export interface Tag {
   slug: string,
   display: string,
   priority: number,
+  rankedGameIds: RankedGameIdList,
+  rankedGames?: RankedGameList,
 }
 
 export interface Creator {

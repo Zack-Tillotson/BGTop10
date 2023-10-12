@@ -1,11 +1,12 @@
 import Typography from '@mui/joy/Typography'
 
 import styles from './TagFull.module.scss'
-import { GamesList, Tag } from 'board-game-data';
+import { Game, Tag } from 'board-game-data';
+import { TagSummary } from '../TagSummary';
 
 export interface TagFullProps {
   tag: Tag,
-  gamesList: GamesList,
+  gamesList: {count: number, game: Game}[],
 }
 
 export function TagFull({
@@ -15,10 +16,14 @@ export function TagFull({
 
   return (
     <section className={styles.container}>
-      <Typography level="h2">{tag.pageTitle}</Typography>
-      <Typography>{tag.pageSubtitle}</Typography>
-      <Typography>{tag.introduction}</Typography>
-      <Typography>{gamesList.length} games</Typography>
+      <TagSummary tag={tag} gamesList={gamesList} />
+      <ol reversed>
+        {gamesList.map(({game: {name}}) => (
+          <li key={name}>
+            {name}
+          </li>
+        ))}
+      </ol>
     </section>
   )
 }

@@ -12,8 +12,10 @@ function getDbRef() {
   return db
 }
 
+type QueryOptionsQuery = [string, WhereFilterOp, string|number|string[]|number[]]
+
 export type QueryOptions = {
-  query?: [string, WhereFilterOp, string|number|string[]|number[]]|null,
+  query?: QueryOptionsQuery|null,
   orderBy?: [string, OrderByDirection]|null,
 }
 
@@ -49,6 +51,17 @@ export async function query(
   }
 }
 
+export async function get(
+  collection: string,
+  id: string,
+) {
+
+  const db = getDbRef()
+  
+  const collectionRef = db.collection(collection)
+  return collectionRef.doc(id).get()
+}
+
 export async function save(collection: string, doc: object, id?: string) {
   const db = getDbRef()
   const collectionRef = db.collection(collection)
@@ -58,4 +71,19 @@ export async function save(collection: string, doc: object, id?: string) {
   }
 
   return collectionRef.add(doc)
+}
+
+export async function setAttribute(collection: string, idOrWhere: string|QueryOptionsQuery, key: string, value: any) {
+  const db = getDbRef()
+  const collectionRef = db.collection(collection)
+
+  if(typeof idOrWhere === 'string') {
+    collectionRef.doc(idOrWhere).set({[key]: value}, {merge: true})
+    return true
+  }
+
+  const [whereAttr, whereOp, whereValue] = idOrWhere
+  const result = await collectionRef.where(whereAttr, whereOp, whereValue).limit(25).get()
+  const results = await Promise.all(result.docs.map(doc => collectionRef.doc(doc.id).set(({[key]: value}))))
+  return !results.find(eachResult => !eachResult)
 }

@@ -1,6 +1,9 @@
 import { Game, Ranking, Tag } from '../../dataTypes'
 import { calculateTagGameList } from '../calc/tagGameList'
-import {QueryOptions, query, save} from '../firebase/util'
+import {QueryOptions, query, save, get} from '../firebase/util'
+
+type RankedGameIdList = {bggId: number, count: number}[]
+type RankedGameList = {game: Game, count: number}[]
 
 export async function getTag(slug: string): Promise<Tag> {
   const results = await query('tag', {query: ['slug', '==', slug]})
@@ -10,40 +13,74 @@ export async function getTag(slug: string): Promise<Tag> {
   return tag
 }
 
-export async function getGamesListForTag(slug: string): Promise<{game: Game, count: number}[]> {
+export async function buildGamesForTag(slug: string) {
   const tagResult = await query('tag', {query: ['slug', '==', slug]})
-  const tagDoc = tagResult.docs[0]
-  const tag = {...tagDoc.data(), id: tagDoc.id}
+  if(tagResult.docs.length !== 1) {
+    throw new Error(`Invalid tag found for slug=="${slug}"`)
+  }
+  const tagId = tagResult.docs[0].id
 
-  const listResults = await query('ranking', {query: ['tag', '==', tag.id]})
+  const listResults = await query('ranking', {query: ['tag', '==', tagId]})
+
+  if(listResults.docs.length === 0) {
+    throw new Error(`Invalid rankings found for tag=="${tagId}"`)
+  }
   const lists = listResults.docs.map(doc => ({...doc.data(), id: doc.id})) as unknown as Ranking[]
 
-  const sortedGameLinks = calculateTagGameList(lists).slice(0, 10).reverse()
-  const gameIds = sortedGameLinks.map(link => link.bggId)
+  console.log('buildGamesForTag', lists.length)
+  const rankedGameIds = calculateTagGameList(lists).slice(0, 25).reverse()
+  return rankedGameIds
+}
+
+export async function saveGamesForTag(slug: string, rankedGameIds: RankedGameIdList) {
+
+  try {
+    await save('tagGameIdList', {rankedGameIds}, slug)
+  } catch(e) {
+    console.log(e)
+    return false
+  }
+
+  return true
+}
+
+export async function getGamesForTag(slug: string): Promise<RankedGameList> {
+  console.log('getGamesForTag', slug)
+
+  const rankedGameIdResult = await get('tagGameIdList', slug)
+  if(!rankedGameIdResult.exists) return []
+
+  const rankedGameIds = rankedGameIdResult.data().rankedGameIds.slice(-10) as RankedGameIdList
+  const gameList = getGameListFromIds(rankedGameIds)
+  return gameList
+}
+
+export async function getGameListFromIds(gameIdList: RankedGameIdList) {
+  const gameIds = gameIdList.map(({bggId}) => bggId)
 
   const gameIdsQuery = gameIds.length ? {query: ['bggId', 'in', gameIds]} as QueryOptions: undefined
   const gamesResults = await query('game', gameIdsQuery)
 
-  const gameObjects = gamesResults.docs.map(game => ({...game.data(), id: game.id})) as unknown as Game[]
+  const gameList = gamesResults.docs.map(doc => ({
+    ...doc.data(),
+    id: doc.id, 
+  })) as Game[]
 
-  const gamesList = sortedGameLinks.map(gameLink => {
-    return {
-      game: gameObjects.find(game => game.bggId === gameLink.bggId) as Game,
-      count: gameLink.count,
-    }
-  })
-  return gamesList
+  const rankedGameList = gameIdList.map(({count, bggId}) => ({
+    count,
+    game: gameList.find(game => game.bggId === bggId),
+  })) as RankedGameList
+
+  return rankedGameList
 }
 
 export async function takeTag(slug: string, withGames: boolean) {
-  const tagPromise = getTag(slug)
+  const tag = await getTag(slug)
   
-  let gamesPromise = Promise.resolve<GamesList>([])
+  let gamesList = [] as RankedGameList
   if(withGames) {
-    gamesPromise = getGamesListForTag(slug)
+    gamesList = await getGamesForTag(slug)
   }
-
-  const [tag, gamesList] = await Promise.all([tagPromise, gamesPromise])
 
   return {tag, gamesList}
 }

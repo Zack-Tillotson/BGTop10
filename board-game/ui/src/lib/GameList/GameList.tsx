@@ -1,13 +1,13 @@
 import Typography from '@mui/joy/Typography'
 import {GameSummary} from 'board-game-ui'
-import {GamesList} from 'board-game-data'
+import {GamesList, RankedGameList} from 'board-game-data'
 
 import styles from './GameList.module.scss'
 
 /* eslint-disable-next-line */
 export interface GameListProps {
-  gamesList: GamesList,
-  className: string,
+  gamesList: RankedGameList,
+  className?: string,
 }
 
 export function GameList({
@@ -19,7 +19,7 @@ export function GameList({
       {gamesList.map(({game, count}, index) => (
         <li key={game.id} className={styles.li}>
           <section className={styles.section}>
-            <GameSummary {...game} extraTitle={`${10 - index}. `}/>
+            <GameSummary {...game} extraTitle={`${gamesList.length - index}. `}/>
           </section>
         </li>
       ))}

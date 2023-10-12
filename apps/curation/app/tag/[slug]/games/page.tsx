@@ -1,10 +1,9 @@
-import Link from 'next/link';
 import {PageContent} from 'core-ui'
+import { takeTag } from 'board-game-data';
+import { TagGameListForm } from 'board-game-view';
+import { TagBrief } from 'board-game-ui';
 
 import styles from './page.module.scss';
-import { takeTag } from 'board-game-data';
-import { TagFull } from 'board-game-ui';
-import { Button } from '@mui/joy';
 
 interface TagProps {
   params: {
@@ -13,9 +12,9 @@ interface TagProps {
 }
 
 export default async function Index({params: {slug}}: TagProps) {
-  const {tag, gamesList} = await takeTag(slug, true)
+  const {tag} = await takeTag(slug, false)
   
-  if(!tag) throw new Error('slug not found')
+  if(!tag) throw new Error('tag not found')
 
   const breadcrumbs = [{
     href: '/',
@@ -30,16 +29,11 @@ export default async function Index({params: {slug}}: TagProps) {
   
   return (
     <PageContent title={tag.display} subtitle="View tag" breadcrumbs={breadcrumbs}>
-      <section className={styles.controls}>
-        <Link className={styles.link} href={`/tag/${slug}/edit`}>
-          Edit
-        </Link>
-        <Link className={styles.link} href={`/tag/${slug}/games`}>
-          Update games
-        </Link>
+      <section>
+        <TagBrief key={...tag} />
       </section>
       <section>
-        <TagFull tag={tag} gamesList={gamesList} />
+        <TagGameListForm slug={slug} />
       </section>
     </PageContent>
   );
