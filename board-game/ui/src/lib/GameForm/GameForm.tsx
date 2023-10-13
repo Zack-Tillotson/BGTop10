@@ -31,7 +31,7 @@ const attributes: Attribute[] = [
   {key: 'family', display: 'Game family/groups (bar separated)'},
   {key: 'mechanic', display: 'Mechanics (bar separated)'},
   {key: 'publisher', display: 'Publishers (bar separated)'},
-  {key: 'playTimeAverage', display: 'Average playtime'},
+  {key: 'playTimeAvg', display: 'Average playtime'},
   {key: 'playTimeMax', display: 'Max playtime'},
   {key: 'playTimeMin', display: 'Min playtime'},
   {key: 'playerCountMax', display: 'Max players'},

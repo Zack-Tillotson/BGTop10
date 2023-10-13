@@ -1,7 +1,7 @@
 import { Game } from '../../dataTypes'
 import {query, save} from '../firebase/util'
 
-export async function takeGame(bggId?: string) {
+export async function takeGame(bggId?: number) {
   if(!bggId) return undefined
 
   const results = await query('game', {query: ['bggId', '==', Number(bggId)]})

@@ -9,7 +9,7 @@ import { bggGameAttrs } from '../calc/bggGameAttrs'
 export interface GameFormDataType {
   name: string,
   artist: string,
-  bggId: string,
+  bggId: number,
   description: string,
   image: string,
   imageThumbnail: string,
@@ -17,12 +17,12 @@ export interface GameFormDataType {
   family: string,
   mechanic: string,
   publisher: string,
-  playTimeAverage: string,
-  playTimeMax: string,
-  playTimeMin: string,
-  playerCountMax: string,
-  playerCountMin: string,
-  yearPublished: string,
+  playTimeAvg: number,
+  playTimeMax: number,
+  playTimeMin: number,
+  playerCountMax: number,
+  playerCountMin: number,
+  yearPublished: number,
 }
 
 function convertFromString(input: string) {
@@ -34,7 +34,7 @@ function buildGameForm(game?: Game) {
     return {
       name: '',
       artist: '',
-      bggId: '',
+      bggId: 0,
       description: '',
       image: '',
       imageThumbnail: '',
@@ -42,19 +42,19 @@ function buildGameForm(game?: Game) {
       family: '',
       mechanic: '',
       publisher: '',
-      playTimeAverage: '',
-      playTimeMax: '',
-      playTimeMin: '',
-      playerCountMax: '',
-      playerCountMin: '',
-      yearPublished: '',
+      playTimeAvg: 0,
+      playTimeMax: 0,
+      playTimeMin: 0,
+      playerCountMax: 0,
+      playerCountMin: 0,
+      yearPublished: 0,
     }
   }
     
   return {
     name: game.name,
     artist: game.artist.join('| '),
-    bggId: game.bggId || '',
+    bggId: game.bggId || 0,
     description: game.description || '',
     image:  game.image || '',
     imageThumbnail:  game.imageThumbnail,
@@ -62,16 +62,16 @@ function buildGameForm(game?: Game) {
     family: game.family.join('|'),
     mechanic: game.mechanic.join('| '),
     publisher: game.publisher.join('| '),
-    playTimeAverage:  game.playTimeAverage || '',
-    playTimeMax:  game.playTimeMax || '',
-    playTimeMin:  game.playTimeMin || '',
-    playerCountMax: game.playerCountMax || '',
-    playerCountMin: game.playerCountMin || '',
-    yearPublished:  game.yearPublished || '',
+    playTimeAvg:  game.playTimeAvg || 0,
+    playTimeMax:  game.playTimeMax || 0,
+    playTimeMin:  game.playTimeMin || 0,
+    playerCountMax: game.playerCountMax || 0,
+    playerCountMin: game.playerCountMin || 0,
+    yearPublished:  game.yearPublished || 0,
   }
 }
 
-function buildGame(form: GameForm, id?: string) {
+function buildGame(form: GameFormDataType, id?: string) {
   return {
     id: id || '',
     name: form.name,
@@ -84,7 +84,7 @@ function buildGame(form: GameForm, id?: string) {
     family: convertFromString(form.family),
     mechanic: convertFromString(form.mechanic),
     publisher: convertFromString(form.publisher),
-    playTimeAverage: Number(form.playTimeAverage),
+    playTimeAvg: Number(form.playTimeAvg),
     playTimeMax: Number(form.playTimeMax),
     playTimeMin: Number(form.playTimeMin),
     playerCountMax: Number(form.playerCountMax),
@@ -93,7 +93,7 @@ function buildGame(form: GameForm, id?: string) {
   }
 }
 
-export function useGameForm(bggId: string|number, game?: Game) {
+export function useGameForm(bggId: number, game?: Game) {
   const form = buildGameForm(game)
 
   const [formValues, updateFormValues] = useState(form)

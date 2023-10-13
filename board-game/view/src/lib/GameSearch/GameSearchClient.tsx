@@ -18,7 +18,7 @@ export function GameSearchClient() {
       <Input type="text" value={queryTerm} onChange={handleChange} />
       <ol>
         {gamesList.map(game => (
-          <li key={game.id}>
+          <li key={game.bggId}>
             <Link href={`/game/${game.bggId}`}>
               <GameBrief {...game} />
             </Link>

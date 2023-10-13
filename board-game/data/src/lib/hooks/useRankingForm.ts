@@ -18,7 +18,7 @@ export interface RankingFormDataType {
   tag: string,
   creatorCount: number,
   rankingCount: number,
-  gameLink: {person: string, games: {name: string, bggId: string}[]}[],
+  gameLink: {person: string, games: {name: string, bggId: number}[]}[],
 }
 
 function buildRankingForm(creators: Creator[], ranking?: Ranking) {
@@ -36,7 +36,7 @@ function buildRankingForm(creators: Creator[], ranking?: Ranking) {
       tag: '',
       creatorCount: 1,
       rankingCount: 10,
-      gameLink: [{person: '', games: new Array(10).fill(null).map(_ => ({name: '', bggId: ''}))}],
+      gameLink: [{person: '', games: new Array(10).fill(null).map(_ => ({name: '', bggId: 0}))}],
     }
   }
 
@@ -44,7 +44,7 @@ function buildRankingForm(creators: Creator[], ranking?: Ranking) {
   const creatorSlug = creator?.slug || ''
     
   return {
-    id: ranking.id,
+    id: ranking.id || '',
     creator: ranking.creator,
     creatorSlug,
     name: ranking.name,
@@ -79,7 +79,7 @@ const REQUIRED_FIELDS = ['creator', 'name', 'slug', 'datePublished', 'descriptio
 function validateFormValues(formValues: RankingFormDataType) {
 
   // Ensure all form values are non-empty
-  if(REQUIRED_FIELDS.filter(key => !formValues[key]).length) {
+  if(REQUIRED_FIELDS.filter(key => !((formValues as any)[key])).length) {
     return false
   }
 
@@ -122,7 +122,7 @@ export function useRankingForm(creators: Creator[], ranking?: Ranking) {
   const handleChange = useCallback((key: string) => (event: SyntheticEvent<HTMLInputElement, ChangeEvent>, newValue: string) => {
     if(!event) return
 
-    const value = event.target.value || newValue
+    const value = (event.target as any).value || newValue
     const newFormValues = {...structuredClone(formValues), [key]: value}
     
     if(key === 'name') {
@@ -138,7 +138,7 @@ export function useRankingForm(creators: Creator[], ranking?: Ranking) {
       const gameLink = new Array(creatorCount).fill(null).map((_, personIndex) => ({
         person: newFormValues.gameLink[personIndex]?.person || '',
         games: new Array(rankingCount).fill(null).map((_, gameIndex) => (
-          newFormValues.gameLink[personIndex]?.games[gameIndex] || {name: '', bggId: ''}
+          newFormValues.gameLink[personIndex]?.games[gameIndex] || {name: '', bggId: 0}
         ))
       }))
 
@@ -153,7 +153,7 @@ export function useRankingForm(creators: Creator[], ranking?: Ranking) {
   const handlePersonChange = useCallback((key: string, personIndex: number, gameIndex?: number) => (event: SyntheticEvent<HTMLInputElement, ChangeEvent>, newValue: string) => {
     if(!event) return
 
-    const value = event.target.value || newValue
+    const value = (event.target as any).value || newValue
     const newFormValues = structuredClone(formValues)
 
     if(key === 'name') {

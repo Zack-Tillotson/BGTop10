@@ -1,13 +1,13 @@
 import Typography from '@mui/joy/Typography'
 import {GameBrief} from 'board-game-ui'
-import {GamesList} from 'board-game-data'
+import {RankedGameList} from 'board-game-data'
 
 import styles from './GameBriefList.module.scss'
-import { Card, Sheet } from '@mui/joy'
+import { Card } from '@mui/joy'
 
 /* eslint-disable-next-line */
 export interface GameBriefListProps {
-  gamesList: GamesList,
+  gamesList: RankedGameList,
   className: string,
 }
 

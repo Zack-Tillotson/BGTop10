@@ -6,7 +6,7 @@ import {TagSummary, TagBrief} from 'board-game-ui'
 import {takeTags} from 'board-game-data'
 
 export async function Home() {
-  const tags = await takeTags(true)
+  const tags = await takeTags(false, {orderBy: ['priority', 'desc']})
   return (
     <PageContent
       title={'These are the best board games'}

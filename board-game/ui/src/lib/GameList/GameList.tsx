@@ -1,6 +1,5 @@
-import Typography from '@mui/joy/Typography'
 import {GameSummary} from 'board-game-ui'
-import {GamesList, RankedGameList} from 'board-game-data'
+import {RankedGameList} from 'board-game-data'
 
 import styles from './GameList.module.scss'
 
@@ -18,9 +17,7 @@ export function GameList({
     <ol className={[styles.ol, className].join(' ')}>
       {gamesList.map(({game, count}, index) => (
         <li key={game.id} className={styles.li}>
-          <section className={styles.section}>
-            <GameSummary {...game} extraTitle={`${gamesList.length - index}. `}/>
-          </section>
+          <GameSummary {...game} extraTitle={`${gamesList.length - index}. `}/>
         </li>
       ))}
     </ol>

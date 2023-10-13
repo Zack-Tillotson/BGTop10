@@ -6,10 +6,10 @@ import { takeGame } from 'board-game-data';
 import GameFormClient from './GameFormClient';
 
 interface GameFormViewProps {
-  bggId?: string,
+  bggId?: number,
 }
 
-export async function GameFormView({bggId}: GameFormViewProps) {
+export async function GameFormView({bggId = 0}: GameFormViewProps) {
   const game = await takeGame(bggId)
   return (
     <GameFormClient bggId={bggId} game={game} />

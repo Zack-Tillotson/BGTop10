@@ -8,7 +8,7 @@ import styles from './GameBrief.module.scss'
 export function GameBrief({
   name,
   yearPublished,
-}: Game) {
+}: Partial<Game>) {
   return (
     <Typography>
       {name}

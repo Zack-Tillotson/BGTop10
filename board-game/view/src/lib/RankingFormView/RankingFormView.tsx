@@ -14,7 +14,9 @@ export async function RankingFormView({slug}: RankingFormViewProps) {
   const tags = await takeTags(false, {orderBy: ['priority', 'desc']})
   const creators = await takeCreators()
 
+  const cleanedUpTags = tags.map(({tag, gamesList}) => ({tag, gamesList: gamesList.map(({game}) => game)}))
+
   return (
-    <RankingFormClient ranking={ranking} tags={tags} creators={creators} />
+    <RankingFormClient ranking={ranking} tags={cleanedUpTags} creators={creators} />
   );
 }

@@ -1,5 +1,5 @@
 
-function getSafeValue(item, getter, defaultValue = '') {
+function getSafeValue(item: any, getter: (item: any) => any, defaultValue: any = '') {
   let value = defaultValue
   try {
     value = getter(item)
@@ -8,7 +8,7 @@ function getSafeValue(item, getter, defaultValue = '') {
 }
 
 // lol bgg wut
-function cleanText(text) {
+function cleanText(text: string) {
   const ele = document.createElement('html')
   ele.innerHTML = text
   ele.innerHTML = ele.innerText
@@ -22,7 +22,7 @@ export async function bggGameAttrs(id: number|string) {
     
     const xmlData = new DOMParser().parseFromString(stringData, "application/xml")
 
-    const item = [...xmlData.documentElement.children].find(ele => ele.tagName === 'item')
+    const item =  Array.prototype.slice.call(xmlData.documentElement.children).find(ele => ele.tagName === 'item')
 
     const cleanDesc = cleanText(getSafeValue(item, item => [...item.children].find(attr => attr.tagName === 'description').innerHTML))
 
@@ -32,11 +32,11 @@ export async function bggGameAttrs(id: number|string) {
       yearPublished: Number(getSafeValue(item, item => [...item.children].find(attr => attr.tagName === 'yearpublished').getAttribute('value'), 0)),
       image: getSafeValue(item, item => [...item.children].find(attr => attr.tagName === 'image').innerHTML),
       imageThumbnail: getSafeValue(item, item => [...item.children].find(attr => attr.tagName === 'thumbnail').innerHTML),
-      artist: getSafeValue(item, item => [...item.children].filter(attr => attr.tagName === 'link' && attr.getAttribute('type') === 'boardgameartist'), []).map(pub => pub.getAttribute('value')),
-      publisher: getSafeValue(item, item => [...item.children].filter(attr => attr.tagName === 'link' && attr.getAttribute('type') === 'boardgamepublisher'), []).map(pub => pub.getAttribute('value')),
-      designer: getSafeValue(item, item => [...item.children].filter(attr => attr.tagName === 'link' && attr.getAttribute('type') === 'boardgamedesigner'), []).map(pub => pub.getAttribute('value')),
-      family: getSafeValue(item, item => [...item.children].filter(attr => attr.tagName === 'link' && attr.getAttribute('type') === 'boardgamefamily'), []).map(pub => pub.getAttribute('value')),
-      mechanic: getSafeValue(item, item => [...item.children].filter(attr => attr.tagName === 'link' && attr.getAttribute('type') === 'boardgamemechanic'), []).map(pub => pub.getAttribute('value')),
+      artist: getSafeValue(item, item => [...item.children].filter(attr => attr.tagName === 'link' && attr.getAttribute('type') === 'boardgameartist'), []).map((pub: any) => pub.getAttribute('value')),
+      publisher: getSafeValue(item, item => [...item.children].filter(attr => attr.tagName === 'link' && attr.getAttribute('type') === 'boardgamepublisher'), []).map((pub: any) => pub.getAttribute('value')),
+      designer: getSafeValue(item, item => [...item.children].filter(attr => attr.tagName === 'link' && attr.getAttribute('type') === 'boardgamedesigner'), []).map((pub: any) => pub.getAttribute('value')),
+      family: getSafeValue(item, item => [...item.children].filter(attr => attr.tagName === 'link' && attr.getAttribute('type') === 'boardgamefamily'), []).map((pub: any) => pub.getAttribute('value')),
+      mechanic: getSafeValue(item, item => [...item.children].filter(attr => attr.tagName === 'link' && attr.getAttribute('type') === 'boardgamemechanic'), []).map((pub: any) => pub.getAttribute('value')),
       playerCountMin: Number(getSafeValue(item, item => [...item.children].find(attr => attr.tagName === 'minplayers').getAttribute('value'))),
       playerCountMax: Number(getSafeValue(item, item => [...item.children].find(attr => attr.tagName === 'maxplayers').getAttribute('value'))),
       playTimeMin: Number(getSafeValue(item, item => [...item.children].find(attr => attr.tagName === 'minplaytime').getAttribute('value'))),

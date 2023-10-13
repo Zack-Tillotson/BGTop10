@@ -5,7 +5,7 @@ import { GameForm, GameFull } from 'board-game-ui';
 import { ChangeEventHandler } from 'react';
 
 interface GameFormClientProps {
-  bggId: number|string,
+  bggId: number,
   game?: Game
 }
 

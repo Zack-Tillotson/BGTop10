@@ -1,11 +1,11 @@
 'use client'
 
-import { ChangeEvent, SyntheticEvent, useState, useEffect, useDebugValue } from "react";
+import { useState, useEffect, useDebugValue } from "react";
 import bggNameSearch from '../calc/bggNameSearch'
 
 interface BggGame {
   name: string,
-  yearPublished: string,
+  yearPublished: number,
   bggId: number,
 }
 
@@ -55,7 +55,7 @@ export function useGameSearch() {
 
   }, [queryTerm])
 
-  const handleChange = (event: SyntheticEvent<HTMLInputElement, ChangeEvent>) => {
+  const handleChange = (event: any) => {
     const value = event.currentTarget.value
     updateQueryTerm(value)
   }

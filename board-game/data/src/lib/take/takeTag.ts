@@ -50,7 +50,7 @@ export async function getGamesForTag(slug: string): Promise<RankedGameList> {
   const rankedGameIdResult = await get('tagGameIdList', slug)
   if(!rankedGameIdResult.exists) return []
 
-  const rankedGameIds = rankedGameIdResult.data().rankedGameIds.slice(-10) as RankedGameIdList
+  const rankedGameIds = rankedGameIdResult.data()?.rankedGameIds.slice(-10) as RankedGameIdList
   const gameList = getGameListFromIds(rankedGameIds)
   return gameList
 }

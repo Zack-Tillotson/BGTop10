@@ -1,5 +1,5 @@
 export interface Ranking {
-  id: string,
+  id?: string,
   creator: string,
   name: string,
   slug: string,
@@ -15,7 +15,7 @@ export interface Ranking {
 }
 
 export interface Game {
-  id: string,
+  id?: string,
   bggId: number,
   name: string,
   description: string,
@@ -27,13 +27,18 @@ export interface Game {
   playerCountMax: number,
   image: string,
   imageThumbnail: string,
+  family: string[],
+  mechanic: string[],
+  playTimeAvg: number,
+  playTimeMax: number,
+  playTimeMin: number,
 }
 
 export type RankedGameIdList = {bggId: number, count: number}[]
 export type RankedGameList = {game: Game, count: number}[]
 
 export interface Tag {
-  id: string,
+  id?: string,
   pageTitle: string,
   pageSubtitle: string,
   introduction: string,
@@ -45,7 +50,7 @@ export interface Tag {
 }
 
 export interface Creator {
-  id: string,
+  id?: string,
   slug: string,
   name: string,
   description: string,

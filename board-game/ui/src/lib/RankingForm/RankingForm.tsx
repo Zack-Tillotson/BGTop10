@@ -4,7 +4,7 @@ import { Button, FormControl, FormLabel, Input, Textarea, Select, Option, Table,
 import {Creator, RankingFormDataType, Tag} from 'board-game-data/client'
 
 import styles from './RankingForm.module.scss'
-import { SyntheticEvent, ChangeEventHandler, MouseEventHandler} from 'react'
+import { SyntheticEvent, ChangeEventHandler} from 'react'
 
 interface RankingFormProps {
   tags: {tag: Tag}[],
@@ -12,7 +12,7 @@ interface RankingFormProps {
   formValues: RankingFormDataType,
   isFormValid: boolean,
   className?: string,
-  onChange: (key: string) => ChangeEventHandler<HTMLInputElement|HTMLTextAreaElement>,
+  onChange: (key: string) => (event: any) => void,
   onPersonChange: (key: string, personIndex: number, gameIndex?: number) => ChangeEventHandler<HTMLInputElement|HTMLTextAreaElement>,
   onBggLookupClick: (query: string, context: any) => void,
   onSubmit: (event: SyntheticEvent<HTMLFormElement, SubmitEvent>) => void,
@@ -58,7 +58,7 @@ export function RankingForm({
               id={`input-${key}`} 
               type={inputType}
               className={styles.input} 
-              value={formValues[key]} 
+              value={formValues[key] as unknown as string} 
               onChange={onChange(key)}
             />
           )}
@@ -66,7 +66,7 @@ export function RankingForm({
             <Textarea
               id={`input-${key}`} 
               className={styles.input} 
-              value={formValues[key]} 
+              value={formValues[key] as unknown as string} 
               onChange={onChange(key)}
               minRows="3"
             />

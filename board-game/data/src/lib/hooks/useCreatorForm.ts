@@ -29,7 +29,7 @@ function buildCreatorForm(creator?: Creator) {
   }
     
   return {
-    id: creator.id,
+    id: creator.id || '',
     name: creator.name,
     slug: creator.slug,
     description: creator.description,

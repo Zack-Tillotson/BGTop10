@@ -15,7 +15,7 @@ export function useBggLookup(onSelect: (bggId: number, context: any) => void) {
 
   useEffect(() => {
     bggNameSearch(query)
-      .then(games => {
+      .then((games: BggGame[]) => {
         updateGames(games || [])
       })
   }, [query])
