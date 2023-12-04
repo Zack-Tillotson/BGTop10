@@ -45,8 +45,6 @@ export async function saveGamesForTag(slug: string, rankedGameIds: RankedGameIdL
 }
 
 export async function getGamesForTag(slug: string): Promise<RankedGameList> {
-  console.log('getGamesForTag', slug)
-
   const rankedGameIdResult = await get('tagGameIdList', slug)
   if(!rankedGameIdResult.exists) return []
 
@@ -75,6 +73,8 @@ export async function getGameListFromIds(gameIdList: RankedGameIdList) {
 }
 
 export async function takeTag(slug: string, withGames: boolean) {
+  if(!slug) return {tag: undefined, gamesList: []}
+
   const tag = await getTag(slug)
   
   let gamesList = [] as RankedGameList
