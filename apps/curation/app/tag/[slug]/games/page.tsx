@@ -30,9 +30,6 @@ export default async function Index({params: {slug}}: TagProps) {
   return (
     <PageContent title={tag.display} subtitle="View tag" breadcrumbs={breadcrumbs}>
       <section>
-        <TagBrief key={...tag} />
-      </section>
-      <section>
         <TagGameListForm slug={slug} />
       </section>
     </PageContent>

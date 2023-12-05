@@ -35,7 +35,7 @@ export interface Game {
 }
 
 export type RankedGameIdList = {bggId: number, count: number}[]
-export type RankedGameList = {game: Game, count: number}[]
+export type RankedGameList = {game: Game, count: number, bggId?: number}[]
 
 export interface Tag {
   id?: string,

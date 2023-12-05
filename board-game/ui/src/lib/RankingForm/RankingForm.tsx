@@ -150,7 +150,7 @@ export function RankingForm({
                   onChange={onPersonChange('name', reviewerIndex)}
                 />
               </FormControl>
-              <Table>
+              <Table sx={{'& thead th:nth-child(4)': { width: '125px' } }}>
                 <thead>
                   <tr>
                     <th></th>
@@ -160,42 +160,45 @@ export function RankingForm({
                   </tr>
                 </thead>
                 <tbody>
-                  {games.map(({name, bggId}, gameIndex) => (
-                    <tr key={`name-${gameIndex}-name`}>
-                      <td># {games.length - gameIndex}</td>
-                      <td>
-                        <FormControl className={styles.formControl}>
-                          <Input
-                            id={`input-person-${reviewerIndex}-game-${gameIndex}`} 
-                            type="text"
-                            placeholder="Game name"
-                            className={styles.input} 
-                            value={name} 
-                            onChange={onPersonChange('game', reviewerIndex, gameIndex)}
-                          />
-                        </FormControl>
-                      </td>
-                      <td>
-                        <Button 
-                          variant={bggId ? 'plain' : 'solid'}
-                          onClick={() => onBggLookupClick(name, {reviewerIndex, gameIndex})}>
-                            <span role="img" aria-label="Lookup">🔍</span>
-                        </Button>
-                      </td>
-                      <td key={`name-${gameIndex}-bggId`}>
-                        <FormControl className={styles.formControl}>
-                          <Input
-                            id={`input-person-${reviewerIndex}-game-${gameIndex}-bggId`} 
-                            type="text"
-                            className={styles.input} 
-                            placeholder="BGG Id"
-                            value={bggId} 
-                            onChange={onPersonChange('bggId', reviewerIndex, gameIndex)}
-                          />
-                        </FormControl>
-                      </td>  
-                    </tr>
-                  ))}
+                  {[...games].reverse().map(({name, bggId}, reverseIndex) => {
+                    const gameIndex = games.length - 1 - reverseIndex
+                    return (
+                      <tr key={`name-${gameIndex}-name`}>
+                        <td># {gameIndex + 1}</td>
+                        <td>
+                          <FormControl className={styles.formControl}>
+                            <Input
+                              id={`input-person-${reviewerIndex}-game-${gameIndex}`} 
+                              type="text"
+                              placeholder="Game name"
+                              className={styles.input} 
+                              value={name} 
+                              onChange={onPersonChange('game', reviewerIndex, gameIndex)}
+                            />
+                          </FormControl>
+                        </td>
+                        <td>
+                          <Button 
+                            variant={bggId ? 'plain' : 'solid'}
+                            onClick={() => onBggLookupClick(name, {personIndex: reviewerIndex, gameIndex})}>
+                              <span role="img" aria-label="Lookup">🔍</span>
+                          </Button>
+                        </td>
+                        <td key={`name-${gameIndex}-bggId`}>
+                          <FormControl className={styles.formControl}>
+                            <Input
+                              id={`input-person-${reviewerIndex}-game-${gameIndex}-bggId`} 
+                              type="text"
+                              className={styles.input} 
+                              placeholder="BGG Id"
+                              value={bggId} 
+                              onChange={onPersonChange('bggId', reviewerIndex, gameIndex)}
+                            />
+                          </FormControl>
+                        </td>  
+                      </tr>
+                    )
+                  })}
                 </tbody>
               </Table>
             </section>

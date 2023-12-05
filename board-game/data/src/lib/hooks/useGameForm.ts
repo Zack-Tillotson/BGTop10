@@ -29,7 +29,7 @@ function convertFromString(input: string) {
   return input.split('|').map(piece => piece.trim())
 }
 
-function buildGameForm(game?: Game) {
+export function buildGameForm(game?: Game) {
   if(!game) {
     return {
       name: '',
@@ -71,7 +71,7 @@ function buildGameForm(game?: Game) {
   }
 }
 
-function buildGame(form: GameFormDataType, id?: string) {
+export function buildGame(form: GameFormDataType, id?: string) {
   return {
     id: id || '',
     name: form.name,

@@ -148,7 +148,7 @@ export function useRankingForm(creators: Creator[], ranking?: Ranking) {
     }
 
     updateFormValues(newFormValues)
-  }, [formValues])
+  }, [formValues, creators])
 
   const handlePersonChange = useCallback((key: string, personIndex: number, gameIndex?: number) => (event: SyntheticEvent<HTMLInputElement, ChangeEvent>, newValue: string) => {
     if(!event) return
@@ -163,15 +163,17 @@ export function useRankingForm(creators: Creator[], ranking?: Ranking) {
       newFormValues.gameLink[personIndex].games[gameIndex].name = value
     } else if(key === 'bggId') {
       if(gameIndex === undefined) throw new Error('must specify gameIndex')
-      newFormValues.gameLink[personIndex].games[gameIndex].bggId = value
+      newFormValues.gameLink[personIndex].games[gameIndex].bggId = Number(value)
     }
 
     updateFormValues(newFormValues)
   }, [formValues])
 
-  const handleBggSelection = (bggId: number, {personIndex, gameIndex}: {personIndex: number, gameIndex: number}) => () => {
-    console.log('bgg lookup', personIndex, gameIndex, bggId)
-  }
+  const handleBggSelection = useCallback((bggId: number, {personIndex, gameIndex}: {personIndex: number, gameIndex: number}) => {
+    const newFormValues = structuredClone(formValues)
+    newFormValues.gameLink[personIndex].games[gameIndex].bggId = bggId
+    updateFormValues(newFormValues)
+  }, [formValues])
 
   return {
     isPreview,

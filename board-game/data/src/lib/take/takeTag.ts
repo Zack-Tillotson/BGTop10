@@ -66,6 +66,7 @@ export async function getGameListFromIds(gameIdList: RankedGameIdList) {
 
   const rankedGameList = gameIdList.map(({count, bggId}) => ({
     count,
+    bggId,
     game: gameList.find(game => game.bggId === bggId),
   })) as RankedGameList
 
