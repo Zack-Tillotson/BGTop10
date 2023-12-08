@@ -12,8 +12,8 @@ interface IndexProps {
 export async function generateMetadata({params: {tagSlug}}: IndexProps) {
   const {tag} = await takeTag(tagSlug, false)
   return {
-    title: `${tag.pageTitle} | Cardboard SALAD`,
-    description: tag.pageSubtitle,
+    title: `${tag?.pageTitle} | Cardboard SALAD`,
+    description: tag?.pageSubtitle,
   }
 }
 

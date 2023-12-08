@@ -1,6 +1,6 @@
 'use client'
 
-import {Button, ButtonGroup, Chip} from '@mui/joy'
+import {Button, ButtonGroup, Chip, ChipPropsColorOverrides} from '@mui/joy'
 import { useTagRankedGameList, RankedGameList, HOOK_STATE } from 'board-game-data/client';
 import { GameList } from 'board-game-ui';
 
@@ -52,7 +52,7 @@ export default function TagGameListFormClient({slug, currentList}: TagGameListFo
           <Button onClick={handleGenerateList}>Generate new list</Button>
           <Button onClick={handleSaveList} disabled={!updatedList.length}>Save list</Button>
           <Button onClick={handleUpdateAllGames} disabled={!updatedList.length}>Update games</Button>
-          <Chip color={statusColor} variant="solid" size="lg">{state}</Chip>
+          <Chip color={statusColor as unknown as undefined} variant="solid" size="lg">{state}</Chip>
         </ButtonGroup>
       </section>
       {updatedList.length > 0 && (

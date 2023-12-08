@@ -1,6 +1,6 @@
 'use client'
 
-import { Tag } from "board-game-data";
+import { Tag } from "../../dataTypes";
 import { useRouter } from "next/navigation";
 import { ChangeEvent, SyntheticEvent, useState } from "react";
 import { submitForm } from "../fetch/submitForm";
@@ -36,7 +36,7 @@ function buildTagForm(tag?: Tag) {
   }
 }
 
-function buildTag(form: TagFormDataType, id?: string) {
+function buildTag(form: TagFormDataType, id?: string): Tag {
   return {
     id: id || '',
     display: form.display,
@@ -45,6 +45,7 @@ function buildTag(form: TagFormDataType, id?: string) {
     pageSubtitle: form.pageSubtitle,
     introduction: form.introduction,
     priority: Number(form.priority),
+    rankedGameIds: [],
   }
 }
 

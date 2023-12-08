@@ -1,16 +1,15 @@
 import Typography from '@mui/joy/Typography'
-import {GameSummary} from 'board-game-ui'
 
 import styles from './TagSummary.module.scss'
 import { Tag } from 'board-game-data';
 
-export interface TagProps extends Tag {
-  className: string,
+export interface TagProps extends Partial<Tag> {
+  className?: string,
 }
 
 export function TagTitle({
-  pageTitle,
-  pageSubtitle,
+  pageTitle = '',
+  pageSubtitle = '',
   introduction,
   className = '',
 }: TagProps) {
