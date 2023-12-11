@@ -14,6 +14,7 @@ const nextConfig = {
     // See: https://github.com/gregberge/svgr
     svgr: false,
   },
+  trailingSlash: true,
 };
 
 const plugins = [

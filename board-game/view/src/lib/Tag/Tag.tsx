@@ -19,8 +19,8 @@ export async function Tag({tagSlug}: TagProps) {
         <GameImageList
           className={styles.images}
           gamesList={data.gamesList}
-          linkRoot={`/${data.tag.slug}`}
-          direction="horizontal" />
+          linkRoot={`/${data?.tag?.slug}`}
+          primaryDirection="horizontal" />
         <TagTitle {...data?.tag} className={styles.title} />
         <GameBriefList gamesList={data.gamesList} className={styles.quickLinks} />
         <GameList gamesList={data.gamesList} className={styles.gamesList} /> 

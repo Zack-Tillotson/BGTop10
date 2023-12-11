@@ -1,5 +1,6 @@
 import Typography from '@mui/joy/Typography'
 import Link from 'next/link'
+import {RankedGameList} from 'board-game-data'
 
 import styles from './GameImageList.module.scss'
 
@@ -34,7 +35,7 @@ export function GameImageList({
       {gamesList.slice(-3).reverse().map(({game, bggId}) => (
         <Link key={bggId} href={`${linkRoot}#game-${bggId}`} className={styles.imageContainer}>
           <div role="presentation" className={styles.gameImage} style={{backgroundImage: `url('${game.image}')`}} />
-          <Typography level="p" className={styles.gameImageTitle}>{game.name}</Typography>
+          <Typography level="body-md" className={styles.gameImageTitle}>{game.name}</Typography>
         </Link>
       ))}
     </div>
