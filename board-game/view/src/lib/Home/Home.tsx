@@ -2,31 +2,26 @@ import { Typography } from '@mui/joy';
 import Link from 'next/link';
 
 import {PageContent} from 'core-ui'
-import {TagSummary, TagBrief} from 'board-game-ui'
+import {TagHighlight, TagBrief} from 'board-game-ui'
 import {takeTags} from 'board-game-data'
 
+const TAGS_TO_HIGHLIGHT_COUNT = 99
+
 export async function Home() {
-  const tags = await takeTags(false, {orderBy: ['priority', 'desc']})
+  const tags = await takeTags(true, {orderBy: ['priority', 'desc']})
   return (
     <PageContent
       title={'These are the best board games'}
       subtitle={'We\'ve scoured the internet to find the best board games, sorted by year and other collections.'}
     >
-      <section>
-      {tags.slice(0, 4).map(({tag, gamesList}) => (
-        <TagSummary tag={tag} gamesList={gamesList} key={tag.id} />
+      {tags.slice(0, TAGS_TO_HIGHLIGHT_COUNT).map(({tag, gamesList}, index) => (
+        <TagHighlight
+          key={tag.id}
+          tag={tag}
+          gamesList={gamesList}
+          direction={index % 2 === 0 ? 'L2R' : 'R2L'}
+        />
       ))}
-      </section>
-      <section>
-      <Typography level="h3">More categories</Typography>
-        {tags.slice(4).map(({tag, gamesList}) => (
-          <Link href={`/${tag.slug}`} key={tag.id}>
-            <section>
-              <TagBrief {...tag} />
-            </section>
-            </Link>
-        ))}
-      </section>
     </PageContent>
   )
 }

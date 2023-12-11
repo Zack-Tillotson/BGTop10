@@ -1,4 +1,4 @@
-import {TagTitle, GameList, GameBriefList} from 'board-game-ui'
+import {TagTitle, GameList, GameBriefList, GameImageList} from 'board-game-ui'
 import {takeTag} from 'board-game-data'
 import {PageContent} from 'core-ui'
 
@@ -16,6 +16,11 @@ export async function Tag({tagSlug}: TagProps) {
       subtitle={data?.tag?.pageSubtitle || ''}
     >
       <div className={styles.container}>
+        <GameImageList
+          className={styles.images}
+          gamesList={data.gamesList}
+          linkRoot={`/${data.tag.slug}`}
+          direction="horizontal" />
         <TagTitle {...data?.tag} className={styles.title} />
         <GameBriefList gamesList={data.gamesList} className={styles.quickLinks} />
         <GameList gamesList={data.gamesList} className={styles.gamesList} /> 

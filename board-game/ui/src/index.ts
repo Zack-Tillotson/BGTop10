@@ -5,6 +5,7 @@ export * from './lib/TagTitle'
 export * from './lib/TagSummary'
 export * from './lib/TagBrief'
 export * from './lib/TagFull'
+export * from './lib/TagHighlight'
 export * from './lib/TagForm'
 
 export * from './lib/CreatorBrief'
@@ -18,6 +19,8 @@ export * from './lib/GameFull'
 export * from './lib/GameList'
 export * from './lib/GameBriefList'
 export * from './lib/GameForm'
+
+export * from './lib/GameImageList'
 
 export * from './lib/RankingBrief'
 export * from './lib/RankingFull'

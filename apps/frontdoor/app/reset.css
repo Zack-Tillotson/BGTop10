@@ -25,6 +25,10 @@ ol[role='list'] {
   list-style: none;
 }
 
+html {
+  font-family: 'Inter', 'Open-Sans', sans-serif;
+}
+
 /* Set core root defaults */
 html:focus-within {
   scroll-behavior: smooth;
@@ -40,6 +44,10 @@ body {
 /* A elements that don't have a class get default styles */
 a:not([class]) {
   text-decoration-skip-ink: auto;
+}
+
+a:link, a:visited {
+  font-family: inherit;
 }
 
 /* Make images easier to work with */
