@@ -58,12 +58,12 @@ export default function TagGameListFormClient({slug, currentList}: TagGameListFo
       {updatedList.length > 0 && (
         <section className={styles.listContainer}>
           <h3>Updated list</h3>
-          {updatedList && (<GameList gamesList={updatedList} />)}
+          {updatedList && (<GameList gamesList={updatedList} isScoreDisplayed />)}
         </section>
       )}
       <section className={styles.listContainer}>
         <h3>{updatedList.length > 0 ? 'Prior' : 'Current'} list</h3>
-        <GameList gamesList={currentList} />
+        <GameList gamesList={currentList} isScoreDisplayed />
       </section>
     </div>
   );

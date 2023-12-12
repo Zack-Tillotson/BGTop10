@@ -7,16 +7,18 @@ import styles from './GameList.module.scss'
 export interface GameListProps {
   gamesList: RankedGameList,
   className?: string,
+  isScoreDisplayed: boolean,
 }
 
 export function GameList({
   gamesList,
   className = '',
+  isScoreDisplayed = false,
 }: GameListProps) {
   return (
     <ol className={[styles.ol, className].join(' ')}>
       {gamesList.map(({game, count, bggId}, index) => {
-        const extraTitle = `${gamesList.length - index}. `
+        const extraTitle = `${gamesList.length - index}. ${isScoreDisplayed ? ` (${count} pts) ` : ''}`
         
         if(!game) {
           return (
