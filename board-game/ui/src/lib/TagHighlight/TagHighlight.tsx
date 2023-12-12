@@ -19,12 +19,13 @@ export function TagHighlight({
 }: TagHighlightProps) {
 
   const directionClassName = direction === 'L2R' ? styles.containerL2R : styles.containerR2L
+  const tagLink = `/${tag.slug}`
 
   return (
     <section className={`${styles.container} ${directionClassName}`}>
       <div className={styles.titleSection}>
-        <Link href={`/${tag.slug}`} className={styles.link}>
-          <Typography level="h2">{tag.pageTitle}</Typography>
+        <Link href={tagLink} className={styles.link}>
+          <Typography level="h2" className={styles.tagTitle}>{tag.pageTitle}</Typography>
         </Link>
         <Typography>{tag.pageSubtitle}</Typography>
       </div>
@@ -32,10 +33,17 @@ export function TagHighlight({
         className={styles.images}
         gamesList={gamesList}
         primaryDirection="vertical"
-        linkRoot={`/${tag.slug}`} 
+        linkRoot={tagLink} 
       />
       <div className={styles.description}>
-        {tag.introduction}
+        <p>
+          {tag.introduction}
+        </p>
+        <div>
+          <Link className={styles.link + ' ' + styles.cta} href={tagLink}>
+            <Typography level="body-lg" className={styles.tagTitle}>See the full list →</Typography>
+          </Link>
+        </div>
       </div>
     </section>
   )

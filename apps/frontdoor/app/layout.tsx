@@ -1,14 +1,23 @@
+import Script from 'next/script'
+import Link from 'next/link';
+
 import './reset.css'
 import './global.scss'
 import styles from './layout.module.scss'
 
 import 'board-game-view'
-import Link from 'next/link';
 
 export const metadata = {
   title: 'Cardboard SALAD',
   description: 'Ranking the best board games annually',
 };
+
+const gTagCode = process.env.NODE_ENV === 'production' ? `
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+  gtag('config', 'G-FDCF5PR7L4');
+  ` : ''
 
 export default function RootLayout({
   children,
@@ -18,6 +27,14 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body>
+        <Script
+          src="https://www.googletagmanager.com/gtag/js?id=G-FDCF5PR7L4"
+          strategy="afterInteractive" />
+        <Script
+          id="google-analytics"
+          strategy="afterInteractive">
+          {gTagCode}
+        </Script>
         <div className={styles.container}>
           <nav className={styles.contents}>
             <Link href="/">

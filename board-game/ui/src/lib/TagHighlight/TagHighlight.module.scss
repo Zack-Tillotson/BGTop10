@@ -25,6 +25,15 @@
   }
 }
 
+.link {
+  color: #267f00;
+  text-decoration: none;
+
+  &:link, &:visited {
+    color: #267f00;
+  }
+}
+
 .titleSection {
   grid-area: title;
 }
@@ -35,4 +44,8 @@
 
 .images {
   grid-area: images;
+}
+
+.cta {
+  
 }
