@@ -12,6 +12,7 @@ export interface TagFormDataType {
   pageSubtitle: string,
   introduction: string,
   priority: number,
+  icon: string,
 }
 
 function buildTagForm(tag?: Tag) {
@@ -23,6 +24,7 @@ function buildTagForm(tag?: Tag) {
       pageSubtitle: '',
       introduction: '',
       priority: 0,
+      icon: '',
     }
   }
     
@@ -33,6 +35,7 @@ function buildTagForm(tag?: Tag) {
     pageSubtitle: tag.pageSubtitle,
     introduction: tag.introduction,
     priority: tag.priority,
+    icon: tag.icon,
   }
 }
 
@@ -45,6 +48,7 @@ function buildTag(form: TagFormDataType, id?: string): Tag {
     pageSubtitle: form.pageSubtitle,
     introduction: form.introduction,
     priority: Number(form.priority),
+    icon: form.icon,
     rankedGameIds: [],
   }
 }

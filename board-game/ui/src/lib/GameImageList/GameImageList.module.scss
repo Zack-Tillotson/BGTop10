@@ -1,56 +1,82 @@
 .container {
-  position: relative;
+  --GameImageList-border: solid 1px var(--color-brand-primary, orange);
   display: grid;
-  border: solid 4px #333;
-  border-radius: 8px; 
-}
-
-.containerHorizontal {
-  grid-auto-flow: column;
-}
-
-.containerVertical {
-  grid-auto-flow: row;
-}
-
-.imageContainer {
-  position: relative;
-  min-height: 150px;
+  border-right: var(--GameImageList-border);
+  border-bottom: var(--GameImageList-border);
+  aspect-ratio: 16 / 9;
 }
 
 .gameImage {
-  position: absolute;
-  left: 0;
-  right: 0;
-  top: 0;
-  bottom: 0;
-
+  border-left: var(--GameImageList-border);
+  border-top: var(--GameImageList-border);
   background-size: cover;
-  background-position: 50%;
   background-repeat: no-repeat;
+  background-position: 50%;
 }
 
-
-.tagIcon {
-  position: absolute;
-  right: 0;
-  left: 0;
-  text-align: center;
-  color: #fdfd8a;
-  text-shadow: 0 0 4px black;
-  font-size: 100px;
-  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-  letter-spacing: 35px;
+.variantA {
+  .image1 {
+    grid-area: 1 / 3 / 6 / 6;
+  }
+  .image2 {
+    grid-area: 4 / 6 / 8 / 12;
+  }
+  .image3 {
+    grid-area: 6 / 3 / 12 / 6;
+  }
+  .image4 {
+    grid-area: 1 / 1 / 4 / 3;
+  }
+  .image5 {
+    grid-area: 1 / 6 / 4 / 9;
+  }
+  .image6 {
+    grid-area: 8 / 1 / 12 / 3;
+  }
+  .image7 {
+    grid-area: 8 / 6 / 12 / 9;
+  }
+  .image8 {
+    grid-area: 4 / 1 / 8 / 3;
+  }
+  .image9 {
+    grid-area: 1 / 9 / 4 / 12;
+  }
+  .image10 {
+    grid-area: 8 / 9 / 12 / 12;
+  }
 }
 
-.tagIconBlur {
-  color: #0000;
-  text-shadow: 0 0 10px blue;
-}
-
-.containerVertical .tagIcon {
-  top: 0;
-  bottom: 0;
-  writing-mode: vertical-rl;
-  text-orientation: mixed;
+.variantB {
+  direction: rtl;
+  .image1 {
+    grid-area: 1 / 3 / 6 / 6;
+  }
+  .image2 {
+    grid-area: 4 / 6 / 8 / 12;
+  }
+  .image3 {
+    grid-area: 6 / 3 / 12 / 6;
+  }
+  .image4 {
+    grid-area: 1 / 1 / 4 / 3;
+  }
+  .image5 {
+    grid-area: 1 / 6 / 4 / 9;
+  }
+  .image6 {
+    grid-area: 8 / 1 / 12 / 3;
+  }
+  .image7 {
+    grid-area: 8 / 6 / 12 / 9;
+  }
+  .image8 {
+    grid-area: 4 / 1 / 8 / 3;
+  }
+  .image9 {
+    grid-area: 1 / 9 / 4 / 12;
+  }
+  .image10 {
+    grid-area: 8 / 9 / 12 / 12;
+  }
 }

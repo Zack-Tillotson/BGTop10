@@ -1,53 +1,23 @@
 .container {
-  display: grid;
-  grid-template-columns: 1fr;
-  grid-template-areas:
-    "title"
-    "images"
-    "desc";
-  grid-gap: 8px;
-  margin-top: 8px;
-  margin-bottom: 32px;
-
-  @media screen and (min-width: 1024px) {
-    grid-template-columns: 1fr 208px;
-    grid-template-rows: auto 1fr;
-    grid-template-areas:
-    "title images"
-    "desc images";
-  }
-}
-
-.containerR2L {
-  @media screen and (min-width: 1024px) {
-    grid-template-columns: 208px 1fr;
-    grid-template-areas:
-    "images title"
-    "images desc";
-  }
-}
-
-.link {
-  color: #267f00;
-  text-decoration: none;
-
-  &:link, &:visited {
-    color: #267f00;
-  }
-}
-
-.titleSection {
-  grid-area: title;
-}
-
-.description {
-  grid-area: desc;
+  display: flex;
+  flex-flow: row nowrap;
+  margin-top: 4px;
+  margin-bottom: 4px;
 }
 
 .images {
-  grid-area: images;
+  width: 200px;
+  order: -1;
 }
 
-.cta {
-  
+.titleSection {
+  margin-left: 16px;
+}
+
+.tagTitle {
+  font-size: 20px;
+}
+
+.tagSubtitle {
+  font-size: 16px;
 }

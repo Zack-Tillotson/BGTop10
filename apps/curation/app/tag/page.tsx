@@ -26,7 +26,7 @@ export default async function Index() {
         </Link>
       </section>
       <section>
-        <TagList />
+        <TagList linkRoot="/tag" />
       </section>
     </PageContent>
   );

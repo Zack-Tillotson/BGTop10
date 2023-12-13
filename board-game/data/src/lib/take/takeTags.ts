@@ -17,7 +17,7 @@ export async function takeTags(withGames: boolean, options?: QueryOptions) {
   const gamesLists = await Promise.all(gamesPromises)
   
   const tagsWithGames = tags.map((tag, index) => ({
-    tag, 
+    tag,
     gamesList: gamesLists[index],
   }))
 

@@ -1,23 +1,30 @@
-import { Typography } from '@mui/joy';
 import Link from 'next/link';
 
 import { takeTags} from 'board-game-data' 
-import { TagBrief } from 'board-game-ui';
+import { TagHighlight } from 'board-game-ui';
 
 import styles from './TagList.module.scss'
 
-export async function TagList() {
-  const list = await takeTags(false, {orderBy: ['priority', 'desc']})
+interface TagListProps {
+  linkRoot: string,
+}
+
+export async function TagList({linkRoot = ''}: TagListProps) {
+  const tags = await takeTags(true, {orderBy: ['priority', 'desc']})
 
   return (
     <section>
-      <Typography level="h2">List of tags ({list.length} total)</Typography>
       <ul className={styles.container}>
-        {list.map(({tag}) => (
+        {tags.map(({tag, gamesList}, index) => (
           <li key={tag.id} className={styles.li}>
-            <Link href={`/tag/${tag.slug}`}>
-              <TagBrief {...tag} className={styles.item} />
+            <Link href={`${linkRoot}/${tag.slug}`} aria-label={tag.title} className={styles.link}>
+              <TagHighlight
+                tag={tag}
+                gamesList={gamesList}
+                className={styles.item}
+                variant={index % 2 === 0 ? 'A' : 'B'} />
             </Link>
+            <hr />
           </li>
         ))}
       </ul>

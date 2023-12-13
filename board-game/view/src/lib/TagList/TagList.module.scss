@@ -2,3 +2,14 @@
   list-style: none;
   padding: 0;
 }
+
+.link {
+  display: block;
+  padding: 4px;
+  color: black;
+  
+  &:link, &:visited {
+    text-decoration: none;
+    color: black;
+  }
+}
