@@ -9,6 +9,7 @@ export interface GameImageListProps {
   gamesList: RankedGameList,
   primaryDirection: 'horizontal'|'vertical',
   linkRoot: string,
+  icon: string,
 }
 
 export function GameImageList({
@@ -16,6 +17,7 @@ export function GameImageList({
   gamesList,
   primaryDirection = 'horizontal',
   linkRoot = '',
+  icon = '',
 }: GameImageListProps) {
 
   let directionClassName = ''
@@ -35,9 +37,10 @@ export function GameImageList({
       {gamesList.slice(-3).reverse().map(({game, bggId}) => (
         <Link key={bggId} href={`${linkRoot}#game-${bggId}`} className={styles.imageContainer}>
           <div role="presentation" className={styles.gameImage} style={{backgroundImage: `url('${game.image}')`}} />
-          <Typography level="body-sm" className={styles.gameImageTitle}>{game.name}</Typography>
         </Link>
       ))}
+      <div role="presentation" className={styles.tagIcon + ' ' + styles.tagIconBlur}>{icon}</div>
+      <div role="presentation" className={styles.tagIcon}>{icon}</div>
     </div>
   )
 }

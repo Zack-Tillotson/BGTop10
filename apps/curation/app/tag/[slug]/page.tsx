@@ -1,10 +1,10 @@
 import Link from 'next/link';
+import {Typography} from '@mui/joy'
 import {PageContent} from 'core-ui'
 
 import styles from './page.module.scss';
 import { takeTag } from 'board-game-data';
-import { TagFull } from 'board-game-ui';
-import { Button } from '@mui/joy';
+import { TagFull, GameImageList } from 'board-game-ui';
 
 interface TagProps {
   params: {
@@ -40,6 +40,13 @@ export default async function Index({params: {slug}}: TagProps) {
       </section>
       <section>
         <TagFull tag={tag} gamesList={gamesList} />
+      </section>
+      <section>
+        <Typography level="h2">Images</Typography>
+        <GameImageList gamesList={gamesList} icon={tag.icon} />
+        <div style={{display: 'inline-block', width: '300px', marginTop: '16px'}}>
+          <GameImageList gamesList={gamesList} primaryDirection="vertical" icon={tag.icon} />
+        </div>
       </section>
     </PageContent>
   );

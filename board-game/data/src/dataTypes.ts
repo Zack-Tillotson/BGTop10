@@ -45,6 +45,7 @@ export interface Tag {
   slug: string,
   display: string,
   priority: number,
+  icon: string,
   rankedGameIds: RankedGameIdList,
   rankedGames?: RankedGameList,
 }

@@ -33,7 +33,8 @@ export function TagHighlight({
         className={styles.images}
         gamesList={gamesList}
         primaryDirection="vertical"
-        linkRoot={tagLink} 
+        linkRoot={tagLink}
+        icon={tag.icon}
       />
       <div className={styles.description}>
         <p>

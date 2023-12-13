@@ -10,7 +10,7 @@
   margin-bottom: 32px;
 
   @media screen and (min-width: 1024px) {
-    grid-template-columns: 1fr 308px;
+    grid-template-columns: 1fr 208px;
     grid-template-rows: auto 1fr;
     grid-template-areas:
     "title images"
@@ -20,7 +20,7 @@
 
 .containerR2L {
   @media screen and (min-width: 1024px) {
-    grid-template-columns: 308px 1fr;
+    grid-template-columns: 208px 1fr;
     grid-template-areas:
     "images title"
     "images desc";
