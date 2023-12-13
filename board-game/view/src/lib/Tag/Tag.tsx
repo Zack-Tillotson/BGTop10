@@ -23,7 +23,7 @@ export async function Tag({tagSlug}: TagProps) {
           primaryDirection="horizontal" />
         <TagTitle {...data?.tag} className={styles.title} />
         <GameBriefList gamesList={data.gamesList} className={styles.quickLinks} />
-        <GameList gamesList={data.gamesList} className={styles.gamesList} /> 
+        <GameList gamesList={data.gamesList} className={styles.gamesList} isScoreDisplayed={false} /> 
       </div>
     </PageContent>
   )

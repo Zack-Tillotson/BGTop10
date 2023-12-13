@@ -32,7 +32,7 @@ export function GameImageList({
 
   return (
     <div className={`${className} ${styles.container} ${directionClassName}`}>
-      {gamesList.slice(-3).reverse().map(({game, bggId}) => (
+      {gamesList.slice(-5).reverse().map(({game, bggId}) => (
         <Link key={bggId} href={`${linkRoot}#game-${bggId}`} className={styles.imageContainer}>
           <div role="presentation" className={styles.gameImage} style={{backgroundImage: `url('${game.image}')`}} />
           <Typography level="body-sm" className={styles.gameImageTitle}>{game.name}</Typography>
