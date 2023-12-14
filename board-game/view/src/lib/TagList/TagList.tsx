@@ -5,8 +5,10 @@ import { TagHighlight } from 'board-game-ui';
 
 import styles from './TagList.module.scss'
 
+const VARIANTS = ['A', 'B', 'C', 'D']
+
 interface TagListProps {
-  linkRoot: string,
+  linkRoot?: string,
 }
 
 export async function TagList({linkRoot = ''}: TagListProps) {
@@ -17,12 +19,12 @@ export async function TagList({linkRoot = ''}: TagListProps) {
       <ul className={styles.container}>
         {tags.map(({tag, gamesList}, index) => (
           <li key={tag.id} className={styles.li}>
-            <Link href={`${linkRoot}/${tag.slug}`} aria-label={tag.title} className={styles.link}>
+            <Link href={`${linkRoot}/${tag.slug}`} aria-label={tag.pageTitle} className={styles.link}>
               <TagHighlight
                 tag={tag}
                 gamesList={gamesList}
                 className={styles.item}
-                variant={['A', 'B', 'C', 'D'][index % 4]} />
+                variant={VARIANTS[index % VARIANTS.length]} />
             </Link>
             <hr />
           </li>

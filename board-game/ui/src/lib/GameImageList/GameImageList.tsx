@@ -1,4 +1,3 @@
-import Link from 'next/link'
 import {RankedGameList} from 'board-game-data'
 
 import styles from './GameImageList.module.scss'
