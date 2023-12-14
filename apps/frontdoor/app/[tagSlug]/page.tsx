@@ -1,8 +1,6 @@
 import {takeTag, takeTags } from 'board-game-data';
 import {Tag} from 'board-game-view'
 
-import styles from './page.module.scss';
-
 interface IndexProps {
   params: {
     tagSlug: string,

@@ -5,7 +5,7 @@ import './reset.css'
 import './global.scss'
 import styles from './layout.module.scss'
 
-import 'board-game-view'
+import { ScrollToTop } from 'core-ui';
 
 export const metadata = {
   title: 'Cardboard SALAD',
@@ -24,6 +24,7 @@ export default function RootLayout({
 }: {
   children: React.ReactNode;
 }) {
+
   return (
     <html lang="en">
       <body>
@@ -48,6 +49,22 @@ export default function RootLayout({
         <main>
           {children}
         </main>
+        <footer role="contentinfo">
+          <section className={styles.upperFooter}>
+            <ScrollToTop />
+          </section>
+          <section className={styles.lowerFooter}>
+            <div className={styles.contents}>
+              <ul className={styles.simpleUl}>
+                <li className={styles.simpleLi}><a href="/legal/terms/">Terms of use</a></li>
+                <li className={styles.simpleLi}><a href="/legal/contact-us/">Contact us</a></li>              
+              </ul>
+              <div className={styles.copyright}>
+                © Copyright 2021-2024 Zachery Tillotson
+              </div>
+            </div>
+          </section>
+        </footer>
       </body>
     </html>
   );

@@ -1,0 +1,9 @@
+.container {
+  border: none;
+  background: none;
+
+  &:hover {
+    background: #0003;
+    cursor: pointer;
+  }
+}

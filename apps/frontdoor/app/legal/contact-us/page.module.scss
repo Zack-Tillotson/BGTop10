@@ -1,0 +1,7 @@
+.email {
+  padding-bottom: 25px;
+
+  &:after {
+    content: '@gmail.com';
+  }
+}
