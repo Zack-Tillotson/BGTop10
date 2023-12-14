@@ -1,9 +1,14 @@
-.container {
+.imageContainer {
   --GameImageList-border: solid 1px var(--color-brand-primary, orange);
   display: grid;
   border-right: var(--GameImageList-border);
   border-bottom: var(--GameImageList-border);
   aspect-ratio: 16 / 9;
+}
+
+.attribution {
+  font-size: 10px;
+  color: #555;
 }
 
 .gameImage {

@@ -17,10 +17,13 @@ export function GameImageList({
 }: GameImageListProps) {
 
   return (
-    <div role="presentation" className={`${className} ${styles.container} ${styles[`variant${variant}`]}`}>
-      {gamesList.slice(-1 * IMAGE_COUNT).map(({game, bggId}, index) => (
-        <div key={bggId} className={`${styles.gameImage} ${styles[`image${IMAGE_COUNT - index}`]}`} style={{backgroundImage: `url('${game.image}')`}} />
-      ))}
+    <div role="presentation" className={`${className} ${styles.container}`}>
+      <div role="presentation" className={`${styles.imageContainer} ${styles[`variant${variant}`]}`}>
+        {gamesList.slice(-1 * IMAGE_COUNT).map(({game, bggId}, index) => (
+          <div key={bggId} className={`${styles.gameImage} ${styles[`image${IMAGE_COUNT - index}`]}`} style={{backgroundImage: `url('${game.image}')`}} />
+        ))}
+      </div>
+      <div className={styles.attribution}>Graphic: Zack Tillotson | Source images: BoardGameGeek.com</div>
     </div>
   )
 }

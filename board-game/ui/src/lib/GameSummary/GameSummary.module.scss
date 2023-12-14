@@ -3,16 +3,14 @@
   grid-template-areas:
     "primary"
     "image"
-    "secondary"
-    "desc";
+    "secondary";
   grid-template-columns: 1fr;
   grid-gap: 8px;
 
   @media (min-width: 1024px) {
     grid-template-areas:
       "image primary secondary"
-      "image primary secondary"
-      "desc  desc    desc";
+      "image primary secondary";
     grid-template-columns: auto 1fr 1fr;
     grid-template-rows: auto 1fr;
   }
@@ -43,8 +41,9 @@
 
 .secondaryAttrs {
   grid-area: secondary;
-}
+  background-color: #fff;
 
-.description {
-  grid-area: desc;
+  th {
+    background-color: #fff;
+  }
 }

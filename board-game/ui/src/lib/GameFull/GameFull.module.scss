@@ -1,48 +1,63 @@
 .container {
   display: grid;
   grid-template-areas:
-    "primary"
+    "extra"
     "image"
-    "secondary"
-    "desc";
+    "desc"
+    "details"
+    "link";
   grid-template-columns: 1fr;
   grid-gap: 8px;
 
   @media (min-width: 1024px) {
     grid-template-areas:
-      "image primary secondary"
-      "image primary secondary"
-      "desc  desc    desc";
-    grid-template-columns: auto 1fr 1fr;
-    grid-template-rows: auto 1fr;
+      "extra extra"
+      "image details"
+      "desc details"
+      "desc link";
+    grid-template-columns: auto 1fr;
   }
 }
 
-.yearPublished {
-  display: none;
-
-  @media (min-width: 1024px) {
-    display: block;
-  }
+.extraTitle {
+  grid-area: extra;
 }
 
 .imageContainer {
   grid-area: image;
-  text-align: center;
 }
 
 .image {
   display: inline-block;
-  height: 150px;
+  width: 100%;
   margin: 0 auto;
 }
 
-.primaryAttrs {
-  grid-area: primary;
+.details {
+  grid-area: details;
+  min-width: 250px;
 }
 
-.secondaryAttrs {
-  grid-area: secondary;
+.detailTable dt {
+  margin-top: 8px;
+  color: #666;
+}
+
+.detailTable dd {
+  margin-left: 8px;
+}
+
+.link {
+  display: block;
+  background: var(--color-secondary);
+  color: white;
+  border-radius: 8px;
+  padding: 8px;
+  text-align: center;
+
+  &:hover {
+    background: brown;
+  }
 }
 
 .description {

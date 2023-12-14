@@ -38,43 +38,32 @@ export function GameSummary({
           )}
           {name}
         </Typography>
-        <Typography className={styles.yearPublished}>({yearPublished})</Typography>
-      </div>
-      <Card className={styles.secondaryAttrs}>
-        <Table className={styles.detailsTable} size="sm">
-          <tbody>
-            <tr>
-              <th scope="row">Publisher</th>
-              <td>{getShortString(publisher, 1)}</td>
-            </tr>
-            <tr>
-              <th scope="row">Designer</th>
-              <td>{getShortString(designer, 3)}</td>
-            </tr>
-            <tr>
-              <th scope="row">Player count</th>
-              <td>
-                {playerCountMin}
-                {playerCountMin !== playerCountMax && ` - ${playerCountMax}`}
-              </td>
-            </tr>
-            <tr>
-              <th scope="row">Artists</th>
-              <td>
-                {getShortString(artist, 2)}
-              </td>
-            </tr>
-          </tbody>
-        </Table>
-      </Card>
-      <Typography className={styles.description}>{description}</Typography>
-      <a 
-        href={`https://boardgamegeek.com/boardgame/${bggId}`} 
-        target="_blank"
-        rel="noreferrer"
-      >
-        <Typography level="body-md" sx={{color: 'blue'}}>BoardGameGeek</Typography>
-      </a>
+    </div>
+      <Table className={styles.secondaryAttrs} size="sm">
+        <tbody>
+          <tr>
+            <th scope="row">Publisher</th>
+            <td>{getShortString(publisher, 1)}</td>
+          </tr>
+          <tr>
+            <th scope="row">Designer</th>
+            <td>{getShortString(designer, 3)}</td>
+          </tr>
+          <tr>
+            <th scope="row">Player count</th>
+            <td>
+              {playerCountMin}
+              {playerCountMin !== playerCountMax && ` - ${playerCountMax}`}
+            </td>
+          </tr>
+          <tr>
+            <th scope="row">Artists</th>
+            <td>
+              {getShortString(artist, 2)}
+            </td>
+          </tr>
+        </tbody>
+      </Table>
     </div>
   )
 }
