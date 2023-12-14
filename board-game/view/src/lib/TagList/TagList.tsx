@@ -22,7 +22,7 @@ export async function TagList({linkRoot = ''}: TagListProps) {
                 tag={tag}
                 gamesList={gamesList}
                 className={styles.item}
-                variant={index % 2 === 0 ? 'A' : 'B'} />
+                variant={['A', 'B', 'C', 'D'][index % 4]} />
             </Link>
             <hr />
           </li>

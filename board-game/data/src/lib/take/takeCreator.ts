@@ -1,5 +1,5 @@
 import { Creator } from '../../dataTypes'
-import {query, save} from '../firebase/util'
+import {get, query, save} from '../firebase/util'
 
 export async function takeCreator(slug?: string) {
   if(!slug) return undefined
@@ -12,6 +12,22 @@ export async function takeCreator(slug?: string) {
   const creator = {...doc.data(), id: doc.id} as Creator
   return creator
   
+}
+
+export async function takeCreatorById(id: string) {
+  const results = await query('creator', {query: ['id', '==', id]})
+  let doc = results.docs[0]
+  
+  if(!doc) {
+    doc = await get('creator', id) as FirebaseFirestore.QueryDocumentSnapshot<FirebaseFirestore.DocumentData>
+  }
+
+  if(!doc) {
+    return undefined
+  }
+  
+  const creator = {...doc.data(), id: doc.id} as Creator
+  return creator
 }
 
 export async function saveCreator(creator: Creator) {

@@ -11,13 +11,15 @@ interface RankingProps extends Ranking {
 export function RankingBrief({
   name,
   datePublished,
+  creator,
   className = '',
 }: RankingProps) {
   return (
     <div className={styles.container}>
-      <Typography className={className + ' ' + styles.name}>
-        {name}, published {datePublished}
+      <Typography level="h3" className={className + ' ' + styles.name}>
+        {name}
       </Typography>
+      <Typography className={styles.details}><b>{creator}</b>, published {datePublished}</Typography>
     </div>
   )
 }

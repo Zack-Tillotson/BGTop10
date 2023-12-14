@@ -44,6 +44,15 @@ export default async function Index({params: {slug}}: TagProps) {
       <section>
         <Typography level="h2">Images</Typography>
         <GameImageList gamesList={gamesList} />
+        <div style={{marginTop: '5px'}}>
+          <GameImageList gamesList={gamesList} variant="B" />
+        </div>
+        <div style={{marginTop: '5px'}}>
+          <GameImageList gamesList={gamesList} variant="C" />
+        </div>
+        <div style={{marginTop: '5px'}}>
+          <GameImageList gamesList={gamesList} variant="D" />
+        </div>
       </section>
     </PageContent>
   );
