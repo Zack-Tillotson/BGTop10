@@ -5,14 +5,14 @@ import Link from 'next/link';
 
 export interface PageContentProps {
   title: string,
-  subtitle: string,
+  subtitle?: string,
   children: React.ReactNode,
   breadcrumbs?: {href: string, display: string}[],
 }
 
 export function PageContent({
   title,
-  subtitle,
+  subtitle = '',
   children,
   breadcrumbs,
 }: PageContentProps) {
@@ -23,9 +23,11 @@ export function PageContent({
           <Typography level="h1" sx={{background: '#09274e', color: 'white'}} className={styles.pageTitle}>
             {title}
           </Typography>
-          <Typography sx={{background: '#09274e', color: 'white'}} className={styles.pageSubtitle}>
-            {subtitle}
-          </Typography>
+          {!!subtitle && (
+            <Typography sx={{background: '#09274e', color: 'white'}} className={styles.pageSubtitle}>
+              {subtitle}
+            </Typography>
+          )}
         </div>
       </div>
       {breadcrumbs && (

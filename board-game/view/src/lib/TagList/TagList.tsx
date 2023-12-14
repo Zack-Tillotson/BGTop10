@@ -5,6 +5,7 @@ import { TagHighlight } from 'board-game-ui';
 
 import styles from './TagList.module.scss'
 
+type VARIANT_TYPE = 'A'|'B'|'C'|'D'
 const VARIANTS = ['A', 'B', 'C', 'D']
 
 interface TagListProps {
@@ -24,7 +25,7 @@ export async function TagList({linkRoot = ''}: TagListProps) {
                 tag={tag}
                 gamesList={gamesList}
                 className={styles.item}
-                variant={VARIANTS[index % VARIANTS.length]} />
+                variant={VARIANTS[index % VARIANTS.length] as unknown as VARIANT_TYPE} />
             </Link>
             <hr />
           </li>
