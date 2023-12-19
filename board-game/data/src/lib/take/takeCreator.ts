@@ -1,5 +1,5 @@
 import { Creator } from '../../dataTypes'
-import {get, query, save} from '../firebase/util'
+import {get, query, save} from '../firebase/firestore'
 
 export async function takeCreator(slug?: string) {
   if(!slug) return undefined

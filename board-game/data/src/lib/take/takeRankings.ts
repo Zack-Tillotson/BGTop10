@@ -1,4 +1,4 @@
-import {QueryOptions, query} from '../firebase/util'
+import {QueryOptions, query} from '../firebase/firestore'
 import {Ranking} from '../../dataTypes'
 import { takeCreatorById } from './takeCreator'
 

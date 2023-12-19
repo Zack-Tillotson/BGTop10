@@ -23,6 +23,7 @@ export default function TagGameListFormClient({slug, currentList}: TagGameListFo
     handleGenerateList,
     handleSaveList,
     handleUpdateAllGames,
+    handleRefreshImages,
   } = useTagRankedGameList(slug)
 
   let statusColor = 'neutral'
@@ -52,6 +53,7 @@ export default function TagGameListFormClient({slug, currentList}: TagGameListFo
           <Button onClick={handleGenerateList}>Generate new list</Button>
           <Button onClick={handleSaveList} disabled={!updatedList.length}>Save list</Button>
           <Button onClick={handleUpdateAllGames} disabled={!updatedList.length}>Update games</Button>
+          <Button onClick={handleRefreshImages} disabled={!!updatedList.length}>Refresh images</Button>
           <Chip color={statusColor as unknown as undefined} variant="solid" size="lg">{state}</Chip>
         </ButtonGroup>
       </section>

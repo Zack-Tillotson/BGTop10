@@ -1,6 +1,6 @@
 import { Game, Ranking, Tag } from '../../dataTypes'
 import { calculateTagGameList } from '../calc/tagGameList'
-import {QueryOptions, query, save, get} from '../firebase/util'
+import {QueryOptions, query, save, get} from '../firebase/firestore'
 
 type RankedGameIdList = {bggId: number, count: number}[]
 type RankedGameList = {game: Game, count: number}[]

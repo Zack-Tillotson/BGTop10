@@ -1,12 +1,10 @@
-import { initializeApp, applicationDefault, getApps, App } from 'firebase-admin/app'
 import { Firestore, getFirestore, OrderByDirection, WhereFilterOp } from 'firebase-admin/firestore'
+import { getApp } from './app'
 
 let db : Firestore | null = null
 
 function getDbRef() {
-  const app = getApps().length ? (getApps()[0]) : initializeApp({
-    credential: applicationDefault(),
-  })
+  const app = getApp()
 
   db = getFirestore(app)
   return db

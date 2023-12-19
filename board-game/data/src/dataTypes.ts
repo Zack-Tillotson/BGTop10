@@ -26,6 +26,8 @@ export interface Game {
   playerCountMin: number,
   playerCountMax: number,
   image: string,
+  imageSrcSet?: {[width: string]: string},
+  imageHosted?: string,
   imageThumbnail: string,
   family: string[],
   mechanic: string[],
@@ -60,4 +62,4 @@ export interface Creator {
   link: string[],
 }
 
-export type ContentTypeLabel = 'tag'|'game'|'creator'|'ranking'
+export type ContentTypeLabel = 'tag'|'game'|'game-image'|'creator'|'ranking'|'tag-game-images'

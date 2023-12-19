@@ -8,4 +8,6 @@ export * from './lib/take/takeRanking'
 
 export * from './lib/calc/tagGameList'
 
+export * from './lib/firebase/storage'
+
 export * from './dataTypes'

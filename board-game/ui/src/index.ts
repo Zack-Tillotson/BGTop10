@@ -20,6 +20,7 @@ export * from './lib/GameList'
 export * from './lib/GameBriefList'
 export * from './lib/GameForm'
 
+export * from './lib/GameImage'
 export * from './lib/GameImageList'
 
 export * from './lib/RankingBrief'

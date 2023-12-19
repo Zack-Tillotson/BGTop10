@@ -12,6 +12,7 @@ export * from './lib/CreatorFormView'
 
 export * from './lib/GameSearch'
 export * from './lib/GameFormView'
+export * from './lib/GameImageView'
 
 export * from './lib/RankingList'
 export * from './lib/RankingFormView'

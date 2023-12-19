@@ -33,6 +33,9 @@ export default async function Index({params: {bggId}}: GameProps) {
         <Link className={styles.link} href={`/game/${bggId}/edit`}>
           Edit
         </Link>
+        <Link className={styles.link} href={`/game/${bggId}/images`}>
+          Images
+        </Link>
       </section>
       <section>
         {game && (<GameFull {...game} />)}

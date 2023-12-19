@@ -19,6 +19,7 @@ export enum HOOK_STATE {
   SAVING_SUCCESS = 'SAVING_SUCCESS',
 
   UPDATE_GAMES_IN_PROGRESS = 'UPDATE_GAMES_IN_PROGRESS',
+  REFRESH_IMAGES_IN_PROGRESS = 'REFRESH_IMAGES_IN_PROGRESS',
 }
 
 const pause = (duration: number) => new Promise(resolve => {
@@ -91,6 +92,20 @@ export function useTagRankedGameList(slug: string) {
     updateState(priorState)
 
   }, [gameList, state])
+
+  const handleRefreshImages = useCallback(async () => {
+    
+    if(state !== HOOK_STATE.CLEAN) {
+      throw new Error('Ensure state is clean before refreshing images')
+    }
+    updateState(HOOK_STATE.REFRESH_IMAGES_IN_PROGRESS)
+
+    await submitForm('tag-game-images', {id: slug})
+
+    updateState(HOOK_STATE.CLEAN)
+
+  }, [state, slug])
+
   
   return {
     state,
@@ -98,5 +113,6 @@ export function useTagRankedGameList(slug: string) {
     handleGenerateList,
     handleSaveList,
     handleUpdateAllGames,
+    handleRefreshImages,
   }
 }

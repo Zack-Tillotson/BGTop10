@@ -1,5 +1,5 @@
 import {Ranking} from '../../dataTypes'
-import {query, save} from '../firebase/util'
+import {query, save} from '../firebase/firestore'
 
 export async function takeRanking(slug?: string) {
   if(!slug) return undefined

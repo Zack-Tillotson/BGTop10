@@ -1,4 +1,4 @@
-import {QueryOptions, query} from '../firebase/util'
+import {QueryOptions, query} from '../firebase/firestore'
 import {Creator} from '../../dataTypes'
 
 export async function takeCreators(queryOptions?: QueryOptions) {

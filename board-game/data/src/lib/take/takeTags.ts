@@ -1,5 +1,5 @@
 import { Tag } from '../../dataTypes'
-import {query, QueryOptions} from '../firebase/util'
+import {query, QueryOptions} from '../firebase/firestore'
 import { getGamesForTag } from './takeTag'
 
 async function getTags(options?: QueryOptions): Promise<Tag[]> {

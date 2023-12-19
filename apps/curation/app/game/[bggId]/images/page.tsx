@@ -1,8 +1,8 @@
 import {PageContent} from 'core-ui'
 import { takeGame } from 'board-game-data';
-import { GameFormView } from 'board-game-view';
 
 import styles from './page.module.scss';
+import { GameImageView } from 'board-game-view';
 
 interface GameProps {
   params: {
@@ -25,12 +25,14 @@ export default async function Index({params: {bggId}}: GameProps) {
     href: `/game/${bggId}`,
     display,
   }]
+
+  if(!game) {
+    return null
+  }
   
   return (
     <PageContent title={display} subtitle="Edit game" breadcrumbs={breadcrumbs}>
-      <section>
-        <GameFormView bggId={bggId} />
-      </section>
+      <GameImageView bggId={game.bggId} />
     </PageContent>
   );
 }
