@@ -1,7 +1,7 @@
 import Typography from '@mui/joy/Typography'
-import { Card, Table } from '@mui/joy'
 
 import {Game} from 'board-game-data'
+import { GameImage } from '../GameImage'
 
 import styles from './GameFull.module.scss'
 
@@ -30,12 +30,18 @@ export function GameFull({
   playerCountMin,
   playerCountMax,
   image,
+  imageSrcSet,
   mechanic,
 }: GameFullProps) {
   return (
     <div className={styles.container}>
       <div className={styles.imageContainer}>
-        <img src={image} alt={`The game's poster`} className={styles.image} />
+        <GameImage
+          src={image}
+          className={styles.image} 
+          srcSet={imageSrcSet}
+          sizes="(max-width: 500px) 550px, 750px"
+        />
       </div>
       {extraTitle && (
         <div className={styles.extraTitle}>

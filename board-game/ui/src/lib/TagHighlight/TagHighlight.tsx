@@ -29,6 +29,7 @@ export function TagHighlight({
         className={styles.images}
         gamesList={gamesList}
         variant={variant}
+        sizes="(max-width: 500px) 100px, 275px"
       />
     </section>
   )

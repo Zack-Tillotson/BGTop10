@@ -11,10 +11,12 @@ function getShortString(stringArray: string[] = [], maxCount: number) {
 
 export interface GameSummaryProps extends Game {
   extraTitle?: string,
+  ranking?: string,
 }
 
 export function GameSummary({
   extraTitle,
+  ranking,
   name,
   description,
   yearPublished,
@@ -28,6 +30,7 @@ export function GameSummary({
 }: GameSummaryProps) {
   return (
     <div className={styles.container}>
+      <div className={styles.ranking}>{ranking}</div>
       <div className={styles.imageContainer}>
         <img src={imageThumbnail} alt={name} className={styles.image} />
       </div>
@@ -42,24 +45,28 @@ export function GameSummary({
       <Table className={styles.secondaryAttrs} size="sm">
         <tbody>
           <tr>
-            <th scope="row">Publisher</th>
-            <td>{getShortString(publisher, 1)}</td>
+            <th scope="row">Year published</th>
+            <td>{yearPublished}</td>
           </tr>
           <tr>
             <th scope="row">Designer</th>
             <td>{getShortString(designer, 3)}</td>
           </tr>
           <tr>
+            <th scope="row">Artists</th>
+            <td>
+              {getShortString(artist, 2)}
+            </td>
+          </tr>
+          <tr>
+            <th scope="row">Publisher</th>
+            <td>{getShortString(publisher, 1)}</td>
+          </tr>
+          <tr>
             <th scope="row">Player count</th>
             <td>
               {playerCountMin}
               {playerCountMin !== playerCountMax && ` - ${playerCountMax}`}
-            </td>
-          </tr>
-          <tr>
-            <th scope="row">Artists</th>
-            <td>
-              {getShortString(artist, 2)}
             </td>
           </tr>
         </tbody>

@@ -7,6 +7,7 @@ export * from './lib/take/takeRankings'
 export * from './lib/take/takeRanking'
 
 export * from './lib/calc/tagGameList'
+export * from './lib/calc/getDeterminantOption'
 
 export * from './lib/firebase/storage'
 

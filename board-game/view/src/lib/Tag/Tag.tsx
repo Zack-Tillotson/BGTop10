@@ -1,5 +1,5 @@
-import {TagTitle, GameList, GameBriefList, GameImageList} from 'board-game-ui'
-import {takeTag} from 'board-game-data'
+import {TagTitle, GameList, GameImageList} from 'board-game-ui'
+import {takeTag, getDeterminantOption} from 'board-game-data'
 import {PageContent} from 'core-ui'
 
 import styles from './Tag.module.scss'
@@ -7,6 +7,9 @@ import styles from './Tag.module.scss'
 export interface TagProps {
   tagSlug: string,
 }
+
+type VARIANT_TYPE = 'A'|'B'|'C'|'D'
+const VARIANTS = ['A', 'B', 'C', 'D']
 
 export async function Tag({tagSlug}: TagProps) {
   const data = await takeTag(tagSlug, true)
@@ -19,9 +22,11 @@ export async function Tag({tagSlug}: TagProps) {
         <GameImageList
           className={styles.images}
           gamesList={data.gamesList}
+          variant={getDeterminantOption(tagSlug, VARIANTS) as unknown as VARIANT_TYPE}
+          sizes="(max-width: 500px) 275px, 550px"
         />
         <TagTitle {...data?.tag} className={styles.title} />
-        <GameList gamesList={data.gamesList} className={styles.gamesList} isScoreDisplayed={false} /> 
+        <GameList gamesList={data.gamesList} className={styles.gamesList} isScoreDisplayed={false} isRankingDisplayed /> 
       </div>
     </PageContent>
   )

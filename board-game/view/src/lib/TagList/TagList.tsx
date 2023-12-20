@@ -1,6 +1,6 @@
 import Link from 'next/link';
 
-import { takeTags} from 'board-game-data' 
+import { takeTags, getDeterminantOption } from 'board-game-data' 
 import { TagHighlight } from 'board-game-ui';
 
 import styles from './TagList.module.scss'
@@ -25,7 +25,7 @@ export async function TagList({linkRoot = ''}: TagListProps) {
                 tag={tag}
                 gamesList={gamesList}
                 className={styles.item}
-                variant={VARIANTS[index % VARIANTS.length] as unknown as VARIANT_TYPE} />
+                variant={getDeterminantOption(tag.slug, VARIANTS) as unknown as VARIANT_TYPE} />
             </Link>
             <hr />
           </li>

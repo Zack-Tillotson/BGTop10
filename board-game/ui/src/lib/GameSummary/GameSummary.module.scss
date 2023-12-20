@@ -1,6 +1,7 @@
 .container {
   display: grid;
   grid-template-areas:
+    "ranking"
     "primary"
     "image"
     "secondary";
@@ -9,19 +10,18 @@
 
   @media (min-width: 1024px) {
     grid-template-areas:
-      "image primary secondary"
-      "image primary secondary";
-    grid-template-columns: auto 1fr 1fr;
+      "ranking image primary secondary"
+      "ranking image primary secondary";
+    grid-template-columns: auto auto 1fr 1fr;
     grid-template-rows: auto 1fr;
   }
 }
 
-.yearPublished {
-  display: none;
-
-  @media (min-width: 1024px) {
-    display: block;
-  }
+.ranking {
+  grid-area: ranking;
+  font-size: 128px;
+  text-align: center;
+  color: #666;
 }
 
 .imageContainer {
