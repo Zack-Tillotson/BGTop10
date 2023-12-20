@@ -29,7 +29,7 @@ export async function saveGame(game: Game) {
 function buildSrcSet(publicUrl: string, ...sizes: number[]) {
   return sizes.reduce((srcSet, size) => ({
     ...srcSet,
-    [size]: `${publicUrl.slice(0, -4)}_${size}x${size}.jpg`,
+    [size]: `${publicUrl.slice(0, -4)}_${size}x${size}.webp`,
   }), {})
 }
 
