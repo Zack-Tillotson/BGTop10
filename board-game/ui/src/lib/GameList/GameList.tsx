@@ -8,8 +8,8 @@ import styles from './GameList.module.scss'
 export interface GameListProps {
   gamesList: RankedGameList,
   className?: string,
-  isScoreDisplayed: boolean,
-  isRankingDisplayed: boolean,
+  isScoreDisplayed?: boolean,
+  isRankingDisplayed?: boolean,
 }
 
 export function GameList({
