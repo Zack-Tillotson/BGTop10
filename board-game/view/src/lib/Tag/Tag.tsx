@@ -25,8 +25,8 @@ export async function Tag({tagSlug}: TagProps) {
           variant={getDeterminantOption(tagSlug, VARIANTS) as unknown as VARIANT_TYPE}
           sizes="(max-width: 500px) 275px, 550px"
         />
-        <TagTitle {...data?.tag} className={styles.title} />
-        <GameList gamesList={data.gamesList} className={styles.gamesList} isScoreDisplayed={false} isRankingDisplayed /> 
+        <TagTitle {...data?.tag} minimal className={styles.title} />
+        <GameList title={data?.tag?.pageTitle}gamesList={data.gamesList} className={styles.gamesList} isScoreDisplayed={false} isRankingDisplayed /> 
       </div>
     </PageContent>
   )

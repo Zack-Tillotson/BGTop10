@@ -1,5 +1,5 @@
 import './lib/styles.scss'
-import '@fontsource/inter';
+// import '@fontsource/inter';
 
 export * from './lib/TagTitle'
 export * from './lib/TagSummary'

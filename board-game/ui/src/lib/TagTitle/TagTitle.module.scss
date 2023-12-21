@@ -1,4 +1,7 @@
 .tags {
+  display: flex;
+  flex-flow: row wrap;
+
   list-style: none;
   margin: 0;
   padding: 0;
@@ -11,7 +14,14 @@
   margin-right: 4px;
 
   background: var(--color-secondary, #fda916);
+  border: solid 1px #fff;
   color: #000;
+}
+
+.tagMinor {
+  border: solid 1px var(--color-secondary, #fda916);
+  background: none;
+  color: #444;
 }
 
 .title {

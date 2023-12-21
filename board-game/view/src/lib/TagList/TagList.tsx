@@ -20,7 +20,7 @@ export async function TagList({linkRoot = ''}: TagListProps) {
       <ul className={styles.container}>
         {tags.map(({tag, gamesList}, index) => (
           <li key={tag.id} className={styles.li}>
-            <Link href={`${linkRoot}/${tag.slug}`} aria-label={`${tag.pageTitle} ${tag.introduction}`} className={styles.link}>
+            <Link href={`${linkRoot}/${tag.slug}`} className={styles.link}>
               <TagHighlight
                 tag={tag}
                 gamesList={gamesList}

@@ -19,9 +19,14 @@
 
 .ranking {
   grid-area: ranking;
-  font-size: 128px;
+  font-size: 64px;
   text-align: center;
-  color: #666;
+  color: #09274e;
+  background: var(--color-secondary, #fda916);
+  border-radius: 100%;
+  aspect-ratio: 1;
+  width: 96px;
+  margin: 0 auto;
 }
 
 .imageContainer {
@@ -31,12 +36,21 @@
 
 .image {
   display: inline-block;
-  height: 150px;
   margin: 0 auto;
+  max-height: 200px;
+
+  @media (min-width: 1024px) {
+    width: 150px;
+  }
 }
 
 .primaryAttrs {
   grid-area: primary;
+  text-align: center;
+
+  @media (min-width: 1024px) {
+    text-align: left;
+  }
 }
 
 .secondaryAttrs {
