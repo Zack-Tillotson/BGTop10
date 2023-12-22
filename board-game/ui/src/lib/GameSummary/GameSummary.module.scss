@@ -19,13 +19,13 @@
 
 .ranking {
   grid-area: ranking;
-  font-size: 64px;
+  font-size: 32px;
   text-align: center;
   color: #09274e;
   background: var(--color-secondary, #fda916);
   border-radius: 100%;
   aspect-ratio: 1;
-  width: 96px;
+  max-width: 50px;
   margin: 0 auto;
 }
 

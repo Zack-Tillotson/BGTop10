@@ -1,3 +1,7 @@
+.tagSection {
+  display: flex;
+  flex-flow: row nowrap;
+}
 .tags {
   display: flex;
   flex-flow: row wrap;
@@ -5,23 +9,31 @@
   list-style: none;
   margin: 0;
   padding: 0;
+  font-size: 12px;
+}
+
+.tagTitle {
+  margin: 0;
+  padding: 0;
+  font-size: 12px;
+  font-weight: bold;
+  display: inline-block;
+  margin-right: 8px;
+  color: #09274e;
 }
 
 .tag {
   display: inline-block;
-
-  padding: 2px 4px;
+  
+  padding: 0;
   margin-right: 4px;
-
-  background: var(--color-secondary, #fda916);
-  border: solid 1px #fff;
-  color: #000;
+  color: #666;
 }
 
-.tagMinor {
-  border: solid 1px var(--color-secondary, #fda916);
-  background: none;
-  color: #444;
+.tagBar::after {
+  content: ' | ';
+  margin: 0 8px;
+  color: #ccc;
 }
 
 .title {

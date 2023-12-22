@@ -56,28 +56,28 @@ export function GameFull({
             rel="noreferrer"
             className={styles.link}
           >
-            Board Game Geek
+            Board Game Geek <span className={styles.externalLinkIcon}>↗</span>
           </a>
         </div>
-        <Typography level="h2">Details</Typography>
+        <Typography level="h2" className={styles.detailsTitle}>Details</Typography>
         <dl className={styles.detailTable}>
-          <dt>Publisher</dt>
-          <dd>{renderDetailArray(publisher, 1, isBrief)}</dd>
-
           <dt>Year published</dt>
           <dd>{yearPublished}</dd>
 
           <dt>Designer</dt>
           <dd>{renderDetailArray(designer, 3, isBrief)}</dd>
-              
+    
+          <dt>Artists</dt>
+          <dd>{renderDetailArray(artist, 2, isBrief)}</dd>
+
           <dt>Player count</dt>
           <dd>
             {playerCountMin}
             {playerCountMin !== playerCountMax && ` - ${playerCountMax}`}
           </dd>
-              
-          <dt>Artists</dt>
-          <dd>{renderDetailArray(artist, 2, isBrief)}</dd>
+
+          <dt>Publisher</dt>
+          <dd>{renderDetailArray(publisher, 1, isBrief)}</dd>
 
           <dt>Mechanics</dt>
           <dd>{renderDetailArray(mechanic, 4, isBrief)}</dd>

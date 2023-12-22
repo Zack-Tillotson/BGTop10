@@ -17,11 +17,20 @@ export function TagTitle({
 }: TagProps) {
   return (
     <section className={className}>
-      <ul className={styles.tags}>
-        <li><div className={styles.tag}>Top 10 list</div></li>
-        <li><div className={styles.tag + ' ' + styles.tagMinor}>Community ranked</div></li>
-        <li><div className={styles.tag + ' ' + styles.tagMinor}>YouTube</div></li>
-      </ul>
+      <section className={styles.tagSection}>
+        <h2 className={styles.tagTitle}>Categories: </h2>
+        <ul className={styles.tags}>
+          <li>
+            <div className={styles.tag + ' ' + styles.tagBar}>Top 10 list</div>
+          </li>
+          <li>
+            <div className={styles.tag + ' ' + styles.tagBar}>Community ranked</div>
+          </li>
+          <li>
+            <div className={styles.tag}>YouTube</div>
+          </li>
+        </ul>
+      </section>
       {!minimal && (
         <Typography level="h2" className={styles.title}>{pageTitle}</Typography>
       )}
