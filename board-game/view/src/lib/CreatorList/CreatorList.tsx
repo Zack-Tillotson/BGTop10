@@ -7,7 +7,7 @@ import { CreatorBrief } from 'board-game-ui';
 import styles from './CreatorList.module.scss'
 
 export async function CreatorList() {
-  const list = await takeCreators({orderBy: ['name', 'asc']})
+  const list = await takeCreators({orderBy: ['name', 'asc'], maxCount: -1})
 
   return (
     <section>

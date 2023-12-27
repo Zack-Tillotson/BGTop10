@@ -7,7 +7,7 @@ import { RankingBrief } from 'board-game-ui';
 import styles from './RankingList.module.scss'
 
 export async function RankingList() {
-  const list = await takeRankings({orderBy: ['datePublished', 'desc']})
+  const list = await takeRankings({orderBy: ['datePublished', 'desc'], maxCount: -1})
 
   return (
     <section>

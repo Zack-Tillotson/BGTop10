@@ -12,7 +12,7 @@ interface RankingFormViewProps {
 export async function RankingFormView({slug}: RankingFormViewProps) {
   const ranking = await takeRanking(slug)
   const tags = await takeTags(false, {orderBy: ['priority', 'desc']})
-  const creators = await takeCreators()
+  const creators = await takeCreators({maxCount: -1})
 
   const cleanedUpTags = tags.map(({tag, gamesList}) => ({tag, gamesList: gamesList.map(({game}) => game)}))
 
