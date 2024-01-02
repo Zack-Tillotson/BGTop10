@@ -15,7 +15,6 @@ export interface GameListProps {
 }
 
 export function GameList({
-  title = '',
   gamesList,
   className = '',
   isScoreDisplayed = false,
@@ -23,7 +22,7 @@ export function GameList({
 }: GameListProps) {
   return (
     <section className={className}>
-      <Typography level="h2" className={styles.title}>The list: top 10 games</Typography>
+      <Typography level="h2" className={styles.title} id="game-list">The list: top {gamesList.length} games</Typography>
       <ol className={styles.ol}>
         {gamesList.map(({game, count, bggId}, index) => {
           const extraTitle = isScoreDisplayed ? `${gamesList.length - index}. (${count} pts)` : ''

@@ -1,6 +1,7 @@
 export interface Ranking {
   id?: string,
   creator: string,
+  creatorObj?: Creator,
   name: string,
   slug: string,
   datePublished: string,

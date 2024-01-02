@@ -52,3 +52,21 @@
   border: solid 1px #ccc;
   color: #555;
 }
+
+.detailsTitle {
+  font-weight: bold;
+}
+
+.detailsText {
+  margin: 8px 0;
+}
+
+.detailsLink {
+  margin: 0 auto;
+  padding: 8px 0;
+}
+
+.detailsLinkInner {
+  display: inline-block;
+  border-bottom: solid 1px var(--color-secondary, orange);
+}

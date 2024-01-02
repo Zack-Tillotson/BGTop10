@@ -2,6 +2,7 @@ import Typography from '@mui/joy/Typography'
 
 import styles from './TagTitle.module.scss'
 import { Tag } from 'board-game-data';
+import Link from 'next/link';
 
 export interface TagProps extends Partial<Tag> {
   className?: string,
@@ -12,6 +13,7 @@ export function TagTitle({
   pageTitle = '',
   pageSubtitle = '',
   introduction,
+  slug,
   className = '',
   minimal = false,
 }: TagProps) {
@@ -37,7 +39,19 @@ export function TagTitle({
       {!minimal && (
         <Typography level="body-lg" className={styles.subtitle}>{pageSubtitle}</Typography>
       )}
-      <div className={styles.details}>The games on this list have been calculated by aggregating many public board game rankings. They represent an overall picture of the board game scene and do not represent any one person's opinion.</div>
+      <section className={styles.details}>
+        <h2 className={styles.detailsTitle}>How is this list made?</h2>
+        <p className={styles.detailsText}>
+          The games on this list have been calculated by aggregating many public Top 10 rankings from YouTube. They represent an overall picture of the board game scene and do not represent any one person's opinion. Check out the full list of rankings below.
+        </p>
+        {!!slug && (
+          <Link href={`/rankings/${slug}/`} className={styles.detailsLink}>
+            <span className={styles.detailsLinkInner}>
+              View the Top 10 rankings
+            </span>
+          </Link>
+        )}
+      </section>
       <Typography level="body-md" className={styles.description}>{introduction}</Typography>
     </section>
   )

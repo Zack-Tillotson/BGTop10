@@ -8,5 +8,5 @@ export async function takeRankings(queryOptions?: QueryOptions) {
 
   const creators = await Promise.all(list.map(({creator}) => takeCreatorById(creator)))
 
-  return list.map((ranking, index) => ({...ranking, creator: creators[index]?.name || ''}))
+  return list.map((ranking, index) => ({...ranking, creatorObj: creators[index]}))
 }

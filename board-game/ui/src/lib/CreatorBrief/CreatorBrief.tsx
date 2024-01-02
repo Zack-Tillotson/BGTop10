@@ -10,12 +10,13 @@ interface CreatorProps extends Creator {
 
 export function CreatorBrief({
   name,
-  imageBanner,
+  imageAvatar,
   className = '',
 }: CreatorProps) {
   return (
-    <div className={styles.container} style={{backgroundImage: `url('${imageBanner}')`}}>
-      <Typography className={className + ' ' + styles.name}>
+    <div className={className + ' ' + styles.container}>
+      <img width={35} height={35} className={styles.image} src={imageAvatar} alt={`YouTube channel avatar`} />
+      <Typography className={styles.name}>
         {name}
       </Typography>
     </div>

@@ -3,23 +3,44 @@ import Typography from '@mui/joy/Typography'
 import {Ranking} from 'board-game-data'
 
 import styles from './RankingBrief.module.scss'
+import { CreatorBrief } from '../CreatorBrief';
 
 interface RankingProps extends Ranking {
   className?: string,
+  isExternalLink?: boolean,
 }
 
 export function RankingBrief({
   name,
   datePublished,
-  creator,
+  creatorObj,
+  link,
   className = '',
+  isExternalLink = false,
 }: RankingProps) {
   return (
-    <div className={styles.container}>
-      <Typography level="h3" className={className + ' ' + styles.name}>
+    <div className={className + ' ' + styles.container}>
+      <Typography level="h3" className={styles.name}>
         {name}
       </Typography>
-      <Typography className={styles.details}><b>{creator}</b>, published {datePublished}</Typography>
+      <Typography level="body-md" className={styles.date}>
+        Published: {datePublished}
+      </Typography>
+      {!!creatorObj && (
+        <CreatorBrief {...creatorObj} className={styles.creator} />
+      )}
+      {isExternalLink && (
+        <a 
+          href={link} 
+          target="_blank"
+          rel="noreferrer"
+          className={styles.link}
+        >
+          <span className={styles.linkInner}>
+            View on YouTube
+          </span>
+        </a>
+      )}
     </div>
   )
 }

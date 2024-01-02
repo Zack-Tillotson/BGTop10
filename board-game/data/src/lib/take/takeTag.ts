@@ -44,11 +44,12 @@ export async function saveGamesForTag(slug: string, rankedGameIds: RankedGameIdL
   return true
 }
 
-export async function getGamesForTag(slug: string): Promise<RankedGameList> {
+export async function getGamesForTag(slug: string, isShortList = true): Promise<RankedGameList> {
   const rankedGameIdResult = await get('tagGameIdList', slug)
   if(!rankedGameIdResult.exists) return []
 
-  const rankedGameIds = rankedGameIdResult.data()?.rankedGameIds.slice(-10) as RankedGameIdList
+  const fullRankedGameIds = rankedGameIdResult.data()?.rankedGameIds as RankedGameIdList
+  const rankedGameIds = isShortList ? fullRankedGameIds.slice(-10) : fullRankedGameIds
   const gameList = getGameListFromIds(rankedGameIds)
   return gameList
 }
@@ -73,14 +74,16 @@ export async function getGameListFromIds(gameIdList: RankedGameIdList) {
   return rankedGameList
 }
 
-export async function takeTag(slug: string, withGames: boolean) {
-  if(!slug) return {tag: undefined, gamesList: []}
+export async function takeTag(slug: string|undefined, withGames: boolean, isShortList = true) {
+  if(!slug || slug === 'rankings') { // XXX weird routing issue
+    return {tag: undefined, gamesList: []}
+  } 
 
   const tag = await getTag(slug)
   
   let gamesList = [] as RankedGameList
   if(withGames) {
-    gamesList = await getGamesForTag(slug)
+    gamesList = await getGamesForTag(slug, isShortList)
   }
 
   return {tag, gamesList}

@@ -1,7 +1,37 @@
+.container {
+  display: grid;
+  grid-template-areas:
+    "name"
+    "date"
+    "creator";
+  grid-template-rows: auto 1fr auto;
+
+  @media (min-width: 1024px) {
+    grid-template-areas:
+    "name creator"
+    "date creator";
+    grid-template-columns: 1fr 1fr;
+  }
+}
+
 .name {
+  grid-area: name;
   font-size: 16px;
 }
 
-.details {
-  margin-left: 8px;
+.date {
+  grid-area: date;
+}
+
+.creator {
+  grid-area: creator;
+}
+
+.link {
+}
+
+.linkInner {
+  padding: 4px;
+  color: #666;
+  border-bottom: solid 1px var(--color-secondary, orange);
 }
