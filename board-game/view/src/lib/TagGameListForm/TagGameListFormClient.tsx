@@ -1,6 +1,6 @@
 'use client'
 
-import {Button, ButtonGroup, Chip, ChipPropsColorOverrides} from '@mui/joy'
+import {Button, ButtonGroup, Chip} from '@mui/joy'
 import { useTagRankedGameList, RankedGameList, HOOK_STATE } from 'board-game-data/client';
 import { GameList } from 'board-game-ui';
 

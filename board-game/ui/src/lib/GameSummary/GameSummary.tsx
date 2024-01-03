@@ -32,7 +32,7 @@ export function GameSummary({
     <div className={styles.container}>
       <div className={styles.ranking}>{ranking}</div>
       <div className={styles.imageContainer}>
-        <img src={imageThumbnail} alt={name} className={styles.image} />
+        <img src={imageThumbnail} alt={name} className={styles.image} loading="lazy" />
       </div>
       <div className={styles.primaryAttrs}>
         <Typography level="h3" id={`game-${bggId}`}>

@@ -12,12 +12,7 @@ export const metadata = {
   description: 'Ranking the best board games annually',
 };
 
-const gTagCode = process.env.NODE_ENV === 'production' ? `
-  window.dataLayer = window.dataLayer || [];
-  function gtag(){dataLayer.push(arguments);}
-  gtag('js', new Date());
-  gtag('config', 'G-FDCF5PR7L4');
-  ` : ''
+const isProd = process.env.NODE_ENV === 'production'
 
 export default function RootLayout({
   children,
@@ -33,16 +28,19 @@ export default function RootLayout({
         <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png" />
         <link rel="manifest" href="/site.webmanifest" />
         <link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5" />
-      </head>
-      <body>
         <Script
           src="https://www.googletagmanager.com/gtag/js?id=G-FDCF5PR7L4"
-          strategy="afterInteractive" />
-        <Script
-          id="google-analytics"
-          strategy="afterInteractive">
-          {gTagCode}
-        </Script>
+          defer 
+        />
+        {isProd && (
+          <Script
+            src="/analytics.js"
+            defer
+            id="google-analytics"
+          />
+        )}
+      </head>
+      <body>
         <div className={styles.container}>
           <nav className={styles.contents}>
             <Link href="/">
