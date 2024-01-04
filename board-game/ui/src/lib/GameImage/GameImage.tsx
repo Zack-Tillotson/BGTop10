@@ -36,6 +36,8 @@ export function GameImage({
       src={src}
       srcSet={srcSetString}
       sizes={sizesString}
+      width="550"
+      height="550"
       className={`${className} ${styles.container}`}
       alt={'Game poster'}
     />
