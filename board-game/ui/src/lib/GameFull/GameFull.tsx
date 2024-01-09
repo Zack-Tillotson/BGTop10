@@ -49,16 +49,6 @@ export function GameFull({
         </div>
       )}
       <section className={styles.details}>
-        <div>
-          <a 
-            href={`https://boardgamegeek.com/boardgame/${bggId}`} 
-            target="_blank"
-            rel="noreferrer"
-            className={styles.link}
-          >
-            Board Game Geek <span className={styles.externalLinkIcon}>↗</span>
-          </a>
-        </div>
         <Typography level="h2" className={styles.detailsTitle}>Details</Typography>
         <dl className={styles.detailTable}>
           <dt>Year published</dt>
@@ -82,6 +72,18 @@ export function GameFull({
           <dt>Mechanics</dt>
           <dd>{renderDetailArray(mechanic, 4, isBrief)}</dd>
         </dl>
+      </section>
+
+      <section className={styles.link}>
+        <Typography level="h2">More information</Typography>
+        <a 
+          href={`https://boardgamegeek.com/boardgame/${bggId}`} 
+          target="_blank"
+          rel="noreferrer"
+          className={styles.linkAnchor}
+        >
+          Board Game Geek <span className={styles.externalLinkIcon}>↗</span>
+        </a>
       </section>
             
       <Typography className={styles.description}>{description}</Typography>

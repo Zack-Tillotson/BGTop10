@@ -58,6 +58,10 @@
 }
 
 .link {
+  grid-area: link;
+}
+
+.linkAnchor {
   display: block;
   background: var(--color-secondary);
   color: white;

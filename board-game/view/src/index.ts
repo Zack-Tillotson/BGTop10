@@ -10,6 +10,7 @@ export * from './lib/TagGameListForm'
 export * from './lib/CreatorList'
 export * from './lib/CreatorFormView'
 
+export * from './lib/Game'
 export * from './lib/GameSearch'
 export * from './lib/GameFormView'
 export * from './lib/GameImageView'

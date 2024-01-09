@@ -1,9 +1,6 @@
-import Link from 'next/link';
-import {PageContent} from 'core-ui'
-
-import styles from './page.module.scss';
-import { takeGame, takeTags } from 'board-game-data';
-import { GameFull } from 'board-game-ui';
+import styles from './page.module.scss'
+import {takeTags} from 'board-game-data'
+import { Game } from 'board-game-view'
 
 interface GameProps {
   params: {
@@ -26,13 +23,7 @@ export async function generateStaticParams() {
 }
 
 export default async function Index({params: {bggId}}: GameProps) {
-  const game = await takeGame(Number(bggId))
-
-  if(!game) throw new Error('Game not found')
-
   return (
-    <PageContent title={game.name} subtitle={`(${game?.yearPublished})`}>
-      <GameFull {...game} isBrief={false} />
-    </PageContent>
-  );
+    <Game bggId={bggId} />
+  )
 }
