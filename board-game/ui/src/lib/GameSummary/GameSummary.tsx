@@ -1,6 +1,7 @@
 import Typography from '@mui/joy/Typography'
 import { Card, Table } from '@mui/joy'
 
+import {GameImage} from 'board-game-ui'
 import {Game} from 'board-game-data'
 
 import styles from './GameSummary.module.scss'
@@ -26,13 +27,14 @@ export function GameSummary({
   bggId,
   playerCountMin,
   playerCountMax,
-  imageThumbnail,
+  image,
+  imageSrcSet,
 }: GameSummaryProps) {
   return (
     <div className={styles.container}>
       <div className={styles.ranking}>{ranking}</div>
       <div className={styles.imageContainer}>
-        <img src={imageThumbnail} alt={name} className={styles.image} loading="lazy" />
+        <GameImage className={styles.image} src={image} srcSet={imageSrcSet} sizes="275px" />
       </div>
       <div className={styles.primaryAttrs}>
         <Typography level="h3" id={`game-${bggId}`}>
