@@ -18,7 +18,7 @@ export async function POST(request: Request) {
     throw new Error(`Invalid tag slug, received ${contentObject}`)
   }
 
-  const {gamesList} = await takeTag(slug, true)
+  const {gamesList} = await takeTag(slug, true, false)
   
   for(let i = 0 ; i < gamesList.length ; i++) {
     const {game: {bggId}} = gamesList[i]

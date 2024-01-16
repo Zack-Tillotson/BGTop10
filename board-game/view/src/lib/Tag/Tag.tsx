@@ -41,7 +41,7 @@ export async function Tag({tagSlug, isShortList = true}: TagProps) {
           )}
           <Link
             className={styles.gameListLink}
-            href={`/${data?.tag?.slug}/${isShortList ? 'full/' : ''}#game-list`}>
+            href={`/${data?.tag?.slug}/${isShortList ? 'full' : ''}#game-list`}>
             View {isShortList ? 'full' : 'short'} list
           </Link>
         </div>
