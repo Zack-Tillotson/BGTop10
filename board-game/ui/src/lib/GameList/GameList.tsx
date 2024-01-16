@@ -36,7 +36,7 @@ export function GameList({
           }
           return (
             <li key={bggId} className={styles.li}>
-              <Link href={`/game/${bggId}/`} className={styles.anchor}>
+              <Link href={`/game/${bggId}`} className={styles.anchor}>
                 <GameSummary {...game} extraTitle={extraTitle} ranking={ranking} />
               </Link>
             </li>
