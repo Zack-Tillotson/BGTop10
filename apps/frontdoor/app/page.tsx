@@ -1,8 +1,6 @@
-import { getTag } from 'board-game-data'
-
 import styles from './page.module.scss'
 
-import {Home} from 'board-game-view'
+import {Home} from 'board-game-view/Home'
 
 export async function generateMetadata() {
   return {

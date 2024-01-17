@@ -15,11 +15,11 @@
     "skipDefaultLibCheck": true,
     "baseUrl": ".",
     "paths": {
-      "board-game-data": ["board-game/data/src/index.ts"],
-      "board-game-data/client": ["board-game/data/src/client.ts"],
-      "board-game-ui": ["board-game/ui/src/index.ts"],
-      "board-game-view": ["board-game/view/src/index.ts"],
-      "core-ui": ["core/ui/src/index.ts"]
+      "board-game-data/*": ["board-game/data/src/lib/*"],
+      "board-game-datatypes": ["board-game/data/src/dataTypes.ts"],
+      "board-game-ui/*": ["board-game/ui/src/lib/*"],
+      "board-game-view/*": ["board-game/view/src/lib/*"],
+      "core-ui/*": ["core/ui/src/lib/*"]
     }
   },
   "exclude": ["node_modules", "tmp"]

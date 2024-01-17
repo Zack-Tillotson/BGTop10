@@ -1,4 +1,4 @@
-import { takeTag, updateGameHostedImage } from 'board-game-data'
+import { takeTag, updateGameHostedImage } from 'board-game-data/take'
 import { NextResponse } from 'next/server'
 
 export async function POST(request: Request) {

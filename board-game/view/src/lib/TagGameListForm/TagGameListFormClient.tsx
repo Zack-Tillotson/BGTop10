@@ -1,8 +1,11 @@
 'use client'
 
-import {Button, ButtonGroup, Chip} from '@mui/joy'
-import { useTagRankedGameList, RankedGameList, HOOK_STATE } from 'board-game-data/client';
-import { GameList } from 'board-game-ui';
+import Button from '@mui/joy/Button'
+import ButtonGroup from '@mui/joy/ButtonGroup'
+import Chip from '@mui/joy/Chip'
+import { RankedGameList } from 'board-game-datatypes';
+import { useTagRankedGameList, HOOK_STATE } from 'board-game-data/hooks/useTagRankedGameList';
+import { GameList } from 'board-game-ui/GameList';
 
 import styles from './TagGameListForm.module.scss'
 

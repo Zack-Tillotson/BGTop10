@@ -2,7 +2,7 @@ import Link from 'next/link';
 
 import styles from './CreatorFormView.module.scss';
 
-import { takeCreator } from 'board-game-data';
+import { takeCreator } from 'board-game-data/take';
 import CreatorFormClient from './CreatorFormClient';
 
 interface CreatorFormViewProps {

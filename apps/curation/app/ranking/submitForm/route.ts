@@ -1,4 +1,5 @@
-import { Ranking, saveRanking } from 'board-game-data'
+import { saveRanking } from 'board-game-data/take'
+import {Ranking} from 'board-game-datatypes'
 import { NextResponse } from 'next/server'
 
 export async function POST(request: Request) {

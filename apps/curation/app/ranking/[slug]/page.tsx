@@ -1,9 +1,9 @@
 import Link from 'next/link';
-import {PageContent} from 'core-ui'
+import {PageContent} from 'core-ui/PageContent'
 
 import styles from './page.module.scss';
-import { takeRanking } from 'board-game-data';
-import { RankingFull } from 'board-game-ui';
+import { takeRanking } from 'board-game-data/take';
+import { RankingFull } from 'board-game-ui/RankingFull';
 
 interface RankingProps {
   params: {

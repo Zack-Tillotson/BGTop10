@@ -1,10 +1,19 @@
 'use client'
 
-import { Button, FormControl, FormLabel, Input, Textarea, Select, Option, Table, Card } from '@mui/joy'
-import {Creator, RankingFormDataType, Tag} from 'board-game-data/client'
+import { SyntheticEvent, ChangeEventHandler} from 'react'
+import Select from '@mui/joy/Select'
+import Option from '@mui/joy/Option'
+import Table from '@mui/joy/Table'
+import Card from '@mui/joy/Card'
+import Button from '@mui/joy/Button'
+import FormControl from '@mui/joy/FormControl'
+import FormLabel from '@mui/joy/FormLabel'
+import Input from '@mui/joy/Input'
+import Textarea from '@mui/joy/Textarea'
+
+import {Creator, RankingFormDataType, Tag} from 'board-game-datatypes'
 
 import styles from './RankingForm.module.scss'
-import { SyntheticEvent, ChangeEventHandler} from 'react'
 
 interface RankingFormProps {
   tags: {tag: Tag}[],

@@ -1,0 +1,7 @@
+export * from './takeCreator'
+export * from './takeCreators'
+export * from './takeGame'
+export * from './takeRanking'
+export * from './takeRankings'
+export * from './takeTag'
+export * from './takeTags'

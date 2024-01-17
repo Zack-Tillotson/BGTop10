@@ -1,6 +1,6 @@
-import {PageContent} from 'core-ui'
-import { takeCreator } from 'board-game-data';
-import { CreatorFormView } from 'board-game-view';
+import {PageContent} from 'core-ui/PageContent'
+import { takeCreator } from 'board-game-data/take';
+import { CreatorFormView } from 'board-game-view/CreatorFormView';
 
 import styles from './page.module.scss';
 

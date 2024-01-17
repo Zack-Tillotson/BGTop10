@@ -1,6 +1,6 @@
 import Typography from '@mui/joy/Typography'
 
-import {Game} from 'board-game-data'
+import {Game} from 'board-game-datatypes'
 import { GameImage } from '../GameImage'
 
 import styles from './GameFull.module.scss'

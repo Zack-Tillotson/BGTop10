@@ -1,6 +1,6 @@
 'use client'
 
-import { Creator, Ranking } from "board-game-data/client";
+import { Creator, Ranking } from "board-game-datatypes"
 import { useRouter } from "next/navigation";
 import { ChangeEvent, SyntheticEvent, useCallback, useState } from "react";
 import { submitForm } from "../fetch/submitForm";

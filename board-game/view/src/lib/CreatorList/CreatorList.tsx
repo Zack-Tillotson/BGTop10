@@ -1,8 +1,8 @@
-import { Typography } from '@mui/joy';
+import Typography from '@mui/joy/Typography';
 import Link from 'next/link';
 
-import { takeCreators} from 'board-game-data' 
-import { CreatorBrief } from 'board-game-ui';
+import { takeCreators} from 'board-game-data/take' 
+import { CreatorBrief } from 'board-game-ui/CreatorBrief';
 
 import styles from './CreatorList.module.scss'
 

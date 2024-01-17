@@ -1,9 +1,9 @@
 import Link from 'next/link'
+import Typography from '@mui/joy/Typography'
 import {GameSummary} from '../GameSummary'
-import {RankedGameList} from 'board-game-data'
+import {RankedGameList} from 'board-game-datatypes'
 
 import styles from './GameList.module.scss'
-import { Typography } from '@mui/joy'
 
 /* eslint-disable-next-line */
 export interface GameListProps {

@@ -1,6 +1,6 @@
 import Typography from '@mui/joy/Typography'
 
-import {Creator} from 'board-game-data'
+import {Creator} from 'board-game-datatypes'
 
 import styles from './CreatorBrief.module.scss'
 

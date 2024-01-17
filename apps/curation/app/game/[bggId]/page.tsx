@@ -1,9 +1,9 @@
 import Link from 'next/link';
-import {PageContent} from 'core-ui'
+import {PageContent} from 'core-ui/PageContent'
 
 import styles from './page.module.scss';
-import { takeGame } from 'board-game-data';
-import { GameFull } from 'board-game-ui';
+import { takeGame } from 'board-game-data/take';
+import { GameFull } from 'board-game-ui/GameFull';
 
 interface GameProps {
   params: {

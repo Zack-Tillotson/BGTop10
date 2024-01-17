@@ -1,4 +1,4 @@
-import { Typography } from '@mui/joy';
+import Typography from '@mui/joy/Typography';
 import styles from './GameSearch.module.scss'
 import {GameSearchClient} from './GameSearchClient'
 

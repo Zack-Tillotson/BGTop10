@@ -1,4 +1,4 @@
-import {RankedGameList} from 'board-game-data'
+import {RankedGameList} from 'board-game-datatypes'
 
 import styles from './GameImageList.module.scss'
 import {GameImage} from '../GameImage'

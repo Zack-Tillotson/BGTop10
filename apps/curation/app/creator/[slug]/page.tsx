@@ -1,9 +1,9 @@
 import Link from 'next/link';
-import {PageContent} from 'core-ui'
+import {PageContent} from 'core-ui/PageContent'
 
 import styles from './page.module.scss';
-import { takeCreator } from 'board-game-data';
-import { CreatorFull } from 'board-game-ui';
+import { takeCreator } from 'board-game-data/take';
+import { CreatorFull } from 'board-game-ui/CreatorFull';
 
 interface CreatorProps {
   params: {

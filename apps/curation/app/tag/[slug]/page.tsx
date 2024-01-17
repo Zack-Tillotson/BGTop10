@@ -1,10 +1,11 @@
 import Link from 'next/link';
-import {Typography} from '@mui/joy'
-import {PageContent} from 'core-ui'
+import Typography from '@mui/joy/Typography'
+import {PageContent} from 'core-ui/PageContent'
 
 import styles from './page.module.scss';
-import { takeTag } from 'board-game-data';
-import { TagFull, GameImageList } from 'board-game-ui';
+import { takeTag } from 'board-game-data/take';
+import { TagFull } from 'board-game-ui/TagFull';
+import { GameImageList } from 'board-game-ui/GameImageList';
 
 interface TagProps {
   params: {

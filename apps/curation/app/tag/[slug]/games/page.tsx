@@ -1,7 +1,6 @@
-import {PageContent} from 'core-ui'
-import { takeTag } from 'board-game-data';
-import { TagGameListForm } from 'board-game-view';
-import { TagBrief } from 'board-game-ui';
+import {PageContent} from 'core-ui/PageContent'
+import { takeTag } from 'board-game-data/take';
+import { TagGameListForm } from 'board-game-view/TagGameListForm';
 
 import styles from './page.module.scss';
 

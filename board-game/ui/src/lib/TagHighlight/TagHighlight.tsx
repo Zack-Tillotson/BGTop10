@@ -1,6 +1,6 @@
 import Typography from '@mui/joy/Typography'
 
-import { RankedGameList, Tag } from 'board-game-data'
+import { RankedGameList, Tag } from 'board-game-datatypes'
 import {GameImageList} from '../GameImageList'
 
 import styles from './TagHighlight.module.scss'

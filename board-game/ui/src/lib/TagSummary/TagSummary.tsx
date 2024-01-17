@@ -1,7 +1,7 @@
 import Typography from '@mui/joy/Typography'
 
 import styles from './TagSummary.module.scss'
-import { RankedGameList, Tag } from 'board-game-data';
+import { RankedGameList, Tag } from 'board-game-datatypes';
 import Link from 'next/link';
 
 export interface TagSummaryProps {

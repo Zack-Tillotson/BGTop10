@@ -1,5 +1,5 @@
 import Link from 'next/link';
-import {PageContent} from 'core-ui'
+import {PageContent} from 'core-ui/PageContent'
 
 import styles from './page.module.scss';
 

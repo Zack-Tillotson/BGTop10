@@ -1,7 +1,10 @@
 'use client'
 
-import { Button, FormControl, FormLabel, Input } from '@mui/joy'
-import {TagFormDataType} from 'board-game-data/client'
+import Button from '@mui/joy/Button'
+import FormControl from '@mui/joy/FormControl'
+import FormLabel from '@mui/joy/FormLabel'
+import Input from '@mui/joy/Input'
+import {TagFormDataType} from 'board-game-datatypes'
 
 import styles from './TagForm.module.scss'
 import { SyntheticEvent, ChangeEventHandler} from 'react'

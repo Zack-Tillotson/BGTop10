@@ -1,10 +1,11 @@
-import { Typography } from '@mui/joy';
+import Typography from '@mui/joy/Typography';
 import Link from 'next/link';
 
-import { Ranking, takeRankings, takeTag} from 'board-game-data'
+import {  takeRankings, takeTag} from 'board-game-data/take'
+import {Ranking} from 'board-game-datatypes'
 
-import { RankingBrief } from 'board-game-ui'
-import { PageContent } from 'core-ui';
+import { RankingBrief } from 'board-game-ui/RankingBrief'
+import { PageContent } from 'core-ui/PageContent';
 
 import styles from './RankingList.module.scss'
 import { QueryOptions } from 'board-game/data/src/lib/firebase/firestore';

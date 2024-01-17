@@ -5,7 +5,7 @@ import './reset.css'
 import './global.scss'
 import styles from './layout.module.scss'
 
-import { ScrollToTop } from 'core-ui';
+import {ScrollToTop} from 'core-ui/ScrollToTop';
 
 export const metadata = {
   title: 'Cardboard SALAD',

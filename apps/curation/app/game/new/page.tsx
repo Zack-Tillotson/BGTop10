@@ -1,8 +1,8 @@
 import Link from 'next/link';
-import {PageContent} from 'core-ui'
+import {PageContent} from 'core-ui/PageContent'
 
 import styles from './page.module.scss';
-import { GameFormView } from 'board-game-view';
+import { GameFormView } from 'board-game-view/GameFormView';
 
 export default async function Index() {
   const breadcrumbs = [{

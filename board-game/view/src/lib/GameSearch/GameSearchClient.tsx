@@ -1,8 +1,9 @@
 'use client'
 
-import {Input, Link} from '@mui/joy'
-import { useGameSearch} from 'board-game-data/client' 
-import { GameBrief } from 'board-game-ui';
+import Input from '@mui/joy/Input'
+import Link from '@mui/joy/Link'
+import { useGameSearch} from 'board-game-data/hooks/useGameSearch' 
+import { GameBrief } from 'board-game-ui/GameBrief';
 
 export function GameSearchClient() {
   

@@ -1,8 +1,8 @@
 import Link from 'next/link';
-import {PageContent} from 'core-ui'
+import {PageContent} from 'core-ui/PageContent'
 
 import styles from './page.module.scss';
-import { CreatorFormView } from 'board-game-view';
+import { CreatorFormView } from 'board-game-view/CreatorFormView';
 
 interface CreatorProps {
   params: {

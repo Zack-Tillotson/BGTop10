@@ -1,6 +1,9 @@
-import {TagTitle, GameList, GameImageList} from 'board-game-ui'
-import {takeTag, getDeterminantOption} from 'board-game-data'
-import {PageContent} from 'core-ui'
+import {TagTitle} from 'board-game-ui/TagTitle'
+import {GameList} from 'board-game-ui/GameList'
+import {GameImageList} from 'board-game-ui/GameImageList'
+import {takeTag} from 'board-game-data/take'
+import {getDeterminantOption} from 'board-game-data/calc/getDeterminantOption'
+import {PageContent} from 'core-ui/PageContent'
 
 import styles from './Tag.module.scss'
 import Link from 'next/link'

@@ -1,10 +1,11 @@
 import Typography from '@mui/joy/Typography'
-import {RankedGameList} from 'board-game-data'
+import Card from '@mui/joy/Card'
+
+import {RankedGameList} from 'board-game-datatypes'
 
 import {GameBrief} from '../GameBrief'
 
 import styles from './GameBriefList.module.scss'
-import { Card } from '@mui/joy'
 
 /* eslint-disable-next-line */
 export interface GameBriefListProps {

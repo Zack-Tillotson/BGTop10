@@ -1,8 +1,8 @@
 import Link from 'next/link';
-import {PageContent} from 'core-ui'
+import {PageContent} from 'core-ui/PageContent'
 
 import styles from './page.module.scss';
-import { TagFormView } from 'board-game-view';
+import { TagFormView } from 'board-game-view/TagFormView';
 
 export default async function Index() {
   const breadcrumbs = [{

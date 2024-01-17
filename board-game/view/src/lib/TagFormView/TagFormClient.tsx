@@ -1,8 +1,10 @@
 'use client'
 
-import {Button} from '@mui/joy'
-import { useTagForm, Tag } from 'board-game-data/client';
-import { TagForm, TagFull } from 'board-game-ui';
+import Button from '@mui/joy/Button'
+import { Tag } from 'board-game-datatypes';
+import { useTagForm } from 'board-game-data/hooks/useTagForm';
+import {TagForm} from 'board-game-ui/TagForm';
+import {TagFull} from 'board-game-ui/TagFull';
 import { ChangeEventHandler } from 'react';
 
 interface TagFormClientProps {

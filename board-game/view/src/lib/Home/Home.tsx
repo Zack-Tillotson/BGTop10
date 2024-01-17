@@ -1,8 +1,8 @@
-import { Typography } from '@mui/joy';
+import Typography from '@mui/joy/Typography';
 import Link from 'next/link';
 
-import {PageContent} from 'core-ui'
-import {TagList} from 'board-game-view'
+import {PageContent} from 'core-ui/PageContent'
+import {TagList} from '../TagList'
 
 export async function Home() {
   return (

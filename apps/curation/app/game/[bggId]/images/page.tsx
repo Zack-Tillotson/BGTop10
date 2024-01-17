@@ -1,8 +1,8 @@
-import {PageContent} from 'core-ui'
-import { takeGame } from 'board-game-data';
+import {PageContent} from 'core-ui/PageContent'
+import { takeGame } from 'board-game-data/take';
 
 import styles from './page.module.scss';
-import { GameImageView } from 'board-game-view';
+import { GameImageView } from 'board-game-view/GameImageView';
 
 interface GameProps {
   params: {

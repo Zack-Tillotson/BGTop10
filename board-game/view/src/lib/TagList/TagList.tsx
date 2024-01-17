@@ -1,7 +1,8 @@
 import Link from 'next/link';
 
-import { takeTags, getDeterminantOption } from 'board-game-data' 
-import { TagHighlight } from 'board-game-ui';
+import { takeTags } from 'board-game-data/take' 
+import { getDeterminantOption } from 'board-game-data/calc/getDeterminantOption' 
+import { TagHighlight } from 'board-game-ui/TagHighlight';
 
 import styles from './TagList.module.scss'
 

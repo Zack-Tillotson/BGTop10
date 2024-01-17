@@ -2,7 +2,7 @@ import Link from 'next/link';
 
 import styles from './GameFormView.module.scss';
 
-import { takeGame } from 'board-game-data';
+import { takeGame } from 'board-game-data/take';
 import GameFormClient from './GameFormClient';
 
 interface GameFormViewProps {

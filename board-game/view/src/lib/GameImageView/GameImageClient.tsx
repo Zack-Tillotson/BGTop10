@@ -1,7 +1,8 @@
 'use client'
 
-import { Game, useGameImage } from 'board-game-data/client' 
-import { GameImage } from 'board-game-ui';
+import { Game } from 'board-game-datatypes' 
+import { useGameImage } from 'board-game-data/hooks/useGameImage' 
+import { GameImage } from 'board-game-ui/GameImage';
 
 import styles from './GameImage.module.scss'
 import { useCallback, useState } from 'react';

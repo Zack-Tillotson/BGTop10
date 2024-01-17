@@ -1,8 +1,7 @@
 import Typography from '@mui/joy/Typography'
-import {GameSummary} from 'board-game-ui'
 
 import styles from './TagBrief.module.scss'
-import { Tag } from 'board-game-data';
+import { Tag } from 'board-game-datatypes';
 
 interface TagBriefProps extends Tag {
   className?: string,

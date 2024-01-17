@@ -1,7 +1,7 @@
-import { Typography } from '@mui/joy';
+import Typography from '@mui/joy/Typography';
 import styles from './GameSearch.module.scss'
 import {GameImageClient} from './GameImageClient'
-import { takeGame } from 'board-game-data';
+import { takeGame } from 'board-game-data/take';
 
 export async function GameImageView({bggId}: {bggId: number}) {
   const game = await takeGame(bggId)

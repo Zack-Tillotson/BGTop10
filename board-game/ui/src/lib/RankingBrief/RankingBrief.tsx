@@ -1,6 +1,6 @@
 import Typography from '@mui/joy/Typography'
 
-import {Ranking} from 'board-game-data'
+import {Ranking} from 'board-game-datatypes'
 
 import styles from './RankingBrief.module.scss'
 import { CreatorBrief } from '../CreatorBrief';

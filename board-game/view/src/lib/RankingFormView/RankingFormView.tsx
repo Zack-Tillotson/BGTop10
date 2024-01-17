@@ -2,7 +2,7 @@ import Link from 'next/link';
 
 import styles from './RankingFormView.module.scss';
 
-import { takeCreators, takeRanking, takeTags } from 'board-game-data';
+import { takeCreators, takeRanking, takeTags } from 'board-game-data/take';
 import RankingFormClient from './RankingFormClient';
 
 interface RankingFormViewProps {

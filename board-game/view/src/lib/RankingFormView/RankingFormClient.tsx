@@ -1,8 +1,11 @@
 'use client'
 
-import { Button } from '@mui/joy'
-import { useRankingForm, Ranking, Tag, Game, Creator, useBggLookup } from 'board-game-data/client';
-import { RankingForm, RankingFull } from 'board-game-ui';
+import Button from '@mui/joy/Button'
+import { Ranking, Tag, Game, Creator } from 'board-game-datatypes';
+import { useBggLookup } from 'board-game-data/hooks/useBggLookup';
+import { useRankingForm } from 'board-game-data/hooks/useRankingForm';
+import { RankingForm } from 'board-game-ui/RankingForm';
+import { RankingFull } from 'board-game-ui/RankingFull';
 import { ChangeEventHandler } from 'react';
 import {BggLookup} from '../BggLookup';
 

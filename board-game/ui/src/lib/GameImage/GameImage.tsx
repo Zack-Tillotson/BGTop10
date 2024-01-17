@@ -1,4 +1,4 @@
-import {Game} from 'board-game-data'
+import {Game} from 'board-game-datatypes'
 
 import styles from './GameImage.module.scss'
 

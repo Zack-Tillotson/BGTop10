@@ -1,6 +1,6 @@
-import {PageContent} from 'core-ui'
-import { takeRanking } from 'board-game-data';
-import { RankingFormView } from 'board-game-view';
+import {PageContent} from 'core-ui/PageContent'
+import { takeRanking } from 'board-game-data/take';
+import { RankingFormView } from 'board-game-view/RankingFormView';
 
 import styles from './page.module.scss';
 

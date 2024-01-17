@@ -1,6 +1,6 @@
 import Link from 'next/link';
-import {PageContent} from 'core-ui'
-import {CreatorList} from 'board-game-view'
+import {PageContent} from 'core-ui/PageContent'
+import {CreatorList} from 'board-game-view/CreatorList'
 
 import styles from './page.module.scss';
 

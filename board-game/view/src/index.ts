@@ -1,5 +1,3 @@
-import 'board-game-ui' // global styles
-
 export * from './lib/Home'
 
 export * from './lib/Tag'

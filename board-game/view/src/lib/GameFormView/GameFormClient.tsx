@@ -1,7 +1,9 @@
 'use client'
-import {Button} from '@mui/joy'
-import { useGameForm, Game } from 'board-game-data/client';
-import { GameForm, GameFull } from 'board-game-ui';
+import Button from '@mui/joy/Button'
+import { Game } from 'board-game-datatypes';
+import { useGameForm } from 'board-game-data/hooks/useGameForm';
+import { GameForm } from 'board-game-ui/GameForm';
+import { GameFull } from 'board-game-ui/GameFull';
 import { ChangeEventHandler } from 'react';
 
 interface GameFormClientProps {

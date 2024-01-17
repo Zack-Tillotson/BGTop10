@@ -1,4 +1,5 @@
-import { RankedGameIdList, buildGamesForTag, getGameListFromIds, saveGamesForTag } from 'board-game-data'
+import { buildGamesForTag, getGameListFromIds, saveGamesForTag } from 'board-game-data/take'
+import {RankedGameIdList} from 'board-game-datatypes'
 import { NextResponse } from 'next/server'
 
 export async function GET(request: Request) {

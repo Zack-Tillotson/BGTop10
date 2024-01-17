@@ -1,5 +1,5 @@
-import {takeTag, takeTags } from 'board-game-data';
-import {RankingList} from 'board-game-view'
+import {takeTag, takeTags } from 'board-game-data/take';
+import {RankingList} from 'board-game-view/RankingList'
 
 interface IndexProps {
   params: {

@@ -1,6 +1,6 @@
 import styles from './page.module.scss'
-import {takeTags} from 'board-game-data'
-import { Game } from 'board-game-view'
+import {takeTags} from 'board-game-data/take'
+import { Game } from 'board-game-view/Game'
 
 interface GameProps {
   params: {

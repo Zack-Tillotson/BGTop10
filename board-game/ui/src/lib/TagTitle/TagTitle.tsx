@@ -1,7 +1,7 @@
 import Typography from '@mui/joy/Typography'
 
 import styles from './TagTitle.module.scss'
-import { Tag } from 'board-game-data';
+import { Tag } from 'board-game-datatypes';
 import Link from 'next/link';
 
 export interface TagProps extends Partial<Tag> {

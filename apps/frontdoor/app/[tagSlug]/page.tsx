@@ -1,5 +1,5 @@
-import {takeTag, takeTags } from 'board-game-data';
-import {Tag} from 'board-game-view'
+import {takeTag, takeTags } from 'board-game-data/take';
+import {Tag} from 'board-game-view/Tag'
 
 interface IndexProps {
   params: {

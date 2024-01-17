@@ -1,6 +1,6 @@
 import Link from 'next/link';
-import {PageContent} from 'core-ui'
-import {TagList} from 'board-game-view'
+import {PageContent} from 'core-ui/PageContent'
+import {TagList} from 'board-game-view/TagList'
 
 import styles from './page.module.scss';
 

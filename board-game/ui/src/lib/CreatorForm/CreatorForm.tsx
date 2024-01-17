@@ -1,7 +1,12 @@
 'use client'
 
-import { Button, FormControl, FormLabel, Input, Textarea } from '@mui/joy'
-import {CreatorFormDataType} from 'board-game-data/client'
+import Button from '@mui/joy/Button'
+import FormControl from '@mui/joy/FormControl'
+import FormLabel from '@mui/joy/FormLabel'
+import Input from '@mui/joy/Input'
+import Textarea from '@mui/joy/Textarea'
+
+import {CreatorFormDataType} from 'board-game-datatypes'
 
 import styles from './CreatorForm.module.scss'
 import { SyntheticEvent, ChangeEventHandler} from 'react'

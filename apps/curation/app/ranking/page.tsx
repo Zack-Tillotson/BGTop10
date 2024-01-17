@@ -1,6 +1,6 @@
 import Link from 'next/link';
-import {PageContent} from 'core-ui'
-import {RankingList} from 'board-game-view'
+import {PageContent} from 'core-ui/PageContent'
+import {RankingList} from 'board-game-view/RankingList'
 
 import styles from './page.module.scss';
 

@@ -1,4 +1,4 @@
-import {PageContent} from 'core-ui'
+import {PageContent} from 'core-ui/PageContent'
 import styles from './page.module.scss'
 
 export async function generateMetadata() {

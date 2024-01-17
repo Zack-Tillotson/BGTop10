@@ -1,11 +1,11 @@
 import Typography from '@mui/joy/Typography'
+import Link from '@mui/joy/Link'
 
-import {Creator, Ranking, Tag} from 'board-game-data'
+import {Creator, Ranking, Tag} from 'board-game-datatypes'
 
 import styles from './RankingFull.module.scss'
-import { CreatorBrief } from '../CreatorBrief';
-import { TagBrief } from '../TagBrief';
-import { Link } from '@mui/joy';
+import { CreatorBrief } from '../CreatorBrief'
+import { TagBrief } from '../TagBrief'
 
 interface RankingFullProps {
   className?: string,

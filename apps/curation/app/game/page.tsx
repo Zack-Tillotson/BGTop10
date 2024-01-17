@@ -1,6 +1,6 @@
 import Link from 'next/link';
-import {PageContent} from 'core-ui'
-import {GameSearch} from 'board-game-view'
+import {PageContent} from 'core-ui/PageContent'
+import {GameSearch} from 'board-game-view/GameSearch'
 
 import styles from './page.module.scss';
 

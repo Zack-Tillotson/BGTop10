@@ -1,7 +1,7 @@
 import Card from '@mui/joy/Card'
 import Typography from '@mui/joy/Typography'
 
-import {Game} from 'board-game-data'
+import {Game} from 'board-game-datatypes'
 
 import styles from './GameBrief.module.scss'
 

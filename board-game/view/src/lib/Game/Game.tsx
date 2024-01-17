@@ -1,7 +1,7 @@
-import {PageContent} from 'core-ui'
+import {PageContent} from 'core-ui/PageContent'
 
-import { takeGame } from 'board-game-data';
-import { GameFull } from 'board-game-ui';
+import { takeGame } from 'board-game-data/take';
+import { GameFull } from 'board-game-ui/GameFull';
 
 import styles from './Game.module.scss';
 

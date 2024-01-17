@@ -1,9 +1,11 @@
 'use client'
 
-import {Button} from '@mui/joy'
-import { useCreatorForm, Creator } from 'board-game-data/client';
-import { CreatorForm, CreatorFull } from 'board-game-ui';
 import { ChangeEventHandler } from 'react';
+import Button from '@mui/joy/Button'
+import { CreatorForm } from 'board-game-ui/CreatorForm';
+import { CreatorFull } from 'board-game-ui/CreatorFull';
+import { Creator } from 'board-game-datatypes';
+import { useCreatorForm } from 'board-game-data/hooks/useCreatorForm';
 
 interface CreatorFormClientProps {
   creator?: Creator

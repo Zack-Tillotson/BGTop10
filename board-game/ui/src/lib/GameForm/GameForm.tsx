@@ -1,10 +1,14 @@
 'use client'
 
-import { Button, FormControl, FormLabel, Input } from '@mui/joy'
-import {GameFormDataType} from 'board-game-data/client'
+import { SyntheticEvent, ChangeEventHandler} from 'react'
+import Button from '@mui/joy/Button'
+import FormControl from '@mui/joy/FormControl'
+import FormLabel from '@mui/joy/FormLabel'
+import Input from '@mui/joy/Input'
+
+import {GameFormDataType} from 'board-game-datatypes'
 
 import styles from './GameForm.module.scss'
-import { SyntheticEvent, ChangeEventHandler} from 'react'
 
 interface GameFormProps {
   formValues: GameFormDataType,

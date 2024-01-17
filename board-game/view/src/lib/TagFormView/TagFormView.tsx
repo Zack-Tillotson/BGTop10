@@ -2,7 +2,7 @@ import Link from 'next/link';
 
 import styles from './TagFormView.module.scss';
 
-import { takeTag } from 'board-game-data';
+import { takeTag } from 'board-game-data/take';
 import TagFormClient from './TagFormClient';
 
 interface TagFormViewProps {

@@ -1,8 +1,8 @@
 import Typography from '@mui/joy/Typography'
-import { Card, Table } from '@mui/joy'
+import Table from '@mui/joy/Table'
 
-import {GameImage} from 'board-game-ui'
-import {Game} from 'board-game-data'
+import {GameImage} from '../GameImage'
+import {Game} from 'board-game-datatypes'
 
 import styles from './GameSummary.module.scss'
 

@@ -1,4 +1,4 @@
-import {Ranking} from '../..'
+import {Ranking} from 'board-game-datatypes'
 
 export function calculateTagGameList(lists: Ranking[]) {
   const gameMap: {[key: number|string]: number} = {}
