@@ -25,25 +25,13 @@ export async function Tag({tagSlug, isShortList = true, isTestImage = false}: Ta
       subtitle={data?.tag?.pageSubtitle || ''}
     >
       <div className={styles.container}>
-        {!isTestImage && (
-          <GameImageList
-            className={styles.images}
-            gamesList={data.gamesList}
-            variant={getDeterminantOption(tagSlug, VARIANTS) as unknown as VARIANT_TYPE}
-            sizes="(max-width: 500px) 275px, 458px"
-            isLinks
-          />
-        ) || (
-          <a href="#game-337627">
-            <img 
-              src="https://storage.googleapis.com/bgtop10-2.appspot.com/hero2023.png" 
-              srcSet="https://storage.googleapis.com/bgtop10-2.appspot.com/hero2023_550x550.webp 550w, https://storage.googleapis.com/bgtop10-2.appspot.com/hero2023_750x750.webp 750w, https://storage.googleapis.com/bgtop10-2.appspot.com/hero2023.png 1006w"
-              sizes="(max-width: 550px) 550px, (max-width: 750px) 750px, 1006px" 
-              alt="Game poster"
-              className={styles.testImage} 
-            />
-          </a>
-        )}
+        <GameImageList
+          className={styles.images}
+          gamesList={data.gamesList}
+          variant={getDeterminantOption(tagSlug, VARIANTS) as unknown as VARIANT_TYPE}
+          sizes="(max-width: 500px) 275px, 458px"
+          isLinks
+        />
         <TagTitle {...data?.tag} minimal className={styles.title} />
         <GameList
           title={data?.tag?.pageTitle}
