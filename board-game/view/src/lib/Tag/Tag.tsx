@@ -28,7 +28,7 @@ export async function Tag({tagSlug, isShortList = true}: TagProps) {
           className={styles.images}
           gamesList={data.gamesList}
           variant={getDeterminantOption(tagSlug, VARIANTS) as unknown as VARIANT_TYPE}
-          sizes="(max-width: 500px) 275px, 550px"
+          sizes="(max-width: 500px) 275px, 458px"
           isLinks
         />
         <TagTitle {...data?.tag} minimal className={styles.title} />

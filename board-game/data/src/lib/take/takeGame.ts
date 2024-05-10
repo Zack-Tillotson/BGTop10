@@ -51,7 +51,7 @@ export async function updateGameHostedImage(bggId: number) {
   const updatedGame = {
     ...game,
     imageHosted: publicUrl,
-    imageSrcSet: buildSrcSet(publicUrl, 100, 275, 550, 750),
+    imageSrcSet: buildSrcSet(publicUrl, 100, 275, 458, 550, 750),
   }
   await saveGame(updatedGame)
 }
