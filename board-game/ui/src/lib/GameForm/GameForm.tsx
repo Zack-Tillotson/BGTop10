@@ -6,7 +6,7 @@ import FormControl from '@mui/joy/FormControl'
 import FormLabel from '@mui/joy/FormLabel'
 import Input from '@mui/joy/Input'
 
-import {GameFormDataType} from 'board-game-datatypes'
+import {GameFormDataType} from 'board-game-data/hooks/useGameForm'
 
 import styles from './GameForm.module.scss'
 

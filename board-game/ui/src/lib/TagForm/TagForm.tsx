@@ -4,7 +4,7 @@ import Button from '@mui/joy/Button'
 import FormControl from '@mui/joy/FormControl'
 import FormLabel from '@mui/joy/FormLabel'
 import Input from '@mui/joy/Input'
-import {TagFormDataType} from 'board-game-datatypes'
+import {TagFormDataType} from 'board-game-data/hooks/useTagForm'
 
 import styles from './TagForm.module.scss'
 import { SyntheticEvent, ChangeEventHandler} from 'react'

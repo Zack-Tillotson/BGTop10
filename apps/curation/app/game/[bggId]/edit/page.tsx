@@ -29,7 +29,7 @@ export default async function Index({params: {bggId}}: GameProps) {
   return (
     <PageContent title={display} subtitle="Edit game" breadcrumbs={breadcrumbs}>
       <section>
-        <GameFormView bggId={bggId} />
+        <GameFormView bggId={Number(bggId)} />
       </section>
     </PageContent>
   );

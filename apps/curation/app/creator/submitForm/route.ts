@@ -1,4 +1,4 @@
-import { Creator, saveCreator } from 'board-game-data/take'
+import { saveCreator } from 'board-game-data/take'
 import {Creator} from 'board-game-datatypes'
 import { NextResponse } from 'next/server'
 

@@ -11,7 +11,8 @@ import FormLabel from '@mui/joy/FormLabel'
 import Input from '@mui/joy/Input'
 import Textarea from '@mui/joy/Textarea'
 
-import {Creator, RankingFormDataType, Tag} from 'board-game-datatypes'
+import {RankingFormDataType} from 'board-game-data/hooks/useRankingForm'
+import {Creator, Tag} from 'board-game-datatypes'
 
 import styles from './RankingForm.module.scss'
 

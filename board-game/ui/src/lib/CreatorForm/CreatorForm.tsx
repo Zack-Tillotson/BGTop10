@@ -6,7 +6,7 @@ import FormLabel from '@mui/joy/FormLabel'
 import Input from '@mui/joy/Input'
 import Textarea from '@mui/joy/Textarea'
 
-import {CreatorFormDataType} from 'board-game-datatypes'
+import {CreatorFormDataType} from 'board-game-data/hooks/useCreatorForm'
 
 import styles from './CreatorForm.module.scss'
 import { SyntheticEvent, ChangeEventHandler} from 'react'

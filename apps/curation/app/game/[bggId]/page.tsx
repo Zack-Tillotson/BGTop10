@@ -12,7 +12,7 @@ interface GameProps {
 }
 
 export default async function Index({params: {bggId}}: GameProps) {
-  const game = await takeGame(bggId)
+  const game = await takeGame(Number(bggId))
 
   const display = game?.name || `${bggId} - Game not found`
 

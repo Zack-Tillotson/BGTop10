@@ -6,7 +6,7 @@ import { takeTag } from 'board-game-data/take';
 import TagFormClient from './TagFormClient';
 
 interface TagFormViewProps {
-  slug: string,
+  slug?: string,
 }
 
 export async function TagFormView({slug}: TagFormViewProps) {

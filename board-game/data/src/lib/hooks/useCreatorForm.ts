@@ -1,6 +1,6 @@
 'use client'
 
-import { Creator } from "board-game-data";
+import { Creator } from '../../dataTypes'
 import { useRouter } from "next/navigation";
 import { ChangeEvent, SyntheticEvent, useState } from "react";
 import { submitForm } from "../fetch/submitForm";

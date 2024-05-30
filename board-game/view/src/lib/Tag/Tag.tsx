@@ -10,14 +10,13 @@ import Link from 'next/link'
 
 export interface TagProps {
   tagSlug: string,
-  isShortList?: boolean,
-  isTestImage?: boolean
+  isShortList?: boolean
 }
 
 type VARIANT_TYPE = 'A'|'B'|'C'|'D'
 const VARIANTS = ['A', 'B', 'C', 'D']
 
-export async function Tag({tagSlug, isShortList = true, isTestImage = false}: TagProps) {
+export async function Tag({tagSlug, isShortList = true}: TagProps) {
   const data = await takeTag(tagSlug, true, isShortList)
   return (
     <PageContent
