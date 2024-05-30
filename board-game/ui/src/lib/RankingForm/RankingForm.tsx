@@ -86,7 +86,7 @@ export function RankingForm({
               id={`input-${key}`} 
               className={styles.input} 
               onChange={onChange(key)}
-              value={formValues[key]}
+              value={formValues[key] as any as object}
             >
               {tags.map(({tag}) => (
                 <Option
@@ -103,7 +103,7 @@ export function RankingForm({
               id={`input-${key}`} 
               className={styles.input} 
               onChange={onChange(key)}
-              value={formValues[key]}
+              value={formValues[key] as any as object}
             >
               {creators.map(({name, id}) => (
                 <Option
