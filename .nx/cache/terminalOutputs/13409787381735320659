@@ -1,0 +1,18 @@
+  [1m[38;2;173;127;168m▲ Next.js 14.2.3[39m[22m
+
+ [37m[1m [22m[39m Creating an optimized production build ...
+ [32m[1m✓[22m[39m Compiled successfully
+ [37m[1m [22m[39m Skipping linting
+[?25l [37m[1m [22m[39m Checking validity of types  [36m.[39m[2K[1G [37m[1m [22m[39m Checking validity of types  [36m..[39m[2K[1G [37m[1m [22m[39m Checking validity of types  [36m...[39m[2K[1G [37m[1m [22m[39m Checking validity of types  [36m.[39m[2K[1G [37m[1m [22m[39m Checking validity of types  [36m..[39m[2K[1G [37m[1m [22m[39m Checking validity of types  [36m...[39m[2K[1G [37m[1m [22m[39m Checking validity of types  [36m.[39m[2K[1G [37m[1m [22m[39m Checking validity of types  [36m..[39m[2K[1G [37m[1m [22m[39m Checking validity of types  [36m...[39m[2K[1G [37m[1m [22m[39m Checking validity of types  [36m.[39m[2K[1G [37m[1m [22m[39m Checking validity of types  [36m..[39m[2K[1G [37m[1m [22m[39m Checking validity of types  [36m...[39m[2K[1G [37m[1m [22m[39m Checking validity of types  [36m.[39m[2K[1G [37m[1m [22m[39m Checking validity of types  [36m..[39m[2K[1G [37m[1m [22m[39m Checking validity of types  [36m...[39m[2K[1G [37m[1m [22m[39m Checking validity of types  [36m.[39m[2K[1G [37m[1m [22m[39m Checking validity of types  [36m..[39m[2K[1G [37m[1m [22m[39m Checking validity of types  [36m...[39m[2K[1G [37m[1m [22m[39m Checking validity of types  [36m.[39m[2K[1G [37m[1m [22m[39m Checking validity of types  [36m..[39m[2K[1G [37m[1m [22m[39m Checking validity of types  [36m...[39m[2K[1G [37m[1m [22m[39m Checking validity of types  [36m.[39m[2K[1G [37m[1m [22m[39m Checking validity of types  [36m..[39m[2K[1G [37m[1m [22m[39m Checking validity of types  [36m...[39m[2K[1G [37m[1m [22m[39m Checking validity of types  [36m.[39m[2K[1G [37m[1m [22m[39m Checking validity of types  [36m..[39m[2K[1G [37m[1m [22m[39m Checking validity of types  [36m...[39m[2K[1G [37m[1m [22m[39m Checking validity of types  [36m.[39m[2K[1G [37m[1m [22m[39m Checking validity of types  [36m..[39m[2K[1G [37m[1m [22m[39m Checking validity of types  [36m...[39m[2K[1G [37m[1m [22m[39m Checking validity of types  [36m.[39m[2K[1G [37m[1m [22m[39m Checking validity of types  [36m..[39m[2K[1G [37m[1m [22m[39m Checking validity of types  [36m...[39m[31mFailed to compile.
+[39m
+[36m../../dist/apps/curation/.next/types/app/creator/[slug]/edit/page.ts[39m:[33m3[39m:[33m34[39m
+[31m[1mType error[22m[39m: Module '"next/dist/lib/metadata/types/metadata-interface.js"' has no exported member 'ResolvingViewport'.
+
+[0m [90m 1 |[39m [90m// File: /Users/c274234/Documents/programming/BgTop10-2/v2/apps/curation/app/creator/[slug]/edit/page.tsx[39m[0m
+[0m [90m 2 |[39m [36mimport[39m [33m*[39m [36mas[39m entry [36mfrom[39m [32m'../../../../../../../../../apps/curation/app/creator/[slug]/edit/page.js'[39m[0m
+[0m[31m[1m>[22m[39m[90m 3 |[39m [36mimport[39m type { [33mResolvingMetadata[39m[33m,[39m [33mResolvingViewport[39m } [36mfrom[39m [32m'next/dist/lib/metadata/types/metadata-interface.js'[39m[0m
+[0m [90m   |[39m                                  [31m[1m^[22m[39m[0m
+[0m [90m 4 |[39m[0m
+[0m [90m 5 |[39m type [33mTEntry[39m [33m=[39m [36mtypeof[39m [36mimport[39m([32m'../../../../../../../../../apps/curation/app/creator/[slug]/edit/page.js'[39m)[0m
+[0m [90m 6 |[39m[0m
+[?25h[1m[31mBuild process exited due to code 1  [39m[22m
