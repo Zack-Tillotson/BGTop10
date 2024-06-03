@@ -43,3 +43,4 @@ Thumbs.db
 .sak.json
 .env
 .firebase
+.nx/

@@ -76,313 +76,71 @@
   "fileMap": {
     "nonProjectFiles": [
       {
+        "file": ".eslintignore",
+        "hash": "7663861978715868291"
+      },
+      {
         "file": ".eslintrc.json",
         "hash": "17866138117546000433"
-      },
-      {
-        "file": "jest.preset.js",
-        "hash": "9430166341120122740"
-      },
-      {
-        "file": "nx.json",
-        "hash": "16541433778405183208"
-      },
-      {
-        "file": ".gitignore",
-        "hash": "3058452351846475010"
-      },
-      {
-        "file": ".prettierrc",
-        "hash": "16267754514737964994"
-      },
-      {
-        "file": "package-lock.json",
-        "hash": "8715587397276838515"
-      },
-      {
-        "file": "tsconfig.base.json",
-        "hash": "6119177111966216500"
-      },
-      {
-        "file": "package.json",
-        "hash": "15656197633801830406"
-      },
-      {
-        "file": "migrations.json",
-        "hash": "12604147137902770012"
       },
       {
         "file": ".firebaserc",
         "hash": "15938510181749188821"
       },
       {
-        "file": ".eslintignore",
-        "hash": "7663861978715868291"
+        "file": ".gitignore",
+        "hash": "11583390639153940011"
       },
       {
-        "file": "firebase.json",
-        "hash": "1195479829066210027"
+        "file": ".prettierignore",
+        "hash": "8865097869854018350"
       },
       {
-        "file": "README.md",
-        "hash": "3632837724343651928"
+        "file": ".prettierrc",
+        "hash": "16267754514737964994"
       },
       {
         "file": ".vscode/extensions.json",
         "hash": "235626400633494639"
       },
       {
+        "file": "README.md",
+        "hash": "3632837724343651928"
+      },
+      {
+        "file": "firebase.json",
+        "hash": "1195479829066210027"
+      },
+      {
         "file": "jest.config.ts",
         "hash": "12333515226966617182"
       },
       {
-        "file": ".prettierignore",
-        "hash": "8865097869854018350"
+        "file": "jest.preset.js",
+        "hash": "9430166341120122740"
+      },
+      {
+        "file": "migrations.json",
+        "hash": "12604147137902770012"
+      },
+      {
+        "file": "nx.json",
+        "hash": "16541433778405183208"
+      },
+      {
+        "file": "package-lock.json",
+        "hash": "8715587397276838515"
+      },
+      {
+        "file": "package.json",
+        "hash": "15656197633801830406"
+      },
+      {
+        "file": "tsconfig.base.json",
+        "hash": "6119177111966216500"
       }
     ],
     "projectFileMap": {
-      "board-game-view": [
-        {
-          "file": "board-game/view/.babelrc",
-          "hash": "2946678488919325452"
-        },
-        {
-          "file": "board-game/view/.eslintrc.json",
-          "hash": "11012487992710232822"
-        },
-        {
-          "file": "board-game/view/README.md",
-          "hash": "13400724265759590286"
-        },
-        {
-          "file": "board-game/view/jest.config.ts",
-          "hash": "17340586877036698383"
-        },
-        {
-          "file": "board-game/view/project.json",
-          "hash": "15045584345987703134"
-        },
-        {
-          "file": "board-game/view/src/index.ts",
-          "hash": "13760516063957426903"
-        },
-        {
-          "file": "board-game/view/src/lib/BggLookup/BggLookup.module.scss",
-          "hash": "4055606894390288348"
-        },
-        {
-          "file": "board-game/view/src/lib/BggLookup/BggLookup.tsx",
-          "hash": "3381793173312521161"
-        },
-        {
-          "file": "board-game/view/src/lib/BggLookup/index.ts",
-          "hash": "5417380797613335545"
-        },
-        {
-          "file": "board-game/view/src/lib/CreatorFormView/CreatorFormClient.tsx",
-          "hash": "10608534085479779735"
-        },
-        {
-          "file": "board-game/view/src/lib/CreatorFormView/CreatorFormView.module.scss",
-          "hash": "9197580397260137546"
-        },
-        {
-          "file": "board-game/view/src/lib/CreatorFormView/CreatorFormView.tsx",
-          "hash": "3994936553587043484"
-        },
-        {
-          "file": "board-game/view/src/lib/CreatorFormView/index.ts",
-          "hash": "14152309119357264873"
-        },
-        {
-          "file": "board-game/view/src/lib/CreatorList/CreatorList.module.scss",
-          "hash": "9930922184088560943"
-        },
-        {
-          "file": "board-game/view/src/lib/CreatorList/CreatorList.tsx",
-          "hash": "10772215331802426993"
-        },
-        {
-          "file": "board-game/view/src/lib/CreatorList/index.ts",
-          "hash": "10104021526530473764"
-        },
-        {
-          "file": "board-game/view/src/lib/Game/Game.module.scss",
-          "hash": "3244421341483603138"
-        },
-        {
-          "file": "board-game/view/src/lib/Game/Game.spec.tsx",
-          "hash": "13168075359879366750"
-        },
-        {
-          "file": "board-game/view/src/lib/Game/Game.tsx",
-          "hash": "15068248230489029305"
-        },
-        {
-          "file": "board-game/view/src/lib/Game/index.ts",
-          "hash": "10331200585329994864"
-        },
-        {
-          "file": "board-game/view/src/lib/GameFormView/GameFormClient.tsx",
-          "hash": "3397267051587379590"
-        },
-        {
-          "file": "board-game/view/src/lib/GameFormView/GameFormView.module.scss",
-          "hash": "3244421341483603138"
-        },
-        {
-          "file": "board-game/view/src/lib/GameFormView/GameFormView.tsx",
-          "hash": "3905291224541382718"
-        },
-        {
-          "file": "board-game/view/src/lib/GameFormView/index.ts",
-          "hash": "14393596056906517711"
-        },
-        {
-          "file": "board-game/view/src/lib/GameImageView/GameImage.module.scss",
-          "hash": "3746489546773858626"
-        },
-        {
-          "file": "board-game/view/src/lib/GameImageView/GameImageClient.tsx",
-          "hash": "5514652821971453723"
-        },
-        {
-          "file": "board-game/view/src/lib/GameImageView/GameImageView.tsx",
-          "hash": "7965006481936680504"
-        },
-        {
-          "file": "board-game/view/src/lib/GameImageView/index.ts",
-          "hash": "9473448966162577602"
-        },
-        {
-          "file": "board-game/view/src/lib/GameSearch/GameSearch.module.scss",
-          "hash": "9930922184088560943"
-        },
-        {
-          "file": "board-game/view/src/lib/GameSearch/GameSearch.tsx",
-          "hash": "7904914379620546383"
-        },
-        {
-          "file": "board-game/view/src/lib/GameSearch/GameSearchClient.tsx",
-          "hash": "13177488791655407912"
-        },
-        {
-          "file": "board-game/view/src/lib/GameSearch/index.ts",
-          "hash": "3308453283576375262"
-        },
-        {
-          "file": "board-game/view/src/lib/Home/Home.spec.tsx",
-          "hash": "5013267585333167935"
-        },
-        {
-          "file": "board-game/view/src/lib/Home/Home.tsx",
-          "hash": "7687539893237748086"
-        },
-        {
-          "file": "board-game/view/src/lib/Home/index.ts",
-          "hash": "15194623306303658739"
-        },
-        {
-          "file": "board-game/view/src/lib/RankingFormView/RankingFormClient.tsx",
-          "hash": "3397001427005071415"
-        },
-        {
-          "file": "board-game/view/src/lib/RankingFormView/RankingFormView.module.scss",
-          "hash": "9197580397260137546"
-        },
-        {
-          "file": "board-game/view/src/lib/RankingFormView/RankingFormView.tsx",
-          "hash": "6578739744266151347"
-        },
-        {
-          "file": "board-game/view/src/lib/RankingFormView/index.ts",
-          "hash": "1443274969669799723"
-        },
-        {
-          "file": "board-game/view/src/lib/RankingList/RankingList.module.scss",
-          "hash": "7849085792934646700"
-        },
-        {
-          "file": "board-game/view/src/lib/RankingList/RankingList.tsx",
-          "hash": "17276030321182860749"
-        },
-        {
-          "file": "board-game/view/src/lib/RankingList/index.ts",
-          "hash": "2647821004339779647"
-        },
-        {
-          "file": "board-game/view/src/lib/Tag/Tag.module.scss",
-          "hash": "5094842657192564028"
-        },
-        {
-          "file": "board-game/view/src/lib/Tag/Tag.spec.tsx",
-          "hash": "4383794639916091013"
-        },
-        {
-          "file": "board-game/view/src/lib/Tag/Tag.tsx",
-          "hash": "13881064354817680255"
-        },
-        {
-          "file": "board-game/view/src/lib/Tag/index.ts",
-          "hash": "10775600419827711955"
-        },
-        {
-          "file": "board-game/view/src/lib/TagFormView/TagFormClient.tsx",
-          "hash": "12200883959721883770"
-        },
-        {
-          "file": "board-game/view/src/lib/TagFormView/TagFormView.module.scss",
-          "hash": "3244421341483603138"
-        },
-        {
-          "file": "board-game/view/src/lib/TagFormView/TagFormView.tsx",
-          "hash": "16492993017233413013"
-        },
-        {
-          "file": "board-game/view/src/lib/TagFormView/index.ts",
-          "hash": "7882503868993774964"
-        },
-        {
-          "file": "board-game/view/src/lib/TagGameListForm/TagGameListForm.module.scss",
-          "hash": "5507305567943615828"
-        },
-        {
-          "file": "board-game/view/src/lib/TagGameListForm/TagGameListForm.tsx",
-          "hash": "3016709989858077531"
-        },
-        {
-          "file": "board-game/view/src/lib/TagGameListForm/TagGameListFormClient.tsx",
-          "hash": "16803183629139529918"
-        },
-        {
-          "file": "board-game/view/src/lib/TagGameListForm/index.ts",
-          "hash": "18169983699106450905"
-        },
-        {
-          "file": "board-game/view/src/lib/TagList/TagList.module.scss",
-          "hash": "13311377636865260143"
-        },
-        {
-          "file": "board-game/view/src/lib/TagList/TagList.tsx",
-          "hash": "3692395496229409441"
-        },
-        {
-          "file": "board-game/view/src/lib/TagList/index.ts",
-          "hash": "10741056891186832194"
-        },
-        {
-          "file": "board-game/view/tsconfig.json",
-          "hash": "12937361759397702261"
-        },
-        {
-          "file": "board-game/view/tsconfig.lib.json",
-          "hash": "15147195313780277677"
-        },
-        {
-          "file": "board-game/view/tsconfig.spec.json",
-          "hash": "6514620907549802163"
-        }
-      ],
       "board-game-ui": [
         {
           "file": "board-game/ui/.babelrc",
@@ -657,6 +415,248 @@
           "hash": "6514620907549802163"
         }
       ],
+      "board-game-view": [
+        {
+          "file": "board-game/view/.babelrc",
+          "hash": "2946678488919325452"
+        },
+        {
+          "file": "board-game/view/.eslintrc.json",
+          "hash": "11012487992710232822"
+        },
+        {
+          "file": "board-game/view/README.md",
+          "hash": "13400724265759590286"
+        },
+        {
+          "file": "board-game/view/jest.config.ts",
+          "hash": "17340586877036698383"
+        },
+        {
+          "file": "board-game/view/project.json",
+          "hash": "15045584345987703134"
+        },
+        {
+          "file": "board-game/view/src/index.ts",
+          "hash": "13760516063957426903"
+        },
+        {
+          "file": "board-game/view/src/lib/BggLookup/BggLookup.module.scss",
+          "hash": "4055606894390288348"
+        },
+        {
+          "file": "board-game/view/src/lib/BggLookup/BggLookup.tsx",
+          "hash": "3381793173312521161"
+        },
+        {
+          "file": "board-game/view/src/lib/BggLookup/index.ts",
+          "hash": "5417380797613335545"
+        },
+        {
+          "file": "board-game/view/src/lib/CreatorFormView/CreatorFormClient.tsx",
+          "hash": "10608534085479779735"
+        },
+        {
+          "file": "board-game/view/src/lib/CreatorFormView/CreatorFormView.module.scss",
+          "hash": "9197580397260137546"
+        },
+        {
+          "file": "board-game/view/src/lib/CreatorFormView/CreatorFormView.tsx",
+          "hash": "3994936553587043484"
+        },
+        {
+          "file": "board-game/view/src/lib/CreatorFormView/index.ts",
+          "hash": "14152309119357264873"
+        },
+        {
+          "file": "board-game/view/src/lib/CreatorList/CreatorList.module.scss",
+          "hash": "9930922184088560943"
+        },
+        {
+          "file": "board-game/view/src/lib/CreatorList/CreatorList.tsx",
+          "hash": "10772215331802426993"
+        },
+        {
+          "file": "board-game/view/src/lib/CreatorList/index.ts",
+          "hash": "10104021526530473764"
+        },
+        {
+          "file": "board-game/view/src/lib/Game/Game.module.scss",
+          "hash": "3244421341483603138"
+        },
+        {
+          "file": "board-game/view/src/lib/Game/Game.spec.tsx",
+          "hash": "13168075359879366750"
+        },
+        {
+          "file": "board-game/view/src/lib/Game/Game.tsx",
+          "hash": "15068248230489029305"
+        },
+        {
+          "file": "board-game/view/src/lib/Game/index.ts",
+          "hash": "10331200585329994864"
+        },
+        {
+          "file": "board-game/view/src/lib/GameFormView/GameFormClient.tsx",
+          "hash": "3397267051587379590"
+        },
+        {
+          "file": "board-game/view/src/lib/GameFormView/GameFormView.module.scss",
+          "hash": "3244421341483603138"
+        },
+        {
+          "file": "board-game/view/src/lib/GameFormView/GameFormView.tsx",
+          "hash": "3905291224541382718"
+        },
+        {
+          "file": "board-game/view/src/lib/GameFormView/index.ts",
+          "hash": "14393596056906517711"
+        },
+        {
+          "file": "board-game/view/src/lib/GameImageView/GameImage.module.scss",
+          "hash": "3746489546773858626"
+        },
+        {
+          "file": "board-game/view/src/lib/GameImageView/GameImageClient.tsx",
+          "hash": "5514652821971453723"
+        },
+        {
+          "file": "board-game/view/src/lib/GameImageView/GameImageView.tsx",
+          "hash": "7965006481936680504"
+        },
+        {
+          "file": "board-game/view/src/lib/GameImageView/index.ts",
+          "hash": "9473448966162577602"
+        },
+        {
+          "file": "board-game/view/src/lib/GameSearch/GameSearch.module.scss",
+          "hash": "9930922184088560943"
+        },
+        {
+          "file": "board-game/view/src/lib/GameSearch/GameSearch.tsx",
+          "hash": "7904914379620546383"
+        },
+        {
+          "file": "board-game/view/src/lib/GameSearch/GameSearchClient.tsx",
+          "hash": "13177488791655407912"
+        },
+        {
+          "file": "board-game/view/src/lib/GameSearch/index.ts",
+          "hash": "3308453283576375262"
+        },
+        {
+          "file": "board-game/view/src/lib/Home/Home.spec.tsx",
+          "hash": "5013267585333167935"
+        },
+        {
+          "file": "board-game/view/src/lib/Home/Home.tsx",
+          "hash": "7687539893237748086"
+        },
+        {
+          "file": "board-game/view/src/lib/Home/index.ts",
+          "hash": "15194623306303658739"
+        },
+        {
+          "file": "board-game/view/src/lib/RankingFormView/RankingFormClient.tsx",
+          "hash": "3397001427005071415"
+        },
+        {
+          "file": "board-game/view/src/lib/RankingFormView/RankingFormView.module.scss",
+          "hash": "9197580397260137546"
+        },
+        {
+          "file": "board-game/view/src/lib/RankingFormView/RankingFormView.tsx",
+          "hash": "6578739744266151347"
+        },
+        {
+          "file": "board-game/view/src/lib/RankingFormView/index.ts",
+          "hash": "1443274969669799723"
+        },
+        {
+          "file": "board-game/view/src/lib/RankingList/RankingList.module.scss",
+          "hash": "7849085792934646700"
+        },
+        {
+          "file": "board-game/view/src/lib/RankingList/RankingList.tsx",
+          "hash": "17276030321182860749"
+        },
+        {
+          "file": "board-game/view/src/lib/RankingList/index.ts",
+          "hash": "2647821004339779647"
+        },
+        {
+          "file": "board-game/view/src/lib/Tag/Tag.module.scss",
+          "hash": "5094842657192564028"
+        },
+        {
+          "file": "board-game/view/src/lib/Tag/Tag.spec.tsx",
+          "hash": "4383794639916091013"
+        },
+        {
+          "file": "board-game/view/src/lib/Tag/Tag.tsx",
+          "hash": "13881064354817680255"
+        },
+        {
+          "file": "board-game/view/src/lib/Tag/index.ts",
+          "hash": "10775600419827711955"
+        },
+        {
+          "file": "board-game/view/src/lib/TagFormView/TagFormClient.tsx",
+          "hash": "12200883959721883770"
+        },
+        {
+          "file": "board-game/view/src/lib/TagFormView/TagFormView.module.scss",
+          "hash": "3244421341483603138"
+        },
+        {
+          "file": "board-game/view/src/lib/TagFormView/TagFormView.tsx",
+          "hash": "16492993017233413013"
+        },
+        {
+          "file": "board-game/view/src/lib/TagFormView/index.ts",
+          "hash": "7882503868993774964"
+        },
+        {
+          "file": "board-game/view/src/lib/TagGameListForm/TagGameListForm.module.scss",
+          "hash": "5507305567943615828"
+        },
+        {
+          "file": "board-game/view/src/lib/TagGameListForm/TagGameListForm.tsx",
+          "hash": "3016709989858077531"
+        },
+        {
+          "file": "board-game/view/src/lib/TagGameListForm/TagGameListFormClient.tsx",
+          "hash": "16803183629139529918"
+        },
+        {
+          "file": "board-game/view/src/lib/TagGameListForm/index.ts",
+          "hash": "18169983699106450905"
+        },
+        {
+          "file": "board-game/view/src/lib/TagList/TagList.module.scss",
+          "hash": "13311377636865260143"
+        },
+        {
+          "file": "board-game/view/src/lib/TagList/TagList.tsx",
+          "hash": "3692395496229409441"
+        },
+        {
+          "file": "board-game/view/src/lib/TagList/index.ts",
+          "hash": "10741056891186832194"
+        },
+        {
+          "file": "board-game/view/tsconfig.json",
+          "hash": "12937361759397702261"
+        },
+        {
+          "file": "board-game/view/tsconfig.lib.json",
+          "hash": "15147195313780277677"
+        },
+        {
+          "file": "board-game/view/tsconfig.spec.json",
+          "hash": "6514620907549802163"
+        }
+      ],
       "curation": [
         {
           "file": "apps/curation/.eslintrc.json",
@@ -887,6 +887,64 @@
           "hash": "6922413205408300107"
         }
       ],
+      "core-ui": [
+        {
+          "file": "core/ui/.babelrc",
+          "hash": "2946678488919325452"
+        },
+        {
+          "file": "core/ui/.eslintrc.json",
+          "hash": "11012487992710232822"
+        },
+        {
+          "file": "core/ui/README.md",
+          "hash": "14549034480812716151"
+        },
+        {
+          "file": "core/ui/jest.config.ts",
+          "hash": "16175342280687679372"
+        },
+        {
+          "file": "core/ui/project.json",
+          "hash": "5658249207165331837"
+        },
+        {
+          "file": "core/ui/src/lib/PageContent/PageContent.module.scss",
+          "hash": "14676575743489692790"
+        },
+        {
+          "file": "core/ui/src/lib/PageContent/PageContent.tsx",
+          "hash": "17663920196900375887"
+        },
+        {
+          "file": "core/ui/src/lib/PageContent/index.ts",
+          "hash": "3440248851907761453"
+        },
+        {
+          "file": "core/ui/src/lib/ScrollToTop/ScrollToTop.module.scss",
+          "hash": "2769123201143660841"
+        },
+        {
+          "file": "core/ui/src/lib/ScrollToTop/ScrollToTop.tsx",
+          "hash": "4798131366265021720"
+        },
+        {
+          "file": "core/ui/src/lib/ScrollToTop/index.ts",
+          "hash": "11345748656901047397"
+        },
+        {
+          "file": "core/ui/tsconfig.json",
+          "hash": "12937361759397702261"
+        },
+        {
+          "file": "core/ui/tsconfig.lib.json",
+          "hash": "15147195313780277677"
+        },
+        {
+          "file": "core/ui/tsconfig.spec.json",
+          "hash": "6514620907549802163"
+        }
+      ],
       "board-game-data": [
         {
           "file": "board-game/data/.babelrc",
@@ -1023,6 +1081,44 @@
         {
           "file": "board-game/data/tsconfig.spec.json",
           "hash": "6514620907549802163"
+        }
+      ],
+      "curation-e2e": [
+        {
+          "file": "apps/curation-e2e/.eslintrc.json",
+          "hash": "14060216369337943343"
+        },
+        {
+          "file": "apps/curation-e2e/cypress.config.ts",
+          "hash": "15414076024138857470"
+        },
+        {
+          "file": "apps/curation-e2e/project.json",
+          "hash": "9265790636626327532"
+        },
+        {
+          "file": "apps/curation-e2e/src/e2e/app.cy.ts",
+          "hash": "8909986160313708436"
+        },
+        {
+          "file": "apps/curation-e2e/src/fixtures/example.json",
+          "hash": "11614668686582597233"
+        },
+        {
+          "file": "apps/curation-e2e/src/support/app.po.ts",
+          "hash": "11157016311132186162"
+        },
+        {
+          "file": "apps/curation-e2e/src/support/commands.ts",
+          "hash": "7314691991044890572"
+        },
+        {
+          "file": "apps/curation-e2e/src/support/e2e.ts",
+          "hash": "3666078656922506009"
+        },
+        {
+          "file": "apps/curation-e2e/tsconfig.json",
+          "hash": "1788248097864730386"
         }
       ],
       "frontdoor-e2e": [
@@ -1215,102 +1311,6 @@
         {
           "file": "apps/frontdoor/tsconfig.spec.json",
           "hash": "6922413205408300107"
-        }
-      ],
-      "core-ui": [
-        {
-          "file": "core/ui/.babelrc",
-          "hash": "2946678488919325452"
-        },
-        {
-          "file": "core/ui/.eslintrc.json",
-          "hash": "11012487992710232822"
-        },
-        {
-          "file": "core/ui/README.md",
-          "hash": "14549034480812716151"
-        },
-        {
-          "file": "core/ui/jest.config.ts",
-          "hash": "16175342280687679372"
-        },
-        {
-          "file": "core/ui/project.json",
-          "hash": "5658249207165331837"
-        },
-        {
-          "file": "core/ui/src/lib/PageContent/PageContent.module.scss",
-          "hash": "14676575743489692790"
-        },
-        {
-          "file": "core/ui/src/lib/PageContent/PageContent.tsx",
-          "hash": "17663920196900375887"
-        },
-        {
-          "file": "core/ui/src/lib/PageContent/index.ts",
-          "hash": "3440248851907761453"
-        },
-        {
-          "file": "core/ui/src/lib/ScrollToTop/ScrollToTop.module.scss",
-          "hash": "2769123201143660841"
-        },
-        {
-          "file": "core/ui/src/lib/ScrollToTop/ScrollToTop.tsx",
-          "hash": "4798131366265021720"
-        },
-        {
-          "file": "core/ui/src/lib/ScrollToTop/index.ts",
-          "hash": "11345748656901047397"
-        },
-        {
-          "file": "core/ui/tsconfig.json",
-          "hash": "12937361759397702261"
-        },
-        {
-          "file": "core/ui/tsconfig.lib.json",
-          "hash": "15147195313780277677"
-        },
-        {
-          "file": "core/ui/tsconfig.spec.json",
-          "hash": "6514620907549802163"
-        }
-      ],
-      "curation-e2e": [
-        {
-          "file": "apps/curation-e2e/.eslintrc.json",
-          "hash": "14060216369337943343"
-        },
-        {
-          "file": "apps/curation-e2e/cypress.config.ts",
-          "hash": "15414076024138857470"
-        },
-        {
-          "file": "apps/curation-e2e/project.json",
-          "hash": "9265790636626327532"
-        },
-        {
-          "file": "apps/curation-e2e/src/e2e/app.cy.ts",
-          "hash": "8909986160313708436"
-        },
-        {
-          "file": "apps/curation-e2e/src/fixtures/example.json",
-          "hash": "11614668686582597233"
-        },
-        {
-          "file": "apps/curation-e2e/src/support/app.po.ts",
-          "hash": "11157016311132186162"
-        },
-        {
-          "file": "apps/curation-e2e/src/support/commands.ts",
-          "hash": "7314691991044890572"
-        },
-        {
-          "file": "apps/curation-e2e/src/support/e2e.ts",
-          "hash": "3666078656922506009"
-        },
-        {
-          "file": "apps/curation-e2e/tsconfig.json",
-          "hash": "1788248097864730386"
         }
       ]
     }
