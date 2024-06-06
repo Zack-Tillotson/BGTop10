@@ -415,6 +415,604 @@
           "hash": "6514620907549802163"
         }
       ],
+      "curation": [
+        {
+          "file": "apps/curation/.eslintrc.json",
+          "hash": "13378219862300347799"
+        },
+        {
+          "file": "apps/curation/app/creator/[slug]/edit/page.module.scss",
+          "hash": "4786619528779355986"
+        },
+        {
+          "file": "apps/curation/app/creator/[slug]/edit/page.tsx",
+          "hash": "13411709792639475227"
+        },
+        {
+          "file": "apps/curation/app/creator/[slug]/page.module.scss",
+          "hash": "7179958440342074676"
+        },
+        {
+          "file": "apps/curation/app/creator/[slug]/page.tsx",
+          "hash": "11504828193480255533"
+        },
+        {
+          "file": "apps/curation/app/creator/new/page.module.scss",
+          "hash": "4786619528779355986"
+        },
+        {
+          "file": "apps/curation/app/creator/new/page.tsx",
+          "hash": "13180222012234532475"
+        },
+        {
+          "file": "apps/curation/app/creator/page.module.scss",
+          "hash": "5526583098628002615"
+        },
+        {
+          "file": "apps/curation/app/creator/page.tsx",
+          "hash": "10301967578451962153"
+        },
+        {
+          "file": "apps/curation/app/creator/submitForm/route.ts",
+          "hash": "6486811605674836729"
+        },
+        {
+          "file": "apps/curation/app/game-image/submitForm/route.ts",
+          "hash": "44163904416201570"
+        },
+        {
+          "file": "apps/curation/app/game/[bggId]/edit/page.module.scss",
+          "hash": "4786619528779355986"
+        },
+        {
+          "file": "apps/curation/app/game/[bggId]/edit/page.tsx",
+          "hash": "5162453071992413649"
+        },
+        {
+          "file": "apps/curation/app/game/[bggId]/images/page.module.scss",
+          "hash": "4786619528779355986"
+        },
+        {
+          "file": "apps/curation/app/game/[bggId]/images/page.tsx",
+          "hash": "8449266026271762960"
+        },
+        {
+          "file": "apps/curation/app/game/[bggId]/page.module.scss",
+          "hash": "7179958440342074676"
+        },
+        {
+          "file": "apps/curation/app/game/[bggId]/page.tsx",
+          "hash": "16766452762992938780"
+        },
+        {
+          "file": "apps/curation/app/game/new/page.module.scss",
+          "hash": "4786619528779355986"
+        },
+        {
+          "file": "apps/curation/app/game/new/page.tsx",
+          "hash": "10485473867260889691"
+        },
+        {
+          "file": "apps/curation/app/game/page.module.scss",
+          "hash": "5526583098628002615"
+        },
+        {
+          "file": "apps/curation/app/game/page.tsx",
+          "hash": "10747925651125720621"
+        },
+        {
+          "file": "apps/curation/app/game/submitForm/route.ts",
+          "hash": "5920737415264075746"
+        },
+        {
+          "file": "apps/curation/app/global.css",
+          "hash": "10943017421299445298"
+        },
+        {
+          "file": "apps/curation/app/layout.module.scss",
+          "hash": "17022089410329696871"
+        },
+        {
+          "file": "apps/curation/app/layout.tsx",
+          "hash": "8248424788554997699"
+        },
+        {
+          "file": "apps/curation/app/page.module.scss",
+          "hash": "4786619528779355986"
+        },
+        {
+          "file": "apps/curation/app/page.tsx",
+          "hash": "11451801996020609411"
+        },
+        {
+          "file": "apps/curation/app/ranking/[slug]/edit/page.module.scss",
+          "hash": "4786619528779355986"
+        },
+        {
+          "file": "apps/curation/app/ranking/[slug]/edit/page.tsx",
+          "hash": "14578590108199017093"
+        },
+        {
+          "file": "apps/curation/app/ranking/[slug]/page.module.scss",
+          "hash": "7179958440342074676"
+        },
+        {
+          "file": "apps/curation/app/ranking/[slug]/page.tsx",
+          "hash": "7698248711035227893"
+        },
+        {
+          "file": "apps/curation/app/ranking/new/page.module.scss",
+          "hash": "4786619528779355986"
+        },
+        {
+          "file": "apps/curation/app/ranking/new/page.tsx",
+          "hash": "6973681064879553295"
+        },
+        {
+          "file": "apps/curation/app/ranking/page.module.scss",
+          "hash": "5526583098628002615"
+        },
+        {
+          "file": "apps/curation/app/ranking/page.tsx",
+          "hash": "13251025065634774252"
+        },
+        {
+          "file": "apps/curation/app/ranking/submitForm/route.ts",
+          "hash": "7401256918409051514"
+        },
+        {
+          "file": "apps/curation/app/tag-game-images/submitForm/route.ts",
+          "hash": "9630926965525492394"
+        },
+        {
+          "file": "apps/curation/app/tag/[slug]/edit/page.module.scss",
+          "hash": "4786619528779355986"
+        },
+        {
+          "file": "apps/curation/app/tag/[slug]/edit/page.tsx",
+          "hash": "2307754090039274203"
+        },
+        {
+          "file": "apps/curation/app/tag/[slug]/games/page.tsx",
+          "hash": "17165249854775400431"
+        },
+        {
+          "file": "apps/curation/app/tag/[slug]/page.module.scss",
+          "hash": "7179958440342074676"
+        },
+        {
+          "file": "apps/curation/app/tag/[slug]/page.tsx",
+          "hash": "14861859484911005833"
+        },
+        {
+          "file": "apps/curation/app/tag/[slug]/tagRankedGameList/route.ts",
+          "hash": "17361480257072380971"
+        },
+        {
+          "file": "apps/curation/app/tag/new/page.module.scss",
+          "hash": "4786619528779355986"
+        },
+        {
+          "file": "apps/curation/app/tag/new/page.tsx",
+          "hash": "14786785207228060810"
+        },
+        {
+          "file": "apps/curation/app/tag/page.module.scss",
+          "hash": "5526583098628002615"
+        },
+        {
+          "file": "apps/curation/app/tag/page.tsx",
+          "hash": "7276111102962933609"
+        },
+        {
+          "file": "apps/curation/app/tag/submitForm/route.ts",
+          "hash": "4765846851825822014"
+        },
+        {
+          "file": "apps/curation/index.d.ts",
+          "hash": "5498222895072842432"
+        },
+        {
+          "file": "apps/curation/jest.config.ts",
+          "hash": "10585832976501650928"
+        },
+        {
+          "file": "apps/curation/next-env.d.ts",
+          "hash": "5909181270615354023"
+        },
+        {
+          "file": "apps/curation/next.config.js",
+          "hash": "962977384966910176"
+        },
+        {
+          "file": "apps/curation/project.json",
+          "hash": "17808639014274314656"
+        },
+        {
+          "file": "apps/curation/public/.gitkeep",
+          "hash": "3244421341483603138"
+        },
+        {
+          "file": "apps/curation/public/favicon.ico",
+          "hash": "9303420814833116677"
+        },
+        {
+          "file": "apps/curation/tsconfig.json",
+          "hash": "4169843906980086096"
+        },
+        {
+          "file": "apps/curation/tsconfig.spec.json",
+          "hash": "6922413205408300107"
+        }
+      ],
+      "frontdoor": [
+        {
+          "file": "apps/frontdoor/.eslintrc.json",
+          "hash": "2145381768682899863"
+        },
+        {
+          "file": "apps/frontdoor/app/[tagSlug]/full/page.tsx",
+          "hash": "15343348530662540024"
+        },
+        {
+          "file": "apps/frontdoor/app/[tagSlug]/page.tsx",
+          "hash": "4876895985040738496"
+        },
+        {
+          "file": "apps/frontdoor/app/game/[bggId]/page.module.scss",
+          "hash": "3244421341483603138"
+        },
+        {
+          "file": "apps/frontdoor/app/game/[bggId]/page.tsx",
+          "hash": "10039369861583315599"
+        },
+        {
+          "file": "apps/frontdoor/app/global.scss",
+          "hash": "16772114363760790326"
+        },
+        {
+          "file": "apps/frontdoor/app/layout.module.scss",
+          "hash": "14288218806482033960"
+        },
+        {
+          "file": "apps/frontdoor/app/layout.tsx",
+          "hash": "9938530081477729521"
+        },
+        {
+          "file": "apps/frontdoor/app/legal/contact-us/page.module.scss",
+          "hash": "10452485242789917656"
+        },
+        {
+          "file": "apps/frontdoor/app/legal/contact-us/page.tsx",
+          "hash": "4196780781799699080"
+        },
+        {
+          "file": "apps/frontdoor/app/legal/terms/page.module.scss",
+          "hash": "3244421341483603138"
+        },
+        {
+          "file": "apps/frontdoor/app/legal/terms/page.tsx",
+          "hash": "16998937740864240220"
+        },
+        {
+          "file": "apps/frontdoor/app/page.module.scss",
+          "hash": "3244421341483603138"
+        },
+        {
+          "file": "apps/frontdoor/app/page.tsx",
+          "hash": "14731916290631388522"
+        },
+        {
+          "file": "apps/frontdoor/app/rankings/[tagSlug]/page.tsx",
+          "hash": "10104476658029503219"
+        },
+        {
+          "file": "apps/frontdoor/app/reset.css",
+          "hash": "10656868879263141309"
+        },
+        {
+          "file": "apps/frontdoor/index.d.ts",
+          "hash": "5498222895072842432"
+        },
+        {
+          "file": "apps/frontdoor/jest.config.ts",
+          "hash": "12216247906643833606"
+        },
+        {
+          "file": "apps/frontdoor/next-env.d.ts",
+          "hash": "5909181270615354023"
+        },
+        {
+          "file": "apps/frontdoor/next.config.js",
+          "hash": "6921261770481476323"
+        },
+        {
+          "file": "apps/frontdoor/project.json",
+          "hash": "9390720642578027724"
+        },
+        {
+          "file": "apps/frontdoor/public/.gitkeep",
+          "hash": "3244421341483603138"
+        },
+        {
+          "file": "apps/frontdoor/public/analytics.js",
+          "hash": "15682690718078942647"
+        },
+        {
+          "file": "apps/frontdoor/public/android-chrome-192x192.png",
+          "hash": "10069081157660750289"
+        },
+        {
+          "file": "apps/frontdoor/public/android-chrome-256x256.png",
+          "hash": "4990681835602483742"
+        },
+        {
+          "file": "apps/frontdoor/public/apple-touch-icon.png",
+          "hash": "8667696056664390711"
+        },
+        {
+          "file": "apps/frontdoor/public/browserconfig.xml",
+          "hash": "10326067065040291042"
+        },
+        {
+          "file": "apps/frontdoor/public/favicon-16x16.png",
+          "hash": "7581143558055533583"
+        },
+        {
+          "file": "apps/frontdoor/public/favicon-32x32.png",
+          "hash": "3249507986916374293"
+        },
+        {
+          "file": "apps/frontdoor/public/favicon.ico",
+          "hash": "9483815427054977172"
+        },
+        {
+          "file": "apps/frontdoor/public/hero2023.png",
+          "hash": "10097216980867364360"
+        },
+        {
+          "file": "apps/frontdoor/public/mstile-150x150.png",
+          "hash": "14373545484333436042"
+        },
+        {
+          "file": "apps/frontdoor/public/robots.txt",
+          "hash": "16391522122555715775"
+        },
+        {
+          "file": "apps/frontdoor/public/safari-pinned-tab.svg",
+          "hash": "1224303465332285205"
+        },
+        {
+          "file": "apps/frontdoor/public/site.webmanifest",
+          "hash": "1250213900299037262"
+        },
+        {
+          "file": "apps/frontdoor/public/sitemap.xml",
+          "hash": "15014731388606160340"
+        },
+        {
+          "file": "apps/frontdoor/tsconfig.json",
+          "hash": "17218658241325162439"
+        },
+        {
+          "file": "apps/frontdoor/tsconfig.spec.json",
+          "hash": "6922413205408300107"
+        }
+      ],
+      "frontdoor-e2e": [
+        {
+          "file": "apps/frontdoor-e2e/.eslintrc.json",
+          "hash": "14060216369337943343"
+        },
+        {
+          "file": "apps/frontdoor-e2e/cypress.config.ts",
+          "hash": "15414076024138857470"
+        },
+        {
+          "file": "apps/frontdoor-e2e/project.json",
+          "hash": "8780131632534427295"
+        },
+        {
+          "file": "apps/frontdoor-e2e/src/e2e/app.cy.ts",
+          "hash": "8122755666320857945"
+        },
+        {
+          "file": "apps/frontdoor-e2e/src/fixtures/example.json",
+          "hash": "11614668686582597233"
+        },
+        {
+          "file": "apps/frontdoor-e2e/src/support/app.po.ts",
+          "hash": "11157016311132186162"
+        },
+        {
+          "file": "apps/frontdoor-e2e/src/support/commands.ts",
+          "hash": "7314691991044890572"
+        },
+        {
+          "file": "apps/frontdoor-e2e/src/support/e2e.ts",
+          "hash": "3666078656922506009"
+        },
+        {
+          "file": "apps/frontdoor-e2e/tsconfig.json",
+          "hash": "1788248097864730386"
+        }
+      ],
+      "board-game-data": [
+        {
+          "file": "board-game/data/.babelrc",
+          "hash": "2946678488919325452"
+        },
+        {
+          "file": "board-game/data/.eslintrc.json",
+          "hash": "11012487992710232822"
+        },
+        {
+          "file": "board-game/data/README.md",
+          "hash": "16693242574732823693"
+        },
+        {
+          "file": "board-game/data/jest.config.ts",
+          "hash": "13799500361388714637"
+        },
+        {
+          "file": "board-game/data/project.json",
+          "hash": "4557744500395414276"
+        },
+        {
+          "file": "board-game/data/src/dataTypes.ts",
+          "hash": "9716643612690158195"
+        },
+        {
+          "file": "board-game/data/src/lib/calc/bggGameAttrs.ts",
+          "hash": "3024972671440315476"
+        },
+        {
+          "file": "board-game/data/src/lib/calc/bggNameSearch.ts",
+          "hash": "11131579669291070343"
+        },
+        {
+          "file": "board-game/data/src/lib/calc/getDeterminantOption.ts",
+          "hash": "10743767986435766999"
+        },
+        {
+          "file": "board-game/data/src/lib/calc/tagGameList.ts",
+          "hash": "11850938985427318761"
+        },
+        {
+          "file": "board-game/data/src/lib/fetch/submitForm.ts",
+          "hash": "8483972651162786448"
+        },
+        {
+          "file": "board-game/data/src/lib/fetch/tagRankedGamesList.ts",
+          "hash": "7751510959097523579"
+        },
+        {
+          "file": "board-game/data/src/lib/firebase/app.ts",
+          "hash": "13143365079204116570"
+        },
+        {
+          "file": "board-game/data/src/lib/firebase/firestore.ts",
+          "hash": "4420920808784461482"
+        },
+        {
+          "file": "board-game/data/src/lib/firebase/storage.ts",
+          "hash": "14164826903785801497"
+        },
+        {
+          "file": "board-game/data/src/lib/hooks/useBggLookup.ts",
+          "hash": "12006472583700659042"
+        },
+        {
+          "file": "board-game/data/src/lib/hooks/useCreatorForm.ts",
+          "hash": "7596495572694877186"
+        },
+        {
+          "file": "board-game/data/src/lib/hooks/useGameForm.ts",
+          "hash": "11948214811980061923"
+        },
+        {
+          "file": "board-game/data/src/lib/hooks/useGameImage.ts",
+          "hash": "6597045543651742898"
+        },
+        {
+          "file": "board-game/data/src/lib/hooks/useGameSearch.ts",
+          "hash": "15371975212953320565"
+        },
+        {
+          "file": "board-game/data/src/lib/hooks/useRankingForm.ts",
+          "hash": "4776854683710205194"
+        },
+        {
+          "file": "board-game/data/src/lib/hooks/useTagForm.ts",
+          "hash": "5485743309395641365"
+        },
+        {
+          "file": "board-game/data/src/lib/hooks/useTagRankedGameList.ts",
+          "hash": "1698483092246311344"
+        },
+        {
+          "file": "board-game/data/src/lib/take/index.ts",
+          "hash": "14688976868988893502"
+        },
+        {
+          "file": "board-game/data/src/lib/take/takeCreator.ts",
+          "hash": "1804777508149439118"
+        },
+        {
+          "file": "board-game/data/src/lib/take/takeCreators.ts",
+          "hash": "8002229742189476657"
+        },
+        {
+          "file": "board-game/data/src/lib/take/takeGame.ts",
+          "hash": "16322524659457629812"
+        },
+        {
+          "file": "board-game/data/src/lib/take/takeRanking.ts",
+          "hash": "2288940651914409329"
+        },
+        {
+          "file": "board-game/data/src/lib/take/takeRankings.ts",
+          "hash": "14504826110104270126"
+        },
+        {
+          "file": "board-game/data/src/lib/take/takeTag.ts",
+          "hash": "17892389883816467098"
+        },
+        {
+          "file": "board-game/data/src/lib/take/takeTags.ts",
+          "hash": "16213933161548779227"
+        },
+        {
+          "file": "board-game/data/tsconfig.json",
+          "hash": "12937361759397702261"
+        },
+        {
+          "file": "board-game/data/tsconfig.lib.json",
+          "hash": "15147195313780277677"
+        },
+        {
+          "file": "board-game/data/tsconfig.spec.json",
+          "hash": "6514620907549802163"
+        }
+      ],
+      "curation-e2e": [
+        {
+          "file": "apps/curation-e2e/.eslintrc.json",
+          "hash": "14060216369337943343"
+        },
+        {
+          "file": "apps/curation-e2e/cypress.config.ts",
+          "hash": "15414076024138857470"
+        },
+        {
+          "file": "apps/curation-e2e/project.json",
+          "hash": "9265790636626327532"
+        },
+        {
+          "file": "apps/curation-e2e/src/e2e/app.cy.ts",
+          "hash": "8909986160313708436"
+        },
+        {
+          "file": "apps/curation-e2e/src/fixtures/example.json",
+          "hash": "11614668686582597233"
+        },
+        {
+          "file": "apps/curation-e2e/src/support/app.po.ts",
+          "hash": "11157016311132186162"
+        },
+        {
+          "file": "apps/curation-e2e/src/support/commands.ts",
+          "hash": "7314691991044890572"
+        },
+        {
+          "file": "apps/curation-e2e/src/support/e2e.ts",
+          "hash": "3666078656922506009"
+        },
+        {
+          "file": "apps/curation-e2e/tsconfig.json",
+          "hash": "1788248097864730386"
+        }
+      ],
       "board-game-view": [
         {
           "file": "board-game/view/.babelrc",
@@ -657,236 +1255,6 @@
           "hash": "6514620907549802163"
         }
       ],
-      "curation": [
-        {
-          "file": "apps/curation/.eslintrc.json",
-          "hash": "13378219862300347799"
-        },
-        {
-          "file": "apps/curation/app/creator/[slug]/edit/page.module.scss",
-          "hash": "4786619528779355986"
-        },
-        {
-          "file": "apps/curation/app/creator/[slug]/edit/page.tsx",
-          "hash": "13411709792639475227"
-        },
-        {
-          "file": "apps/curation/app/creator/[slug]/page.module.scss",
-          "hash": "7179958440342074676"
-        },
-        {
-          "file": "apps/curation/app/creator/[slug]/page.tsx",
-          "hash": "11504828193480255533"
-        },
-        {
-          "file": "apps/curation/app/creator/new/page.module.scss",
-          "hash": "4786619528779355986"
-        },
-        {
-          "file": "apps/curation/app/creator/new/page.tsx",
-          "hash": "13180222012234532475"
-        },
-        {
-          "file": "apps/curation/app/creator/page.module.scss",
-          "hash": "5526583098628002615"
-        },
-        {
-          "file": "apps/curation/app/creator/page.tsx",
-          "hash": "10301967578451962153"
-        },
-        {
-          "file": "apps/curation/app/creator/submitForm/route.ts",
-          "hash": "6486811605674836729"
-        },
-        {
-          "file": "apps/curation/app/game-image/submitForm/route.ts",
-          "hash": "44163904416201570"
-        },
-        {
-          "file": "apps/curation/app/game/[bggId]/edit/page.module.scss",
-          "hash": "4786619528779355986"
-        },
-        {
-          "file": "apps/curation/app/game/[bggId]/edit/page.tsx",
-          "hash": "5162453071992413649"
-        },
-        {
-          "file": "apps/curation/app/game/[bggId]/images/page.module.scss",
-          "hash": "4786619528779355986"
-        },
-        {
-          "file": "apps/curation/app/game/[bggId]/images/page.tsx",
-          "hash": "8449266026271762960"
-        },
-        {
-          "file": "apps/curation/app/game/[bggId]/page.module.scss",
-          "hash": "7179958440342074676"
-        },
-        {
-          "file": "apps/curation/app/game/[bggId]/page.tsx",
-          "hash": "16766452762992938780"
-        },
-        {
-          "file": "apps/curation/app/game/new/page.module.scss",
-          "hash": "4786619528779355986"
-        },
-        {
-          "file": "apps/curation/app/game/new/page.tsx",
-          "hash": "10485473867260889691"
-        },
-        {
-          "file": "apps/curation/app/game/page.module.scss",
-          "hash": "5526583098628002615"
-        },
-        {
-          "file": "apps/curation/app/game/page.tsx",
-          "hash": "10747925651125720621"
-        },
-        {
-          "file": "apps/curation/app/game/submitForm/route.ts",
-          "hash": "5920737415264075746"
-        },
-        {
-          "file": "apps/curation/app/global.css",
-          "hash": "10943017421299445298"
-        },
-        {
-          "file": "apps/curation/app/layout.module.scss",
-          "hash": "17022089410329696871"
-        },
-        {
-          "file": "apps/curation/app/layout.tsx",
-          "hash": "8248424788554997699"
-        },
-        {
-          "file": "apps/curation/app/page.module.scss",
-          "hash": "4786619528779355986"
-        },
-        {
-          "file": "apps/curation/app/page.tsx",
-          "hash": "11451801996020609411"
-        },
-        {
-          "file": "apps/curation/app/ranking/[slug]/edit/page.module.scss",
-          "hash": "4786619528779355986"
-        },
-        {
-          "file": "apps/curation/app/ranking/[slug]/edit/page.tsx",
-          "hash": "14578590108199017093"
-        },
-        {
-          "file": "apps/curation/app/ranking/[slug]/page.module.scss",
-          "hash": "7179958440342074676"
-        },
-        {
-          "file": "apps/curation/app/ranking/[slug]/page.tsx",
-          "hash": "7698248711035227893"
-        },
-        {
-          "file": "apps/curation/app/ranking/new/page.module.scss",
-          "hash": "4786619528779355986"
-        },
-        {
-          "file": "apps/curation/app/ranking/new/page.tsx",
-          "hash": "6973681064879553295"
-        },
-        {
-          "file": "apps/curation/app/ranking/page.module.scss",
-          "hash": "5526583098628002615"
-        },
-        {
-          "file": "apps/curation/app/ranking/page.tsx",
-          "hash": "13251025065634774252"
-        },
-        {
-          "file": "apps/curation/app/ranking/submitForm/route.ts",
-          "hash": "7401256918409051514"
-        },
-        {
-          "file": "apps/curation/app/tag-game-images/submitForm/route.ts",
-          "hash": "9630926965525492394"
-        },
-        {
-          "file": "apps/curation/app/tag/[slug]/edit/page.module.scss",
-          "hash": "4786619528779355986"
-        },
-        {
-          "file": "apps/curation/app/tag/[slug]/edit/page.tsx",
-          "hash": "2307754090039274203"
-        },
-        {
-          "file": "apps/curation/app/tag/[slug]/games/page.tsx",
-          "hash": "17165249854775400431"
-        },
-        {
-          "file": "apps/curation/app/tag/[slug]/page.module.scss",
-          "hash": "7179958440342074676"
-        },
-        {
-          "file": "apps/curation/app/tag/[slug]/page.tsx",
-          "hash": "14861859484911005833"
-        },
-        {
-          "file": "apps/curation/app/tag/[slug]/tagRankedGameList/route.ts",
-          "hash": "17361480257072380971"
-        },
-        {
-          "file": "apps/curation/app/tag/new/page.module.scss",
-          "hash": "4786619528779355986"
-        },
-        {
-          "file": "apps/curation/app/tag/new/page.tsx",
-          "hash": "14786785207228060810"
-        },
-        {
-          "file": "apps/curation/app/tag/page.module.scss",
-          "hash": "5526583098628002615"
-        },
-        {
-          "file": "apps/curation/app/tag/page.tsx",
-          "hash": "7276111102962933609"
-        },
-        {
-          "file": "apps/curation/app/tag/submitForm/route.ts",
-          "hash": "4765846851825822014"
-        },
-        {
-          "file": "apps/curation/index.d.ts",
-          "hash": "5498222895072842432"
-        },
-        {
-          "file": "apps/curation/jest.config.ts",
-          "hash": "10585832976501650928"
-        },
-        {
-          "file": "apps/curation/next-env.d.ts",
-          "hash": "5909181270615354023"
-        },
-        {
-          "file": "apps/curation/next.config.js",
-          "hash": "14411545753571509183"
-        },
-        {
-          "file": "apps/curation/project.json",
-          "hash": "17808639014274314656"
-        },
-        {
-          "file": "apps/curation/public/.gitkeep",
-          "hash": "3244421341483603138"
-        },
-        {
-          "file": "apps/curation/public/favicon.ico",
-          "hash": "9303420814833116677"
-        },
-        {
-          "file": "apps/curation/tsconfig.json",
-          "hash": "4169843906980086096"
-        },
-        {
-          "file": "apps/curation/tsconfig.spec.json",
-          "hash": "6922413205408300107"
-        }
-      ],
       "core-ui": [
         {
           "file": "core/ui/.babelrc",
@@ -943,374 +1311,6 @@
         {
           "file": "core/ui/tsconfig.spec.json",
           "hash": "6514620907549802163"
-        }
-      ],
-      "board-game-data": [
-        {
-          "file": "board-game/data/.babelrc",
-          "hash": "2946678488919325452"
-        },
-        {
-          "file": "board-game/data/.eslintrc.json",
-          "hash": "11012487992710232822"
-        },
-        {
-          "file": "board-game/data/README.md",
-          "hash": "16693242574732823693"
-        },
-        {
-          "file": "board-game/data/jest.config.ts",
-          "hash": "13799500361388714637"
-        },
-        {
-          "file": "board-game/data/project.json",
-          "hash": "4557744500395414276"
-        },
-        {
-          "file": "board-game/data/src/dataTypes.ts",
-          "hash": "9716643612690158195"
-        },
-        {
-          "file": "board-game/data/src/lib/calc/bggGameAttrs.ts",
-          "hash": "3024972671440315476"
-        },
-        {
-          "file": "board-game/data/src/lib/calc/bggNameSearch.ts",
-          "hash": "11131579669291070343"
-        },
-        {
-          "file": "board-game/data/src/lib/calc/getDeterminantOption.ts",
-          "hash": "10743767986435766999"
-        },
-        {
-          "file": "board-game/data/src/lib/calc/tagGameList.ts",
-          "hash": "11850938985427318761"
-        },
-        {
-          "file": "board-game/data/src/lib/fetch/submitForm.ts",
-          "hash": "8483972651162786448"
-        },
-        {
-          "file": "board-game/data/src/lib/fetch/tagRankedGamesList.ts",
-          "hash": "7751510959097523579"
-        },
-        {
-          "file": "board-game/data/src/lib/firebase/app.ts",
-          "hash": "13143365079204116570"
-        },
-        {
-          "file": "board-game/data/src/lib/firebase/firestore.ts",
-          "hash": "4420920808784461482"
-        },
-        {
-          "file": "board-game/data/src/lib/firebase/storage.ts",
-          "hash": "14164826903785801497"
-        },
-        {
-          "file": "board-game/data/src/lib/hooks/useBggLookup.ts",
-          "hash": "12006472583700659042"
-        },
-        {
-          "file": "board-game/data/src/lib/hooks/useCreatorForm.ts",
-          "hash": "7596495572694877186"
-        },
-        {
-          "file": "board-game/data/src/lib/hooks/useGameForm.ts",
-          "hash": "11948214811980061923"
-        },
-        {
-          "file": "board-game/data/src/lib/hooks/useGameImage.ts",
-          "hash": "6597045543651742898"
-        },
-        {
-          "file": "board-game/data/src/lib/hooks/useGameSearch.ts",
-          "hash": "15371975212953320565"
-        },
-        {
-          "file": "board-game/data/src/lib/hooks/useRankingForm.ts",
-          "hash": "4776854683710205194"
-        },
-        {
-          "file": "board-game/data/src/lib/hooks/useTagForm.ts",
-          "hash": "5485743309395641365"
-        },
-        {
-          "file": "board-game/data/src/lib/hooks/useTagRankedGameList.ts",
-          "hash": "1698483092246311344"
-        },
-        {
-          "file": "board-game/data/src/lib/take/index.ts",
-          "hash": "14688976868988893502"
-        },
-        {
-          "file": "board-game/data/src/lib/take/takeCreator.ts",
-          "hash": "1804777508149439118"
-        },
-        {
-          "file": "board-game/data/src/lib/take/takeCreators.ts",
-          "hash": "8002229742189476657"
-        },
-        {
-          "file": "board-game/data/src/lib/take/takeGame.ts",
-          "hash": "16322524659457629812"
-        },
-        {
-          "file": "board-game/data/src/lib/take/takeRanking.ts",
-          "hash": "2288940651914409329"
-        },
-        {
-          "file": "board-game/data/src/lib/take/takeRankings.ts",
-          "hash": "14504826110104270126"
-        },
-        {
-          "file": "board-game/data/src/lib/take/takeTag.ts",
-          "hash": "17892389883816467098"
-        },
-        {
-          "file": "board-game/data/src/lib/take/takeTags.ts",
-          "hash": "16213933161548779227"
-        },
-        {
-          "file": "board-game/data/tsconfig.json",
-          "hash": "12937361759397702261"
-        },
-        {
-          "file": "board-game/data/tsconfig.lib.json",
-          "hash": "15147195313780277677"
-        },
-        {
-          "file": "board-game/data/tsconfig.spec.json",
-          "hash": "6514620907549802163"
-        }
-      ],
-      "curation-e2e": [
-        {
-          "file": "apps/curation-e2e/.eslintrc.json",
-          "hash": "14060216369337943343"
-        },
-        {
-          "file": "apps/curation-e2e/cypress.config.ts",
-          "hash": "15414076024138857470"
-        },
-        {
-          "file": "apps/curation-e2e/project.json",
-          "hash": "9265790636626327532"
-        },
-        {
-          "file": "apps/curation-e2e/src/e2e/app.cy.ts",
-          "hash": "8909986160313708436"
-        },
-        {
-          "file": "apps/curation-e2e/src/fixtures/example.json",
-          "hash": "11614668686582597233"
-        },
-        {
-          "file": "apps/curation-e2e/src/support/app.po.ts",
-          "hash": "11157016311132186162"
-        },
-        {
-          "file": "apps/curation-e2e/src/support/commands.ts",
-          "hash": "7314691991044890572"
-        },
-        {
-          "file": "apps/curation-e2e/src/support/e2e.ts",
-          "hash": "3666078656922506009"
-        },
-        {
-          "file": "apps/curation-e2e/tsconfig.json",
-          "hash": "1788248097864730386"
-        }
-      ],
-      "frontdoor-e2e": [
-        {
-          "file": "apps/frontdoor-e2e/.eslintrc.json",
-          "hash": "14060216369337943343"
-        },
-        {
-          "file": "apps/frontdoor-e2e/cypress.config.ts",
-          "hash": "15414076024138857470"
-        },
-        {
-          "file": "apps/frontdoor-e2e/project.json",
-          "hash": "8780131632534427295"
-        },
-        {
-          "file": "apps/frontdoor-e2e/src/e2e/app.cy.ts",
-          "hash": "8122755666320857945"
-        },
-        {
-          "file": "apps/frontdoor-e2e/src/fixtures/example.json",
-          "hash": "11614668686582597233"
-        },
-        {
-          "file": "apps/frontdoor-e2e/src/support/app.po.ts",
-          "hash": "11157016311132186162"
-        },
-        {
-          "file": "apps/frontdoor-e2e/src/support/commands.ts",
-          "hash": "7314691991044890572"
-        },
-        {
-          "file": "apps/frontdoor-e2e/src/support/e2e.ts",
-          "hash": "3666078656922506009"
-        },
-        {
-          "file": "apps/frontdoor-e2e/tsconfig.json",
-          "hash": "1788248097864730386"
-        }
-      ],
-      "frontdoor": [
-        {
-          "file": "apps/frontdoor/.eslintrc.json",
-          "hash": "2145381768682899863"
-        },
-        {
-          "file": "apps/frontdoor/app/[tagSlug]/full/page.tsx",
-          "hash": "15343348530662540024"
-        },
-        {
-          "file": "apps/frontdoor/app/[tagSlug]/page.tsx",
-          "hash": "4876895985040738496"
-        },
-        {
-          "file": "apps/frontdoor/app/game/[bggId]/page.module.scss",
-          "hash": "3244421341483603138"
-        },
-        {
-          "file": "apps/frontdoor/app/game/[bggId]/page.tsx",
-          "hash": "10039369861583315599"
-        },
-        {
-          "file": "apps/frontdoor/app/global.scss",
-          "hash": "16772114363760790326"
-        },
-        {
-          "file": "apps/frontdoor/app/layout.module.scss",
-          "hash": "14288218806482033960"
-        },
-        {
-          "file": "apps/frontdoor/app/layout.tsx",
-          "hash": "9938530081477729521"
-        },
-        {
-          "file": "apps/frontdoor/app/legal/contact-us/page.module.scss",
-          "hash": "10452485242789917656"
-        },
-        {
-          "file": "apps/frontdoor/app/legal/contact-us/page.tsx",
-          "hash": "4196780781799699080"
-        },
-        {
-          "file": "apps/frontdoor/app/legal/terms/page.module.scss",
-          "hash": "3244421341483603138"
-        },
-        {
-          "file": "apps/frontdoor/app/legal/terms/page.tsx",
-          "hash": "16998937740864240220"
-        },
-        {
-          "file": "apps/frontdoor/app/page.module.scss",
-          "hash": "3244421341483603138"
-        },
-        {
-          "file": "apps/frontdoor/app/page.tsx",
-          "hash": "14731916290631388522"
-        },
-        {
-          "file": "apps/frontdoor/app/rankings/[tagSlug]/page.tsx",
-          "hash": "10104476658029503219"
-        },
-        {
-          "file": "apps/frontdoor/app/reset.css",
-          "hash": "10656868879263141309"
-        },
-        {
-          "file": "apps/frontdoor/index.d.ts",
-          "hash": "5498222895072842432"
-        },
-        {
-          "file": "apps/frontdoor/jest.config.ts",
-          "hash": "12216247906643833606"
-        },
-        {
-          "file": "apps/frontdoor/next-env.d.ts",
-          "hash": "5909181270615354023"
-        },
-        {
-          "file": "apps/frontdoor/next.config.js",
-          "hash": "6921261770481476323"
-        },
-        {
-          "file": "apps/frontdoor/project.json",
-          "hash": "9390720642578027724"
-        },
-        {
-          "file": "apps/frontdoor/public/.gitkeep",
-          "hash": "3244421341483603138"
-        },
-        {
-          "file": "apps/frontdoor/public/analytics.js",
-          "hash": "15682690718078942647"
-        },
-        {
-          "file": "apps/frontdoor/public/android-chrome-192x192.png",
-          "hash": "10069081157660750289"
-        },
-        {
-          "file": "apps/frontdoor/public/android-chrome-256x256.png",
-          "hash": "4990681835602483742"
-        },
-        {
-          "file": "apps/frontdoor/public/apple-touch-icon.png",
-          "hash": "8667696056664390711"
-        },
-        {
-          "file": "apps/frontdoor/public/browserconfig.xml",
-          "hash": "10326067065040291042"
-        },
-        {
-          "file": "apps/frontdoor/public/favicon-16x16.png",
-          "hash": "7581143558055533583"
-        },
-        {
-          "file": "apps/frontdoor/public/favicon-32x32.png",
-          "hash": "3249507986916374293"
-        },
-        {
-          "file": "apps/frontdoor/public/favicon.ico",
-          "hash": "9483815427054977172"
-        },
-        {
-          "file": "apps/frontdoor/public/hero2023.png",
-          "hash": "10097216980867364360"
-        },
-        {
-          "file": "apps/frontdoor/public/mstile-150x150.png",
-          "hash": "14373545484333436042"
-        },
-        {
-          "file": "apps/frontdoor/public/robots.txt",
-          "hash": "16391522122555715775"
-        },
-        {
-          "file": "apps/frontdoor/public/safari-pinned-tab.svg",
-          "hash": "1224303465332285205"
-        },
-        {
-          "file": "apps/frontdoor/public/site.webmanifest",
-          "hash": "1250213900299037262"
-        },
-        {
-          "file": "apps/frontdoor/public/sitemap.xml",
-          "hash": "15014731388606160340"
-        },
-        {
-          "file": "apps/frontdoor/tsconfig.json",
-          "hash": "17218658241325162439"
-        },
-        {
-          "file": "apps/frontdoor/tsconfig.spec.json",
-          "hash": "6922413205408300107"
         }
       ]
     }
