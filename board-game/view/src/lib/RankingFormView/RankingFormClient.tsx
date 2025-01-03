@@ -28,6 +28,7 @@ export default function RankingFormClient({ranking, tags, creators}: RankingForm
     handleChange,
     handlePersonChange,
     handleBggSelection,
+    handlePreloadBggIds,
     handleSubmit,
     handleCancel,
     handleConfirm,
@@ -70,6 +71,7 @@ export default function RankingFormClient({ranking, tags, creators}: RankingForm
           onChange={handleChange as unknown as (key: string) => ChangeEventHandler<HTMLInputElement>} 
           onPersonChange={handlePersonChange as unknown as (key: string) => ChangeEventHandler<HTMLInputElement>} 
           onBggLookupClick={bggLookup.handleLookupClick}
+          onBggPreloadIds={handlePreloadBggIds}
         />
       )}
       {bggLookup.isOpen && (

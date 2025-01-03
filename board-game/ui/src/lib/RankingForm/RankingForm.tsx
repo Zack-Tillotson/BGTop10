@@ -25,6 +25,7 @@ interface RankingFormProps {
   onChange: (key: string) => (event: any) => void,
   onPersonChange: (key: string, personIndex: number, gameIndex?: number) => ChangeEventHandler<HTMLInputElement|HTMLTextAreaElement>,
   onBggLookupClick: (query: string, context: any) => void,
+  onBggPreloadIds: () => void,
   onSubmit: (event: SyntheticEvent<HTMLFormElement, SubmitEvent>) => void,
 }
 
@@ -54,6 +55,7 @@ export function RankingForm({
   onChange,
   onPersonChange,
   onBggLookupClick,
+  onBggPreloadIds,
   className = '',
 }: RankingFormProps) {
   return (
@@ -144,6 +146,9 @@ export function RankingForm({
               onChange={onChange('rankingCount')}
             />
           </FormControl>
+          <Button className={styles.formControl} variant="outlined" onClick={onBggPreloadIds}>
+            Preload BGG ID
+          </Button>
         </Card>
         <div className={styles.rankingsList}>
           {formValues.gameLink.map(({person, games}, reviewerIndex) => (
@@ -170,8 +175,9 @@ export function RankingForm({
                   </tr>
                 </thead>
                 <tbody>
-                  {[...games].reverse().map(({name, bggId}, reverseIndex) => {
+                  {[...games].reverse().map(({name, bggId, isCached}, reverseIndex) => {
                     const gameIndex = games.length - 1 - reverseIndex
+                    const nameStyles = `${styles.input} ${isCached ? styles.isCached : ''} ${bggId ? styles.isValid : ''}`
                     return (
                       <tr key={`name-${gameIndex}-name`}>
                         <td># {gameIndex + 1}</td>
@@ -181,7 +187,7 @@ export function RankingForm({
                               id={`input-person-${reviewerIndex}-game-${gameIndex}`} 
                               type="text"
                               placeholder="Game name"
-                              className={styles.input} 
+                              className={nameStyles} 
                               value={name} 
                               onChange={onPersonChange('game', reviewerIndex, gameIndex)}
                             />

@@ -1,0 +1,12 @@
+# Environment variables and secrets
+env:
+  - variable: GOOGLE_APPLICATION_CREDENTIALS
+    secret: 
+    availability:
+      - BUILD
+      - RUNTIME
+
+  - variable: TEMP_IMAGE_LOCATION
+    value: /tmp/
+    availability:
+      - RUNTIME
