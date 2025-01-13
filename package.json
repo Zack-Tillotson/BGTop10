@@ -3,7 +3,8 @@
   "version": "0.0.0",
   "license": "MIT",
   "scripts": {
-    "build": "nx build curation"
+    "start": "nx serve curation",
+    "build": "nx build frontdoor"
   },
   "private": true,
   "devDependencies": {
