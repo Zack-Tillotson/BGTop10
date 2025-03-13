@@ -13,7 +13,7 @@ async function getTags(options?: QueryOptions): Promise<Tag[]> {
 
 export async function takeTags(withGames: boolean, options?: QueryOptions) {
   const tags = await getTags(options)
-  const gamesPromises = tags.map(tag => withGames ? getGamesForTag(tag.slug) : Promise.resolve([]), [])
+  const gamesPromises = tags.map(tag => withGames ? getGamesForTag(tag.slug, false) : Promise.resolve([]), [])
   const gamesLists = await Promise.all(gamesPromises)
   
   const tagsWithGames = tags.map((tag, index) => ({

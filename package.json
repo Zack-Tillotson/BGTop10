@@ -4,7 +4,8 @@
   "license": "MIT",
   "scripts": {
     "start": "nx serve curation",
-    "build": "nx build frontdoor"
+    "build": "nx build frontdoor",
+    "clean": "rm -rf dist/ .nx/"
   },
   "private": true,
   "devDependencies": {
